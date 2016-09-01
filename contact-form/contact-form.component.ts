@@ -1,6 +1,9 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component, Output, EventEmitter, OnDestroy} from '@angular/core';
+import {Response} from '@angular/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormSubmission, EmailValidator} from '../index';
+import {FormSubmissionService} from './form-submission.service';
+import {Observable, Observer, Subscription} from 'rxjs/Rx';
 
 @Component({
 	selector: 'jp-contact-form',
@@ -8,13 +11,14 @@ import {FormSubmission, EmailValidator} from '../index';
 	templateUrl: './contact-form.component.html',
 	styleUrls: ['./contact-form.component.css']
 })
-export class ContactFormComponent {
+export class ContactFormComponent implements OnDestroy {
 	@Output() formSubmitSuccess = new EventEmitter();
 
 	contactForm: FormGroup;
 	model = new FormSubmission();
+	sub: Subscription;
 
-	constructor(builder: FormBuilder) {
+	constructor(builder: FormBuilder, public service: FormSubmissionService) {
 		this.contactForm = builder.group({
 			first_name: ['', Validators.required],
 			last_name: ['', Validators.required],
@@ -26,9 +30,32 @@ export class ContactFormComponent {
 		});
 	}
 
-	submit() {
-		this.model = this.contactForm.value;
-		//console.log('submit form', this.model);
+	postToServer() {
+		return Observable.create((observer: Observer<Response>) => {
+			this.sub = this.service.submit(this.model)
+				.subscribe(
+					res => {
+						this.reset();
+						observer.next(res);
+					},
+					err => {
+						this.reset();
+						observer.error(err);
+					});
+		});
+	}
+
+	reset() {
+		this.contactForm.reset();
+	}
+
+	_submit() {
+		this.model = new FormSubmission(this.contactForm.value);
+
 		this.formSubmitSuccess.emit(this.model);
+	}
+
+	ngOnDestroy() {
+		if (this.sub) this.sub.unsubscribe();
 	}
 }

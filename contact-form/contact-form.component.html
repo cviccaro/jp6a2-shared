@@ -1,4 +1,4 @@
-<form class="jp-form" name="contactForm" layout="row" layout-wrap novalidate (ngSubmit)="submit()" [formGroup]="contactForm">
+<form class="jp-form" name="contactForm" layout="row" layout-wrap novalidate (ngSubmit)="_submit()" [formGroup]="contactForm">
   <div class="form-group required">
     <md-input name="first_name" [formControl]="contactForm.controls.first_name" required placeholder="First Name"></md-input>
   </div>

@@ -11,11 +11,13 @@ export class WorkService {
 
 	constructor(public http: ApiHttp, public xhr: XhrService) { }
 
-	public recent(skip:number = 0, take:number = 3) {
+	public recent(skip:number = 0, take:number = 3, division?: string) {
 		let params = new URLSearchParams();
 
 		params.set('skip', skip.toString());
 		params.set('take', take.toString());
+
+		if (division) params.set('division', division.toString());
 
     return this.http.get(Config.API + '/projects/recent', {search: params})
         .map(res => res.json());

@@ -5,6 +5,7 @@ export interface EnvConfig {
   desktopWidth: number;
   GoogleMapsAPIKey: string;
   ENV?: string;
+  division?: string;
 }
 
 export const Config: EnvConfig = JSON.parse('<%= ENV_CONFIG %>');

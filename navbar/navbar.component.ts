@@ -1,7 +1,7 @@
-import { Component, OnInit, ElementRef, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, HostListener, OnDestroy, ViewChildren, QueryList} from '@angular/core';
 import { NavbarService } from './navbar.service';
 import { XhrService } from './../xhr/xhr.service';
-
+import { Config, IconButtonComponent } from '../index';
 import { Subscription } from 'rxjs/Rx';
 
 /**
@@ -13,9 +13,11 @@ import { Subscription } from 'rxjs/Rx';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 	subs: Subscription[];
 	working = false;
+
+	@ViewChildren(IconButtonComponent) public buttons: QueryList<IconButtonComponent>;
 
 	constructor(public navbarService: NavbarService, public el: ElementRef, public xhr: XhrService) { }
 
@@ -27,6 +29,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
 			this.xhr.started.subscribe(() => this.working = true),
 			this.xhr.done.subscribe(() => this.working = false)
 		];
+	}
+
+	ngAfterViewInit() {
+		if (Config.division) {
+			this.buttons.forEach(button => {
+				if (button.el.nativeElement.classList.contains(Config.division)) {
+					button.el.nativeElement.classList.add('active');
+				}
+			});
+		}
 	}
 
 	@HostListener('document:scroll')

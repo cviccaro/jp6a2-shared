@@ -88,7 +88,6 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 		document.body.style.top = '';
 
 		if (window.innerWidth >= Config.desktopWidth && !this.navbarService.animatingHide) {
-			console.log('calling navbar hide from ngondestroy of contentoverlaycomponent');
 			this.navbarService.snapOut();
 			this.navbarService.startListening();
 		}

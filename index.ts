@@ -9,6 +9,7 @@ export * from './client/index';
 export * from './contact-form/index';
 export * from './content-overlay/index';
 export * from './config/index';
+export * from './division/index';
 export * from './gallery/index';
 export * from './hover-dynamics/index';
 export * from './icon-button/index';
@@ -33,11 +34,13 @@ import {BlogService} from './blog/blog.service';
 import {CacheService} from './cache/cache.service';
 import {ClientService} from './client/client.service';
 import {ConfigService} from './config/config.service';
+import {DivisionService} from './division/division.service';
 import {GeolocateService} from './map/geolocate.service';
 import {MobileMenuService} from './navbar/mobile-menu/mobile-menu.service';
 import {NavbarService} from './navbar/navbar.service';
 import {ScrollService} from './scroll/scroll.service';
 import {StaffService} from './staff/staff.service';
+import {FormSubmissionService} from './contact-form/form-submission.service';
 import {WorkService} from './work/work.service';
 import {ApiHttp} from './xhr/xhr.http';
 import {XhrService} from './xhr/xhr.service';
@@ -54,5 +57,7 @@ export const APP_SERVICES = [
   GeolocateService,
   MobileMenuService,
   ApiHttp,
-  XhrService
+  XhrService,
+  DivisionService,
+  FormSubmissionService
 ];

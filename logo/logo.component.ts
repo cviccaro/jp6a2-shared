@@ -10,6 +10,14 @@ export class LogoComponent {
   logo: { [key: string] : any };
 
   constructor(public cache: CacheService) {
-    this.logo = this.cache.get('config').main_site_logo;
+    let config = this.cache.get('config');
+
+    if (config['logo']) {
+    	this.logo = this.cache.get('config').logo;
+    } else if (config['main_site_logo']) {
+    	this.logo = this.cache.get('config').main_site_logo;
+    } else {
+    	this.logo = {url: '/assets/images/logo.png', description: ''};
+    }
   }
 }
