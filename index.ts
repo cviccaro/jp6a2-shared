@@ -6,6 +6,7 @@ export * from './blog/index';
 export * from './cache/index';
 export * from './card/index';
 export * from './client/index';
+export * from './contact-form/index';
 export * from './content-overlay/index';
 export * from './config/index';
 export * from './gallery/index';

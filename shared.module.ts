@@ -35,7 +35,8 @@ import {
   MobileMenuComponent,
   MobileMenuTriggerComponent,
   APP_SERVICES,
-  CapitalizePipe
+  CapitalizePipe,
+  ContactFormComponent
 } from './index';
 
 /**
@@ -78,7 +79,8 @@ import {
     SocialShareComponent,
     MobileMenuComponent,
     MobileMenuTriggerComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    ContactFormComponent
   ],
   exports: [
     BackgroundDirective,
@@ -102,7 +104,8 @@ import {
     TweetButtonComponent,
     MobileMenuComponent,
     MobileMenuTriggerComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    ContactFormComponent
   ]
 })
 export class SharedModule {
