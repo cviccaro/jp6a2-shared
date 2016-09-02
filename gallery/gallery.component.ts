@@ -69,6 +69,19 @@ export class GalleryComponent implements OnInit, AfterViewInit {
 		// Set currentItem and active property on image animating in
 		this.current = num;
 		this.images[num-1].active = true;
+	}
 
+	swipeLeft(e: any) {
+		console.log('SWIPE LEFT!', e, this);
+		if (this.current < this.images.length) {
+			this.switch(this.current + 1);
+		}
+	}
+
+	swipeRight(e: any) {
+		console.log('SWIPE RIGHT!', e);
+		if (this.current > 0) {
+			this.switch(this.current - 1);
+		}
 	}
 }

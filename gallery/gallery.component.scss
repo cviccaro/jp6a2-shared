@@ -26,4 +26,13 @@
 			visibility: hidden;
 		}
 	}
+
+	.hammer-capture {
+		position: absolute;
+		top: 0;
+		left: 33px;
+		right: 33px;
+		bottom: 0;
+		z-index: 1000;
+	}
 }
