@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	ngOnInit() {
 		this.navbarService.register(this.el);
-		this.navbarService.startListening();
+		// this.navbarService.startListening();
 
 		this.subs = [
 			this.xhr.started.subscribe(() => this.working = true),

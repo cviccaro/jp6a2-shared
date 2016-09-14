@@ -15,6 +15,7 @@ declare var jQuery: any;
 })
 
 export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy {
+	navbarWasListening: boolean = false;
 	returnTo: string;
 	sub: Subscription;
 
@@ -54,7 +55,10 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 
 		if (window.innerWidth >= Config.desktopWidth) {
 			this.navbarService.snapOut();
-			this.navbarService.startListening();
+
+			if (this.navbarWasListening) {
+				this.navbarService.startListening();
+			}
 		}
 
 		this.isActive = false;
@@ -71,6 +75,7 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 		setTimeout(() => {
 			this.isActive = true;
 			this.isHidden = false;
+			this.navbarWasListening = this.navbarService.listening;
 
 			this.navbarService.snapIn();
 			this.navbarService.stopListening();

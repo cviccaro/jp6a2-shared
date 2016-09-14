@@ -2,6 +2,7 @@
  * This barrel file provides the exports for the shared resources (services, components).
  */
 export * from './background/index';
+export * from './balloon/index';
 export * from './blog/index';
 export * from './cache/index';
 export * from './card/index';

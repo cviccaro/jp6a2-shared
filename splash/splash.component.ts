@@ -9,9 +9,22 @@ import {DomSanitizationService, SafeStyle} from '@angular/platform-browser';
 })
 export class SplashComponent implements OnInit {
   public bgStyle: SafeStyle;
-  public elHeight: string = window.innerHeight+'px';
+  public elHeight: string = '';
 
   @Input() splashUrl: string;
+  @Input() fullscreen: boolean = false;
+  @Input() align: string = 'center';
+  @Input() height: number;
+
+  @HostBinding('class.align-left') get leftClass() {
+    return this.align === 'left';
+  }
+  @HostBinding('class.align-center') get centerClass() {
+    return this.align === 'center';
+  }
+  @HostBinding('class.align-right') get rightClass() {
+    return this.align === 'right';
+  }
 
   @HostBinding('style.height') get heightStyle() {
     return this.elHeight;
@@ -19,14 +32,19 @@ export class SplashComponent implements OnInit {
 
   @HostListener('window:resize')
   onResize() {
-    this.setHeight();
+    if (this.fullscreen) this.setHeight();
   }
 
-  constructor(public sanitizer: DomSanitizationService) { }
+  constructor(public sanitizer: DomSanitizationService) {
+  }
 
   setHeight() {
-    let h = window.innerHeight > 558 ? window.innerHeight : 558;
-    this.elHeight = h+'px';
+    if (this.fullscreen) {
+      let h = window.innerHeight > 558 ? window.innerHeight : 558;
+      this.elHeight = h+'px';
+    } else if (this.height !== undefined) {
+      this.elHeight = this.height + 'px';
+    }
   }
 
   ngOnInit() {

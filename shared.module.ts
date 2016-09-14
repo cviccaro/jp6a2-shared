@@ -14,6 +14,8 @@ import {AgmCoreModule, GOOGLE_MAPS_PROVIDERS, GoogleMapsAPIWrapper} from 'angula
 
 import {
   BackgroundDirective,
+  BalloonComponent,
+  BalloonCalloutIconComponent,
   CardComponent,
   ContentOverlayComponent,
   GalleryComponent,
@@ -80,7 +82,9 @@ import {
     MobileMenuComponent,
     MobileMenuTriggerComponent,
     CapitalizePipe,
-    ContactFormComponent
+    ContactFormComponent,
+    BalloonComponent,
+    BalloonCalloutIconComponent
   ],
   exports: [
     BackgroundDirective,
@@ -105,7 +109,9 @@ import {
     MobileMenuComponent,
     MobileMenuTriggerComponent,
     CapitalizePipe,
-    ContactFormComponent
+    ContactFormComponent,
+    BalloonComponent,
+    BalloonCalloutIconComponent
   ]
 })
 export class SharedModule {

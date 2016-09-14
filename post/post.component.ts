@@ -4,15 +4,12 @@ import { NgSwitch, NgSwitchCase } from '@angular/common';
 import {Trimmed} from '../pipes/trimmed.pipe';
 //import {Capitalize} from '../pipes/capitalize.pipe';
 import {HoverDynamicsDirective} from '../hover-dynamics/index';
-import {ROUTER_DIRECTIVES} from '@angular/router';
-
 @Component({
 	selector: 'jp-post',
 	moduleId: module.id,
 	templateUrl: './post.component.html',
 	styleUrls: ['./post.component.css'],
-	directives: [ROUTER_DIRECTIVES, NgSwitch, NgSwitchCase, HoverDynamicsDirective],
-	//pipes: [DateFormatPipe, Trimmed, Capitalize],
+	directives: [NgSwitch, NgSwitchCase, HoverDynamicsDirective],
 	pipes: [ Trimmed ]
 })
 export class PostComponent implements AfterViewInit {
