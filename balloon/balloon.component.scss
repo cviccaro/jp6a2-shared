@@ -9,7 +9,7 @@
 		position: relative;
 		background-color: transparent;
 		will-change: background-color;
-		@include transition(background-color $transition_duration $transition_ease);
+		@include transition(background-color $transition_duration*2 $transition_ease);
 		.balloon-text {
 			position: absolute;
 			top: 47%;
@@ -44,7 +44,7 @@
 		        will-change: opacity;
 		    }
 		    jp-icon {
-		        @include transition(opacity 200ms linear);
+		        @include transition(opacity $transition_duration $transition_ease);
 		        z-index: 9;
 		    }
 		    jp-icon-hover {
@@ -75,7 +75,8 @@
 		justify-content: space-between;
 		margin: 24px auto 0;
 		width: 55%;
-
+		will-change: opacity;
+		opacity: 0;
 		.icon-container {
 			width: 36px;
 			height: 36px;
@@ -92,17 +93,16 @@
 				right: 0;
 				bottom: 0;
 				will-change: opacity;
+				@include transition(opacity $transition_duration $transition_ease);
 				background-image: url('../assets/images/mdm-icons-sprite-small.png');
 			}
 			jp-icon {
 				opacity: 1;
-				@include transition(opacity 200ms linear);
 			}
 			jp-icon-hover {
 				opacity: 0;
 				background-position: 0px -37px;
 			}
-
 			&:hover {
 				jp-icon {
 					opacity: 0;
@@ -111,7 +111,9 @@
 					opacity: 1;
 				}
 			}
+		}
 
+		jp-balloon-callout-icon {
 			&.template-building {
 				jp-icon {
 					background-position: -36px 0;
@@ -173,6 +175,9 @@
 	    	.balloon-text {
 	    		opacity: 1;
 	    	}
+	    }
+	    balloon-callout {
+	    	opacity: 1;
 	    }
 
 	    &.blue {
