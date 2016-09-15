@@ -133,6 +133,12 @@
     font-size: 18px;
     font-family: $proxima-nova;
     text-transform: uppercase;
+    opacity: 1;
+    will-change: opacity;
+    @include transition(opacity $transition_duration $transition_ease);
+    &.invisible {
+    	opacity: 0;
+    }
   }
 
   &:hover,

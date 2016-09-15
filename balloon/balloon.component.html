@@ -6,12 +6,4 @@
 	<div class="balloon-text"><ng-content select="balloon-text"></ng-content></div>
 </div>
 <ng-content select="balloon-callout"></ng-content>
-<div class="balloon-callout-text" [hidden]="!calloutIsHovering">{{ calloutHoverText }}</div>
-<!-- <a class="inner" [href]="href">
-	<div class="icon-container">
-		<ng-content select="jp-icon"></ng-content>
-		<ng-content select="jp-icon-hover"></ng-content>
-	</div>
-	<ng-content select="jp-icon-button-text"></ng-content>
-</a>
-<ng-content select="jp-underline"></ng-content> -->
+<div class="balloon-callout-text" [class.invisible]="!calloutIsHovering">{{ calloutHoverText }}</div>
