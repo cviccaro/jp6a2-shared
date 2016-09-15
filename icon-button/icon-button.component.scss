@@ -103,7 +103,7 @@
                 background-color: $fuchsia_translucent!important;
             }
         }
-        &.main {
+        &.mdm {
             .inner {
                 background-color: $blackish!important;
             }
@@ -167,7 +167,7 @@
             background: $fuchsia_translucent;
         }
     }
-    &.main {
+    &.mdm {
         jp-underline {
             background: $blackish;
         }
@@ -228,7 +228,7 @@
                 }
             }
         }
-        &.main {
+        &.mdm {
             .inner {
                 .icon-container {
                     width: 38px;
@@ -255,7 +255,7 @@
            &.fuchsia {
                 background-color: $fuchsia;
            }
-           &.main {
+           &.mdm {
                 background-color: $blackish;
            }
            .inner {
