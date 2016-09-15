@@ -103,6 +103,11 @@
                 background-color: $fuchsia_translucent!important;
             }
         }
+        &.main {
+            .inner {
+                background-color: $blackish!important;
+            }
+        }
     }
 
     &.publishing {
@@ -162,6 +167,11 @@
             background: $fuchsia_translucent;
         }
     }
+    &.main {
+        jp-underline {
+            background: $blackish;
+        }
+    }
 
     &.icon-menu-button {
         height: 74px;
@@ -218,6 +228,22 @@
                 }
             }
         }
+        &.main {
+            .inner {
+                .icon-container {
+                    width: 38px;
+                    max-width: 38px;
+                    jp-icon,jp-icon-hover {
+                        width: 100%;
+                        max-width: 38px;
+                        background-position: -73px 0;
+                    }
+                    jp-icon-hover {
+                        background-position: -73px -25px;
+                    }
+                }
+            }
+        }
         &:hover,
         &.active {
            &.blue {
@@ -228,6 +254,9 @@
            }
            &.fuchsia {
                 background-color: $fuchsia;
+           }
+           &.main {
+                background-color: $blackish;
            }
            .inner {
                 background-color: transparent!important;

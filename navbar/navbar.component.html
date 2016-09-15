@@ -3,6 +3,7 @@
 	<span class="filler"></span>
 	<div class="menu-links hide-mobile">
 	  <div class="menu">
+	  	<a md-button [routerLink]="['/services']" title="Services">Services</a>
 	    <a md-button [routerLink]="['/projects']" title="Projects">Projects</a>
 	    <a md-button [routerLink]="['/staff']" title="Leadership">Leadership</a>
 	    <a md-button [routerLink]="['/clients']" title="Clients">Clients</a>
@@ -11,6 +12,11 @@
 	  </div>
 	</div>
 	<div class="icon-menu hide-mobile">
+		<jp-icon-button class="icon-menu-button main" href="https://six.jpedev.com">
+			<jp-icon></jp-icon>
+			<jp-icon-hover></jp-icon-hover>
+			<jp-underline></jp-underline>
+		</jp-icon-button>
 	  	<jp-icon-button class="icon-menu-button publishing blue" href="https://publishing.jpedev.com">
 	  		<jp-icon></jp-icon>
 	  		<jp-icon-hover></jp-icon-hover>
