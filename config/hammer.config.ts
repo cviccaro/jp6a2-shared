@@ -1,9 +1,9 @@
-import { HammerInstance, HammerGestureConfig} from '@angular/platform-browser/index';
+//import { HammerInstance } from '@angular/platform-browser/index';
 import * as Hammer from 'hammerjs';
 
 export class HammerConfig {
 
-    buildHammer(element: HTMLElement): HammerInstance {
+    buildHammer(element: HTMLElement): any {
         var mc = new Hammer.Manager(element);
 
         // mc.get('pinch').set({ enable: true });
@@ -11,9 +11,9 @@ export class HammerConfig {
 
         mc.add( new Hammer.Swipe({ direction: Hammer.DIRECTION_ALL, threshold: 0}) );
 
-        for (let eventName in this.overrides) {
-            mc.get(eventName).set(this.overrides[eventName]);
-        }
+        // for (let eventName in this.overrides) {
+        //     mc.get(eventName).set(this.overrides[eventName]);
+        // }
 
         return mc;
     }

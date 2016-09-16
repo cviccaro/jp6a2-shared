@@ -107,7 +107,7 @@ export class ManagedFile implements JpFile {
      * Inject into FormData
      */
     injectIntoForm(form_key: string, form: FormData): void {
-        let managedFile = Object.assign({}, this);
+        let managedFile: any = Object.assign({}, this);
         let upload: File;
 
         // File upload?
@@ -122,7 +122,8 @@ export class ManagedFile implements JpFile {
 
         // Attribute update
         for (let k in managedFile) {
-            form.append(`${form_key}[${k}]`, managedFile[k]);
+            let idx: any = k;
+            form.append(`${form_key}[${idx}]`, managedFile[idx]);
         }
     }
 }

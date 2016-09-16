@@ -1,10 +1,17 @@
 import { Component, Input, OnInit, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
-import { ManagedImageSlide, BackgroundDirective } from '../index';
+import { ManagedImageSlide } from '../index';
 import { GalleryItemDirective } from '../gallery/gallery-item.directive';
-import { PagerComponent } from '../pager/pager.component';
 
 declare var dynamics: any;
 declare var jQuery: any;
+
+export interface DynamicsOptions {
+	type: any;
+	friction: number;
+	frequency: number;
+	duration: number;
+	complete?: () => void;
+}
 
 @Component({
 	moduleId: module.id,
@@ -13,7 +20,7 @@ declare var jQuery: any;
 	styleUrls: [ './gallery.component.css' ]
 })
 export class GalleryComponent implements OnInit, AfterViewInit {
-	animationOptions = {
+	animationOptions: DynamicsOptions = {
 	    type: dynamics.spring,
 	    friction: 500,
 	    frequency: 20,

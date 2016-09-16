@@ -111,8 +111,28 @@ jp-balloon-callout-icon {
 	}
 }
 
+// .menu-links {
+// 	jp-icon-button {
+// 		:host {
+// 			background-image: url('../assets/images/division-icons-sprite.png');
+// 			width: 100%;
+// 			height: 100%;
+// 			position: absolute;
+// 			top: 0;
+// 			left: 0;
+// 			right: 0;
+// 			bottom: 0;
+// 			will-change: opacity;
+// 		}
+// 		&.publishing {
+// 			:host {
 
-jp-icon-button.icon-menu-button {
+// 			}
+// 		}
+// 	}
+// }
+
+jp-icon-button {
 	:host {
 		background-image: url('../assets/images/division-icons-sprite-sm.png');
 		width: 100%;
