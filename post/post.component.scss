@@ -1,9 +1,5 @@
-:host {
-	// margin-right: 2%;
+:host /deep/ {
 	position: relative;
-	// &.flex-30 {
-	// 	max-width: 30%!important;
-	// }
 	.img-container {
 		text-align: center;
 		padding: 9px;
@@ -62,10 +58,10 @@
 	.post-body {
 		font-size: 1em;
 		font-weight: 300;
-		img,ul,ol {
-			display: none;
-		}
 	}
+}
+
+:host {
 	&:nth-child(3n) {
 		margin-right: 0;
 	}

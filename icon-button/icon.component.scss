@@ -1,0 +1,73 @@
+jp-balloon {
+	&.mdm {
+		.balloon {
+			:host {
+				background-position: 0px 0px;
+			}
+		}
+	}
+	&.publishing {
+		.balloon {
+			.icon-container {
+				:host {
+					background-position: -160px 0;
+				}
+			}
+		}
+	}
+	&.creative {
+		.balloon {
+			.icon-container {
+				:host {
+				  background-position: -266px 0;
+				}
+			}
+		}
+	}
+	&.interactive {
+		.balloon {
+			.icon-container {
+				:host {
+					background-position: -362px 0px;
+				}
+			}
+		}
+	}
+	.balloon {
+		.icon-container {
+			:host {
+				opacity: 1;
+				z-index: 9;
+			}
+		}
+	}
+}
+jp-balloon:hover {
+	.balloon {
+		.icon-container {
+			:host {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+jp-balloon-callout-icon:hover {
+	:host {
+		opacity: 0;
+	}
+}
+
+jp-icon-button {
+	:host {
+		@include transition(opacity 200ms linear);
+		z-index: 9;
+	}
+	&.icon-menu-button {
+		&:hover {
+			:host {
+				opacity: 0;
+			}
+		}
+	}
+}

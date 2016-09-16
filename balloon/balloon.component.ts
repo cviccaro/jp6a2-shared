@@ -1,6 +1,6 @@
-import { Component, ContentChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, ContentChild, AfterViewInit } from '@angular/core';
 
-import { BalloonCalloutIconComponent } from './balloon-callout-icon.component';
+import { BalloonCalloutComponent } from './balloon-callout.component';
 
 @Component({
 	selector: 'jp-balloon',
@@ -12,19 +12,19 @@ export class BalloonComponent implements AfterViewInit {
 	calloutIsHovering = false;
 	calloutHoverText: string;
 
-	@ContentChildren(BalloonCalloutIconComponent) public calloutIcons: QueryList<BalloonCalloutIconComponent>;
+	@ContentChild(BalloonCalloutComponent) public calloutCmp;
 
 	ngAfterViewInit() {
-		console.log(this.calloutIcons);
-		this.calloutIcons.forEach(item => {
-			item.hover.subscribe((e: any) => {
-				console.log('hovering over icon');
-				this.calloutIsHovering = true;
-				this.calloutHoverText = e.text;
+		if (this.calloutCmp) {
+			this.calloutCmp.calloutIcons.forEach(item => {
+				item.hover.subscribe((e: any) => {
+					this.calloutIsHovering = true;
+					this.calloutHoverText = e.text;
+				});
+				item.leave.subscribe((e: any) => {
+					this.calloutIsHovering = false;
+				});
 			});
-			item.leave.subscribe((e: any) => {
-				this.calloutIsHovering = false;
-			});
-		});
+		}
 	}
 }

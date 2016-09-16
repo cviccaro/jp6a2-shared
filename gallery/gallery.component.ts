@@ -10,8 +10,7 @@ declare var jQuery: any;
 	moduleId: module.id,
 	selector: 'jp-gallery',
 	templateUrl: './gallery.component.html',
-	styleUrls: [ './gallery.component.css' ],
-	directives: [ BackgroundDirective, PagerComponent, GalleryItemDirective ]
+	styleUrls: [ './gallery.component.css' ]
 })
 export class GalleryComponent implements OnInit, AfterViewInit {
 	animationOptions = {

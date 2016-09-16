@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizationService, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
 	moduleId: module.id,
@@ -12,7 +12,7 @@ export class SocialShareComponent implements OnInit {
 
 	@Input() url: string;
 
-	constructor(public sanitizer: DomSanitizationService) {	}
+	constructor(public sanitizer: DomSanitizer) {	}
 
 	ngOnInit() {
 		this.fbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(

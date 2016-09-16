@@ -1,26 +1,33 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MdCoreModule } from '@angular2-material/core';
 import { MdButtonModule } from '@angular2-material/button';
+import {MdGridListModule} from '@angular2-material/grid-list';
 import { MdInputModule } from '@angular2-material/input';
-import { MdIconModule } from '@angular2-material/icon';
+import { MdIconModule, MdIconRegistry } from '@angular2-material/icon';
 import { MdProgressBarModule } from '@angular2-material/progress-bar';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 import { MomentModule } from 'angular2-moment';
-import {AgmCoreModule, GOOGLE_MAPS_PROVIDERS, GoogleMapsAPIWrapper} from 'angular2-google-maps/core';
+import {AgmCoreModule, GoogleMapsAPIWrapper} from 'angular2-google-maps/core';
 
 import {
   BackgroundDirective,
   BalloonComponent,
+  BalloonTextComponent,
+  BalloonCalloutComponent,
   BalloonCalloutIconComponent,
   CardComponent,
   ContentOverlayComponent,
   GalleryComponent,
   HoverDynamicsDirective,
   IconButtonComponent,
+  IconButtonTextComponent,
+  JpIconComponent,
+  JpIconHoverComponent,
+  JpUnderlineComponent,
   LogoComponent,
   MapComponent,
   MapControlComponent,
@@ -38,6 +45,7 @@ import {
   MobileMenuTriggerComponent,
   APP_SERVICES,
   CapitalizePipe,
+  TrimmedPipe,
   ContactFormComponent
 } from './index';
 
@@ -49,9 +57,11 @@ import {
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     ReactiveFormsModule,
     AgmCoreModule,
     MdCoreModule,
+    MdGridListModule,
     MdInputModule,
     MdIconModule,
     MdButtonModule,
@@ -63,36 +73,66 @@ import {
     BackgroundDirective,
     CardComponent,
     ContentOverlayComponent,
-    GalleryComponent,
-    HoverDynamicsDirective,
-    IconButtonComponent,
-    LogoComponent,
-    MapComponent,
-    MapControlComponent,
-    NavbarComponent,
-    PagerComponent,
-    PostComponent,
-    SplashComponent,
-    SocialIconsComponent,
-    TextareaAutoexpandDirective,
-    LinkedInButtonComponent,
-    TweetButtonComponent,
-    GooglePlusButtonComponent,
-    SocialShareComponent,
-    MobileMenuComponent,
-    MobileMenuTriggerComponent,
-    CapitalizePipe,
-    ContactFormComponent,
     BalloonComponent,
-    BalloonCalloutIconComponent
-  ],
-  exports: [
-    BackgroundDirective,
-    CardComponent,
+    BalloonCalloutIconComponent,
+    BalloonTextComponent,
+    BalloonCalloutComponent,
     ContentOverlayComponent,
     GalleryComponent,
     HoverDynamicsDirective,
     IconButtonComponent,
+    IconButtonTextComponent,
+    JpIconComponent,
+    JpIconHoverComponent,
+    JpUnderlineComponent,
+    LogoComponent,
+    MapComponent,
+    MapControlComponent,
+    NavbarComponent,
+    PagerComponent,
+    PostComponent,
+    SplashComponent,
+    SocialIconsComponent,
+    TextareaAutoexpandDirective,
+    LinkedInButtonComponent,
+    TweetButtonComponent,
+    GooglePlusButtonComponent,
+    SocialShareComponent,
+    MobileMenuComponent,
+    MobileMenuTriggerComponent,
+    CapitalizePipe,
+    TrimmedPipe,
+    ContactFormComponent
+  ],
+  exports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AgmCoreModule,
+    MomentModule,
+    MdCoreModule,
+    MdGridListModule,
+    MdInputModule,
+    MdIconModule,
+    MdButtonModule,
+    MdToolbarModule,
+    MdProgressBarModule,
+    BackgroundDirective,
+    CardComponent,
+    ContentOverlayComponent,
+    BalloonComponent,
+    BalloonCalloutIconComponent,
+    BalloonTextComponent,
+    BalloonCalloutComponent,
+    ContentOverlayComponent,
+    GalleryComponent,
+    HoverDynamicsDirective,
+    IconButtonComponent,
+    IconButtonTextComponent,
+    JpIconComponent,
+    JpIconHoverComponent,
+    JpUnderlineComponent,
     LogoComponent,
     MapComponent,
     MapControlComponent,
@@ -109,16 +149,15 @@ import {
     MobileMenuComponent,
     MobileMenuTriggerComponent,
     CapitalizePipe,
-    ContactFormComponent,
-    BalloonComponent,
-    BalloonCalloutIconComponent
+    TrimmedPipe,
+    ContactFormComponent
   ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [APP_SERVICES, GOOGLE_MAPS_PROVIDERS, GoogleMapsAPIWrapper]
+      providers: [APP_SERVICES, GoogleMapsAPIWrapper, MdIconRegistry]
     };
   }
 }

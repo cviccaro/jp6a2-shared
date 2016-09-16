@@ -1,12 +1,10 @@
 :host {
-	// margin-right: 0.5%;
-	position: relative;
-	// &.flex-30 {
-	// 	max-width: 30%!important;
-	// }
 	&:nth-child(3n) {
 		margin-right: 0;
 	}
+}
+:host /deep/ {
+	position: relative;
 	.card-img {
 		text-align: center;
 		padding: 9px;
@@ -14,13 +12,6 @@
 		overflow: visible;
 
 		@include transition(border-color $transition_duration $transition_ease);
-
-		// @media screen and (min-width: 960px) {
-		// 	img {
-		// 		max-width: 340px;
-		// 		max-height: 206px;
-		// 	}
-		// }
 		
 		img {
 			margin: 0 auto;
@@ -73,10 +64,6 @@
 		width: 100%;
 		line-height: 0px;
 		background-position: center center;
-		// @media screen and (min-width: 1280px) {
-		// 	width: 340px;
-		// 	height: 206px;
-		// }
 		height: 100%;
 		opacity: 0;
 		@include transition(opacity $transition_duration $transition_ease);
@@ -87,6 +74,9 @@
 	:host {
 		.card-img {
 			border-color: $grey_900;
+		}
+		a {
+			color: $white_trans;
 		}
 		&:hover {
 			.card-img {

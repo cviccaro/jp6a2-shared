@@ -1,0 +1,22 @@
+:host {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 24px auto 0;
+	width: 55%;
+	will-change: opacity;
+	opacity: 0;
+}
+
+jp-balloon {
+	&.creative {
+		:host {
+			width: 75%;
+		}
+	}
+	&:hover {
+		:host {
+			opacity: 1;
+		}
+	}
+}

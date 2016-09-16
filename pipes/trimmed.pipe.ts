@@ -1,7 +1,7 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({name: 'trimmed'})
-export class Trimmed implements PipeTransform {
+export class TrimmedPipe implements PipeTransform {
     transform(value: any, wordwise: boolean, max: any, tail: number) {
         if (!value) return '';
 

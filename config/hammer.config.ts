@@ -1,7 +1,7 @@
-import { HammerInstance, HammerGestureConfig} from '@angular/platform-browser/src/dom/events/hammer_gestures';
+import { HammerInstance, HammerGestureConfig} from '@angular/platform-browser/index';
 import * as Hammer from 'hammerjs';
 
-export class HammerConfig extends HammerGestureConfig  {
+export class HammerConfig {
 
     buildHammer(element: HTMLElement): HammerInstance {
         var mc = new Hammer.Manager(element);

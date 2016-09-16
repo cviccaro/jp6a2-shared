@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, OnDestroy} from '@angular/core';
+import {Component, Output, EventEmitter, OnDestroy } from '@angular/core';
 import {Response} from '@angular/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormSubmission, EmailValidator} from '../index';

@@ -143,36 +143,6 @@
         }
     }
 
-    jp-underline {
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: -1px;
-        background: rgba(0,0,0,.117647);
-        width: 100%;
-        height: 1px;
-    }
-    &.blue {
-        jp-underline {
-            background: $blue_translucent;
-        }
-    }
-    &.yellow {
-        jp-underline {
-            background: $yellow_translucent;
-        }
-    }
-    &.fuchsia {
-        jp-underline {
-            background: $fuchsia_translucent;
-        }
-    }
-    &.mdm {
-        jp-underline {
-            background: $blackish;
-        }
-    }
-
     &.icon-menu-button {
         height: 74px;
         position: relative;
@@ -181,51 +151,9 @@
         .inner {
             height: 100%;
             background-color: none;
-            .icon-container,
-            jp-icon,
-            jp-icon-hover {
+            .icon-container {
                 max-width: 24px;
                 max-height: 26px;
-            }
-            jp-icon,
-            jp-icon-hover {
-                background-image: url('../assets/images/division-icons-sprite-sm.png');
-            }
-        }
-        &.publishing {
-            .inner {
-                jp-icon,
-                jp-icon-hover {
-                    height: 24px;
-                }
-                jp-icon-hover {
-                    background-position: 0px -24px;
-                }
-            }
-        }
-        &.creative {
-            .inner {
-                jp-icon {
-                    height: 26px;
-                    background-position: -24px 0;
-                }
-                jp-icon-hover {
-                    background-position: -24px -26px;
-                }
-            }
-        }
-        &.interactive {
-            .inner {
-                jp-icon,
-                jp-icon-hover {
-                    height: 24px;
-                }
-                jp-icon {
-                    background-position: -47px 0;
-                }
-                jp-icon-hover {
-                    background-position: -47px -24px;
-                }
             }
         }
         &.mdm {
@@ -233,14 +161,6 @@
                 .icon-container {
                     width: 38px;
                     max-width: 38px;
-                    jp-icon,jp-icon-hover {
-                        width: 100%;
-                        max-width: 37px;
-                        background-position: -73px 0;
-                    }
-                    jp-icon-hover {
-                        background-position: -73px -25px;
-                    }
                 }
             }
         }

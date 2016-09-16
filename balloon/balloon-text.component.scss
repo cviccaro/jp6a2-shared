@@ -1,0 +1,20 @@
+:host {
+	position: absolute;
+	top: 47%;
+	z-index: 5;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 300;
+	font-family: $proxima-nova;
+	text-transform: uppercase;
+	opacity: 0;
+	will-change: opacity;
+
+	@include transition(opacity $transition_duration $transition_ease);
+}
+
+jp-balloon:hover :host {
+	opacity: 1;
+}

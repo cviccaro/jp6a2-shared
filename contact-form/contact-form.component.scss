@@ -1,4 +1,4 @@
-:host {
+:host /deep/ {
 	form {
 		display: flex;
 		flex-direction: row;
@@ -55,12 +55,14 @@
 				width: 100%;
 				.md-input-wrapper {
 					margin: 0;
+					input {
+						border-width: 1px;
+						border-style: solid;
+						border-color: #fff;
+						padding: 10px 20px;
+						height: 48px;
+					}
 				}
-			}
-			input {
-				border: 1px solid $white;
-				padding: 10px 20px;
-				height: 48px;
 			}
 			input,.md-input-placeholder {
 				color: $white_trans;

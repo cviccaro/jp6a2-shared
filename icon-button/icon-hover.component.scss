@@ -1,0 +1,78 @@
+jp-balloon {
+	&.mdm {
+		.balloon {
+			:host {
+				background-position: 0px -106px;
+			}
+		}
+	}
+	&.publishing {
+		.balloon {
+			.icon-container {
+				:host {
+					background-position: -160px -106px;
+				}
+			}
+		}
+	}
+	&.creative {
+		.balloon {
+			.icon-container {
+				:host {
+				  background-position: -266px -106px;
+				}
+			}
+		}
+	}
+	&.interactive {
+		.balloon {
+			.icon-container {
+				:host {
+					background-position: -362px -106px;
+				}
+			}
+		}
+	}
+
+	.balloon {
+		.icon-container {
+			:host {
+				opacity: 1;
+				z-index: 8;
+			}
+		}
+	}
+
+	balloon-callout {
+		jp-balloon-callout-icon {
+			:host {
+				background-position-y: -37px;
+				z-index: 8;
+			}
+		}
+	}
+}
+
+
+jp-icon-button.icon-menu-button {
+	&.publishing {
+    :host {
+      background-position: 0px -24px;
+    }
+	}
+	&.creative {
+		:host {
+	    background-position: -24px -26px;
+		}
+	}
+	&.interactive {
+		:host {
+	    background-position: -47px -24px;
+		}
+	}
+	&.mdm {
+		:host {
+			background-position: -73px -25px;
+		}
+	}
+}

@@ -3,7 +3,8 @@ import { Component, Input, EventEmitter, Output, HostListener } from '@angular/c
 @Component({
 	moduleId: module.id,
 	selector: 'jp-balloon-callout-icon',
-	template: '<div class="icon-container"><ng-content></ng-content></div>'
+	template: '<ng-content></ng-content>',
+	styleUrls: [ './balloon-callout-icon.component.css' ]
 })
 export class BalloonCalloutIconComponent {
 	@Output() hover = new EventEmitter();

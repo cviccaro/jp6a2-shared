@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, HostListener, HostBinding } from '@angular/core';
-import {DomSanitizationService, SafeStyle} from '@angular/platform-browser';
+import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 
 @Component({
   moduleId: module.id,
@@ -35,7 +35,7 @@ export class SplashComponent implements OnInit {
     if (this.fullscreen) this.setHeight();
   }
 
-  constructor(public sanitizer: DomSanitizationService) {
+  constructor(public sanitizer: DomSanitizer) {
   }
 
   setHeight() {
