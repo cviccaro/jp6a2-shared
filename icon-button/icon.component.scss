@@ -64,7 +64,8 @@ jp-icon-button {
 		z-index: 9;
 	}
 	&.icon-menu-button {
-		&:hover {
+		&:hover,
+		&.active {
 			:host {
 				opacity: 0;
 			}
