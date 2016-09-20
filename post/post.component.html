@@ -1,7 +1,7 @@
 <div [class.slideInUp]="animateIn" [class.animated]="animateIn" [hidden]="animateIn && !animating">
 	<div class="img-container">
 		<a [routerLink]="routerLink" [title]="title" jpHoverDynamics>
-			<div md-ripple md-ripple-centered="true"></div>.
+			<div md-ripple></div>.
 			<img *ngIf="image" [title]="title" [src]="image" />
 			<img *ngIf="!image" [title]="title" [src]="'assets/images/placeholder.png'" />
 		</a>
@@ -12,7 +12,7 @@
 			<span [hidden]="!author">&nbsp;&nbsp;-&nbsp;&nbsp;by {{author | capitalize}}</span>
 		</span>
 	</div>
-	<h3 class="post-title"><a [routerLink]="routerLink" [title]="title" md-ink-ripple>{{ title | capitalize }}</a></h3>
+	<h3 class="post-title"><a [routerLink]="routerLink" [title]="title">{{ title | capitalize }}</a></h3>
 	<div [ngSwitch]="text.length > 0">
 		<p class="post-body" *ngSwitchCase="true" [innerHTML]="text"></p>
 		<p class="post-body" *ngSwitchCase="false" [innerHTML]="longText | trimmed:true:280:' ...'"></p>
