@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MdCoreModule } from '@angular2-material/core';
+import { MdCoreModule, MdRippleModule } from '@angular2-material/core';
 import { MdButtonModule } from '@angular2-material/button';
 import {MdGridListModule} from '@angular2-material/grid-list';
 import { MdInputModule } from '@angular2-material/input';
@@ -68,6 +68,7 @@ import {
     MdButtonModule,
     MdToolbarModule,
     MdProgressBarModule,
+    MdRippleModule,
     MomentModule
   ],
   declarations: [
@@ -120,6 +121,7 @@ import {
     MdButtonModule,
     MdToolbarModule,
     MdProgressBarModule,
+    MdRippleModule,
     BackgroundDirective,
     CardComponent,
     ContentOverlayComponent,

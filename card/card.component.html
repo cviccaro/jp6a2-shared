@@ -2,6 +2,7 @@
 	<template [ngSwitchCase]="true">
 		<div class="card-img">
 			<a *ngSwitchCase="true" [routerLink]="routerLink" [title]="cardTitle" jpHoverDynamics>
+				<div md-ripple md-ripple-centered="true"></div>.
 				<div *ngIf="overlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
 				<img [src]="image" [title]="cardTitle" />
 			</a>
@@ -13,6 +14,7 @@
 	<template ngSwitchDefault>
 		<div class="card-img">
 			<a [href]="href" [title]="cardTitle" jpHoverDynamics>
+				<div md-ripple md-ripple-centered="true"></div>.
 				<div *ngIf="overlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
 				<img [src]="image" [title]="cardTitle" />
 			</a>

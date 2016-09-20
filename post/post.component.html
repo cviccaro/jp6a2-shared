@@ -1,6 +1,7 @@
 <div [class.slideInUp]="animateIn" [class.animated]="animateIn" [hidden]="animateIn && !animating">
 	<div class="img-container">
 		<a [routerLink]="routerLink" [title]="title" jpHoverDynamics>
+			<div md-ripple md-ripple-centered="true"></div>.
 			<img *ngIf="image" [title]="title" [src]="image" />
 			<img *ngIf="!image" [title]="title" [src]="'assets/images/placeholder.png'" />
 		</a>
