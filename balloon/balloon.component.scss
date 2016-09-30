@@ -61,6 +61,7 @@
     text-transform: uppercase;
     opacity: 1;
     will-change: opacity;
+    min-height: 25px;
     @include transition(opacity $transition_duration $transition_ease);
     &.invisible {
       opacity: 0;
@@ -81,7 +82,7 @@
   &.creative {
   	.balloon {
   		.icon-container {
-  			width: 96px; 
+  			width: 96px;
   		}
   	}
   }
