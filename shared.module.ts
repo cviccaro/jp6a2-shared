@@ -3,13 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MdCoreModule, MdRippleModule } from '@angular2-material/core';
-import { MdButtonModule } from '@angular2-material/button';
-import {MdGridListModule} from '@angular2-material/grid-list';
-import { MdInputModule } from '@angular2-material/input';
-import { MdIconModule, MdIconRegistry } from '@angular2-material/icon';
-import { MdProgressBarModule } from '@angular2-material/progress-bar';
-import { MdToolbarModule } from '@angular2-material/toolbar';
+import { MaterialModule, MdIconRegistry, OVERLAY_PROVIDERS } from '@angular/material';
 import { MomentModule } from 'angular2-moment';
 import {AgmCoreModule, GoogleMapsAPIWrapper} from 'angular2-google-maps/core';
 
@@ -61,14 +55,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule,
-    MdCoreModule,
-    MdGridListModule,
-    MdInputModule,
-    MdIconModule,
-    MdButtonModule,
-    MdToolbarModule,
-    MdProgressBarModule,
-    MdRippleModule,
+    MaterialModule,
     MomentModule
   ],
   declarations: [
@@ -114,14 +101,7 @@ import {
     ReactiveFormsModule,
     AgmCoreModule,
     MomentModule,
-    MdCoreModule,
-    MdGridListModule,
-    MdInputModule,
-    MdIconModule,
-    MdButtonModule,
-    MdToolbarModule,
-    MdProgressBarModule,
-    MdRippleModule,
+    MaterialModule,
     BackgroundDirective,
     CardComponent,
     ContentOverlayComponent,
@@ -162,7 +142,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [APP_SERVICES, GoogleMapsAPIWrapper, MdIconRegistry]
+      providers: [APP_SERVICES, GoogleMapsAPIWrapper, MdIconRegistry, OVERLAY_PROVIDERS]
     };
   }
 }

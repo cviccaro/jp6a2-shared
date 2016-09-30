@@ -78,14 +78,12 @@ export class GalleryComponent implements OnInit, AfterViewInit {
 	}
 
 	swipeLeft(e: any) {
-		console.log('SWIPE LEFT!', e, this);
 		if (this.current < this.images.length) {
 			this.switch(this.current + 1);
 		}
 	}
 
 	swipeRight(e: any) {
-		console.log('SWIPE RIGHT!', e);
 		if (this.current > 0) {
 			this.switch(this.current - 1);
 		}
