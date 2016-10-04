@@ -3,7 +3,7 @@ import { Component, Input, EventEmitter, Output, HostListener } from '@angular/c
 @Component({
 	moduleId: module.id,
 	selector: 'jp-balloon-callout-icon',
-	template: '<ng-content></ng-content>',
+	template: '<a [href]="url"><ng-content></ng-content></a>',
 	styleUrls: [ './balloon-callout-icon.component.css' ]
 })
 export class BalloonCalloutIconComponent {
@@ -11,6 +11,7 @@ export class BalloonCalloutIconComponent {
 	@Output() leave = new EventEmitter();
 
 	@Input() text: string;
+	@Input() url: string = '#';
 
 	@HostListener('mouseenter')
 	onHover(e: any) {

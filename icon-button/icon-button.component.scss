@@ -125,10 +125,10 @@
         .icon-container {
             width: 58px;
             jp-icon {
-                background-position: -122px 0px;
+                background-position: -24px 0px;
             }
             jp-icon-hover {
-                background-position: -122px -67px;
+                background-position: -24px -67px;
             }
         }
     }
@@ -137,10 +137,10 @@
             width: 60px;
             height: 60px;
             jp-icon {
-                background-position: -59px 0px;
+                background-position: -48px 0px;
             }
             jp-icon-hover {
-                background-position: -59px -61px;
+                background-position: -48px -61px;
             }
         }
     }
@@ -227,6 +227,7 @@
         .inner {
             jp-icon {
                 height: 20px;
+                width: 18px;
                 background-position: -18px 0;
             }
             jp-icon-hover {
@@ -234,7 +235,7 @@
             }
         }
     }
-    &.horizontal.interactive {
+    &.horizontal.interactive /deep/ {
         .inner {
             jp-icon {
                 height: 18px;
@@ -247,8 +248,8 @@
         }
     }
 
-    &.horizontal:hover,
-    &.horizontal:active {
+    &.horizontal:hover /deep/,
+    &.horizontal:active /deep/ {
        jp-icon-button-text { color: #fff; }
     }
 
