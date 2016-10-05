@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule, MdIconRegistry, OVERLAY_PROVIDERS } from '@angular/material';
 import { MomentModule } from 'angular2-moment';
-import {AgmCoreModule, GoogleMapsAPIWrapper} from 'angular2-google-maps/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
 
 import {
   BackgroundDirective,
@@ -142,7 +142,12 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [APP_SERVICES, GoogleMapsAPIWrapper, MdIconRegistry, OVERLAY_PROVIDERS]
+      providers: [
+        APP_SERVICES,
+        GoogleMapsAPIWrapper,
+        MdIconRegistry,
+        OVERLAY_PROVIDERS
+      ]
     };
   }
 }
