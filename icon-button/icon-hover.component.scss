@@ -49,6 +49,11 @@ jp-balloon {
 				background-position-y: -37px;
 				z-index: 8;
 			}
+			&.translations {
+				:host {
+					background-position-y: -38px;
+				}
+			}
 		}
 	}
 }
