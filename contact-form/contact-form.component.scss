@@ -61,6 +61,8 @@
 						border-color: #fff;
 						padding: 10px 20px;
 						height: 48px;
+						transition: border-color $transition_duration $transition_ease;
+						will-change: border-color;
 					}
 				}
 			}
@@ -80,7 +82,7 @@
 				color: $blue;
 			}
 			input:focus {
-				border-color: $blue;
+				border-color: $blue!important;
 			}
 			.md-input-underline {
 				display: none;

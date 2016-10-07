@@ -13,7 +13,7 @@ jp-balloon {
 			  z-index: 9;
 				will-change: opacity;
 
-				@include transition(opacity $transition_duration $transition_ease);
+				@include transition(opacity 200ms linear);
 			}
 		}
 	}	
@@ -34,7 +34,7 @@ balloon-callout {
 			bottom: 0;
 			will-change: opacity;
 			z-index: 9;
-			@include transition(opacity $transition_duration $transition_ease);
+			@include transition(opacity 200ms linear);
 		}
 	}
 }

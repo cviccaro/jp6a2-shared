@@ -20,9 +20,14 @@
 			max-height: 100%;
 			max-height: 100%;
 			max-width: 100%;
-			image-rendering: pixelated;
-			image-rendering: -webkit-optimize-contrast;
-			image-rendering: -moz-crisp-edges;
+			image-rendering:optimizeSpeed;             /* Legal fallback */
+			image-rendering:-moz-crisp-edges;          /* Firefox        */
+			image-rendering:-o-crisp-edges;            /* Opera          */
+			image-rendering:optimize-contrast;         /* CSS3 Proposed  */
+			image-rendering:crisp-edges;               /* CSS4 Proposed  */
+			image-rendering:pixelated;                 /* CSS4 Proposed  */
+			image-rendering:-webkit-optimize-contrast; /* Safari         */
+			-ms-interpolation-mode:nearest-neighbor;   /* IE8+           */
 		}
 		a {
 			display: block;
@@ -38,16 +43,16 @@
 		}
 	}
 	.card-title {
-		margin-top: 15px;
-		margin-bottom: 0;
+		margin-top: 20px;
+		margin-bottom: 6px;
 		font-weight: 300;
-		font-size: 14.625px;
+		font-size: 18px;
 		text-transform: uppercase;
 	}
 	.card-subtitle {
 		margin-top: 0px;
 		font-family: "source-sans-pro";
-		font-size: 13px;
+		font-size: 14px;
 		font-weight: 300;
 	}
 	a {
