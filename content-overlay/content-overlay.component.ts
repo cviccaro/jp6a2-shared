@@ -54,9 +54,8 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 		window.scrollTo(0, this.scrollService.getLastScrollPos());
 
 		if (window.innerWidth >= Config.desktopWidth) {
-			this.navbarService.snapOut();
-
 			if (this.navbarWasListening) {
+				//this.navbarService.snapOut();
 				this.navbarService.startListening();
 			}
 		}
@@ -93,7 +92,7 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 		document.body.style.top = '';
 
 		if (window.innerWidth >= Config.desktopWidth && !this.navbarService.animatingHide) {
-			this.navbarService.snapOut();
+			//this.navbarService.snapOut();
 			this.navbarService.startListening();
 		}
 	}
