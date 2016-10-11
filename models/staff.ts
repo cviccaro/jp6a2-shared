@@ -4,6 +4,7 @@ export interface Staff {
 	last_name: string;
 	email: string;
 	image: string;
+	image_small: string;
 	linkedin: string;
 	occupation: string;
 	phone: string;
