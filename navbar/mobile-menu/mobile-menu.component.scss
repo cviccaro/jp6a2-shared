@@ -83,6 +83,11 @@
 		    				jp-icon-button-text {
 		    					order: 2;
 		    				}
+		    				&.creative {
+		    					.icon-container {
+		    						width: 18px;
+		    					}
+		    				}
 		    			}
 		    			.inner {
 		    				height: 100%;
@@ -115,10 +120,13 @@
 
 		    			&:hover {
 		    				.inner {
-		    					background-color: initial;
+		    					background-color: initial!important;
+		    				}
+		    				.icon-container {
+		    					jp-icon { opacity: 1!important; }
 		    				}
 		    				jp-icon-button-text {
-		    					color: $almost_black;
+		    					color: $almost_black!important;
 		    				}
 		    			}
 		    		}
