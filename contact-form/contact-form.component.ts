@@ -57,10 +57,10 @@ export class ContactFormComponent implements OnDestroy {
 	}
 
 	resolved(captchaResponse: string) {
-	     console.log(`Resolved captcha with response ${captchaResponse}:`, {
-	     	form: this.contactForm,
-	     	value: this.contactForm.value
-	     });
+	     // console.log(`Resolved captcha with response ${captchaResponse}:`, {
+	     // 	form: this.contactForm,
+	     // 	value: this.contactForm.value
+	     // });
 	 }
 
 	ngOnDestroy() {
