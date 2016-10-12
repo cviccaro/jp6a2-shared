@@ -4,6 +4,8 @@ import { XhrService } from './../xhr/xhr.service';
 import { Config, IconButtonComponent } from '../index';
 import { Subscription } from 'rxjs/Rx';
 
+declare var jQuery: any;
+
 /**
  * This class represents the navigation bar component.
  */
@@ -50,5 +52,10 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.subs.forEach(sub => {
 		  if (sub) sub.unsubscribe();
 		});
+	}
+
+	buttonClicked(e: Event) {
+		let selector = jQuery(e.target).parents('a').attr('href').replace('/','');
+		this.navbarService.buttonClicked.emit({target: e.target, selector: selector});
 	}
 }

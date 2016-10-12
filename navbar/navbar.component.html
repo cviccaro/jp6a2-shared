@@ -3,12 +3,12 @@
 	<span class="filler"></span>
 	<div class="menu-links hide-mobile">
 	  <div class="menu">
-	  	<a md-button [routerLink]="['/services']" class="hide-mobile" title="Services">Services</a>
-	    <a md-button [routerLink]="['/projects']" title="Projects">Projects</a>
-	    <a md-button [routerLink]="['/staff']" title="Leadership">Leadership</a>
-	    <a md-button [routerLink]="['/clients']" title="Clients">Clients</a>
-	    <a md-button [routerLink]="['/blog']" title="Blog">Blog</a>
-	    <a md-button [routerLink]="['/contact']" title="Contact">Contact</a>
+	  	<a md-button [routerLink]="['/services']" class="hide-mobile" title="Services" disableRipple="true" (click)="buttonClicked($event)">Services</a>
+	    <a md-button [routerLink]="['/projects']" title="Projects" disableRipple="true" (click)="buttonClicked($event)">Projects</a>
+	    <a md-button [routerLink]="['/staff']" title="Leadership" disableRipple="true" (click)="buttonClicked($event)">Leadership</a>
+	    <a md-button [routerLink]="['/clients']" title="Clients" disableRipple="true" (click)="buttonClicked($event)">Clients</a>
+	    <a md-button [routerLink]="['/blog']" title="Blog" disableRipple="true" (click)="buttonClicked($event)">Blog</a>
+	    <a md-button [routerLink]="['/contact']" title="Contact" disableRipple="true" (click)="buttonClicked($event)">Contact</a>
 	  </div>
 	</div>
 	<div class="icon-menu hide-mobile">

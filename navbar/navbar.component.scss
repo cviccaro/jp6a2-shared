@@ -31,6 +31,7 @@
       position: relative;
       will-change: color;
       @include transition(color $transition_duration $transition_ease);
+      outline: none!important;
       &:hover {
         color: $blue_translucent;
         background-color: transparent;
@@ -39,9 +40,8 @@
           background-color: transparent;
         }
       }
-      .md-ripple-foreground {
-        max-height: 100%;
-        max-width: 100%;
+      .md-button-ripple {
+        display: none!important;
       }
     }
   }

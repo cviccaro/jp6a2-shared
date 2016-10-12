@@ -21,6 +21,9 @@
      <label class="md-input-placeholder md-float md-empty">Additional Comments <span class="md-placeholder-required">*</span></label>
      <textarea jpTextareaAutoexpand md-input name="comments" required [formControl]="contactForm.controls.comments"></textarea>
   </div>
+  <div class="form-group full flush">
+    <recaptcha (resolved)="resolved($event)" siteKey="6LdMCgkUAAAAALwIJp5pDCjuakLpCuWLqOLOh4Ob" name="captcha" required [formControl]="contactForm.controls.captcha"></recaptcha>
+  </div>
   <div class="form-actions">
     <button md-button type="submit" class="form-submit inverted-button" [disabled]="!contactForm.valid">Submit Form</button>
   </div>

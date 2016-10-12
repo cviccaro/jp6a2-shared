@@ -1,6 +1,6 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, ViewChild, ElementRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {LatLngLiteral, GoogleMapsAPIWrapper} from 'angular2-google-maps/core';
+import {LatLngLiteral, GoogleMapsAPIWrapper, SebmGoogleMap} from 'angular2-google-maps/core';
 import {GeolocateService} from './geolocate.service';
 
 import { Subscription } from 'rxjs/Rx';
@@ -35,9 +35,14 @@ export class MapComponent implements OnDestroy {
 	title = 'JP Enterprises';
 	zoom = 15;
 
+	lastDirectionsHeight: number;
+
+	@ViewChild('directions') public directionsEl: ElementRef;
+	@ViewChild(SebmGoogleMap) public gmap: SebmGoogleMap;
+
 	private sub: Subscription;
 
-	constructor(private _wrapper: GoogleMapsAPIWrapper, private _geolocate: GeolocateService) {
+	constructor(private _wrapper: GoogleMapsAPIWrapper, private _geolocate: GeolocateService, public el: ElementRef) {
 		this.directionsOrigin.valueChanges
 			.debounceTime(500)
 			.distinctUntilChanged()
@@ -51,6 +56,7 @@ export class MapComponent implements OnDestroy {
 
 	closeMap() {
 		this.mapShowing = false;
+		this.el.nativeElement.parentElement.style.height = '';
 		jQuery('#directions').removeClass('expanded');
 		jQuery('#map').removeClass('fadeIn').addClass('fadeOut');
 	}
@@ -109,20 +115,24 @@ export class MapComponent implements OnDestroy {
 	}
 
 	setupMap() {
-		if (document.createEvent) { // W3C
-        let ev = document.createEvent('Event');
-        ev.initEvent('resize', true, true);
-        window.dispatchEvent(ev);
-    } else { // IE
-        let element: any = document.documentElement;
-        let doc: any = document;
-        let event = doc.createEventObject();
-        element.fireEvent('onresize', event);
-    }
+		this.fireResize();
 		let latlng = <LatLngLiteral>{ lat: this.latitude, lng: this.longitude };
 		this.map.setCenter(latlng);
 		this.map.setZoom(this.zoom);
 		setTimeout(() => this.infoWindowOpen = true, 100);
+	}
+
+	fireResize() {
+			if (document.createEvent) { // W3C
+	        let ev = document.createEvent('Event');
+	        ev.initEvent('resize', true, true);
+	        window.dispatchEvent(ev);
+	    } else { // IE
+	        let element: any = document.documentElement;
+	        let doc: any = document;
+	        let event = doc.createEventObject();
+	        element.fireEvent('onresize', event);
+	    }
 	}
 
 	showDirectionsSteps(result: any) {
@@ -143,6 +153,20 @@ export class MapComponent implements OnDestroy {
 		  	  stepDisplay.open(this.map, marker);
 		  	});
 		}
+
+		setTimeout(() => {
+			const mapHeight = (<any>this.gmap)['_elem'].nativeElement.clientHeight;
+			const directionsHeight = this.directionsEl.nativeElement.clientHeight;
+
+			if (directionsHeight > mapHeight || directionsHeight !== this.lastDirectionsHeight) {
+				this.lastDirectionsHeight = directionsHeight;
+
+				this.el.nativeElement.parentElement.style.height = directionsHeight + 100 + 'px';
+				setTimeout(() => {
+					this.fireResize();
+				});
+			}
+		});
 	}
 
 	ngOnDestroy() {

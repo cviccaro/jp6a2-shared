@@ -26,7 +26,8 @@ export class ContactFormComponent implements OnDestroy {
 			email: ['', [Validators.required, EmailValidator.emailFormat]],
 			phone: [''],
 			contact_time: [''],
-			comments: ['', Validators.required]
+			comments: ['', Validators.required],
+			captcha: ['', Validators.required]
 		});
 	}
 
@@ -54,6 +55,13 @@ export class ContactFormComponent implements OnDestroy {
 
 		this.formSubmitSuccess.emit(this.model);
 	}
+
+	resolved(captchaResponse: string) {
+	     console.log(`Resolved captcha with response ${captchaResponse}:`, {
+	     	form: this.contactForm,
+	     	value: this.contactForm.value
+	     });
+	 }
 
 	ngOnDestroy() {
 		if (this.sub) this.sub.unsubscribe();

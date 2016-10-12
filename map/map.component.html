@@ -10,7 +10,7 @@
   </md-toolbar>
   <sebm-google-map id="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [hidden]="!mapShowing" class="fadeIn animated">
     <jp-map-control (mapLoaded)="mapLoaded($event)"></jp-map-control>
-    <div id="directionsPanel" [hidden]="!directionsShowing">
+    <div id="directionsPanel" [hidden]="!directionsShowing" #directions>
       <div class="directions-toolbar">
         <button md-button (click)="openDirectionsExternally()" title="View on Google" class="open-in-google">
           <md-icon>directions</md-icon>&nbsp;&nbsp;Print and Share on Google Maps

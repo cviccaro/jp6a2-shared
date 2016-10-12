@@ -1,4 +1,4 @@
-import { Injectable, ElementRef } from '@angular/core';
+import { Injectable, ElementRef, Output, EventEmitter } from '@angular/core';
 
 declare var jQuery: any;
 
@@ -19,6 +19,8 @@ export class NavbarService {
 	hideTimer: any;
 	unsnapTimer: any;
 	transitionEvents = 'transitionend webkitTransitionEnd MSTransitionEnd oTransitionEnd mozTransitionEnd';
+
+	@Output() buttonClicked = new EventEmitter();
 
 	onScroll() {
 		if (!this.listening) return;

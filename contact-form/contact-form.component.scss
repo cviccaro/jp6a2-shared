@@ -13,6 +13,11 @@
 				margin-left: 1%;
 			}
 
+			&.flush {
+				margin-left: 0;
+				margin-right: 0;
+			}
+
 			&.full {
 				width: 100%;
 			}

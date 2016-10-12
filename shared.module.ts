@@ -7,6 +7,8 @@ import { MaterialModule, MdIconRegistry, OVERLAY_PROVIDERS } from '@angular/mate
 import { MomentModule } from 'angular2-moment';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
 
+import { RecaptchaModule } from 'ng2-recaptcha';
+
 import {
   BackgroundDirective,
   BalloonComponent,
@@ -56,7 +58,8 @@ import {
     ReactiveFormsModule,
     AgmCoreModule,
     MaterialModule,
-    MomentModule
+    MomentModule,
+    RecaptchaModule.forRoot()
   ],
   declarations: [
     BackgroundDirective,
@@ -102,6 +105,7 @@ import {
     AgmCoreModule,
     MomentModule,
     MaterialModule,
+    RecaptchaModule,
     BackgroundDirective,
     CardComponent,
     ContentOverlayComponent,
