@@ -20,6 +20,14 @@
   }
   .menu-links {
     align-self: center;
+    flex-grow: 1;
+    .menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      flex-grow: 1;
+    }
     a {
       color: $almost_black;
       font-weight: 300;
@@ -29,6 +37,7 @@
       padding: 0 6px;
       //margin: 0 10px;
       margin: 0;
+      min-width: 0px!important;
       position: relative;
       will-change: color;
       @include transition(color $transition_duration $transition_ease);
@@ -45,13 +54,13 @@
         display: none!important;
       }
 
-      &.wide {
-        padding: 0 11px;
-        width: auto!important;
-      }
-      &.wider {
-        padding: 0 16px;
-      }
+      // &.wide {
+      //   padding: 0 11px;
+      //   width: auto!important;
+      // }
+      // &.wider {
+      //   padding: 0 16px;
+      // }
     }
   }
   .icon-menu {
