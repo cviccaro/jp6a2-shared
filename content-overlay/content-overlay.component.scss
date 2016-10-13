@@ -19,8 +19,12 @@
 	align-items: center;
 	@include transition(all 0.33s $transition_ease);
 
-	.container {
+	& > .container {
 		margin-top: 2.45em;
+		position: relative;
+	}
+	.top-row {
+		justify-content: space-between;
 	}
 
 	.overlay-close-mobile {
@@ -37,9 +41,10 @@
 		width: 100%;
 		font-family: $proxima-nova;
 		background-color: transparent;
-		margin-bottom: 50px;
+		margin-bottom: 0;
 		padding-left: 0;
 		padding-right: 0;
+		position: relative;
 		.section-title {
 			position: relative;
 			top: 8px;
@@ -58,10 +63,13 @@
 			top: -2px;
 		}
 	}
-	.overlay-close {
+	.overlay-close,
+	.overlay-close-mobile {
 		position: absolute;
 		top: 0;
 		right: 0;
+	}
+	.overlay-close {
 		border-color: $grey_300;
 		padding-left: 20px;
 		padding-right: 20px;
@@ -82,7 +90,8 @@
 			padding-right: 0;
 			md-toolbar.overlay-toolbar {
 				width: $desktop-width;
-				margin: 0 auto 50px;
+				margin-left: auto;
+				margin-right: auto;
 			}
 		}
 	}
