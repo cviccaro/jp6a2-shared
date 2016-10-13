@@ -88,6 +88,11 @@
 		    						width: 18px;
 		    					}
 		    				}
+		    				&.interactive {
+		    					.icon-container {
+		    						width: 19px;
+		    					}
+		    				}
 		    			}
 		    			.inner {
 		    				height: 100%;
