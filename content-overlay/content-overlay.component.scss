@@ -70,6 +70,24 @@
 	.jp-pager.pagination {
 		display: none!important;
 	}
+	.overlay-close-notitle {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 24px;
+	}
+	.btt-wrapper {
+		width: 100%;
+		text-align: center;
+		margin: 48px 0;
+		.btt {
+			margin: 0 auto;
+			background: $black;
+			md-icon {
+				color: $white;
+			}
+		}
+	}
 }
 
 :host {
@@ -78,14 +96,14 @@
 	}
 	&.full-width {
 		& > .container /deep/ {
-			width: 100%;
+			// width: 100%;
 			padding-left: 0;
 			padding-right: 0;
-			md-toolbar.overlay-toolbar {
-				width: $desktop-width;
-				margin-left: auto;
-				margin-right: auto;
-			}
+			// md-toolbar.overlay-toolbar {
+			// 	width: $desktop-width;
+			// 	margin-left: auto;
+			// 	margin-right: auto;
+			// }
 		}
 	}
 }
@@ -117,6 +135,13 @@
 		    		vertical-align: text-bottom;
 		    	}
 		    }
+		}
+
+		.overlay-close-notitle {
+			position: absolute;
+			top: -3px;
+			right: 0px;
+			margin: 0;
 		}
 
 		.section-title {

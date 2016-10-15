@@ -19,7 +19,7 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 	returnTo: string;
 	sub: Subscription;
 
-	@Input() title: string;
+	@Input() title: string|boolean = false;
 
 	@HostBinding('id') htmlId = 'content-overlay';
 	@HostBinding('class.active') isActive = false;
@@ -95,5 +95,11 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 			//this.navbarService.snapOut();
 			this.navbarService.startListening();
 		}
+	}
+
+	scrollUp() {
+		jQuery(this.el.nativeElement).animate({
+			scrollTop: 0
+		}, 500);
 	}
 }

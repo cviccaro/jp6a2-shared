@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Observable, Observer } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
 import { Config } from '../index';
 
@@ -9,7 +9,7 @@ export class CaptchaService {
     constructor(public http: Http) { }
 
     validate(captchaResponse: string): Observable<any> {
-        let url = `http://jpapi.localhost/recaptcha/validate`;
+        let url = `${Config.API}/recaptcha/validate`;
         const body = JSON.stringify({
             response: captchaResponse
         });
