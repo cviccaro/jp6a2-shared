@@ -1,5 +1,5 @@
 <div class="container">
-	<md-toolbar class="overlay-toolbar first" layout="row" *ngIf="title">
+	<md-toolbar class="overlay-toolbar first container" layout="row" *ngIf="title">
 		<h2 class="section-title text-uppercase" [innerHTML]="title"></h2>
 		<span class="filler"></span>
 		<button md-button class="md-icon-button overlay-close-mobile" (click)="close()">
@@ -9,7 +9,7 @@
 			Close Window&nbsp;&nbsp;<md-icon class="small">close</md-icon>
 		</button>
 	</md-toolbar>
-	<div class="overlay-close-notitle" *ngIf="!title">
+	<div class="overlay-close-notitle container" *ngIf="!title">
 		<button md-button class="md-icon-button overlay-close-mobile" (click)="close()">
 			<md-icon>close</md-icon>
 		</button>
