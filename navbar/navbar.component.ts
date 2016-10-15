@@ -16,12 +16,28 @@ declare var jQuery: any;
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
+	divisions:any = ['creative', 'interactive', 'mdm', 'publishing'];
+	links:any = {};
 	subs: Subscription[];
 	working = false;
 
 	@ViewChildren(IconButtonComponent) public buttons: QueryList<IconButtonComponent>;
 
-	constructor(public navbarService: NavbarService, public el: ElementRef, public xhr: XhrService) { }
+	constructor(
+		public navbarService: NavbarService,
+		public el: ElementRef,
+		public xhr: XhrService
+	) {
+		const onProdServer = window.location.hostname.match(/\.jpenterprises\.com$/) !== null;
+		const host =  onProdServer ? 'jpenterprises.com' : 'jpedev.com';
+		const mainSubdomain = onProdServer ? 'www' : 'six';
+
+		this.divisions.forEach((division:string) => {
+			this.links[division] = `${window.location.protocol}//${division}.${host}`;
+		});
+
+		this.links.main = `${window.location.protocol}//${mainSubdomain}.${host}`;
+	}
 
 	ngOnInit() {
 		this.navbarService.register(this.el);
