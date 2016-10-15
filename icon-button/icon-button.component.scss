@@ -267,8 +267,9 @@
     &.horizontal.mdm /deep/ {
         .inner {
             .icon-container {
-                width: 28px;
-                height: 19px;
+                width: 28px!important;
+                height: 19px!important;
+                margin-right: 5px!important;
                 jp-icon {
                     background-position: 28px 0;
                 }

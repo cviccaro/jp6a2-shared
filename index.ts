@@ -33,6 +33,7 @@ export * from './xhr/index';
 
 import {BlogService} from './blog/blog.service';
 import {CacheService} from './cache/cache.service';
+import {CaptchaService} from './contact-form/captcha.service';
 import {ClientService} from './client/client.service';
 import {ConfigService} from './config/config.service';
 import {DivisionService} from './division/division.service';
@@ -47,18 +48,19 @@ import {ApiHttp} from './xhr/xhr.http';
 import {XhrService} from './xhr/xhr.service';
 
 export const APP_SERVICES = [
+  ApiHttp,
   BlogService,
-  ConfigService,
   CacheService,
-  WorkService,
-  StaffService,
+  CaptchaService,
   ClientService,
-  ScrollService,
-  NavbarService,
+  ConfigService,
+  DivisionService,
+  FormSubmissionService,
   GeolocateService,
   MobileMenuService,
-  ApiHttp,
-  XhrService,
-  DivisionService,
-  FormSubmissionService
+  NavbarService,
+  StaffService,
+  ScrollService,
+  WorkService,
+  XhrService
 ];

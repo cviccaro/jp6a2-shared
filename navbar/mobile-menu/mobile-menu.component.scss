@@ -20,7 +20,7 @@
 		bottom: 0;
 		right: 0;
 		z-index: 9999;
-		background-color: $white_trans;
+		background-color: $white;
 		width: 100%;
 		padding: 0;
 		margin: 0;
@@ -179,7 +179,7 @@
 			left: -16px;
 			max-width: 98%;
 		}
-		[md-button]:hover.md-primary::after, 
+		[md-button]:hover.md-primary::after,
 		[md-icon-button]:hover.md-primary::after,
 		jp-icon-button:hover,
 		jp-social-icons [md-button]:hover::after {
