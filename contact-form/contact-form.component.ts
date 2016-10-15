@@ -1,9 +1,10 @@
 import {Component, Output, EventEmitter, OnDestroy } from '@angular/core';
 import {Response} from '@angular/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FormSubmission, EmailValidator} from '../index';
-import {FormSubmissionService} from './form-submission.service';
 import {Observable, Observer, Subscription} from 'rxjs/Rx';
+
+import {FormSubmissionService} from './form-submission.service';
+import {FormSubmission, EmailValidator, Config} from '../index';
 
 @Component({
 	selector: 'jp-contact-form',
@@ -16,19 +17,26 @@ export class ContactFormComponent implements OnDestroy {
 
 	contactForm: FormGroup;
 	model = new FormSubmission();
+	siteKey: any = false;
 	sub: Subscription;
 
 	constructor(builder: FormBuilder, public service: FormSubmissionService) {
-		this.contactForm = builder.group({
+		let group:any = {
 			first_name: ['', Validators.required],
 			last_name: ['', Validators.required],
 			company: ['', Validators.required],
 			email: ['', [Validators.required, EmailValidator.emailFormat]],
 			phone: [''],
 			contact_time: [''],
-			comments: ['', Validators.required],
-			captcha: ['', Validators.required]
-		});
+			comments: ['', Validators.required]
+		};
+
+		if (Config.hasOwnProperty('GoogleRecaptchaAPIKey')) {
+			this.siteKey = Config.GoogleRecaptchaAPIKey;
+			group.captcha = ['', Validators.required];
+		}
+
+		this.contactForm = builder.group(group);
 	}
 
 	postToServer() {

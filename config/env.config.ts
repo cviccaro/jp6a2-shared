@@ -5,6 +5,7 @@ export interface EnvConfig {
   desktopWidth: number;
   GoogleMapsAPIKey: string;
   GoogleAnalyticsAPIKey?: string;
+  GoogleRecaptchaAPIKey?: string;
   ENV?: string;
   division?: string;
 }
