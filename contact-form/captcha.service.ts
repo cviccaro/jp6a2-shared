@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { Config } from '../index';
@@ -14,7 +14,7 @@ export class CaptchaService {
             response: captchaResponse
         });
 
-        return this.http.post(url, body)
+        return this.http.post(url, body, { headers: new Headers({'Content-Type': 'application/json'})})
             .map((res: any) => {
                 return res.json();
             })

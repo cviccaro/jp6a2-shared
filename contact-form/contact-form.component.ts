@@ -1,7 +1,8 @@
-import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, Output, EventEmitter, OnDestroy, ViewChild } from '@angular/core';
 import { Response} from '@angular/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Observer, Subscription } from 'rxjs/Rx';
+import { RecaptchaComponent } from 'ng2-recaptcha';
 
 import { FormSubmissionService } from './form-submission.service';
 import { FormSubmission, EmailValidator, Config } from '../index';
@@ -21,6 +22,8 @@ export class ContactFormComponent implements OnDestroy {
     siteKey: any = false;
     sub: Subscription;
     sub2: Subscription;
+
+    @ViewChild(RecaptchaComponent) public recaptchaCmp: RecaptchaComponent;
 
     constructor(
         builder: FormBuilder,
@@ -74,7 +77,7 @@ export class ContactFormComponent implements OnDestroy {
         if (captchaResponse !== null) {
             this.sub2 = this.captcha.validate(captchaResponse)
                 .subscribe(
-                    (resp: any) => { if (!resp.success) this.contactForm.controls['captcha'].reset(); }
+                    (resp: any) => { if (!resp.success) this.recaptchaCmp.reset(); }
                 );
         }
 	}
