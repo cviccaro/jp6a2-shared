@@ -34,25 +34,21 @@ jp-balloon:hover {
 	}
 }
 
+/**
+ * Icon buttons in the navbar
+ */
 jp-icon-button.icon-menu-button {
+	:host {
+		background-position-y: -25px;
+	}
 	&.publishing {
-    :host {
-      background-position: 0px -24px;
-    }
+		:host {
+			background-position-y: -26px;
+		}
 	}
 	&.creative {
 		:host {
-	    background-position: -24px -26px;
-		}
-	}
-	&.interactive {
-		:host {
-	    background-position: -47px -24px;
-		}
-	}
-	&.mdm {
-		:host {
-			background-position: -73px -25px;
+	    	background-position-y: -26px;
 		}
 	}
 }

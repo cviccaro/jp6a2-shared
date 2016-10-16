@@ -116,32 +116,18 @@
         .icon-container {
             height: 61px;
             width: 58px;
-            jp-icon-hover {
-                background-position: 0px -61px;
-            }
         }
     }
     &.creative /deep/ {
         .icon-container {
             width: 58px;
-            jp-icon {
-                background-position: -24px 0px;
-            }
-            jp-icon-hover {
-                background-position: -24px -67px;
-            }
+            top: -2px;
         }
     }
     &.interactive /deep/ {
         .icon-container {
             width: 60px;
             height: 60px;
-            jp-icon {
-                background-position: -48px 0px;
-            }
-            jp-icon-hover {
-                background-position: -48px -61px;
-            }
         }
     }
 

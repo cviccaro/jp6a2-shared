@@ -149,6 +149,9 @@ jp-balloon-callout-icon {
 	}
 }
 
+/**
+ * Icon buttons in the navbar
+ */
 jp-icon-button {
 	:host {
 		background-image: url('../assets/images/division-icons-sprite-sm.png');
@@ -161,33 +164,35 @@ jp-icon-button {
 		bottom: 0;
 		will-change: opacity;
 	}
-	.icon-container,
-	:host {
+	.icon-container {
 		max-width: 24px;
 		max-height: 26px;
+		:host {
+			background-position-y: 0px;
+		}
 	}
 	&.publishing {
-    :host {
-        height: 24px;
-    }
+	    :host {
+	        height: 26px;
+	    }
 	}
 	&.creative {
-    :host {
-	    background-position-x: -24px;
-    	height: 26px;
-    }
+	    :host {
+		    background-position-x: -24px;
+	    	height: 26px;
+	    }
 	}
 	&.interactive {
 		:host {
-			background-position-x: -47px;
+			background-position-x: -48px;
 			height: 24px;
 		}
 	}
 	&.mdm {
 		:host {
-	    width: 100%;
-	    max-width: 37px;
-	    background-position-x: -73px;
-	  }
+		    width: 100%;
+		    max-width: 37px;
+		    background-position-x: -73px;
+	  	}
 	}
 }
