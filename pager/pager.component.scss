@@ -278,7 +278,7 @@
   .jp-pager-nav-container {
     position: absolute;
     top: 47%;
-    width: $desktop-width + 375px;
+    width: $desktop-min-width + 375px;
     text-align: center;
     margin-left: -115px;
     .jp-pager-nav {
