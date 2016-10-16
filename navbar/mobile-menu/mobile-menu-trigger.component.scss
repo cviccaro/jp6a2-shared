@@ -1,8 +1,15 @@
 :host /deep/ {
+    display: none;
 	button {
 		background-color: transparent;
 	}
 	[md-icon] {
 		color: $almost_black!important;
 	}
+}
+
+@media screen and (max-width: $mobile-max-width) {
+    :host {
+        display: block;
+    }
 }

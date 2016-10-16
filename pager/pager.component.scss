@@ -303,6 +303,7 @@
       position: relative;
       left: -12px;
       color: $almost_black;
+      vertical-align: baseline;
       @include transition(color $transition_duration $transition_ease);
     }
     .icon-container {

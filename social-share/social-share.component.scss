@@ -17,9 +17,16 @@
 			display: flex;
 			flex-direction: row;
 			justify-content: flex-start;
-			align-items: center;
+			padding-left: 0;
 			li {
-				margin: 0 8px;
+				margin: 0 6px;
+				&:first-child {
+					margin-left: 0;
+				}
+				jp-gplus-button {
+					position: relative;
+					top: -2px;
+				}
 			}
 		}
 	}

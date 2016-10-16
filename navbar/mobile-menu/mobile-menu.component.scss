@@ -1,4 +1,5 @@
 :host /deep/ {
+	display: none;
 	.mobile-menu-trigger {
 		margin-left: 3em;
 	}
@@ -186,5 +187,11 @@
 			transition: all $transition_duration $transition_ease;
 			background-color: $grey_translucent;
 		}
+	}
+}
+
+@media screen and (max-width: $mobile-max-width) {
+	:host /deep/ {
+		display: block;
 	}
 }

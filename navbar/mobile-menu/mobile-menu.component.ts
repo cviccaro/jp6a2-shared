@@ -10,6 +10,8 @@ import {NavbarService} from '../navbar.service';
 })
 
 export class MobileMenuComponent {
+	mainSiteUrl = window.location.hostname.match('/jpenterprises.com') !== null ?
+		'//www.jpenterprises.com' : '//six.jpedev.com';
 
 	constructor(private _service: MobileMenuService, private _navbarService: NavbarService) {	}
 

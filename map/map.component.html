@@ -1,12 +1,15 @@
   <md-toolbar [hidden]="!mapShowing" class="map-toolbar">
-    <button md-button md-fab class="md-icon-button md-mini locate-me" title="Locate me" (click)="locateMe()">
+    <button md-button md-fab class="md-icon-button md-mini locate-me hide-mobile" title="Locate me" (click)="locateMe()">
       <md-icon>location_on</md-icon>
     </button>
     <label class="locate-me-label hide-mobile">Locate Me</label>
-    <div class="small map-toolbar-input-container">
+    <div class="small map-toolbar-input-container hide-mobile">
       <label class="address-label">Need Directions?</label>
       <md-input class="map-toolbar-input" type="text" [formControl]="directionsOrigin" placeholder="Enter your address..." size="60"></md-input>
     </div>
+    <button class="mobile centered" md-button md-raised-button color="accent" (click)="openDirectionsExternally()" title="Get Directions">
+      <md-icon>directions</md-icon>&nbsp;&nbsp;Get Directions on Google Maps
+    </button>
   </md-toolbar>
   <sebm-google-map id="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [hidden]="!mapShowing" class="fadeIn animated">
     <jp-map-control (mapLoaded)="mapLoaded($event)"></jp-map-control>

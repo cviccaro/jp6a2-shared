@@ -1,44 +1,11 @@
 jp-balloon {
-	&.mdm {
-		.balloon {
-			:host {
-				background-position: 0px -107px;
-			}
-		}
-	}
-	&.publishing {
-		.balloon {
-			.icon-container {
-				:host {
-					background-position: -160px -107px;
-				}
-			}
-		}
-	}
-	&.creative {
-		.balloon {
-			.icon-container {
-				:host {
-				  background-position: -266px -107px;
-				}
-			}
-		}
-	}
-	&.interactive {
-		.balloon {
-			.icon-container {
-				:host {
-					background-position: -362px -107px;
-				}
-			}
-		}
-	}
-
 	.balloon {
 		.icon-container {
 			:host {
-				opacity: 1;
+				opacity: 0;
 				z-index: 8;
+				background-position-y: -108px;
+				@include transition(($transition_duration * 10) opacity ease-out);
 			}
 		}
 	}
@@ -57,7 +24,15 @@ jp-balloon {
 		}
 	}
 }
-
+jp-balloon:hover {
+	.balloon {
+		.icon-container {
+			:host {
+				opacity: 1;
+			}
+		}
+	}
+}
 
 jp-icon-button.icon-menu-button {
 	&.publishing {

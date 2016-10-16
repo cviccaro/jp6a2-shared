@@ -1,6 +1,6 @@
 <div class="mobile-menu-container" [hidden]="!isActive()">
 	<div class="mobile-menu-inner">
-		<img class="logo" src="assets/images/logo-colored.png" />
+		<a [href]="mainSiteUrl" title="Go to the main JP Enterprises site"><img class="logo" src="assets/images/logo-colored.png" /></a>
 		<button md-icon-button class="mobile-menu-close" (click)="closeMenu()">
 			<md-icon>close</md-icon>
 		</button>
