@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
-import {MobileMenuService} from './mobile-menu.service';
-import {NavbarService} from '../navbar.service';
+import { Component, ContentChildren, QueryList, ElementRef } from '@angular/core';
+import { MobileMenuItemDirective } from './mobile-menu-item.directive';
+import { MobileMenuService } from './mobile-menu.service';
+import { NavbarService } from '../navbar.service';
 
 @Component({
 	selector: 'jp-mobile-menu',
@@ -10,14 +11,26 @@ import {NavbarService} from '../navbar.service';
 })
 
 export class MobileMenuComponent {
-	mainSiteUrl = window.location.hostname.match('/jpenterprises.com') !== null ?
-		'//www.jpenterprises.com' : '//six.jpedev.com';
+	mainSiteUrl:string;
 
-	constructor(private _service: MobileMenuService, private _navbarService: NavbarService) {	}
+	@ContentChildren(MobileMenuItemDirective) public contentLinks: QueryList<MobileMenuItemDirective>;
+
+	constructor(private _service: MobileMenuService, private _navbarService: NavbarService) {
+		const isLive = window.location.hostname.match('/jpenterprises.com') !== null;
+		this.mainSiteUrl = isLive ? '//www.jpenterprises.com' : '//six.jpedev.com';
+	}
+
+	ngAfterContentInit() {
+		this.contentLinks.forEach((item: MobileMenuItemDirective) => {
+			item.clicked.subscribe((e: Event) => {
+				this.closeMenu();
+			});
+		});
+	}
 
 	closeMenu() {
 		this._service.close();
-		this._navbarService.unsnap();
+		//this._navbarService.unsnap();
 	}
 
 	isActive() {

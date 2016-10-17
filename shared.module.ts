@@ -39,6 +39,7 @@ import {
   LinkedInButtonComponent,
   GooglePlusButtonComponent,
   MobileMenuComponent,
+  MobileMenuItemDirective,
   MobileMenuTriggerComponent,
   APP_SERVICES,
   CapitalizePipe,
@@ -93,6 +94,7 @@ import {
     SocialShareComponent,
     MobileMenuComponent,
     MobileMenuTriggerComponent,
+    MobileMenuItemDirective,
     CapitalizePipe,
     TrimmedPipe,
     ContactFormComponent
@@ -137,6 +139,7 @@ import {
     TweetButtonComponent,
     MobileMenuComponent,
     MobileMenuTriggerComponent,
+    MobileMenuItemDirective,
     CapitalizePipe,
     TrimmedPipe,
     ContactFormComponent
