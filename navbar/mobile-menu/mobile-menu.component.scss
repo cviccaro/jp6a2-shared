@@ -44,6 +44,14 @@
 
 		.logo {
 			margin-bottom: 1em;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.navbar-logo {
+		  width: 134px;
+		  height: 49px;
+		  background-size: 134px 49px;
+		  background-image: url('../assets/images/logo-navbar-2x.png');
 		}
 		.mobile-menu-inner {
 			padding: 0;

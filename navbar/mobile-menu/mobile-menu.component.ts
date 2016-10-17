@@ -13,11 +13,19 @@ import { NavbarService } from '../navbar.service';
 export class MobileMenuComponent implements AfterContentInit {
 	@ContentChildren(MobileMenuItemDirective) public contentLinks: QueryList<MobileMenuItemDirective>;
 
-	mainSiteUrl:string;
+	divisions:any = ['creative', 'interactive', 'mdm', 'publishing'];
+	links:any = {};
 
 	constructor(private _service: MobileMenuService, private _navbarService: NavbarService) {
-		const isLive = window.location.hostname.match('/jpenterprises.com') !== null;
-		this.mainSiteUrl = isLive ? '//www.jpenterprises.com' : '//six.jpedev.com';
+		const onProdServer = window.location.hostname.match(/\.jpenterprises\.com$/) !== null;
+		const host =  onProdServer ? 'jpenterprises.com' : 'jpedev.com';
+		const mainSubdomain = onProdServer ? 'www' : 'six';
+
+		this.divisions.forEach((division:string) => {
+			this.links[division] = `${window.location.protocol}//${division}.${host}`;
+		});
+
+		this.links.main = `${window.location.protocol}//${mainSubdomain}.${host}`;
 	}
 
 	ngAfterContentInit() {

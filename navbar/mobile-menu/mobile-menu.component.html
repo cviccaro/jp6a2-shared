@@ -1,6 +1,6 @@
 <div class="mobile-menu-container" [hidden]="!isActive()">
 	<div class="mobile-menu-inner">
-		<a [href]="mainSiteUrl" title="Go to the main JP Enterprises site"><img class="logo" src="assets/images/logo-colored.png" /></a>
+		<a [href]="links.main" title="Go to the main JP Enterprises site"><div class="logo navbar-logo"></div></a>
 		<button md-icon-button class="mobile-menu-close" (click)="closeMenu()">
 			<md-icon>close</md-icon>
 		</button>
@@ -13,19 +13,19 @@
 		</div>
 		<div class="menu-links expertise">
 			<h2 class="mobile-menu-title">Expertise</h2>
-			<jp-icon-button class="blue mdm colored horizontal" href="https://mdm.jpedev.com">
+			<jp-icon-button class="blue mdm colored horizontal" [href]="links.mdm">
 				<jp-icon></jp-icon>
 				<jp-icon-button-text>MDM</jp-icon-button-text>
 			</jp-icon-button>
-			<jp-icon-button class="blue publishing colored horizontal" href="https://publishing.jpedev.com">
+			<jp-icon-button class="blue publishing colored horizontal" [href]="links.publishing">
 				<jp-icon></jp-icon>
 				<jp-icon-button-text>Publishing</jp-icon-button-text>
 			</jp-icon-button>
-			<jp-icon-button class="yellow creative colored horizontal" href="https://creative.jpedev.com">
+			<jp-icon-button class="yellow creative colored horizontal" [href]="links.creative">
 				<jp-icon></jp-icon>
 				<jp-icon-button-text>Creative</jp-icon-button-text>
 			</jp-icon-button>
-			<jp-icon-button class="fuchsia interactive colored horizontal" href="https://interactive.jpedev.com">
+			<jp-icon-button class="fuchsia interactive colored horizontal" [href]="links.interactive">
 				<jp-icon></jp-icon>
 				<jp-icon-button-text>Interactive</jp-icon-button-text>
 			</jp-icon-button>
