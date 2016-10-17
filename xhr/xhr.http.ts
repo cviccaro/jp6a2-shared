@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Http, RequestOptionsArgs, Response, Request} from '@angular/http';
-import {Observer, Observable} from 'rxjs/Rx';
+import { Injectable } from '@angular/core';
+import { Http, RequestOptionsArgs, Response, Request } from '@angular/http';
+import { Observer, Observable } from 'rxjs/Rx';
 
 import { XhrService } from './xhr.service';
 

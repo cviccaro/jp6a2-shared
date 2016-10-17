@@ -1,5 +1,5 @@
-import {Component, Input, OnInit, HostListener, HostBinding } from '@angular/core';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import { Component, Input, OnInit, HostListener, HostBinding } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
   moduleId: module.id,

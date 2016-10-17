@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, HostListener, OnDestroy, ViewChildren, QueryList} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, HostListener, OnDestroy, ViewChildren, QueryList } from '@angular/core';
 import { NavbarService } from './navbar.service';
 import { XhrService } from './../xhr/xhr.service';
 import { Config, IconButtonComponent } from '../index';

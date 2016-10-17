@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {CacheService} from '../cache/cache.service';
+import { Component } from '@angular/core';
+import { CacheService } from '../cache/cache.service';
 
 @Component({
   moduleId: module.id,

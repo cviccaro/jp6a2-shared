@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, OnDestroy, ViewChild } from '@angular/core';
-import { Response} from '@angular/http';
+import { Response } from '@angular/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Observer, Subscription } from 'rxjs/Rx';
 import { RecaptchaComponent } from 'ng2-recaptcha';

@@ -1,5 +1,5 @@
-import {URLSearchParams} from '@angular/http';
-import {Injectable} from '@angular/core';
+import { URLSearchParams } from '@angular/http';
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { Config } from '../index';

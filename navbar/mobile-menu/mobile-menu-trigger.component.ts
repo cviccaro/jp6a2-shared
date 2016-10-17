@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MobileMenuService} from './mobile-menu.service';
+import { Component } from '@angular/core';
+import { MobileMenuService } from './mobile-menu.service';
 
 @Component({
 	selector: 'jp-mobile-menu-trigger',

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Http} from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import {Config} from './env.config';
-import {Observer, Observable} from 'rxjs/Rx';
+import { Config } from './env.config';
+import { Observer, Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class ConfigService {

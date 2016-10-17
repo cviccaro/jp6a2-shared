@@ -1,4 +1,4 @@
-import {Directive, Input, HostListener, ElementRef} from '@angular/core';
+import { Directive, Input, HostListener, ElementRef } from '@angular/core';
 
 declare var dynamics: any;
 

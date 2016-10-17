@@ -1,4 +1,4 @@
-import { Component, ContentChild, AfterViewInit, Input} from '@angular/core';
+import { Component, ContentChild, AfterViewInit, Input } from '@angular/core';
 
 import { BalloonCalloutComponent } from './balloon-callout.component';
 import { BalloonCalloutIconComponent } from './balloon-callout-icon.component';

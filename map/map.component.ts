@@ -1,7 +1,7 @@
-import {Component, OnDestroy, ViewChild, ElementRef} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {LatLngLiteral, GoogleMapsAPIWrapper, SebmGoogleMap} from 'angular2-google-maps/core';
-import {GeolocateService} from './geolocate.service';
+import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { LatLngLiteral, GoogleMapsAPIWrapper, SebmGoogleMap } from 'angular2-google-maps/core';
+import { GeolocateService } from './geolocate.service';
 
 import { Subscription } from 'rxjs/Rx';
 import 'rxjs/add/operator/debounceTime';

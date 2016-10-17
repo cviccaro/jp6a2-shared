@@ -1,9 +1,9 @@
-import {CanActivate} from '@angular/router';
-import {Injectable, OnDestroy} from '@angular/core';
-import {Observable, Subscription} from 'rxjs/Rx';
-import {CacheService} from '../cache/cache.service';
+import { CanActivate } from '@angular/router';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs/Rx';
+import { CacheService } from '../cache/cache.service';
 import { DivisionService } from './division.service';
-import {Response} from '@angular/http';
+import { Response } from '@angular/http';
 import { Config } from '../config/env.config';
 
 @Injectable()

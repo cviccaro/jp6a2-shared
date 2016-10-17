@@ -1,4 +1,4 @@
-import {Component, Input, AfterViewInit} from '@angular/core';
+import { Component, Input, AfterViewInit } from '@angular/core';
 
 @Component({
 	selector: 'jp-post',

@@ -1,6 +1,6 @@
-import {JpFile} from './file';
-import {Tag} from './tag';
-import {Division} from './division';
+import { JpFile } from './file';
+import { Tag } from './tag';
+import { Division } from './division';
 
 export class Blog {
 	id: any;

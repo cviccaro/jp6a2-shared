@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, AfterViewInit} from '@angular/core';
+import { Directive, ElementRef, HostListener, AfterViewInit } from '@angular/core';
 
 declare var jQuery: any;
 
