@@ -1,4 +1,4 @@
-import { Component, ContentChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, ContentChildren, QueryList, AfterContentInit } from '@angular/core';
 import { MobileMenuItemDirective } from './mobile-menu-item.directive';
 import { MobileMenuService } from './mobile-menu.service';
 import { NavbarService } from '../navbar.service';
@@ -10,10 +10,10 @@ import { NavbarService } from '../navbar.service';
 	styleUrls: ['./mobile-menu.component.css']
 })
 
-export class MobileMenuComponent {
-	mainSiteUrl:string;
-
+export class MobileMenuComponent implements AfterContentInit {
 	@ContentChildren(MobileMenuItemDirective) public contentLinks: QueryList<MobileMenuItemDirective>;
+
+	mainSiteUrl:string;
 
 	constructor(private _service: MobileMenuService, private _navbarService: NavbarService) {
 		const isLive = window.location.hostname.match('/jpenterprises.com') !== null;
