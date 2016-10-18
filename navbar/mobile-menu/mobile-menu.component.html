@@ -1,7 +1,7 @@
 <div class="mobile-menu-container" [hidden]="!isActive()">
 	<div class="mobile-menu-inner">
 		<a [href]="links.main" title="Go to the main JP Enterprises site"><div class="logo navbar-logo"></div></a>
-		<button md-icon-button class="mobile-menu-close" (click)="closeMenu()">
+		<button md-icon-button class="mobile-menu-close" (click)="closeMenu()" (touchend)="closeMenu()">
 			<md-icon>close</md-icon>
 		</button>
 		<div class="menu-links">

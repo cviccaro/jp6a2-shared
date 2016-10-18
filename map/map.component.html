@@ -7,7 +7,7 @@
       <label class="address-label">Need Directions?</label>
       <md-input class="map-toolbar-input" type="text" [formControl]="directionsOrigin" placeholder="Enter your address..." size="60"></md-input>
     </div>
-    <button class="mobile centered" md-button md-raised-button color="accent" (click)="openDirectionsExternally()" title="Get Directions">
+    <button class="mobile centered" md-button md-raised-button color="accent" (click)="openDirectionsExternally()" (touchend)="openDirectionsExternally()" title="Get Directions">
       <md-icon>directions</md-icon>&nbsp;&nbsp;Get Directions on Google Maps
     </button>
   </md-toolbar>
@@ -20,7 +20,7 @@
         </button>
       </div>
     </div>
-    <button md-button md-fab class="md-icon-button md-mini close" id="mapClose" title="Close" (click)="closeMap()">
+    <button md-button md-fab class="md-icon-button md-mini close" id="mapClose" title="Close" (click)="closeMap()" (touchend)="closeMap()">
       <md-icon>close</md-icon>
     </button>
     <sebm-google-map-marker [label]="'J'" [title]="title" [latitude]="latitude" [longitude]="longitude" events="vm.map.pin.events">

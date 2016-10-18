@@ -101,15 +101,24 @@ button {
     text-transform: uppercase;
     color: $text-color;
   }
-  @include transition(background $transition_duration linear);
-  &:hover {
-    background: $text-color;
-    span { color: $white_trans; }
-  }
   &[disabled] {
     opacity: 0.2;
+  }
+}
+
+@media screen and (min-width: $desktop-min-width) {
+  .inverted-button,
+  [md-button].inverted-button {
+    @include transition(background $transition_duration linear);
     &:hover {
-      background: initial!important;
+      background: $text-color;
+      span { color: $white_trans; }
+    }
+    &[disabled] {
+      opacity: 0.2;
+      &:hover {
+        background: initial!important;
+      }
     }
   }
 }

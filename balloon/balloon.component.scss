@@ -18,6 +18,7 @@
       margin: 0 auto;
       position: relative;
       z-index: 4;
+      image-rendering: -webkit-optimize-contrast;
     }
 
     &::after {

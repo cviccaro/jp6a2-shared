@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
 	selector: 'jp-card',
@@ -13,4 +13,9 @@ export class CardComponent {
 	@Input() overlay: any;
 	@Input() href = '#';
 	@Input() routerLink: any = null;
+	@Input() jpHoverDynamicsMobile = false;
+
+	@HostBinding('class.has-overlay') public get hasOverlay() {
+		return this.overlay !== null && this.overlay !== undefined;
+	}
 }

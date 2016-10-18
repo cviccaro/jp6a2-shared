@@ -1,7 +1,7 @@
 <div class="jp-card-content" [ngSwitch]="routerLink !== null">
 	<template [ngSwitchCase]="true">
 		<div class="card-img">
-			<a *ngSwitchCase="true" [routerLink]="routerLink" [title]="cardTitle" jpHoverDynamics>
+			<a *ngSwitchCase="true" [routerLink]="routerLink" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile">
 				<div md-ripple md-ripple-centered="true"></div>
 				<div *ngIf="overlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
 				<img [src]="image" [title]="cardTitle" />
@@ -13,7 +13,7 @@
 	</template>
 	<template ngSwitchDefault>
 		<div class="card-img">
-			<a [href]="href" [title]="cardTitle" jpHoverDynamics>
+			<a [href]="href" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile">
 				<div md-ripple md-ripple-centered="true"></div>
 				<div *ngIf="overlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
 				<img [src]="image" [title]="cardTitle" />

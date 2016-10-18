@@ -2,7 +2,7 @@
 	<md-toolbar class="overlay-toolbar first container" layout="row" *ngIf="title">
 		<h2 class="section-title text-uppercase" [innerHTML]="title"></h2>
 		<span class="filler"></span>
-		<button md-button class="md-icon-button overlay-close-mobile" (click)="close()">
+		<button md-button class="md-icon-button overlay-close-mobile" (click)="close()" (touchend)="close()">
 			<md-icon>close</md-icon>
 		</button>
 		<button md-button class="inverted-button overlay-close" (click)="close()">
@@ -10,7 +10,7 @@
 		</button>
 	</md-toolbar>
 	<div class="overlay-close-notitle container" *ngIf="!title">
-		<button md-button class="md-icon-button overlay-close-mobile" (click)="close()">
+		<button md-button class="md-icon-button overlay-close-mobile" (click)="close()" (touchend)="close()">
 			<md-icon>close</md-icon>
 		</button>
 		<button md-button class="inverted-button overlay-close" (click)="close()">
@@ -19,7 +19,7 @@
 	</div>
 	<ng-content></ng-content>
 	<div class="btt-wrapper">
-		<button class="btt" md-button md-fab title="Back To Top" (click)="scrollUp()">
+		<button class="btt" md-button md-fab title="Back To Top" (click)="scrollUp()" (touchend)="scrollUp()">
 			<md-icon>keyboard_capslock</md-icon>
 		</button>
 	</div>

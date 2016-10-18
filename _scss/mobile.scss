@@ -5,6 +5,55 @@ $h4-font-size: 18px;
 
 @media screen and (max-width: $mobile-max-width) {
     /**
+     * Mobile double-touch fix
+     */
+    html.touchevents {
+        [md-button].inverted-button,
+        jp-mobile-menu a {
+            &:hover::after {
+                content: none;
+            }
+        }
+        // [md-button],
+        // [md-icon-button] {
+        //     color: red;
+        //     &:hover {
+        //         color: blue;
+        //     }
+        //     &:hover::after {
+        //         content: none!important;
+        //     }
+        // }
+        // jp-card .card-img:hover {
+        //     border-color: $light_grey!important;
+        //     a {
+        //         transform: none!important;
+        //     }
+        // }
+        // .content {
+        //     touch-action: none!important;
+        // }
+        // [md-icon-button]:hover,
+        // [md-button]:hover {
+        //     .md-button-ripple::after {
+        //         display: none!important;
+        //         content: none!important;
+        //     }
+        // }
+        // jp-card .card-img:hover {
+        //     border-color: initial!important;
+        // }
+        // .jp-pager-nav-btn.jp-pager-nav-btn-prev:hover,
+        // .jp-pager-nav-btn.jp-pager-nav-btn-next:hover,
+        // .overlay-close-mobile:hover {
+        //     background-color: initial!important;
+        //     md-icon {
+        //         color: initial!important;
+        //     }
+        // }
+    }
+
+    /**
      * Font sizes
      */
     body {
@@ -295,7 +344,8 @@ $h4-font-size: 18px;
                         width: 45px!important;
                         height: 54px!important;
                         position: relative;
-                        left: -1px;
+                        left: -2px;
+                        top: -3px;
                         jp-icon,
                         jp-icon-hover {
                             background-size: 235px 107px;
