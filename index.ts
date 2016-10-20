@@ -11,6 +11,7 @@ export * from './contact-form/index';
 export * from './content-overlay/index';
 export * from './config/index';
 export * from './division/index';
+export * from './footer/index';
 export * from './gallery/index';
 export * from './hover-dynamics/index';
 export * from './icon-button/index';
