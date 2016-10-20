@@ -79,4 +79,9 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 			$label.removeClass('md-empty');
 		}
 	}
+
+	setEmpty() {
+		this.empty = true;
+		jQuery(this._el.nativeElement).prev().addClass('md-empty');
+	}
 }

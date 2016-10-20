@@ -57,6 +57,14 @@ footer {
       display: none;
     }
   }
+
+  .logo.tiny {
+    width: 43px;
+    height: 33px;
+    background-image: url('../assets/images/logo-tiny-2x.png');
+    background-size: 43px 33px;
+    margin: 0 auto;
+  }
 }
 
 /**

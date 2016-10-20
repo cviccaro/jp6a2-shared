@@ -6,6 +6,7 @@ import { RecaptchaComponent } from 'ng2-recaptcha';
 
 import { FormSubmissionService } from './form-submission.service';
 import { FormSubmission, EmailValidator, Config } from '../index';
+import { TextareaAutoexpandDirective } from '../textarea-autoexpand/index';
 import { CaptchaService } from './captcha.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class ContactFormComponent implements OnDestroy {
     sub2: Subscription;
 
     @ViewChild(RecaptchaComponent) public recaptchaCmp: RecaptchaComponent;
+    @ViewChild(TextareaAutoexpandDirective) public textareaDir: TextareaAutoexpandDirective;
 
     constructor(
         builder: FormBuilder,
@@ -65,6 +67,9 @@ export class ContactFormComponent implements OnDestroy {
 
     reset() {
         this.contactForm.reset();
+        if (this.textareaDir) {
+            this.textareaDir.setEmpty();
+        }
     }
 
     _submit() {
