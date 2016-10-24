@@ -14,8 +14,6 @@ jp-balloon {
         z-index: 9;
         will-change: opacity;
         @include transition(opacity $transition_duration ease-out);
-        //@include transition(opacity 200ms linear);
-     
       }
     }
   }

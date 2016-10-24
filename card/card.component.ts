@@ -7,15 +7,29 @@ import { Component, Input, HostBinding } from '@angular/core';
 	styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+	@Input() author: string;
+	@Input() body: string;
 	@Input() cardTitle: string;
-	@Input() subTitle: string;
-	@Input() image: any;
-	@Input() overlay: any;
+	@Input() date: any;
 	@Input() href = '#';
-	@Input() routerLink: any = null;
+	@Input() image: any;
 	@Input() jpHoverDynamicsMobile = false;
+	@Input() overlay: any;
+	@Input() route: any;
+	@Input() subTitle: string;
+	@Input() summary: string;
+	@Input() theme: string = 'card';
+	@Input() tag: string;
 
-	@HostBinding('class.has-overlay') public get hasOverlay() {
+	@HostBinding('class.has-overlay') public get hasOverlayClass() {
 		return this.overlay !== null && this.overlay !== undefined;
+	}
+
+	@HostBinding('class.theme-card') public get hasThemeCardClass() {
+		return this.theme === 'card';
+	}
+
+	@HostBinding('class.theme-post') public get hasThemePostClass() {
+		return this.theme === 'post';
 	}
 }

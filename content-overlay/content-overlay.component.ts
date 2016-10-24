@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef, AfterViewInit, HostBinding, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NavbarService } from '../navbar/navbar.service';
+import { NavbarService } from '../nav/navbar.service';
 import { ScrollService } from '../scroll/scroll.service';
 import { Config } from '../config/env.config';
 import { Subscription } from 'rxjs/Rx';

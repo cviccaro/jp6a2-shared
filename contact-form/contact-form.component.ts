@@ -6,7 +6,7 @@ import { RecaptchaComponent } from 'ng2-recaptcha';
 
 import { FormSubmissionService } from './form-submission.service';
 import { FormSubmission, EmailValidator, Config } from '../index';
-import { TextareaAutoexpandDirective } from '../textarea-autoexpand/index';
+import { TextareaAutoexpandDirective } from './textarea-autoexpand.directive';
 import { CaptchaService } from './captcha.service';
 
 @Component({

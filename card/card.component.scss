@@ -1,8 +1,3 @@
-:host {
-	&:nth-child(3n) {
-		margin-right: 0;
-	}
-}
 :host /deep/ {
 	position: relative;
 	.card-img {
@@ -72,6 +67,38 @@
 		opacity: 0;
 		@include transition(opacity $transition_duration $transition_ease);
 	}
+	.card-body {
+		& > * {
+			font-size: 1em;
+			font-weight: 300;
+			line-height: 22px;
+			font-family: $source-sans-pro;
+			color: $text-color;
+		}
+		p {
+			margin-top: 0px;
+		}
+	}
+	.card-attributes {
+		margin-top: 15px;
+		font-size: 11px;
+		font-family: $source-sans-pro;
+
+		span {
+			&::after {
+				content: "-";
+				display: inline;
+				margin-left: 4px;
+				margin-right: 4px;
+			}
+			&:last-child {
+				&::after {
+					content: "";
+					display: none;
+				}
+			}
+		}
+	}
 }
 
 .theme-dark {
@@ -85,5 +112,48 @@
 		a {
 			color: $white_trans;
 		}
+	}
+}
+
+:host {
+	&.theme-card /deep/ {
+
+	}
+	&.theme-post /deep/ {
+		.card-title {
+			position: relative;
+			font-weight: 300;
+			text-transform: uppercase;
+			margin-bottom: 24px;
+			a {
+				color: $blue;
+				&:hover {
+					color: $text-color;
+				}
+			}
+		}
+	}
+}
+
+:host {
+	&:nth-child(3n) {
+		margin-right: 0;
+	}
+	&:nth-child(1),
+	&:nth-child(2),
+	&:nth-child(3) {
+		margin-top: 0;
+	}
+	& + .md-button {
+		margin-top: 4em;
+	}
+	& + & + & ~ & {
+		margin-top: 30px;
+	}
+}
+
+@media screen and (max-width: $mobile-max-width) {
+	:host {
+	    margin-bottom: 2em!important;
 	}
 }

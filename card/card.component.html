@@ -1,14 +1,19 @@
-<div class="jp-card-content" [ngSwitch]="routerLink !== null">
+<div class="jp-card-content" [ngSwitch]="route !== undefined">
 	<template [ngSwitchCase]="true">
 		<div class="card-img">
-			<a *ngSwitchCase="true" [routerLink]="routerLink" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile">
+			<a *ngSwitchCase="true" [routerLink]="route" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile">
 				<div md-ripple md-ripple-centered="true"></div>
 				<div *ngIf="overlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
 				<img [src]="image" [title]="cardTitle" />
 			</a>
 		</div>
+		<div class="card-attributes" *ngIf="this.author || this.date || this.tag">
+			<span *ngIf="date">{{date | amDateFormat: 'MMMM d, YYYY'}}</span>
+			<span *ngIf="tag">In {{tag | capitalize}}</span>
+			<span *ngIf="author">by {{author | capitalize}}</span>
+		</div>
 		<h3 class="card-title">
-			<a [routerLink]="routerLink" [title]="cardTitle">{{ cardTitle }}</a>
+			<a [routerLink]="route" [title]="cardTitle">{{ cardTitle }}</a>
 		</h3>
 	</template>
 	<template ngSwitchDefault>
@@ -19,9 +24,18 @@
 				<img [src]="image" [title]="cardTitle" />
 			</a>
 		</div>
+		<div class="card-attributes" *ngIf="this.author || this.date || this.tag">
+			<span *ngIf="date">{{date | amDateFormat: 'MMMM d, YYYY'}}</span>
+			<span *ngIf="tag">In {{tag | capitalize}}</span>
+			<span *ngIf="author">by {{author | capitalize}}</span>
+		</div>
 		<h3 class="card-title">
 			<a [href]="href" [title]="cardTitle">{{ cardTitle }}</a>
 		</h3>
 	</template>
 	<h4 class="card-subtitle md-body-1">{{ subTitle }}</h4>
+	<div class="card-body" *ngIf="body !== undefined && summary !== undefined">
+		<p *ngIf="body !== undefined" [innerHTML]="summary"></p>
+		<p *ngIf="body === undefined && summary !== undefined" [innerHTML]="body"></p>
+	</div>
 </div>

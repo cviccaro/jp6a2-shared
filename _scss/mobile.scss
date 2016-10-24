@@ -76,7 +76,7 @@ $h4-font-size: 18px;
         }
     }
 
-    jp-post .post-attributes {
+    jp-card .card-attributes {
         font-size: ($paragraph-font-size-mobile - 1px) !important;
     }
 
@@ -93,8 +93,7 @@ $h4-font-size: 18px;
 
     h3 {
         font-size: $h3-font-size!important;
-        &.card-title,
-        &.post-title {
+        &.card-title {
             font-size: $h4-font-size!important;
         }
     }
@@ -530,8 +529,8 @@ $h4-font-size: 18px;
     /**
      * Blog Posts
      */
-     jp-post {
-        .post-title {
+     jp-card {
+        .card-title {
             margin-bottom: 16px!important;
         }
      }
