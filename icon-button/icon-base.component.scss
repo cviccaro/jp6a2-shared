@@ -1,198 +1,221 @@
 jp-balloon {
-	.balloon {
-		.icon-container {
-			:host {
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-			  	background-image: url("../assets/images/services/sprite-2x.png");
-			  	background-size: 466px 214px;
-			  	z-index: 9;
-				will-change: opacity;
+  .balloon {
+    .icon-container {
+      :host {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("../assets/images/services/sprite-2x.png");
+        background-size: 466px 214px;
+        z-index: 9;
+        will-change: opacity;
+        @include transition(opacity $transition_duration ease-out);
+        //@include transition(opacity 200ms linear);
+     
+      }
+    }
+  }
 
-				//@include transition(opacity 200ms linear);
-			}
-		}
-	}
-	&.mdm {
-		.balloon {
-			:host {
-				background-position-x: 0px;
-			}
-		}
-	}
-	&.publishing {
-		.balloon {
-			.icon-container {
-				:host {
-					background-position-x: -160px;
-				}
-			}
-		}
-	}
-	&.creative {
-		.balloon {
-			.icon-container {
-				position: relative;
-				left: -2px;
-				:host {
-				  background-position-x: -266px;
-				}
-			}
-		}
-	}
-	&.interactive {
-		.balloon {
-			.icon-container {
-				:host {
-					background-position-x: -360px;
-				}
-			}
-		}
-	}
+  &.mdm {
+    .balloon {
+      :host {
+        background-position-x: 0px;
+      }
+    }
+  }
+
+  &.publishing {
+    .balloon {
+      .icon-container {
+        :host {
+          background-position-x: -160px;
+        }
+      }
+    }
+  }
+
+  &.creative {
+    .balloon {
+      .icon-container {
+        position: relative;
+        left: -2px;
+
+        :host {
+          background-position-x: -266px;
+        }
+      }
+    }
+  }
+
+  &.interactive {
+    .balloon {
+      .icon-container {
+        :host {
+          background-position-x: -360px;
+        }
+      }
+    }
+  }
 }
 
 balloon-callout {
-	jp-balloon-callout-icon {
-		:host {
-			background-image: url('../assets/images/balloon-callout-icons.png');
-			background-position-y: 0px;
-			display: block;
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			will-change: opacity;
-			z-index: 9;
-			//@include transition(opacity 200ms linear);
-		}
-	}
+  jp-balloon-callout-icon {
+    :host {
+      background-image: url("../assets/images/balloon-callout-icons.png");
+      background-position-y: 0px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      will-change: opacity;
+      z-index: 9;
+
+      //@include transition(opacity 200ms linear);
+   
+    }
+  }
 }
 
 jp-balloon-callout-icon {
-	&.content-creation {
-		:host {
-			background-position-x: 0px;
-		}
-	}
-	&.template-building {
-		:host {
-			background-position-x: -36px;
-		}
-	}
-	&.catalogs {
-		:host {
-			background-position-x: -74px;
-		}
-	}
+  &.content-creation {
+    :host {
+      background-position-x: 0px;
+    }
+  }
 
-	&.traditional-catalogs {
-		:host {
-			background-position-x: -110px;
-		}
-	}
-	&.translations {
-		:host {
-			background-position-x: -149px;
-			background-position-y: -2px;
-		}
-	}
-	&.project-management {
-		:host {
-			background-position-x: -185px;
-		}
-	}
+  &.template-building {
+    :host {
+      background-position-x: -36px;
+    }
+  }
 
-	&.graphic-design {
-		:host {
-			background-position-x: -222px;
-		}
-	}
-	&.branding {
-		:host {
-			background-position-x: -259px;
-		}
-	}
-	&.writing {
-		:host {
-			background-position-x: -296px;
-		}
-	}
-	&.photography {
-		:host {
-			background-position-x: -333px;
-		}
-	}
+  &.catalogs {
+    :host {
+      background-position-x: -74px;
+    }
+  }
 
-	&.email-marketing {
-		:host {
-			background-position-x: -370px;
-		}
-	}
-	&.website-development {
-		:host {
-			background-position-x: -407px;
-		}
-	}
-	&.mobile-apps {
-		:host {
-			width: 25px;
-			background-position-x: -444px;
-		}
-	}
+  &.traditional-catalogs {
+    :host {
+      background-position-x: -110px;
+    }
+  }
+
+  &.translations {
+    :host {
+      background-position-x: -149px;
+      background-position-y: -2px;
+    }
+  }
+
+  &.project-management {
+    :host {
+      background-position-x: -185px;
+    }
+  }
+
+  &.graphic-design {
+    :host {
+      background-position-x: -222px;
+    }
+  }
+
+  &.branding {
+    :host {
+      background-position-x: -259px;
+    }
+  }
+
+  &.writing {
+    :host {
+      background-position-x: -296px;
+    }
+  }
+
+  &.photography {
+    :host {
+      background-position-x: -333px;
+    }
+  }
+
+  &.email-marketing {
+    :host {
+      background-position-x: -370px;
+    }
+  }
+
+  &.website-development {
+    :host {
+      background-position-x: -407px;
+    }
+  }
+
+  &.mobile-apps {
+    :host {
+      width: 25px;
+      background-position-x: -444px;
+    }
+  }
 }
 
 /**
  * Icon buttons in the navbar
  */
 jp-icon-button {
-	:host {
-		background-image: url('../assets/images/division-icons-sprite-sm.png');
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		will-change: opacity;
-	}
-	.icon-container {
-		max-width: 24px;
-		max-height: 26px;
-		:host {
-			background-position-y: 0px;
-		}
-	}
-	&.publishing {
-	    :host {
-	        height: 26px;
-	    }
-	}
-	&.creative {
-	    :host {
-		    background-position-x: -24px;
-	    	height: 26px;
-	    }
-	}
-	&.interactive {
-		:host {
-			background-position-x: -48px;
-			height: 24px;
-		}
-	}
-	&.mdm {
-		:host {
-		    width: 100%;
-		    max-width: 37px;
-		    background-position-x: -73px;
-	  	}
-	}
+  :host {
+    background-image: url("../assets/images/division-icons-sprite-sm.png");
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    will-change: opacity;
+  }
+
+  .icon-container {
+    max-width: 24px;
+    max-height: 26px;
+
+    :host {
+      background-position-y: 0px;
+    }
+  }
+
+  &.publishing {
+    :host {
+      height: 26px;
+    }
+  }
+
+  &.creative {
+    :host {
+      background-position-x: -24px;
+      height: 26px;
+    }
+  }
+
+  &.interactive {
+    :host {
+      background-position-x: -48px;
+      height: 24px;
+    }
+  }
+
+  &.mdm {
+    :host {
+      width: 100%;
+      max-width: 37px;
+      background-position-x: -73px;
+    }
+  }
 }

@@ -10,7 +10,7 @@
     background-color: transparent;
     will-change: background-color;
 
-    @include transition(background-color ($transition_duration * 2) $transition_ease);
+    @include transition(background-color $transition_duration ease-in-out);
 
     .icon-container {
       width: 106px;
@@ -34,7 +34,7 @@
       will-change: opacity;
       opacity: 0;
 
-      @include transition(border-color $transition_duration $transition_ease);
+      @include transition(opacity $transition_duration ease-in);
     }
   }
 
