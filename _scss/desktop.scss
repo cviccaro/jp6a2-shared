@@ -445,32 +445,8 @@ section.theme-dark {
 
      &.textarea {
        position: relative;
-       label {
-         position: absolute;
-         bottom: 0;
-         left: 20px;
-         height: 18px;
-         right: auto;
-         font-weight: normal;
-         will-change: transform left top;
-         @include transition(all $transition_duration $transition_ease);
-         transform-origin: bottom left;
-         padding-left: 0!important;
-         &.md-input-placeholder.md-focused,
-         &.md-input-placeholder:not(.md-focused):not(.md-empty) {
-           transform: translateY(-100%) scale(0.75);
-           top: -3px;
-           left: 0;
-           padding-left: 0;
-         }
-         z-index: 4;
-       }
        textarea {
-         z-index: 5;
          width: 100%;
-         background: transparent;
-         color: $white_trans;
-         border-color: $white;
          padding: 10px 20px;
          line-height: 23px;
          position: relative;
@@ -486,6 +462,12 @@ section.theme-dark {
            transition: border-color $transition_duration $transition_ease;
            will-change: border-color;
          }
+       }
+       & ~ .alert-danger {
+        margin-top: 16px;
+        margin-bottom: 0;
+        font-size: $paragraph-font-size - 2px;
+        &[hidden] { display: none; }
        }
      }
      input,.md-input-placeholder {

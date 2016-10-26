@@ -1,4 +1,4 @@
-export class FormSubmission {
+export class ContactFormSubmission {
 	first_name: string = '';
 	last_name: string = '';
 	company: string = '';
@@ -24,4 +24,25 @@ export class FormSubmission {
 
 		return form;
 	}
+}
+
+export class SubscribeFormSubmission {
+    email: string;
+
+    constructor(values?: { [key: string]: any }) {
+        for (let key in values) {
+            (<any>this)[key] = values[key];
+        }
+    }
+
+    createFormData() {
+        let form = new FormData();
+
+        for (let key in this) {
+            let val = (<any>this)[key];
+            if (typeof val !== 'function') form.append(key, val);
+        }
+
+        return form;
+    }
 }

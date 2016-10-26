@@ -5,7 +5,7 @@ import { Observable, Observer, Subscription } from 'rxjs/Rx';
 import { RecaptchaComponent } from 'ng2-recaptcha';
 
 import { FormSubmissionService } from './form-submission.service';
-import { FormSubmission, EmailValidator, Config } from '../index';
+import { ContactFormSubmission, EmailValidator, Config } from '../index';
 import { TextareaAutoexpandDirective } from './textarea-autoexpand.directive';
 import { CaptchaService } from './captcha.service';
 
@@ -19,7 +19,7 @@ export class ContactFormComponent implements OnDestroy {
     @Output() formSubmitSuccess = new EventEmitter();
 
     contactForm: FormGroup;
-    model = new FormSubmission();
+    model = new ContactFormSubmission();
     siteKey: any = false;
     sub: Subscription;
     sub2: Subscription;
@@ -73,7 +73,7 @@ export class ContactFormComponent implements OnDestroy {
     }
 
     _submit() {
-        this.model = new FormSubmission(this.contactForm.value);
+        this.model = new ContactFormSubmission(this.contactForm.value);
 
         this.formSubmitSuccess.emit(this.model);
     }

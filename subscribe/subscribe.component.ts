@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm, Validators, NgModel, FormControl } from '@angular/forms';
+import { Modal } from 'angular2-modal';
+
+import { ContentOverlayComponent } from '../content-overlay/index';
+import { SubscribeFormSubmission } from '../models/form-submissions';
+import { EmailValidator } from '../validators/index';
+
+declare var jQuery: any;
 
 @Component({
 	moduleId: module.id,
@@ -8,8 +16,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubscribeComponent implements OnInit {
 	active = false;
+    model = new SubscribeFormSubmission();
+    submitted = false;
+
+    @ViewChild('email') emailControl: NgModel;
+    @ViewChild(ContentOverlayComponent) overlayCmp: ContentOverlayComponent;
+
+    constructor(public modal: Modal) { }
 
 	ngOnInit() {
 		this.active = true;
 	}
+
+    ngAfterViewInit() {
+        this.emailControl.control.setValidators([Validators.required, EmailValidator.emailFormat]);
+    }
+
+    submit() {
+        this.submitted = true;
+        let modal: any = this.modal.alert();
+
+        modal
+          .size('sm')
+          .showClose(true)
+          .title('Thanks!')
+          .dialogClass('modal-dialog')
+          .body('<p>You\'ve been subscribed.</p>')
+          .open();
+
+        setTimeout(() => {
+            // use jQuery to capture button click since angular2-modal doesn't offer a way
+            // out of the box for some reason
+            jQuery('bs-modal-container .modal-footer .btn-primary').click(() => {
+                this.active = false;
+                setTimeout(() => { this.active = true; });
+                this.overlayCmp.close();
+            });
+        });
+    }
 }

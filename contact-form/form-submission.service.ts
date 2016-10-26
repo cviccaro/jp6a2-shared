@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ApiHttp } from '../xhr/xhr.http';
-import { FormSubmission } from '../models/form-submission';
+import { ContactFormSubmission } from '../models/form-submissions';
 import { Config } from '../index';
 
 @Injectable()
 export class FormSubmissionService {
 	constructor(public http: ApiHttp) { }
 
-	submit(submission: FormSubmission) {
+	submit(submission: ContactFormSubmission) {
 		let form = submission.createFormData();
 
 		if (Config.division !== undefined) {
