@@ -7,7 +7,7 @@ import { ApiHttp } from '../xhr/xhr.http';
 import { XhrService } from '../xhr/xhr.service';
 
 @Injectable()
-export class WorkService {
+export class ProjectService {
 
 	constructor(public http: ApiHttp, public xhr: XhrService) { }
 

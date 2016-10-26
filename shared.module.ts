@@ -10,10 +10,13 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
 import { RecaptchaModule } from 'ng2-recaptcha';
 
 import {
+  APP_MIDDLEWARE,
   APP_PIPES,
   APP_SERVICES,
   BackgroundDirective,
   BALLOON_COMPONENTS,
+  BlogComponent,
+  BlogsComponent,
   CardComponent,
   ContentOverlayComponent,
   FooterComponent,
@@ -24,8 +27,12 @@ import {
   LogoComponent,
   MAP_COMPONENTS,
   NAV_COMPONENTS,
+  PrivacyComponent,
+  ProjectComponent,
   SplashComponent,
-  SOCIAL_COMPONENTS
+  SOCIAL_COMPONENTS,
+  ScrollToComponent,
+  SubscribeComponent
 } from './index';
 
 /**
@@ -47,6 +54,8 @@ import {
     APP_PIPES,
     BackgroundDirective,
     BALLOON_COMPONENTS,
+    BlogComponent,
+    BlogsComponent,
     CardComponent,
     ContentOverlayComponent,
     FooterComponent,
@@ -57,8 +66,12 @@ import {
     LogoComponent,
     MAP_COMPONENTS,
     NAV_COMPONENTS,
+    PrivacyComponent,
+    ProjectComponent,
+    ScrollToComponent,
     SOCIAL_COMPONENTS,
-    SplashComponent
+    SplashComponent,
+    SubscribeComponent
   ],
   exports: [
     // Angular modules
@@ -77,6 +90,8 @@ import {
     APP_PIPES,
     BackgroundDirective,
     BALLOON_COMPONENTS,
+    BlogComponent,
+    BlogsComponent,
     CardComponent,
     ContentOverlayComponent,
     FooterComponent,
@@ -87,8 +102,12 @@ import {
     LogoComponent,
     MAP_COMPONENTS,
     NAV_COMPONENTS,
+    PrivacyComponent,
+    ProjectComponent,
+    ScrollToComponent,
     SplashComponent,
-    SOCIAL_COMPONENTS
+    SOCIAL_COMPONENTS,
+    SubscribeComponent
   ]
 })
 export class SharedModule {
@@ -96,6 +115,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
+        APP_MIDDLEWARE,
         APP_SERVICES,
         GoogleMapsAPIWrapper,
         MdIconRegistry,

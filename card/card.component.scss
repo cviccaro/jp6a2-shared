@@ -103,14 +103,15 @@
 }
 
 .theme-dark {
-	:host {
+	:host /deep/ {
 		.card-img {
 			border-color: $grey_900;
 			&:hover {
 				border-color: $blue;
 			}
 		}
-		a {
+		a,
+		p {
 			color: $white_trans;
 		}
 	}
@@ -118,7 +119,9 @@
 
 :host {
 	&.theme-card /deep/ {
-
+		.card-body {
+			margin-top: 16px;
+		}
 	}
 	&.theme-post /deep/ {
 		.card-title {
