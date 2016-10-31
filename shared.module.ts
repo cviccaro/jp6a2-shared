@@ -9,6 +9,8 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
 
 import { RecaptchaModule } from 'ng2-recaptcha';
 
+import { Ng2DisqusModule } from 'ng2-disqus';
+
 import {
   APP_MIDDLEWARE,
   APP_PIPES,
@@ -48,6 +50,7 @@ import {
     AgmCoreModule,
     MaterialModule,
     MomentModule,
+    Ng2DisqusModule,
     RecaptchaModule.forRoot()
   ],
   declarations: [
@@ -84,6 +87,7 @@ import {
     AgmCoreModule,
     MomentModule,
     MaterialModule,
+    Ng2DisqusModule,
     RecaptchaModule,
 
     // App modules/components

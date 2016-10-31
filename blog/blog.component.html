@@ -24,6 +24,9 @@
 	    	</div>
 	    </div>
 	    <div class="bottom-row">
+	    	<disqus [shortname]="'jp-enterprises'" [identifier]="blog.id"></disqus>
+	    </div>
+	    <div class="bottom-row">
 	        <h2 class="text-uppercase">Related Articles</h2>
 	        <div class="content">
 	            <jp-card *ngFor="let post of related"
