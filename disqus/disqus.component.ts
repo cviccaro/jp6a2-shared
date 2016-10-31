@@ -1,3 +1,7 @@
+/**
+ * Credit to https://github.com/threesquared/ng2-disqus
+ */
+
 import { Injectable, Component, Input, OnInit, Inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { __platform_browser_private__ as _, DOCUMENT, Title } from '@angular/platform-browser';

@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm, Validators, NgModel, FormControl } from '@angular/forms';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Validators, NgModel } from '@angular/forms';
 import { Modal } from 'angular2-modal';
 
 import { ContentOverlayComponent } from '../content-overlay/index';
@@ -9,49 +9,49 @@ import { EmailValidator } from '../validators/index';
 declare var jQuery: any;
 
 @Component({
-	moduleId: module.id,
-	selector: 'jp-subscribe',
-	templateUrl: './subscribe.component.html',
-	styleUrls: [ './subscribe.component.css' ]
+  moduleId: module.id,
+  selector: 'jp-subscribe',
+  templateUrl: './subscribe.component.html',
+  styleUrls: ['./subscribe.component.css']
 })
-export class SubscribeComponent implements OnInit {
-	active = false;
-    model = new SubscribeFormSubmission();
-    submitted = false;
+export class SubscribeComponent implements OnInit, AfterViewInit {
+  active = false;
+  model = new SubscribeFormSubmission();
+  submitted = false;
 
-    @ViewChild('email') emailControl: NgModel;
-    @ViewChild(ContentOverlayComponent) overlayCmp: ContentOverlayComponent;
+  @ViewChild('email') emailControl: NgModel;
+  @ViewChild(ContentOverlayComponent) overlayCmp: ContentOverlayComponent;
 
-    constructor(public modal: Modal) { }
+  constructor(public modal: Modal) { }
 
-	ngOnInit() {
-		this.active = true;
-	}
+  ngOnInit() {
+    this.active = true;
+  }
 
-    ngAfterViewInit() {
-        this.emailControl.control.setValidators([Validators.required, EmailValidator.emailFormat]);
-    }
+  ngAfterViewInit() {
+    this.emailControl.control.setValidators([Validators.required, EmailValidator.emailFormat]);
+  }
 
-    submit() {
-        this.submitted = true;
-        let modal: any = this.modal.alert();
+  submit() {
+    this.submitted = true;
+    let modal: any = this.modal.alert();
 
-        modal
-          .size('sm')
-          .showClose(true)
-          .title('Thanks!')
-          .dialogClass('modal-dialog')
-          .body('<p>You\'ve been subscribed.</p>')
-          .open();
+    modal
+      .size('sm')
+      .showClose(true)
+      .title('Thanks!')
+      .dialogClass('modal-dialog')
+      .body('<p>You\'ve been subscribed.</p>')
+      .open();
 
-        setTimeout(() => {
-            // use jQuery to capture button click since angular2-modal doesn't offer a way
-            // out of the box for some reason
-            jQuery('bs-modal-container .modal-footer .btn-primary').click(() => {
-                this.active = false;
-                setTimeout(() => { this.active = true; });
-                this.overlayCmp.close();
-            });
-        });
-    }
+    setTimeout(() => {
+      // use jQuery to capture button click since angular2-modal doesn't offer a way
+      // out of the box for some reason
+      jQuery('bs-modal-container .modal-footer .btn-primary').click(() => {
+        this.active = false;
+        setTimeout(() => { this.active = true; });
+        this.overlayCmp.close();
+      });
+    });
+  }
 }
