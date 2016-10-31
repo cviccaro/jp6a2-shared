@@ -9,8 +9,6 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
 
 import { RecaptchaModule } from 'ng2-recaptcha';
 
-import { Ng2DisqusModule } from 'ng2-disqus';
-
 import {
   APP_MIDDLEWARE,
   APP_PIPES,
@@ -21,6 +19,7 @@ import {
   BlogsComponent,
   CardComponent,
   ContentOverlayComponent,
+  Disqus,
   FooterComponent,
   FORM_COMPONENTS,
   GALLERY_COMPONENTS,
@@ -34,7 +33,8 @@ import {
   SplashComponent,
   SOCIAL_COMPONENTS,
   ScrollToComponent,
-  SubscribeComponent
+  SubscribeComponent,
+  WindowProviders
 } from './index';
 
 /**
@@ -50,7 +50,6 @@ import {
     AgmCoreModule,
     MaterialModule,
     MomentModule,
-    Ng2DisqusModule,
     RecaptchaModule.forRoot()
   ],
   declarations: [
@@ -61,6 +60,7 @@ import {
     BlogsComponent,
     CardComponent,
     ContentOverlayComponent,
+    Disqus,
     FooterComponent,
     FORM_COMPONENTS,
     GALLERY_COMPONENTS,
@@ -87,7 +87,6 @@ import {
     AgmCoreModule,
     MomentModule,
     MaterialModule,
-    Ng2DisqusModule,
     RecaptchaModule,
 
     // App modules/components
@@ -98,6 +97,7 @@ import {
     BlogsComponent,
     CardComponent,
     ContentOverlayComponent,
+    Disqus,
     FooterComponent,
     FORM_COMPONENTS,
     GALLERY_COMPONENTS,
@@ -123,7 +123,8 @@ export class SharedModule {
         APP_SERVICES,
         GoogleMapsAPIWrapper,
         MdIconRegistry,
-        OVERLAY_PROVIDERS
+        OVERLAY_PROVIDERS,
+        WindowProviders
       ]
     };
   }
