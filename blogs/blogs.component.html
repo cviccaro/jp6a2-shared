@@ -22,6 +22,11 @@
 				<jp-icon></jp-icon>
 				<jp-icon-hover></jp-icon-hover>
 			</jp-icon-button>
+			<jp-icon-button class="horizontal news fuchsia" (click)="filterByDivision('news', $event)" [class.active]="divisionFilter === 'news'">
+				<jp-icon-button-text>News</jp-icon-button-text>
+				<jp-icon></jp-icon>
+				<jp-icon-hover></jp-icon-hover>
+			</jp-icon-button>
 		</div>
 	</md-toolbar>
 	<div class="content" *ngIf="blogs">
