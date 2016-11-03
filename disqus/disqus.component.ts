@@ -59,14 +59,11 @@ export class DisqusComponent implements OnInit {
     let _self = this;
 
     return function () {
-      console.log('Starting Disqus Load');
       this.page.url = window.location.protocol + '//' + window.location.host + _self.location.path();
       this.page.identifier = _self.identifier;
       this.language = this.page.language = 'en';
 
       this.page.title = _self.title.getTitle();
-
-      console.log('Disqus Loaded: ', this);
     };
   }
 
