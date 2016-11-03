@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Input, HostBinding, AfterViewInit } from '@angular/core';
 
 @Component({
 	selector: 'jp-card',
@@ -6,7 +6,7 @@ import { Component, Input, HostBinding } from '@angular/core';
 	templateUrl: './card.component.html',
 	styleUrls: ['./card.component.css']
 })
-export class CardComponent {
+export class CardComponent implements AfterViewInit {
 	@Input() author: string;
 	@Input() body: string;
 	@Input() cardTitle: string;
@@ -20,6 +20,12 @@ export class CardComponent {
 	@Input() summary: string;
 	@Input() theme: string = 'card';
 	@Input() tag: string;
+
+	hasRoute = false;
+
+	ngAfterViewInit() {
+		this.hasRoute = this.route !== undefined;
+	}
 
 	@HostBinding('class.has-overlay') public get hasOverlayClass() {
 		return this.overlay !== null && this.overlay !== undefined;

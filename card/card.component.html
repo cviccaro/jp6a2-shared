@@ -1,4 +1,4 @@
-<div class="jp-card-content" [ngSwitch]="route !== undefined">
+<div class="jp-card-content" [ngSwitch]="hasRoute">
 	<template [ngSwitchCase]="true">
 		<div class="card-img">
 			<a *ngSwitchCase="true" [routerLink]="route" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile">

@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs/Rx';
 import { Blog } from '../models/index';
 import { BlogService } from './blog.service';
 import { CacheService } from '../cache/cache.service';
-import { Config } from '../config/index';
 
 declare var jQuery: any;
 
