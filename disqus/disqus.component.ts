@@ -8,12 +8,12 @@ import { __platform_browser_private__ as _, DOCUMENT, Title } from '@angular/pla
 import { WINDOW, MockWindow } from './window';
 
 @Component({
-  selector: 'disqus',
+  selector: 'jp-disqus',
   template: '<div id="disqus_thread"></div>',
 })
 
 @Injectable()
-export class Disqus implements OnInit {
+export class DisqusComponent implements OnInit {
 
   /**
    * The unique identifier for the page
