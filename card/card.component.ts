@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, AfterViewInit } from '@angular/core';
+import { Component, Input, HostBinding, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'jp-card',
@@ -6,7 +6,7 @@ import { Component, Input, HostBinding, AfterViewInit } from '@angular/core';
 	templateUrl: './card.component.html',
 	styleUrls: ['./card.component.css']
 })
-export class CardComponent implements AfterViewInit {
+export class CardComponent implements OnInit {
 	@Input() author: string;
 	@Input() body: string;
 	@Input() cardTitle: string;
@@ -23,7 +23,7 @@ export class CardComponent implements AfterViewInit {
 
 	hasRoute = false;
 
-	ngAfterViewInit() {
+	ngOnInit() {
 		this.hasRoute = this.route !== undefined;
 	}
 
