@@ -3,7 +3,7 @@
 	<form class="jp-form" (ngSubmit)="submit()" #subscribeForm="ngForm" *ngIf="active">
 		<div class="form-group required full flush">
 			<md-input name="email" required placeholder="Email Address" type="email" [(ngModel)]="model.email" #email="ngModel"></md-input>
-            <div class="alert alert-danger" [hidden]="!(email.touched && email.errors?.emailFormat)">Please enter a valid email address.</div>
+            <div class="alert alert-danger" [hidden]="!(email.touched && email.control.hasError('email'))">Please enter a valid email address.</div>
 		</div>
 		<div class="form-actions">
 		  <button md-button type="submit" class="form-submit inverted-button" [disabled]="!subscribeForm.form.valid">Subscribe</button>

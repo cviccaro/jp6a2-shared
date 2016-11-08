@@ -1,4 +1,14 @@
-import { Component, OnInit, OnChanges, ElementRef, ViewChild, Renderer, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	OnChanges,
+	ElementRef,
+	ViewChild,
+	Renderer,
+	Input,
+	ChangeDetectionStrategy,
+	SimpleChanges
+} from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 var first = true;
@@ -10,7 +20,8 @@ var first = true;
 	styles: [ ':host { display: inline-block; height: 25px; width: 60px; overflow: hidden; }' ],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LinkedInButtonComponent implements OnInit, OnChanges {
+export class LinkedInButtonComponent implements OnInit,
+OnChanges {
 	button: any;
 	rendering = false;
 
@@ -24,7 +35,7 @@ export class LinkedInButtonComponent implements OnInit, OnChanges {
 		this.loadWidget();
 	}
 
-	ngOnChanges() {
+	ngOnChanges(changes: SimpleChanges) {
 		this.loadWidget();
 	}
 

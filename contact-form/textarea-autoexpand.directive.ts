@@ -25,13 +25,13 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 	}
 
 	@HostListener('focus', ['$event'])
-	onFocus() {
+	onFocus(e: Event) {
 		let $label = jQuery(this._el.nativeElement).prev();
 		$label.addClass('md-focused');
 	}
 
 	@HostListener('blur', ['$event'])
-	onBlur() {
+	onBlur(e: Event) {
 		let $label = jQuery(this._el.nativeElement).prev();
 		$label.removeClass('md-focused');
 		this.handleEmpty();

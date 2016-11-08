@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, ElementRef, Renderer, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnChanges, ElementRef, Renderer, Input, ChangeDetectionStrategy, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -18,7 +18,7 @@ export class TweetButtonComponent implements OnInit, OnChanges {
 		this.loadWidget();
 	}
 
-	ngOnChanges() {
+	ngOnChanges(changes: SimpleChanges) {
 		this.loadWidget();
 	}
 

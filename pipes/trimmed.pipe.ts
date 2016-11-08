@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({name: 'trimmed'})
 export class TrimmedPipe implements PipeTransform {
-    transform(value: any, wordwise: boolean, max: any, tail: number) {
+    transform(value: any, wordwise: boolean, max: any, tail: string) {
         if (!value) return '';
 
         max = parseInt(max, 10);

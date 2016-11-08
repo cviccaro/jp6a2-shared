@@ -13,12 +13,12 @@ export class BalloonCalloutIconComponent {
 	@Input() text: string;
 	@Input() url: string = '#';
 
-	@HostListener('mouseenter')
+	@HostListener('mouseenter', ['$event'])
 	onHover(e: any) {
 		this.hover.emit({event: e, text: this.text});
 	}
 
-	@HostListener('mouseleave')
+	@HostListener('mouseleave', ['$event'])
 	onLeave(e: any) {
 		this.leave.emit({event: e, text: this.text});
 	}

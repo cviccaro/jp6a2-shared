@@ -1,5 +1,6 @@
-import { OpaqueToken } from '@angular/core';
+import { OpaqueToken, Injectable } from '@angular/core';
 
+@Injectable()
 export class MockWindow {
   public DISQUS: {
     reset: (params: {}) => {}
@@ -8,6 +9,7 @@ export class MockWindow {
 }
 
 export const WINDOW = new OpaqueToken('window');
+//export const windowFactory = () => (window) ? window : MockWindow;
 export const WindowProviders = [
-    { provide: WINDOW, useFactory: () => (window) ? window : MockWindow }
+    { provide: WINDOW, useValue: MockWindow }
 ];

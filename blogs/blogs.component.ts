@@ -54,7 +54,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
 		);
 	}
 
-	filterByDivision(division: string) {
+	filterByDivision(division: string, e: Event) {
 		this.divisionFilter = division;
 		this.index = 0;
 		this.finished = false;

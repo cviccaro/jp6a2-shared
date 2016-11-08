@@ -3,7 +3,7 @@ import { AbstractControl } from '@angular/forms';
 
 @Injectable()
 export class EmailValidator {
-	static emailFormat(control: AbstractControl): {[key: string]: any} {
+	static emailFormat(control: AbstractControl): any {
 		var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
         let empty = control.value === null || control.value === undefined || control.value === '';

@@ -38,7 +38,6 @@ export class GalleryComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		//console.log('GalleryComponent View Initialized. ', this);
 		setTimeout(() => this.ready = true, 250);
 	}
 

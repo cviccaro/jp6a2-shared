@@ -7,7 +7,7 @@ import { CacheService } from '../cache/cache.service';
   template: '<img [src]="logo.url" [alt]="logo.description" />'
 })
 export class LogoComponent {
-  logo: { [key: string] : any };
+  logo: { url: string, description: string };
 
   constructor(public cache: CacheService) {
     let config = this.cache.get('config');
