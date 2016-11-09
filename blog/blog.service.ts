@@ -30,14 +30,14 @@ export class BlogService {
 			.map(res => res.json());
 	}
 
-	recent(skip: number = 0, take:number = 3, site_name?: string) {
+	recent(skip: number = 0, take:number = 3, filter?: string) {
 		let params = new URLSearchParams();
 
 		params.set('skip', skip.toString());
 		params.set('take', take.toString());
 
-		if (site_name) {
-			params.set('division', site_name);
+		if (filter) {
+			params.set('filter', filter);
 		}
 
 		return this.http.get(Config.API + '/blogs/recent', { search: params })

@@ -19,7 +19,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
 	perPage = 12;
 	index = 0;
 	finished = false;
-	divisionFilter: string = null;
+	filter: string = null;
 
 	private subs: Subscription[] = [];
 
@@ -31,7 +31,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
 		this.blogs = this.cache.get('blogs_page');
 
 		if (Config['division'] !== undefined) {
-			this.divisionFilter = Config.division;
+			this.filter = Config.division;
 		}
 
 		let title = 'JP Enterprises';
@@ -54,8 +54,8 @@ export class BlogsComponent implements OnInit, OnDestroy {
 		);
 	}
 
-	filterByDivision(division: string, e: Event) {
-		this.divisionFilter = division;
+	filterData(filter: string, e: Event) {
+		this.filter = filter;
 		this.index = 0;
 		this.finished = false;
 		this.getBlogs();
@@ -83,6 +83,6 @@ export class BlogsComponent implements OnInit, OnDestroy {
 	}
 
 	private _fetchBlogs(skip: number = 0) {
-		return this.blogService.recent(skip, this.perPage, this.divisionFilter);
+		return this.blogService.recent(skip, this.perPage, this.filter);
 	}
 }
