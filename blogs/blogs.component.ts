@@ -18,10 +18,9 @@ export class BlogsComponent implements OnInit, OnDestroy {
 	config: any;
 	perPage = 12;
 	index = 0;
+	fetchedBlogs: Subscription;
 	finished = false;
 	filter: string = null;
-
-	private subs: Subscription[] = [];
 
 	constructor(public blogService: BlogService, public cache: CacheService, public title: Title) { }
 
@@ -46,12 +45,14 @@ export class BlogsComponent implements OnInit, OnDestroy {
 	}
 
 	getBlogs() {
-		this.subs.push(
-			this._fetchBlogs()
+		this.fetchedBlogs =
+			this.fetchBlogs()
 				.subscribe(res => {
 					this.blogs = res;
-				})
-		);
+					this.cache.store('blogs', res);
+					console.log('Blogs: ', this.blogs);
+					this.finished = !(res.remaining > 0);
+				});
 	}
 
 	filterData(filter: string, e: Event) {
@@ -65,24 +66,28 @@ export class BlogsComponent implements OnInit, OnDestroy {
 	more() {
 		this.index += this.perPage;
 
-		this.subs.push(
-				this._fetchBlogs(this.index)
-					.subscribe(res => {
-						this.blogs.blogs = this.blogs.blogs.concat(res.blogs);
-						this.finished = !(res.remaining > 0);
-					})
-		);
+		this.fetchedBlogs =
+			this.fetchBlogs(this.index)
+				.subscribe(res => {
+					this.blogs.blogs = this.blogs.blogs.concat(res.blogs);
+					this.finished = !(res.remaining > 0);
+				});
 
 		return false;
 	}
 
+	/**
+	 * Angular lifecycle 
+	 */
 	ngOnDestroy() {
-		this.subs.forEach(sub => {
-			if (sub) sub.unsubscribe();
-		});
+		if (this.fetchedBlogs) this.fetchedBlogs.unsubscribe();
 	}
 
-	private _fetchBlogs(skip: number = 0) {
+	/**
+	 * Fetch blogs
+	 * @param {number = 0} skip [description]
+	 */
+	private fetchBlogs(skip: number = 0) {
 		return this.blogService.recent(skip, this.perPage, this.filter);
 	}
 }
