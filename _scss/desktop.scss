@@ -262,12 +262,22 @@ nav {
       margin-right: 0;
     }
   }
+  ul,a[md-button] {
+    margin-bottom: 20px;
+  }
   p + button {
     margin-top: 20px;
   }
+
+  h3 {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 28px;
+  }
 }
 
-.bg-cover {
+.bg-cover,
+section.bg-cover {
   background-size: cover!important;
 }
 
@@ -365,6 +375,7 @@ section {
   }
 
   ul {
+    padding-left: 37px;
     text-align: left;
     li {
       padding-left: 8px;
