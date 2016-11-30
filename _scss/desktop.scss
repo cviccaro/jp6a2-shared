@@ -110,6 +110,10 @@ button {
   &[disabled] {
     opacity: 0.2;
   }
+  &:hover {
+    background-color: $blackish;
+    color: $white;
+  }
 }
 
 .button-thick,
@@ -121,12 +125,6 @@ button {
   padding-top: 14px;
   padding-bottom: 14px;
   line-height: 16px;
-}
-
-.text-right {
-  .button-thick {
-    margin-left: auto;
-  }
 }
 
 @media screen and (min-width: $desktop-min-width) {
@@ -358,14 +356,19 @@ section {
 }
 
 .text-right {
-  .section-title {
+  p,
+  ul,
+  .section-title,
+  .content button,
+  .button-thick {
     margin-left: auto;
   }
-  p {
-    margin-left: auto;
-  }
-  .content button {
-    margin-left: auto;
+
+  ul {
+    text-align: left;
+    li {
+      padding-left: 8px;
+    }
   }
 }
 
