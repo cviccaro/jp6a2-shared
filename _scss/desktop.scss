@@ -112,6 +112,17 @@ button {
   }
 }
 
+.button-thick,
+.button-thick.inverted-button,
+[md-button].button-thick {
+  max-width: 340px;
+  height: auto;
+  white-space: normal;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  line-height: 16px;
+}
+
 @media screen and (min-width: $desktop-min-width) {
   .inverted-button,
   [md-button].inverted-button {
@@ -305,6 +316,11 @@ input {
   font-weight: 300;
   font-family: $proxima-nova;
   margin: 0 0 1em;
+  max-width: 60%;
+
+  &.text-right {
+    margin-left: auto;
+  }
 
   a {
     vertical-align: middle;
@@ -329,6 +345,9 @@ section {
 }
 
 .text-right {
+  .section-title {
+    margin-left: auto;
+  }
   p {
     margin-left: auto;
   }
@@ -374,7 +393,12 @@ section.theme-dark {
 .theme-grey,
 .grey-bg {
   background-color: $grey_100;
+  .inverted-button {
+    background-color: transparent;
+  }
 }
+
+
 
 #projects
 {
