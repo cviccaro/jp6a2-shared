@@ -12,11 +12,12 @@ export class DivisionGuard implements CanActivate, OnDestroy {
 
   constructor(public cache: CacheService, public service: DivisionService) { }
 
-  canActivate(): boolean|Observable<boolean> {
+  canActivate(): Observable<boolean> {
     return Observable.create((observer: any) => {
       this.sub = this.service.get(Config.division).subscribe((res: Response)=> {
         this.cache.store('config', res);
-        observer.complete(true);
+        observer.next(true);
+        observer.complete();
       });
     });
   }
