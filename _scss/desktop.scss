@@ -123,6 +123,12 @@ button {
   line-height: 16px;
 }
 
+.text-right {
+  .button-thick {
+    margin-left: auto;
+  }
+}
+
 @media screen and (min-width: $desktop-min-width) {
   .inverted-button,
   [md-button].inverted-button {
@@ -258,6 +264,13 @@ nav {
       margin-right: 0;
     }
   }
+  p + button {
+    margin-top: 20px;
+  }
+}
+
+.bg-cover {
+  background-size: cover!important;
 }
 
 /**
@@ -349,6 +362,9 @@ section {
     margin-left: auto;
   }
   p {
+    margin-left: auto;
+  }
+  .content button {
     margin-left: auto;
   }
 }
