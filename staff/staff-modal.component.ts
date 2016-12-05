@@ -21,6 +21,7 @@ export class StaffModalComponent implements ModalComponent<StaffModalComponentDa
   context: StaffModalComponentData;
 
   public trustedBio: SafeHtml;
+  public linkedinTitle: string;
 
   constructor(public dialog: DialogRef<StaffModalComponentData>, public sanitizer: DomSanitizer, public el: ElementRef) {
     this.context = dialog.context;
@@ -33,5 +34,9 @@ export class StaffModalComponent implements ModalComponent<StaffModalComponentDa
     this.el.nativeElement.parentElement.classList.add('xl');
     this.el.nativeElement.parentElement.parentElement.classList.add('modal-lg');
     this.el.nativeElement.parentElement.parentElement.classList.add('xl');
+
+    if (this.context.person.linkedin) {
+      this.linkedinTitle = `View ${this.context.person.first_name}'s full profile on LinkedIn`;
+    }
   }
 }
