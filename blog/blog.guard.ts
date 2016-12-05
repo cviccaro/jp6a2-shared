@@ -33,6 +33,7 @@ export class BlogGuard implements CanActivate, OnDestroy {
               .subscribe(res => {
                 this.data['related'] = res;
                 this.cacheService.store('blog_related', res);
+                observer.next(true);
                 observer.complete();
               });
           })

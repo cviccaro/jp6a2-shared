@@ -48,8 +48,6 @@ export class ContactFormComponent implements OnDestroy {
         }
 
         this.contactForm = builder.group(group);
-
-        console.log(this.contactForm);
     }
 
     postToServer() {

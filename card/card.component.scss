@@ -67,6 +67,14 @@
 		opacity: 0;
 		image-rendering:-webkit-optimize-contrast;
 		@include transition(opacity $transition_duration $transition_ease);
+
+		&.content-overlay {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			font-weight: bold;
+		}
 	}
 	.card-body {
 		& > * {
@@ -113,6 +121,9 @@
 		a,
 		p {
 			color: $white_trans;
+		}
+		a:hover {
+			color: $blue;
 		}
 	}
 }

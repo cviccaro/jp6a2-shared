@@ -1,0 +1,54 @@
+$modal-text-color: #111;
+
+:host /deep/ {
+	.custom-modal-container {
+	    padding: 65px;
+	    color: $modal-text-color;
+	}
+	.left-col {
+		img {
+			width: 100%;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	.right-col {
+		.person-name {
+			text-transform: uppercase;
+			font-weight: 300;
+			margin-top: 0;
+		}
+		.person-title {
+			font-weight: 300;
+		}
+		.person-bio {
+			margin-top: 24px;
+		}
+	}
+
+	.overlay-close {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		border-color: #dfdfdf;
+		span {
+			color: $modal-text-color;
+			font-weight: 300;
+			font-size: 16px;
+		}
+		md-icon {
+			color: #999;
+		}
+	}
+
+	.linkedin {
+		display: block;
+		margin-top: 32px;
+		background: url('/assets/images/linkedin-full@2x.png') top left no-repeat;
+		width: 84px;
+		height: 21px;
+		background-size: 84px 21px;
+	}
+}

@@ -34,6 +34,7 @@ export class BlogsGuard implements CanActivate, OnDestroy {
 
   handleResponse(res: Response, observer: Observer<boolean>) {
     this.cache.store('blogs_page', res);
+    observer.next(true);
     observer.complete();
   }
 

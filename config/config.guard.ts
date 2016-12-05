@@ -15,7 +15,8 @@ export class ConfigGuard implements CanActivate, OnDestroy {
     return Observable.create((observer: any) => {
       this.sub = this.service.get().subscribe((res: Response)=> {
         this.cache.store('config', res);
-        observer.complete(true);
+        observer.next(true);
+        observer.complete();
       });
     });
   }

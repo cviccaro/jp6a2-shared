@@ -10,4 +10,5 @@ export interface Staff {
 	phone: string;
 	updated_at: string;
 	created_at: string;
+	bio: string;
 }

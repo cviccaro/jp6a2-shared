@@ -8,6 +8,8 @@ import { MomentModule } from 'angular2-moment';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
 
 import { RecaptchaModule } from 'ng2-recaptcha';
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 import {
   APP_MIDDLEWARE,
@@ -34,7 +36,8 @@ import {
   SOCIAL_COMPONENTS,
   ScrollToComponent,
   SubscribeComponent,
-  WindowProviders
+  WindowProviders,
+  StaffModalComponent
 } from './index';
 
 /**
@@ -50,7 +53,9 @@ import {
     AgmCoreModule,
     MaterialModule,
     MomentModule,
-    RecaptchaModule.forRoot()
+    RecaptchaModule.forRoot(),
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
   declarations: [
     APP_PIPES,
@@ -74,7 +79,8 @@ import {
     ScrollToComponent,
     SOCIAL_COMPONENTS,
     SplashComponent,
-    SubscribeComponent
+    SubscribeComponent,
+    StaffModalComponent
   ],
   exports: [
     // Angular modules
@@ -111,7 +117,11 @@ import {
     ScrollToComponent,
     SplashComponent,
     SOCIAL_COMPONENTS,
-    SubscribeComponent
+    SubscribeComponent,
+    StaffModalComponent
+  ],
+  entryComponents: [
+    StaffModalComponent
   ]
 })
 export class SharedModule {

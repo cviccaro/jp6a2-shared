@@ -3,7 +3,10 @@
 		<div class="card-img">
 			<a *ngSwitchCase="true" [routerLink]="route" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile">
 				<div md-ripple md-ripple-centered="true"></div>
-				<div *ngIf="overlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
+				<div *ngIf="overlay && !hasContentOverlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
+				<div class="overlay content-overlay" *ngIf="hasContentOverlay">
+					<ng-content></ng-content>
+				</div>
 				<img [src]="image" [title]="cardTitle" />
 			</a>
 		</div>
@@ -18,9 +21,20 @@
 	</template>
 	<template ngSwitchDefault>
 		<div class="card-img">
-			<a [href]="href" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile">
+			<a *ngIf="!hasHref" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile" (click)="onClick()">
 				<div md-ripple md-ripple-centered="true"></div>
-				<div *ngIf="overlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
+				<div *ngIf="overlay && !hasContentOverlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
+				<div class="overlay content-overlay" *ngIf="hasContentOverlay">
+					<ng-content></ng-content>
+				</div>
+				<img [src]="image" [title]="cardTitle" />
+			</a>
+			<a *ngIf="hasHref" [href]="href" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile">
+				<div md-ripple md-ripple-centered="true"></div>
+				<div *ngIf="overlay && !hasContentOverlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
+				<div class="overlay content-overlay" *ngIf="hasContentOverlay">
+					<ng-content></ng-content>
+				</div>
 				<img [src]="image" [title]="cardTitle" />
 			</a>
 		</div>
@@ -30,7 +44,8 @@
 			<span *ngIf="author">by {{author | capitalize}}</span>
 		</div>
 		<h3 class="card-title">
-			<a [href]="href" [title]="cardTitle">{{ cardTitle }}</a>
+			<a *ngIf="hasHref" [href]="href" [title]="cardTitle">{{ cardTitle }}</a>
+			<a *ngIf="!hasHref" (click)="onClick()">{{ cardTitle }}</a>
 		</h3>
 	</template>
 	<h4 class="card-subtitle md-body-1" *ngIf="subTitle">{{ subTitle }}</h4>

@@ -1,0 +1,16 @@
+<button md-button class="inverted-button overlay-close fat" (click)="dialog.close()">
+    Close Window&nbsp;&nbsp;<md-icon class="small">close</md-icon>
+</button>
+<div class="container-fluid custom-modal-container staff-modal">
+    <div class="row">
+        <div class="col-md-5 col-sm-12 left-col" *ngIf="context.person.image?.url">
+            <img [src]="context.person.image.url" [title]="context.person.full_name + ', ' + context.person.title" />
+        </div>
+        <div class="col-md-7 col-sm-12 right-col">
+            <h2 class="person-name">{{ context.person.full_name }}</h2>
+            <h5 class="person-title">{{ context.person.title }}</h5>
+            <div class="person-bio" [innerHTML]="trustedBio"></div>
+            <a class="linkedin" *ngIf="context.person.linkedin" [href]="context.person.linkedin" [title]="'View ' + context.person.first_name + '\'s full profile on LinkedIn'" target="_blank"></a>
+        </div>
+    </div>
+</div>
