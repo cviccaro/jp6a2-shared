@@ -11,6 +11,8 @@
             <h5 class="person-title">{{ context.person.title }}</h5>
             <div class="person-bio" [innerHTML]="trustedBio"></div>
             <a class="linkedin" *ngIf="context.person.linkedin" [href]="context.person.linkedin" [title]="linkedinTitle" target="_blank"></a>
+            <div class="person-phone" *ngIf="context.person.phone">{{ context.person.phone }}</div>
+            <div class="person-email" *ngIf="context.person.email"><a [href]="'mailto:' + context.person.email">{{ context.person.email }}</a></div>
         </div>
     </div>
 </div>

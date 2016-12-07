@@ -26,12 +26,25 @@ $modal-text-color: #111;
 		.person-bio {
 			margin-top: 24px;
 		}
+		.person-phone,
+		.person-email {
+			margin-top: 3px;
+			font-size: 14px;
+		}
+		.linkedin+.person-phone,
+		.linkedin+.person-email {
+			margin-top: 6px;
+		}
+		.person-bio+.person-title,
+		.person-bio+.person-email {
+			margin-top: 24px;
+		}
 	}
 
 	.overlay-close {
 		position: absolute;
-		top: 0px;
-		right: 0px;
+		top: 15px;
+		right: 15px;
 		border-color: #dfdfdf;
 		span {
 			color: $modal-text-color;
