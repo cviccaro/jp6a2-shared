@@ -9,6 +9,15 @@ jp-balloon {
 			}
 		}
 	}
+	&.creative {
+		.balloon {
+			.icon-container {
+				:host {
+				  background-position-y: -125px;
+				}
+			}
+		}
+	}
 
 	balloon-callout {
 		jp-balloon-callout-icon {

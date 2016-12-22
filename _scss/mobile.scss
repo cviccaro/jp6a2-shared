@@ -298,7 +298,7 @@ $h4-font-size: 18px;
                 jp-icon,
                 jp-icon-hover {
                     background-image: url("../assets/images/services/sprite-2x.png")!important;
-                    background-size: 188px 85px;
+                    background-size: 209px 100px;
                 }
 
                 jp-icon-hover {
@@ -341,14 +341,12 @@ $h4-font-size: 18px;
                 .balloon {
                     .icon-container {
                         width: 45px!important;
-                        height: 54px!important;
+                        height: 50px!important;
                         position: relative;
                         left: -2px;
-                        top: -3px;
                         jp-icon,
                         jp-icon-hover {
-                            background-size: 235px 107px;
-                            background-position-x: -135px!important;
+                            background-position-x: -107px!important;
                         }
                     }
                 }
@@ -356,9 +354,12 @@ $h4-font-size: 18px;
 
             &.interactive {
                 .balloon {
-                    jp-icon,
-                    jp-icon-hover {
-                        background-position-x: -145px !important;
+                    .icon-container {
+                        width: 55px!important;
+                        jp-icon,
+                        jp-icon-hover {
+                            background-position-x: -154px !important;
+                        }
                     }
                 }
             }

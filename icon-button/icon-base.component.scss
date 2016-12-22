@@ -10,7 +10,7 @@ jp-balloon {
         right: 0;
         bottom: 0;
         background-image: url("../assets/images/services/sprite-2x.png");
-        background-size: 466px 214px;
+        background-size: 523.5px 250px;
         z-index: 9;
         will-change: opacity;
         @include transition(opacity $transition_duration ease-out);
@@ -43,7 +43,7 @@ jp-balloon {
         left: -2px;
 
         :host {
-          background-position-x: -266px;
+          background-position-x: -271px;
         }
       }
     }
@@ -53,7 +53,7 @@ jp-balloon {
     .balloon {
       .icon-container {
         :host {
-          background-position-x: -360px;
+          background-position-x: -384px;
         }
       }
     }
@@ -77,7 +77,7 @@ balloon-callout {
       z-index: 9;
 
       //@include transition(opacity 200ms linear);
-   
+
     }
   }
 }

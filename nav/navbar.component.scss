@@ -86,6 +86,17 @@
       display: none;
     }
   }
+
+  jp-icon-button {
+    .svg {
+      background-color: $blackish;
+    }
+    &:hover {
+      .svg {
+        background-color: $white;
+      }
+    }
+  }
 }
 
 :host {
