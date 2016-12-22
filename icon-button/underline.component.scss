@@ -9,23 +9,33 @@ jp-icon-button {
 		height: 1px;
 	}
 	&.blue {
-    :host {
-    	background: $blue_translucent;
-    }
+        :host {
+        	background: $blue_translucent;
+        }
 	}
 	&.yellow {
-    :host {
-    	background: $yellow_translucent;
-    }
+        :host {
+        	background: $yellow_translucent;
+        }
 	}
 	&.fuchsia {
-    :host {
-    	background: $fuchsia_translucent;
-    }
+        :host {
+        	background: $fuchsia_translucent;
+        }
 	}
 	&.mdm {
-    :host {
-    	background: $blackish;
-    }
+        :host {
+        	background: $blackish;
+        }
 	}
+    &.creative {
+        :host {
+            bottom: -2px;
+        }
+    }
+    &.interactive {
+        :host {
+            bottom: 0px;
+        }
+    }
 }
