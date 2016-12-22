@@ -12,15 +12,11 @@
 				<jp-icon></jp-icon>
 				<jp-icon-hover></jp-icon-hover>
 			</jp-icon-button>
-			<jp-icon-button class="horizontal creative yellow" (click)="filterData('creative', $event)" [class.active]="filter === 'creative'">
+			<jp-icon-button class="horizontal creative yellow" (click)="filterData('creative', $event)" [class.active]="filter === 'creative'" svg="Creative">
 				<jp-icon-button-text>Creative</jp-icon-button-text>
-				<jp-icon></jp-icon>
-				<jp-icon-hover></jp-icon-hover>
 			</jp-icon-button>
-			<jp-icon-button class="horizontal interactive fuchsia" (click)="filterData('interactive', $event)" [class.active]="filter === 'interactive'">
+			<jp-icon-button class="horizontal interactive fuchsia" (click)="filterData('interactive', $event)" [class.active]="filter === 'interactive'" svg="Interactive">
 				<jp-icon-button-text>Interactive</jp-icon-button-text>
-				<jp-icon></jp-icon>
-				<jp-icon-hover></jp-icon-hover>
 			</jp-icon-button>
 			<jp-icon-button class="horizontal news green" (click)="filterData('news', $event)" [class.active]="filter === 'news'">
 				<jp-icon-button-text>News</jp-icon-button-text>

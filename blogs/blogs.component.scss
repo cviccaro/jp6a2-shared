@@ -9,6 +9,22 @@
 		jp-icon-button {
 			width: 20%;
 			height: 39px;
+
+			/**
+			 * Svg
+			 */
+			.svg {
+			    background-color: $blackish;
+			    will-change: background-color;
+			    @include transition(background-color 200ms linear);
+			    mask-repeat: no-repeat;
+			    -webkit-mask-repeat: no-repeat;
+			}
+			&:hover {
+				.svg {
+					background-color: $white;
+				}
+			}
 		}
 	}
 	.button-container {
