@@ -65,7 +65,8 @@
         display: none!important;
       }
 
-      &[title="Projects"] {
+      &[title="Projects"],
+      &[title="Work"] {
         order: 2;
       }
       &[title="Blog"] {
@@ -91,8 +92,7 @@
     .svg {
       background-color: $blackish;
     }
-    &:hover,
-    &.active {
+    &:hover {
       .svg {
         background-color: $white;
       }
