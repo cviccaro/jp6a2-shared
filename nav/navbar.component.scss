@@ -92,7 +92,8 @@
     .svg {
       background-color: $blackish;
     }
-    &:hover {
+    &:hover,
+    &.active {
       .svg {
         background-color: $white;
       }
