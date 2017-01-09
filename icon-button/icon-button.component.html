@@ -1,7 +1,8 @@
 <a class="inner" [href]="href">
 	<div class="icon-container" [ngSwitch]="svg.length >= 1">
         <template [ngSwitchCase]="true">
-            <div class="svg" [style.-webkit-mask-image]="safeSvgBgImage" [style.-moz-mask-image]="safeSvgBgImage"></div>
+            <!-- <div class="svg" [style.-webkit-mask-image]="safeSvgBgImage" [style.-moz-mask-image]="safeSvgBgImage"></div> -->
+            <div class="svg" [inlineSVG]="'/assets/svg/' + svg + '.svg'"></div>
         </template>
         <template ngSwitchDefault>
             <ng-content select="jp-icon"></ng-content>

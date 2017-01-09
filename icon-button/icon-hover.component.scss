@@ -9,14 +9,42 @@ jp-balloon {
 			}
 		}
 	}
+	&.mdm {
+	  .balloon {
+	  	.icon-container {
+	  	  :host {
+	  	    background-position: 0px -108px;
+	  	  }
+	  	}
+	  }
+	}
+
+	&.publishing {
+	  .balloon {
+	    .icon-container {
+	      :host {
+	        background-position: -160px -108px;
+	      }
+	    }
+	  }
+	}
 	&.creative {
 		.balloon {
 			.icon-container {
 				:host {
-				  background-position-y: -125px;
+				  background-position: -271px -125px;
 				}
 			}
 		}
+	}
+	&.interactive {
+	  .balloon {
+	    .icon-container {
+	      :host {
+	        background-position: -384px -108px;
+	      }
+	    }
+	  }
 	}
 
 	balloon-callout {
@@ -47,17 +75,19 @@ jp-balloon:hover {
  * Icon buttons in the navbar
  */
 jp-icon-button.icon-menu-button {
-	:host {
-		background-position-y: -25px;
+	&.mdm {
+		:host {
+			background-position: -73px -25px;
+		}
 	}
 	&.publishing {
 		:host {
-			background-position-y: -26px;
+			background-position: 0px -25px;
 		}
 	}
-	&.creative {
-		:host {
-	    	background-position-y: -26px;
-		}
-	}
+	// &.creative {
+	// 	:host {
+	//     	background-position: -26px;
+	// 	}
+	// }
 }

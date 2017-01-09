@@ -30,12 +30,12 @@ jp-icon-button {
 	}
     &.creative {
         :host {
-            bottom: -2px;
+            //bottom: -4px;
         }
     }
     &.interactive {
         :host {
-            bottom: 0px;
+           // bottom: -2px;
         }
     }
 }

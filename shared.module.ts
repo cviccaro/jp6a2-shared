@@ -10,6 +10,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
 import { RecaptchaModule } from 'ng2-recaptcha';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 import {
   APP_MIDDLEWARE,
@@ -55,7 +56,8 @@ import {
     MomentModule,
     RecaptchaModule.forRoot(),
     ModalModule.forRoot(),
-    BootstrapModalModule
+    BootstrapModalModule,
+    InlineSVGModule
   ],
   declarations: [
     APP_PIPES,
@@ -118,7 +120,8 @@ import {
     SplashComponent,
     SOCIAL_COMPONENTS,
     SubscribeComponent,
-    StaffModalComponent
+    StaffModalComponent,
+    InlineSVGModule
   ],
   entryComponents: [
     StaffModalComponent

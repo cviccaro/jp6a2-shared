@@ -1,5 +1,5 @@
-import { Component, Input, ElementRef, OnInit } from '@angular/core';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { Component, Input, ElementRef, OnInit, HostBinding } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
 	moduleId: module.id,
 	selector: 'jp-icon-button',
@@ -10,14 +10,13 @@ export class IconButtonComponent implements OnInit {
 	@Input() href: string = '#';
     @Input() svg: string = '';
 
-    safeSvgBgImage: SafeStyle;
-
 	constructor(public el: ElementRef, public sanitizer: DomSanitizer) { }
 
+    @HostBinding('class.inline-svg') get willApplyInlineSVGClass() {
+        return this.svg !== '';
+    }
+
     ngOnInit() {
-        if (this.svg) {
-            this.safeSvgBgImage = this.sanitizer.bypassSecurityTrustStyle(`url('/assets/svg/${this.svg}.svg')`);
-        }
         console.log('IconButtonComponent initialized', this);
     }
 }

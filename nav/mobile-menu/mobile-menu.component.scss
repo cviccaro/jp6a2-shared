@@ -78,8 +78,8 @@
 		    		&:last-child {
 		    			border-bottom: none;
 		    		}
-		    		&[title="Projects"] {
-		    		  order: 2;
+		    		&[title="Work"] {
+		    		  order: 8;
 		    		}
 		    		&[title="Blog"] {
 		    		  order: 9;
@@ -153,6 +153,11 @@
 		    				}
 		    				jp-icon-button-text {
 		    					color: $almost_black!important;
+		    				}
+		    				&.inline-svg {
+	    						.svg svg path {
+	    							fill: $blackish;
+	    						}
 		    				}
 		    			}
 		    		}

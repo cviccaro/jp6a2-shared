@@ -79,6 +79,7 @@
   }
   .icon-menu {
     margin-left: 40px;
+    height: 100%;
   }
 
   md-progress-bar {
@@ -89,9 +90,9 @@
   }
 
   jp-icon-button {
-    .svg {
-      background-color: $blackish;
-    }
+    // .svg {
+    //   background-color: $blackish;
+    // }
     &:hover,
     &.active {
       .svg {
