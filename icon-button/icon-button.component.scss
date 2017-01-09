@@ -398,7 +398,8 @@
 //     }
 // }
 
-:host.inline-svg:hover /deep/ {
+:host.inline-svg:hover /deep/,
+:host.inline-svg.active /deep/ {
     .svg {
         background-color: transparent!important;
         svg {
