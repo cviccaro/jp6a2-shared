@@ -17,6 +17,6 @@ export class IconButtonComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('IconButtonComponent initialized', this);
+//        console.log('IconButtonComponent initialized', this);
     }
 }

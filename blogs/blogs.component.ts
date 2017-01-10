@@ -50,7 +50,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
 				.subscribe(res => {
 					this.blogs = res;
 					this.cache.store('blogs', res);
-					console.log('Blogs: ', this.blogs);
+//					console.log('Blogs: ', this.blogs);
 					this.finished = !(res.remaining > 0);
 				});
 	}

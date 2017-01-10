@@ -26,7 +26,7 @@ export class StaffModalComponent implements ModalComponent<StaffModalComponentDa
   constructor(public dialog: DialogRef<StaffModalComponentData>, public sanitizer: DomSanitizer, public el: ElementRef) {
     this.context = dialog.context;
     this.trustedBio = this.sanitizer.bypassSecurityTrustHtml(this.context.person.bio);
-    console.log('StaffModalComponent constructed', this, this.context.person);
+  //  console.log('StaffModalComponent constructed', this, this.context.person);
   }
 
   ngOnInit() {
