@@ -383,6 +383,7 @@
 :host.inline-svg /deep/ {
     .svg {
         background-color: transparent!important;
+        height: 100%;
         svg {
             path {
                 fill: $blackish;
