@@ -1,5 +1,8 @@
 :host /deep/ {
 	display: block;
+	.section-title {
+		max-width: 100%;
+	}
 	.blog-splash {
 		min-height: 383px;
 		background-position: 50% 0%;
