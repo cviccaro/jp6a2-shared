@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter, OnDestroy, ViewChild } from '@angular/
 import { Response } from '@angular/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Observer, Subscription } from 'rxjs/Rx';
-import { RecaptchaComponent } from 'ng2-recaptcha';
+import { RecaptchaComponent } from 'ng2-recaptcha/recaptcha/recaptcha.component';
 
 import { FormSubmissionService } from './form-submission.service';
 import { ContactFormSubmission, EmailValidator, Config } from '../index';

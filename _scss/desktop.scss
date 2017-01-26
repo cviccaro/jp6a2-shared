@@ -147,8 +147,9 @@ button {
     }
     &[disabled] {
       opacity: 0.2;
+      color: $white_trans;
       &:hover {
-        background: initial!important;
+        background: inherit!important;
       }
     }
   }
@@ -577,9 +578,7 @@ section.theme-dark {
 
  .form-actions {
    .inverted-button[disabled] {
-     span {
-       color: initial!important;
-     }
+     
    }
  }
 

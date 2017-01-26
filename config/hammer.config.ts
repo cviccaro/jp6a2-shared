@@ -1,5 +1,4 @@
-//import { HammerInstance } from '@angular/platform-browser/index';
-import * as Hammer from 'hammerjs';
+import 'hammerjs';
 
 export class HammerConfig {
 
