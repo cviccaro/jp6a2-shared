@@ -1,6 +1,8 @@
 import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { LatLngLiteral, SebmGoogleMap, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
+import { LatLngLiteral } from 'angular2-google-maps/core';
+import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core/services';
+import { SebmGoogleMap } from 'angular2-google-maps/core/directives';
 import { GeolocateService } from './geolocate.service';
 
 import { Subscription } from 'rxjs/Rx';

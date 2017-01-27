@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule, MdIconRegistry, OVERLAY_PROVIDERS } from '@angular/material';
 import { MomentModule } from 'angular2-moment';
-import { AgmCoreModule, GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
+import { AgmCoreModule } from 'angular2-google-maps/core';
+import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core/services';
 
 import { RecaptchaModule } from 'ng2-recaptcha/recaptcha/recaptcha.module';
 import { ModalModule } from 'angular2-modal';
