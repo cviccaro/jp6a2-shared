@@ -3,7 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MaterialModule, MdIconRegistry, OVERLAY_PROVIDERS } from '@angular/material';
+import { MdButtonModule } from '@angular/material/button';
+import { MdIconModule, MdIconRegistry } from '@angular/material/icon';
+import { MdGridListModule } from '@angular/material/grid-list';
+import { MdInputModule } from '@angular/material/input';
+import { MdToolbarModule } from '@angular/material/toolbar';
+import { MdProgressBarModule } from '@angular/material/progress-bar';
+import { MdRippleModule, OVERLAY_PROVIDERS } from '@angular/material/core';
+
 import { MomentModule } from 'angular2-moment';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core/services';
@@ -12,6 +19,8 @@ import { RecaptchaModule } from 'ng2-recaptcha/recaptcha/recaptcha.module';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { InlineSVGModule } from 'ng-inline-svg';
+
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
 import {
   APP_MIDDLEWARE,
@@ -53,12 +62,19 @@ import {
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule,
-    MaterialModule,
+    MdButtonModule.forRoot(),
+    MdIconModule.forRoot(),
+    MdGridListModule.forRoot(),
+    MdToolbarModule.forRoot(),
+    MdRippleModule.forRoot(),
+    MdInputModule.forRoot(),
+    MdProgressBarModule.forRoot(),
     MomentModule,
     RecaptchaModule.forRoot(),
     ModalModule.forRoot(),
     BootstrapModalModule,
-    InlineSVGModule
+    InlineSVGModule,
+    Ng2PageScrollModule.forRoot()
   ],
   declarations: [
     APP_PIPES,
@@ -95,8 +111,15 @@ import {
     // Third party modules
     AgmCoreModule,
     MomentModule,
-    MaterialModule,
+    MdButtonModule,
+    MdIconModule,
+    MdGridListModule,
+    MdToolbarModule,
+    MdRippleModule,
+    MdInputModule,
+    MdProgressBarModule,
     RecaptchaModule,
+    Ng2PageScrollModule,
 
     // App modules/components
     APP_PIPES,

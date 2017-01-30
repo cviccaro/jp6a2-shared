@@ -1,7 +1,7 @@
-export * from './balloon.component';
-export * from './balloon-callout.component';
-export * from './balloon-text.component';
-export * from './balloon-callout-icon.component';
+// export * from './balloon.component';
+// export * from './balloon-callout.component';
+// export * from './balloon-text.component';
+// export * from './balloon-callout-icon.component';
 
 import { BalloonComponent } from './balloon.component';
 import { BalloonCalloutComponent } from './balloon-callout.component';

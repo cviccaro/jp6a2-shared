@@ -6,7 +6,7 @@ import { ContentOverlayComponent } from '../content-overlay/index';
 import { SubscribeFormSubmission } from '../models/form-submissions';
 import { EmailValidator } from '../validators/index';
 
-declare var jQuery: any;
+//declare var jQuery: any;
 
 @Component({
   moduleId: module.id,
@@ -33,25 +33,25 @@ export class SubscribeComponent implements OnInit, AfterViewInit {
   }
 
   submit() {
-    this.submitted = true;
-    let modal: any = this.modal.alert();
+    // this.submitted = true;
+    // let modal: any = this.modal.alert();
 
-    modal
-      .size('sm')
-      .showClose(true)
-      .title('Thanks!')
-      .dialogClass('modal-dialog')
-      .body('<p>You\'ve been subscribed.</p>')
-      .open();
+    // modal
+    //   .size('sm')
+    //   .showClose(true)
+    //   .title('Thanks!')
+    //   .dialogClass('modal-dialog')
+    //   .body('<p>You\'ve been subscribed.</p>')
+    //   .open();
 
-    setTimeout(() => {
-      // use jQuery to capture button click since angular2-modal doesn't offer a way
-      // out of the box for some reason
-      jQuery('bs-modal-container .modal-footer .btn-primary').click(() => {
-        this.active = false;
-        setTimeout(() => { this.active = true; });
-        this.overlayCmp.close();
-      });
-    });
+    // setTimeout(() => {
+    //   // use jQuery to capture button click since angular2-modal doesn't offer a way
+    //   // out of the box for some reason
+    //   jQuery('bs-modal-container .modal-footer .btn-primary').click(() => {
+    //     this.active = false;
+    //     setTimeout(() => { this.active = true; });
+    //     this.overlayCmp.close();
+    //   });
+    // });
   }
 }

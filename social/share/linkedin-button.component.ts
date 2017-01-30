@@ -9,7 +9,7 @@ import {
 	ChangeDetectionStrategy,
 	SimpleChanges
 } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 var first = true;
 

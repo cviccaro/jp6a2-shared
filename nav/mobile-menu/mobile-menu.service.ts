@@ -1,32 +1,31 @@
-import { Injectable } from '@angular/core';
-
-declare var jQuery: any;
+import { Injectable, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Injectable()
 export class MobileMenuService {
-	private _active = false;
-	private _lastScrollPos = 0;
+	private active = false;
+	private lastScrollPos = 0;
+
+	constructor(@Inject(DOCUMENT) private document: any) {}
 
 	isActive() {
-		return this._active;
+		return this.active;
 	}
 
 	close() {
-		this._active = false;
+		this.active = false;
 
-		jQuery(document.body)
-			.removeClass('scroll-disabled')
-			.css('top', '');
+		this.document.body.classList.remove('scroll-disabled');
+		this.document.body.style.top = '';
 
-		window.scrollTo(0, this._lastScrollPos);
+		window.scrollTo(0, this.lastScrollPos);
 	}
 
 	open() {
-		this._active = true;
-		this._lastScrollPos = window.pageYOffset;
+		this.active = true;
+		this.lastScrollPos = window.pageYOffset;
 
-		jQuery(document.body)
-			.addClass('scroll-disabled')
-			.css('top', -this._lastScrollPos);
+		this.document.body.classList.add('scroll-disabled');
+		this.document.body.style.top = -this.lastScrollPos + 'px';
 	}
 }

@@ -1,11 +1,10 @@
-import { Component, OnInit, Input, ElementRef, AfterViewInit, HostBinding, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, AfterViewInit, HostBinding, OnDestroy, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavbarService } from '../nav/navbar.service';
 import { ScrollService } from '../scroll/scroll.service';
 import { Config } from '../config/env.config';
-import { Subscription } from 'rxjs/Rx';
-
-declare var jQuery: any;
+import { Subscription } from 'rxjs/Subscription';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
 	moduleId: module.id,
@@ -30,7 +29,8 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 		public router: Router,
 		public route: ActivatedRoute,
 		public scrollService: ScrollService,
-		public navbarService: NavbarService
+		public navbarService: NavbarService,
+		@Inject(DOCUMENT) private document: any
 	) {
 		//
 	}
@@ -48,8 +48,8 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 	}
 
 	close() {
-		document.body.classList.remove('scroll-disabled');
-		document.body.style.top = '';
+		this.document.body.classList.remove('scroll-disabled');
+		this.document.body.style.top = '';
 
 		window.scrollTo(0, this.scrollService.getLastScrollPos());
 
@@ -79,17 +79,16 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 			this.navbarService.snapIn();
 			this.navbarService.stopListening();
 
-			jQuery(document.body)
-				.addClass('scroll-disabled')
-				.css('top', -this.scrollService.getLastScrollPos());
+			this.document.body.classList.add('scroll-disabled');
+			this.document.body.style.top = -this.scrollService.getLastScrollPos() + 'px';
 		}, 1);
 	}
 
 	ngOnDestroy() {
 		if (this.sub) this.sub.unsubscribe();
 
-		document.body.classList.remove('scroll-disabled');
-		document.body.style.top = '';
+		this.document.body.classList.remove('scroll-disabled');
+		this.document.body.style.top = '';
 
 		if (window.innerWidth >= Config.desktopWidth && !this.navbarService.animatingHide) {
 			//this.navbarService.snapOut();
@@ -98,8 +97,6 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 	}
 
 	scrollUp() {
-		jQuery(this.el.nativeElement).animate({
-			scrollTop: 0
-		}, 500);
+		this.scrollService.scrollElementInline(this.el.nativeElement, '#content_overlay_top');
 	}
 }

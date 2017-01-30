@@ -1,6 +1,8 @@
 import { Output, EventEmitter, OnDestroy } from '@angular/core';
 
-import { Observable, Subscription, Observer } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 /**
  * Generic managed file configuration

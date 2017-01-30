@@ -2,9 +2,7 @@ import { Component, OnInit, AfterViewInit, ElementRef, HostListener, OnDestroy, 
 import { NavbarService } from './navbar.service';
 import { XhrService } from './../xhr/xhr.service';
 import { Config, IconButtonComponent } from '../index';
-import { Subscription } from 'rxjs/Rx';
-
-declare var jQuery: any;
+import { Subscription } from 'rxjs/Subscription';
 
 /**
  * This class represents the navigation bar component.
@@ -71,7 +69,14 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	buttonClicked(e: Event) {
-		let selector = jQuery(e.target).parents('a').attr('href').replace('/','');
+		const target = <HTMLElement>e.target;
+		let selector: string;
+
+		if (target.tagName === 'SPAN') {
+			selector = (<HTMLAnchorElement>target.parentElement).href.replace('/', '');
+		} else {
+			selector = (<HTMLAnchorElement>target).href.replace('/', '');
+		}
 		this.navbarService.buttonClicked.emit({target: e.target, selector: selector});
 	}
 }

@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, Title } from '@angular/platform-browser';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 import { Blog } from '../models/index';
 import { BlogService } from './blog.service';
 import { CacheService } from '../cache/cache.service';
-
-declare var jQuery: any;
+import { ScrollService } from '../scroll/scroll.service';
+import { ContentOverlayComponent } from '../content-overlay/content-overlay.component';
 
 @Component({
 	moduleId: module.id,
@@ -25,6 +25,7 @@ export class BlogComponent implements OnInit, OnDestroy {
 	config: any;
 
 	@ViewChild('title') public titleEl: ElementRef;
+	@ViewChild(ContentOverlayComponent) public contentOverlayCmp: ContentOverlayComponent;
 
 	private subs: Subscription[] = [];
 
@@ -33,16 +34,15 @@ export class BlogComponent implements OnInit, OnDestroy {
 		public blogService: BlogService,
 		public route: ActivatedRoute,
 		public sanitizer: DomSanitizer,
-		public title: Title
+		public title: Title,
+		public scroll: ScrollService
 	) {
 		this.subs.push(
 			this.route.params.subscribe(params => {
 				if (!this.first) {
 					if (params.hasOwnProperty('slug')) {
 						this.fetchBlog(params['slug']);
-						setTimeout(() => {
-							jQuery('jp-content-overlay').animate({scrollTop: this.titleEl.nativeElement.offsetTop});
-						});
+						this.scroll.scrollElementInline(this.contentOverlayCmp.el.nativeElement, this.titleEl.nativeElement);
 					}
 				} else {
 					this.first = false;

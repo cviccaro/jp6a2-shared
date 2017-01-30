@@ -3,7 +3,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Config } from './env.config';
-import { Observer, Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class ConfigService {

@@ -1,17 +1,16 @@
-import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LatLngLiteral } from 'angular2-google-maps/core';
 import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core/services';
 import { SebmGoogleMap } from 'angular2-google-maps/core/directives';
 import { GeolocateService } from './geolocate.service';
 
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
 declare var google: any;
-declare var jQuery: any;
 
 @Component({
 	selector: 'jp-map',
@@ -19,7 +18,7 @@ declare var jQuery: any;
 	templateUrl: './map.component.html',
 	styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnDestroy {
+export class MapComponent implements AfterViewInit, OnDestroy {
 	address = '108 Commerce Blvd, Lawrence, PA 15055';
 	addressFormatted = 'JP Enterprises<br />108 Commerce Blvd.<br />Lawrence, PA 15055';
 	directionsDisplay: any;
@@ -32,6 +31,7 @@ export class MapComponent implements OnDestroy {
 	latitude = 40.3115483;
 	longitude = -80.1245562;
 	map: any = null;
+	mapEl: HTMLElement;
 	mapShowing = false;
 	markerArray: any[] = [];
 	title = 'JP Enterprises';
@@ -51,6 +51,10 @@ export class MapComponent implements OnDestroy {
 			.subscribe((term) => this.getDirections(term));
 	}
 
+	ngAfterViewInit() {
+		this.mapEl = (<any>this.gmap)['_elem'].nativeElement;
+	}
+
 	clearMarkers() {
 		this.markerArray.forEach(marker => marker.setMap(null));
 		this.markerArray = [];
@@ -59,8 +63,9 @@ export class MapComponent implements OnDestroy {
 	closeMap() {
 		this.mapShowing = false;
 		this.el.nativeElement.parentElement.style.height = '';
-		jQuery('#directions').removeClass('expanded');
-		jQuery('#map').removeClass('fadeIn').addClass('fadeOut');
+		this.el.nativeElement.parentElement.classList.remove('expanded')
+		this.mapEl.classList.remove('fadeIn');
+		this.mapEl.classList.add('fadeOut');
 	}
 
 	getDirections(latlng: any) {
@@ -93,8 +98,9 @@ export class MapComponent implements OnDestroy {
 	}
 
 	openMap() {
-		jQuery('#directions').addClass('expanded');
-		jQuery('#map').removeClass('fadeOut').addClass('fadeIn');
+		this.directionsEl.nativeElement.classList.add('expanded');
+		this.mapEl.classList.remove('fadeOut');
+		this.mapEl.classList.add('fadeIn');
 		this.mapShowing = true;
 		setTimeout(() => this.setupMap.call(this), 500);
 	}
@@ -104,7 +110,7 @@ export class MapComponent implements OnDestroy {
 		this.directionsService = new google.maps.DirectionsService();
 		this.directionsDisplay = new google.maps.DirectionsRenderer();
 		this.directionsDisplay.setMap(this.map);
-		this.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+		this.directionsDisplay.setPanel(this.directionsEl.nativeElement);
 	}
 
 	openDirectionsExternally() {

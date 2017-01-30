@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, ElementRef, Renderer, Input, ChangeDetectionStrategy, SimpleChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
 	moduleId: module.id,

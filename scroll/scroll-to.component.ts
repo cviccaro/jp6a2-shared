@@ -1,13 +1,12 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 import { CacheService } from '../cache/index';
 import { NavbarService } from '../nav/index';
 import { Config } from '../config/index';
-
-declare var jQuery: any;
+import { ScrollService } from './scroll.service';
 
 @Component({
 	selector: 'jp-scroll-to',
@@ -15,13 +14,13 @@ declare var jQuery: any;
 })
 export class ScrollToComponent implements AfterViewInit, OnDestroy {
 	config: any;
-	delay = 100;
+	delay = 1000;
 	currentSelector: string;
 
 	private sub: Subscription;
 	private sub2: Subscription;
 
-	constructor(public route: ActivatedRoute, public title: Title, public cache: CacheService, public navbar: NavbarService) {
+	constructor(public route: ActivatedRoute, public title: Title, public cache: CacheService, public navbar: NavbarService, public scroll: ScrollService) {
 		this.config = this.cache.get('config');
 	}
 
@@ -37,6 +36,8 @@ export class ScrollToComponent implements AfterViewInit, OnDestroy {
 				this.scrollToSelector(e.selector);
 			}
 		});
+
+		setTimeout(() => this.delay = 0, 1000);
 	}
 
 	capitalize(text: string) {
@@ -60,19 +61,11 @@ export class ScrollToComponent implements AfterViewInit, OnDestroy {
 
 			this.title.setTitle(`${site_title} | ${title}`);
 
-			setTimeout(() => this.scrollToEl(el, 0), this.delay);
+			setTimeout(() => {
+				this.scroll.scrollToElementAnimated('#' + selector.replace('-', '_'));
+				this.delay = 0;
+			}, this.delay);
 		}
-	}
-
-	scrollToEl(el: HTMLElement, offset = 45) {
-		if (window.innerWidth < Config.desktopWidth && offset === 0) {
-			offset = -55;
-		}
-		let top = el.offsetTop;
-		jQuery('html, body').animate({
-			scrollTop: top + offset
-		});
-		if (this.delay) this.delay = 0;
 	}
 
 	ngOnDestroy() {

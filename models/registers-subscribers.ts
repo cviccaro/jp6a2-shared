@@ -1,4 +1,4 @@
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 export interface RegistersSubscribers {
 	_subscriptions: Subscription[];

@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 
-declare var jQuery: any;
+import { PageScrollInstance, PageScrollService } from 'ng2-page-scroll';
 
 @Injectable()
 export class ScrollService {
 	private _lastScrollPos = 0;
 
-	constructor() {
+	constructor(@Inject(DOCUMENT) private document: any, private scroller: PageScrollService) {
 		window.addEventListener('scroll', (e) => {
 			if (window.pageYOffset !== 0) {
 				this._lastScrollPos = window.pageYOffset;
@@ -18,11 +19,13 @@ export class ScrollService {
 		return this._lastScrollPos;
 	}
 
-	scrollToElementAnimated(el: HTMLElement, duration: number = 1000, delay: number = 0, offset: number = 0) {
-		setTimeout(() => {
-			jQuery('html, body').animate({
-				scrollTop: el.offsetTop + offset
-			}, duration);
-		}, delay);
+	scrollToElementAnimated(targetEl: HTMLElement|string) {
+		const instance = PageScrollInstance.simpleInstance(this.document, targetEl);
+		this.scroller.start(instance);
+	}
+
+	scrollElementInline(inlineEl: HTMLElement, targetEl: HTMLElement|string) {
+		const instance = PageScrollInstance.simpleInlineInstance(this.document, targetEl, inlineEl);
+		this.scroller.start(instance);
 	}
 }

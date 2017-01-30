@@ -1,7 +1,5 @@
 import { Directive, ElementRef, HostListener, AfterViewInit } from '@angular/core';
 
-declare var jQuery: any;
-
 const keyCodes = {
 	ENTER: 13,
 	BACKSPACE: 8,
@@ -18,22 +16,20 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 	diff: number;
 	empty: boolean = false;
 
-	constructor(private _el: ElementRef) { }
+	constructor(private el: ElementRef) { }
 
 	ngAfterViewInit() {
-		this._el.nativeElement.style.height = '48px';
+		this.el.nativeElement.style.height = '48px';
 	}
 
 	@HostListener('focus', ['$event'])
 	onFocus(e: Event) {
-		let $label = jQuery(this._el.nativeElement).prev();
-		$label.addClass('md-focused');
+		this.el.nativeElement.previousElementSibling.classList.add('md-focused');
 	}
 
 	@HostListener('blur', ['$event'])
 	onBlur(e: Event) {
-		let $label = jQuery(this._el.nativeElement).prev();
-		$label.removeClass('md-focused');
+		this.el.nativeElement.previousElementSibling.classList.remove('md-focused');
 		this.handleEmpty();
 	}
 
@@ -42,46 +38,46 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 		if (e.keyCode === keyCodes.ENTER || e.keyCode === keyCodes.BACKSPACE || e.keyCode === keyCodes.DELETE) {
 			// Get the line-height
 			if (this.lineHeight === undefined) {
-				if (this._el.nativeElement.currentStyle) {
-					this.lineHeight = this._el.nativeElement.currentStyle['line-height'];
+				if (this.el.nativeElement.currentStyle) {
+					this.lineHeight = this.el.nativeElement.currentStyle['line-height'];
 				} else if (window.getComputedStyle) {
-					this.lineHeight = parseInt(document.defaultView.getComputedStyle(this._el.nativeElement).getPropertyValue('line-height'));
+					this.lineHeight = parseInt(document.defaultView.getComputedStyle(this.el.nativeElement).getPropertyValue('line-height'));
 				}
 			}
 			// Get the height
 			if (this.height === undefined) {
-				this.height = this._el.nativeElement.offsetHeight;
+				this.height = this.el.nativeElement.offsetHeight;
 			}
 			// Calculate the difference
 			if (this.diff === undefined) {
 				this.diff = this.height - this.lineHeight;
 			}
 
-			let newLines = this._el.nativeElement.value.split(/[\r\n]+/g).length || 1;
+			let newLines = this.el.nativeElement.value.split(/[\r\n]+/g).length || 1;
 			if (e.keyCode === 13) {	newLines++;	}
 
 			let newHeight = (this.lineHeight + (this.diff / 2)) * newLines;
 			if (newHeight < 48) newHeight = 48;
-			if (newHeight !== this._el.nativeElement.offsetHeight) {
-				jQuery(this._el.nativeElement).animate({ height: newHeight });
+			console.log('new height: ', newHeight, 'old height: ', this.el.nativeElement.offsetHeight);
+			if (newHeight !== this.el.nativeElement.offsetHeight) {
+				this.el.nativeElement.style.height = newHeight + 'px';
 			}
 		}
 		this.handleEmpty();
 	}
 
 	handleEmpty() {
-		let $label = jQuery(this._el.nativeElement).prev();
-		this.empty = !this._el.nativeElement.value.length;
+		this.empty = !this.el.nativeElement.value.length;
 
 		if (this.empty) {
-			$label.addClass('md-empty');
+			this.el.nativeElement.previousElementSibling.classList.add('md-empty');
 		} else {
-			$label.removeClass('md-empty');
+			this.el.nativeElement.previousElementSibling.classList.remove('md-empty');
 		}
 	}
 
 	setEmpty() {
 		this.empty = true;
-		jQuery(this._el.nativeElement).prev().addClass('md-empty');
+		this.el.nativeElement.previousElementSibling.classList.add('md-empty');
 	}
 }

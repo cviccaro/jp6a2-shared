@@ -1,6 +1,5 @@
-import { Injectable, ElementRef, Output, EventEmitter } from '@angular/core';
-
-declare var jQuery: any;
+import { Injectable, ElementRef, Output, EventEmitter, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Injectable()
 export class NavbarService {
@@ -9,8 +8,7 @@ export class NavbarService {
 	el: ElementRef;
 	elemTop: number;
 	elemBottom: number;
-	$elem: any;
-	$nav: any;
+	navWrapperEl: HTMLElement;
 	listening = false;
 	lastScrollPos: number;
 	lastDirection: string;
@@ -22,17 +20,19 @@ export class NavbarService {
 
 	@Output() buttonClicked = new EventEmitter();
 
+	constructor(@Inject(DOCUMENT) private document: any) {}
+
 	onScroll() {
 		if (!this.listening) return;
 
-		if (this.$elem && this.listening && window.pageYOffset > 0) {
+		if (this.el && this.listening && window.pageYOffset > 0) {
 			let scrollY = window.pageYOffset;
 			let direction = (scrollY < this.lastScrollPos) ? 'up' : 'down';
 
 			this.lastScrollPos = window.pageYOffset;
 
 			if (scrollY > this.elemBottom && this.lastDirection === direction) {
-				if (!this.$elem.hasClass('snapped') && !this.animatingShow) {
+				if (this.el.nativeElement.classList.contains('snapped') && !this.animatingShow) {
 				    this.snapIn();
 				}
 				// if (direction === 'up' && !this.$elem.hasClass('snapped') && !this.animatingShow) {
@@ -40,7 +40,7 @@ export class NavbarService {
 				// } else if (direction === 'down' && this.$elem.hasClass('snapped') && !this.animatingHide) {
 				// 	this.snapOut();
 				// }
-			} else if (scrollY <= this.elemTop && this.$elem.hasClass('snapped')) {
+			} else if (scrollY <= this.elemTop && this.el.nativeElement.classList.contains('snapped')) {
 				this.unsnap();
 			}
 
@@ -62,18 +62,27 @@ export class NavbarService {
 		}
 	}
 
+	wrapNav() {
+		let navWrapper = this.document.createElement('NAV');
+		this.el.nativeElement.parentElement.insertBefore(navWrapper, this.el.nativeElement);
+		navWrapper.appendChild(this.el.nativeElement);
+	}
+
 	register(el: ElementRef) {
 		this.el = el;
-		this.$elem = jQuery(this.el.nativeElement);
 
-		if (!this.$elem.parent().is('nav')) {
-			this.$elem.wrap('<nav></nav>');
+		if (this.el.nativeElement.parentElement.tagName !== 'NAV') {
+			this.wrapNav();
 		}
-		this.$nav = this.$elem.parent();
+
+		this.navWrapperEl = this.el.nativeElement.parentElement;
 
 		setTimeout(() => {
-			this.elemTop = this.$nav.offset().top;
-			this.elemBottom = this.$nav.offset().top + this.$elem.outerHeight();
+			let rect = this.navWrapperEl.getBoundingClientRect();
+			let clientTop = rect.top + this.document.body.scrollTop;;
+
+			this.elemTop = clientTop;
+			this.elemBottom = clientTop + this.navWrapperEl.offsetHeight;
 		}, 1);
 	}
 
@@ -83,21 +92,31 @@ export class NavbarService {
 		this.animatingShow = true;
 		this.killTimers();
 
-		this.$elem
-			.removeClass('snap-out snap-out-active')
-			.addClass('snap-in snapped');
-
+		this.el.nativeElement.classList.remove('snap-out', 'snap-out-active');
+		this.el.nativeElement.classList.add('snap-in', 'snapped');
+		
 		this.showTimer = setTimeout(() => {
-		    this.$elem
-				.on(this.transitionEvents, function(e: Event) {
+				this.bindTransitionEvents(function(e: Event) {
 					if (e.target === this) {
-						that.$elem.unbind(that.transitionEvents);
+						that.unbindTransitionEvents();
 						that.animatingShow = false;
 						that.snapped = true;
 					}
-				})
-				.addClass('snap-in-active');
+				});
+				this.el.nativeElement.classList.add('snap-in-active');
 		}, 250);
+	}
+
+	bindTransitionEvents(fn: Function) {
+		this.transitionEvents.split(' ').forEach(e => {
+			this.el.nativeElement.addEventListener(e, fn);
+		});
+	}
+
+	unbindTransitionEvents() {
+		this.transitionEvents.split(' ').forEach(e => {
+			this.el.nativeElement.removeEventListener(e);
+		});
 	}
 
 	snapOut() {
@@ -108,19 +127,18 @@ export class NavbarService {
 		this.killTimers();
 
 		this.hideTimer = setTimeout(() => {
-			this.$elem.removeClass('snap-in snap-in-active snapped').addClass('snap-out');
+			this.el.nativeElement.classList.remove('snap-in', 'snap-in-active', 'snapped');
+			this.el.nativeElement.classList.add('snap-out');
 			setTimeout(() => {
-				this.$elem.on(transitionEvents,
-					function(e: Event) {
-						if (e.target === this) {
-							that.$elem.unbind(transitionEvents);
-							that.snapped = true;
-							setTimeout(() => that.unsnap());
-							setTimeout(() => this.animatingHide = false, 500);
-						}
+				this.bindTransitionEvents(function(e: Event) {
+					if (e.target === this) {
+						that.unbindTransitionEvents();
+						that.snapped = true;
+						setTimeout(() => that.unsnap());
+						setTimeout(() => that.animatingHide = false, 500);
 					}
-				)
-				.addClass('snap-out-active');
+				});
+				this.el.nativeElement.classList.add('snap-out-active');
 			});
 		}, 250);
 	}
@@ -135,6 +153,6 @@ export class NavbarService {
 
 	unsnap() {
 		this.snapped = false;
-		this.$elem.removeClass('snapped snap-in snap-in-active snap-out snap-out-active');
+		this.el.nativeElement.classList.remove('snapped', 'snap-in', 'snap-in-active', 'snap-out', 'snap-out-active');
 	}
 }
