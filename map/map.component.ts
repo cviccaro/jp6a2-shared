@@ -98,7 +98,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 	}
 
 	openMap() {
-		this.directionsEl.nativeElement.classList.add('expanded');
+		this.el.nativeElement.parentElement.classList.add('expanded');
 		this.mapEl.classList.remove('fadeOut');
 		this.mapEl.classList.add('fadeIn');
 		this.mapShowing = true;
