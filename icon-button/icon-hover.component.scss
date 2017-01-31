@@ -141,6 +141,13 @@ jp-balloon-callout-icon {
       background-position: -444px -37px;
     }
   }
+
+  &.three-d-illustration {
+    :host {
+      background-position: -471px -37px;
+    }
+  }
+
   &:hover {
 		:host {
 			opacity: 1;
