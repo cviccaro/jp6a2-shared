@@ -28,7 +28,7 @@
 	        <div class="content">
 	            <jp-card *ngFor="let post of related"
 	            	class="cell"
-	            	[image]="post.image.url"
+	            	[image]="post.image?.url"
 	            	[cardTitle]="post.title"
 	            	[summary]="post.summary"
 	            	[body]="post.body"
