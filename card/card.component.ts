@@ -37,8 +37,6 @@ export class CardComponent implements OnInit {
 		this.hasRoute = this.route !== undefined;
 		this.hasHref = this.href !== undefined;
 		this.hasContentOverlay = this.overlay === true;
-
-		console.log('CardComponent initialized', this);
 	}
 
 	@HostBinding('class.has-overlay') public get hasOverlayClass() {
