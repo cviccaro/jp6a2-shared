@@ -6,6 +6,19 @@
 		border: 1px solid $light_grey;
 		overflow: visible;
 
+		@include transition(border-color $transition_duration $transition_ease);
+
+		&:hover {
+			border-color: $blue;
+			.overlay {
+				opacity: 1;
+			}
+		}
+
+		&.dummy {
+			min-height: 230px;			
+		}
+
 		img {
 			margin: 0 auto;
 			width: 100%;
@@ -27,13 +40,6 @@
 			position: relative;
 			height: 100%;
 			line-height: 0px;
-		}
-		@include transition(border-color $transition_duration $transition_ease);
-		&:hover {
-			border-color: $blue;
-			.overlay {
-				opacity: 1;
-			}
 		}
 	}
 	.card-title {

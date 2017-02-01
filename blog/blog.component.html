@@ -4,16 +4,9 @@
 	<div class="layout-tworows-sidebar container" *ngIf="ready">
 	    <div class="top-row">
 	    	<div class="left">
-          		<h1 class="section-title text-uppercase" #title>{{ blog.title }}</h1>
-          		<jp-social-share class="mobile horizontal" [url]="shareUrl"></jp-social-share>
+      		<h1 class="section-title text-uppercase" #title>{{ blog.title }}</h1>
+      		<jp-social-share class="mobile horizontal" [url]="shareUrl"></jp-social-share>
 	    		<div class="blog-body" [innerHTML]="blogBodySafe"></div>
-<!-- 	    		<div *ngIf="blog.author_id" class="blog-author-pane">
-	    			<img *ngIf="blog.author.image_id" class="blog-author-photo" [src]="blog.author.image.url" />
-	    			<div class="blog-author-inner-pane">
-	    				<h3 class="pane-title text-uppercase">About The Author</h3>
-	    				<p>{{ blog.author.bio }}</p>
-						</div>
-	    		</div> -->
 	    	</div>
 	    	<div class="right">
 	    		<img *ngIf="blog.author_id && blog.author.image_small" class="blog-author-photo" [src]="blog.author.image_small.url" />

@@ -1,6 +1,6 @@
 <div class="jp-card-content" [ngSwitch]="hasRoute">
 	<template [ngSwitchCase]="true">
-		<div class="card-img">
+		<div class="card-img" *ngIf="!!image">
 			<a *ngSwitchCase="true" [routerLink]="route" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile">
 				<div md-ripple md-ripple-centered="true"></div>
 				<div *ngIf="overlay && !hasContentOverlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
@@ -10,6 +10,7 @@
 				<img [src]="image" [title]="cardTitle" />
 			</a>
 		</div>
+		<div class="card-img dummy" *ngIf="!image"></div>
 		<div class="card-attributes" *ngIf="this.author || this.date || this.tag">
 			<span *ngIf="date">{{date | amDateFormat: 'MMMM d, YYYY'}}</span>
 			<span *ngIf="tag">In {{tag | capitalize}}</span>
@@ -20,7 +21,7 @@
 		</h3>
 	</template>
 	<template ngSwitchDefault>
-		<div class="card-img">
+		<div class="card-img" *ngIf="!!image">
 			<a *ngIf="!hasHref" [title]="cardTitle" jpHoverDynamics [jpHoverDynamicsMobile]="jpHoverDynamicsMobile" (click)="onClick()">
 				<div md-ripple md-ripple-centered="true"></div>
 				<div *ngIf="overlay && !hasContentOverlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
@@ -38,6 +39,7 @@
 				<img [src]="image" [title]="cardTitle" />
 			</a>
 		</div>
+		<div class="card-img dummy" *ngIf="!image"></div>
 		<div class="card-attributes" *ngIf="this.author || this.date || this.tag">
 			<span *ngIf="date">{{date | amDateFormat: 'MMMM d, YYYY'}}</span>
 			<span *ngIf="tag">In {{tag | capitalize}}</span>
@@ -49,8 +51,8 @@
 		</h3>
 	</template>
 	<h4 class="card-subtitle md-body-1" *ngIf="subTitle">{{ subTitle }}</h4>
-	<div class="card-body" *ngIf="body !== undefined && summary !== undefined">
-		<p *ngIf="summary !== undefined" [innerHTML]="summary | trimmed:true:280:' ...'"></p>
-		<p *ngIf="body === undefined && summary !== undefined" [innerHTML]="body | trimmed:true:280:' ...'"></p>
+	<div class="card-body" *ngIf="!!body || !!summary">
+		<p class="summary" *ngIf="!!summary" [innerHTML]="summary | trimmed:true:280:' ...'"></p>
+		<p class="body" *ngIf="!!body && !summary" [innerHTML]="body | trimmed:true:480:' ...'"></p>
 	</div>
 </div>
