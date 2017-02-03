@@ -5,21 +5,34 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { CacheService } from '../cache/cache.service';
 import { DivisionService } from './division.service';
-import { Response } from '@angular/http';
+import { Http, Response, ResponseContentType } from '@angular/http';
 import { Config } from '../config/env.config';
+import { Division } from '../models/division';
 
 @Injectable()
 export class DivisionGuard implements CanActivate, OnDestroy {
-  public sub: Subscription;
+  imagePreloader: Subscription;
+  sub: Subscription;
 
-  constructor(public cache: CacheService, public service: DivisionService) { }
+  constructor(public cache: CacheService, public service: DivisionService, private http: Http) { }
 
   canActivate(): Observable<boolean> {
     return Observable.create((observer: Observer<boolean>) => {
-      this.sub = this.service.get(Config.division).subscribe((res: Response)=> {
-        this.cache.store('config', res);
-        observer.next(true);
-        observer.complete();
+      this.sub = this.service.get(Config.division).subscribe((division: Division)=> {
+        if (division.image) {
+          this.imagePreloader = this.http.get(division.image.url, { responseType: ResponseContentType.Blob })
+            .subscribe((res: Response) => {
+              division.image.urlBlob = window.URL.createObjectURL(res.blob());
+              this.cache.store('config', division);
+              observer.next(true);
+              observer.complete();
+            });
+        } else {
+          this.cache.store('config', division);
+
+          observer.next(true);
+          observer.complete();
+        }
       });
     });
   }

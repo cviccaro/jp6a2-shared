@@ -3,6 +3,7 @@ import { URLSearchParams } from '@angular/http';
 
 import { Config } from '../config/env.config';
 import { ApiHttp } from '../xhr/xhr.http';
+import { Division } from '../models/division';
 
 @Injectable()
 export class DivisionService {
@@ -14,6 +15,6 @@ export class DivisionService {
 		params.set('thin', '1');
 
 		return this.http.get(`${Config.API}/divisions/${id}`, params)
-			.map(res => res.json());
+			.map(res => new Division(res.json()));
 	}
 }

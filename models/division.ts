@@ -1,11 +1,26 @@
-import { JpFile } from './file';
+import { ManagedFile } from './file';
+import { Blog } from './blog';
+import { Project } from './project';
 
 export class Division {
+	created_at: string;
+	blogs: Blog[];
+	display_name: string;
+  description: string;
+  image: ManagedFile;
+  image_id: number = null;
 	id: number;
-    name: string;
-    image_id: number = null;
-    image: JpFile;
-    description: string;
-    created_at: any;
-    updated_at: any;
+  name: string;
+  projects: Project[];
+  site_logo: any;
+  site_title: string;
+  splash_body: string;
+  splash_headline: string;
+  updated_at: any;
+
+  constructor(config: { [key: string] : any }) {
+    for (let key in config) {
+      (<any>this)[key] = config[key];
+    }
+  }
 }

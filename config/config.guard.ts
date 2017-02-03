@@ -10,7 +10,8 @@ import { SiteSettings } from './site-settings';
 
 @Injectable()
 export class ConfigGuard implements CanActivate, OnDestroy {
-  public sub: Subscription;
+  imagePreloader: Subscription;
+  sub: Subscription;
 
   constructor(public cache: CacheService, public service: ConfigService, public http: Http) { }
 
@@ -18,7 +19,7 @@ export class ConfigGuard implements CanActivate, OnDestroy {
     return Observable.create((observer: Observer<boolean>) => {
       this.sub = this.service.get().subscribe((settings: SiteSettings)=> {
         if (settings.main_site_background) {
-          this.http.get(settings.main_site_background.url, { responseType: ResponseContentType.Blob })
+          this.imagePreloader = this.http.get(settings.main_site_background.url, { responseType: ResponseContentType.Blob })
             .subscribe((res: Response) => {
               settings.main_site_background.urlBlob = window.URL.createObjectURL(res.blob());
               this.cache.store('config', settings);
@@ -35,6 +36,7 @@ export class ConfigGuard implements CanActivate, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.imagePreloader) this.imagePreloader.unsubscribe();
     if (this.sub) this.sub.unsubscribe();
   }
 }
