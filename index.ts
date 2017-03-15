@@ -17,6 +17,8 @@ export * from './footer/index';
 export * from './gallery/index';
 export * from './hover-dynamics/index';
 export * from './icon-button/index';
+export * from './image-zoom/index';
+export * from './logger/index';
 export * from './logo/index';
 export * from './map/index';
 export * from './models/index';
@@ -39,6 +41,8 @@ import { CaptchaService } from './contact-form/captcha.service';
 import { ClientService } from './client/client.service';
 import { ConfigService } from './config/config.service';
 import { DivisionService } from './division/division.service';
+import { JpImageZoomer } from './image-zoom/image-zoomer';
+import { Logger } from './logger/logger.service';
 import { GeolocateService } from './map/geolocate.service';
 import { MobileMenuService } from './nav/mobile-menu/mobile-menu.service';
 import { NavbarService } from './nav/navbar.service';
@@ -64,7 +68,9 @@ export const APP_SERVICES = [
   ProjectService,
   StaffService,
   ScrollService,
-  XhrService
+  XhrService,
+  Logger,
+  JpImageZoomer
 ];
 
 export const APP_MIDDLEWARE = [

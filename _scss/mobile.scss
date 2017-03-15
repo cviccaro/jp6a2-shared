@@ -420,7 +420,7 @@ $h4-font-size: 18px;
      * Forms
      */
     form.jp-form.ng-submitted {
-        md-input-container {
+        mat-input-container {
             .ng-untouched + ng-messages {
                 display: flex;
             }
@@ -428,9 +428,9 @@ $h4-font-size: 18px;
     }
 
     .jp-form {
-        md-input-container,
-        md-input-container.flex-50,
-        md-input-container.flex-100 {
+        mat-input-container,
+        mat-input-container.flex-50,
+        mat-input-container.flex-100 {
             &.md-input-focused,
             &.md-input-has-value {
                 label {

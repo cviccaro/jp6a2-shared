@@ -56,7 +56,7 @@
 				}
 			}
 
-			md-input {
+			[mdInput] {
 				width: 100%;
 				.md-input-wrapper {
 					margin: 0;
@@ -104,26 +104,26 @@
 		}
 	}
 
-	md-input.ng-valid.ng-dirty {
+	[mdInput].ng-valid.ng-dirty {
 		.md-input-placeholder.md-float {
 			padding-left: 0;
 			overflow: hidden;
 			height: auto;
 			line-height: normal;
 		}
-		input[required] {
+		&[required] {
 		  border-left: 2px solid $green_500!important; /* green */
 		}
 	}
 
-	md-input.ng-invalid.ng-dirty {
+	[mdInput].ng-invalid.ng-dirty {
 		.md-input-placeholder.md-float.md-focused {
 			padding-left: 0;
 			overflow: hidden;
 			height: auto;
 			line-height: normal;
 		}
-		input[required] {
+		&[required] {
 		  border-left: 2px solid $fuchsia!important; /* green */
 		}
 	}

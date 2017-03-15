@@ -58,7 +58,6 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 
 			let newHeight = (this.lineHeight + (this.diff / 2)) * newLines;
 			if (newHeight < 48) newHeight = 48;
-			console.log('new height: ', newHeight, 'old height: ', this.el.nativeElement.offsetHeight);
 			if (newHeight !== this.el.nativeElement.offsetHeight) {
 				this.el.nativeElement.style.height = newHeight + 'px';
 			}

@@ -5,7 +5,7 @@
     <label class="locate-me-label hide-mobile">Locate Me</label>
     <div class="small map-toolbar-input-container hide-mobile">
       <label class="address-label">Need Directions?</label>
-      <md-input class="map-toolbar-input" type="text" [formControl]="directionsOrigin" placeholder="Enter your address..." size="60"></md-input>
+      <input mdInput class="map-toolbar-input" type="text" [formControl]="directionsOrigin" placeholder="Enter your address..." size="60" />
     </div>
     <button class="mobile centered" md-button md-raised-button color="accent" (click)="openDirectionsExternally()" (touchend)="openDirectionsExternally()" title="Get Directions">
       <md-icon>directions</md-icon>&nbsp;&nbsp;Get Directions on Google Maps

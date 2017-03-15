@@ -518,7 +518,7 @@ section.theme-dark {
        }
      }
 
-     md-input {
+     [mdInput] {
        width: 100%;
        .md-input-wrapper {
          margin: 0;
@@ -571,7 +571,7 @@ section.theme-dark {
    label {
      display: block;
    }
-   md-input {
+   [mdInput] {
      width: 100%;
    }
  }

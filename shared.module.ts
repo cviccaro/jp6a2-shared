@@ -48,7 +48,9 @@ import {
   ScrollToComponent,
   SubscribeComponent,
   WindowProviders,
-  StaffModalComponent
+  StaffModalComponent,
+  ImageZoomDirective,
+  ImageZoomerComponent
 } from './index';
 
 /**
@@ -99,7 +101,9 @@ import {
     SOCIAL_COMPONENTS,
     SplashComponent,
     SubscribeComponent,
-    StaffModalComponent
+    StaffModalComponent,
+    ImageZoomDirective,
+    ImageZoomerComponent
   ],
   exports: [
     // Angular modules
@@ -145,10 +149,13 @@ import {
     SOCIAL_COMPONENTS,
     SubscribeComponent,
     StaffModalComponent,
-    InlineSVGModule
+    InlineSVGModule,
+    ImageZoomDirective,
+    ImageZoomerComponent
   ],
   entryComponents: [
-    StaffModalComponent
+    StaffModalComponent,
+    ImageZoomerComponent
   ]
 })
 export class SharedModule {

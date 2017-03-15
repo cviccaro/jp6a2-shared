@@ -1,23 +1,23 @@
 <p class="text-right">JP Enterprises | 108 Commerce Blvd. - Suite D | Lawrence, PA 15055-0513 | toll-free: 800-372-1263 | office: 724-746-6363</p>
 <form class="jp-form" name="contactForm" layout="row" layout-wrap novalidate (ngSubmit)="_submit()" [formGroup]="contactForm">
-  <div class="form-group required">
-    <md-input name="first_name" [formControl]="contactForm.get('first_name')" required placeholder="First Name"></md-input>
-  </div>
-  <div class="form-group required">
-    <md-input name="last_name" [formControl]="contactForm.get('last_name')" placeholder="Last Name" required></md-input>
-  </div>
-  <div class="form-group required">
-    <md-input name="company" required [formControl]="contactForm.get('company')" placeholder="Company Name"></md-input>
-  </div>
-  <div class="form-group required">
-    <md-input type="email" name="email" required [formControl]="contactForm.get('email')" placeholder="Email Address"></md-input>
-  </div>
-  <div class="form-group">
-    <md-input type="tel" name="phone" [formControl]="contactForm.get('phone')" placeholder="Phone Number"></md-input>
-  </div>
-  <div class="form-group">
-    <md-input name="contact_time" [formControl]="contactForm.get('contact_time')" placeholder="Best time to contact you"></md-input>
-  </div>
+  <mat-input-container class="form-group required">
+    <input mdInput name="first_name" [formControl]="contactForm.get('first_name')" required placeholder="First Name" />
+  </mat-input-container>
+  <mat-input-container class="form-group required">
+    <input mdInput name="last_name" [formControl]="contactForm.get('last_name')" placeholder="Last Name" required />
+  </mat-input-container>
+  <mat-input-container class="form-group required">
+    <input mdInput name="company" required [formControl]="contactForm.get('company')" placeholder="Company Name" />
+  </mat-input-container>
+  <mat-input-container class="form-group required">
+    <input mdInput type="email" name="email" required [formControl]="contactForm.get('email')" placeholder="Email Address" />
+  </mat-input-container>
+  <mat-input-container class="form-group">
+    <input mdInput type="tel" name="phone" [formControl]="contactForm.get('phone')" placeholder="Phone Number" />
+  </mat-input-container>
+  <mat-input-container class="form-group">
+    <input mdInput name="contact_time" [formControl]="contactForm.get('contact_time')" placeholder="Best time to contact you" />
+  </mat-input-container>
   <div class="form-group full textarea required">
      <label class="md-input-placeholder md-float md-empty">Additional Comments <span class="md-placeholder-required">*</span></label>
      <textarea jpTextareaAutoexpand md-input name="comments" required [formControl]="contactForm.get('comments')"></textarea>

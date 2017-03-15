@@ -48,13 +48,13 @@
 	        margin-left: 0px;
 	        padding: 0px;
 	        min-height: 0px;
-	        md-input-container {
+	        mat-input-container {
 	          margin: 0;
 	          width: 100%;
 	          label {
 	            font-size: 13px;
 	          }
-	          .md-input {
+	          [mdInput] {
 	            font-size: 13px;
 	            border-bottom: none;
 	          }
