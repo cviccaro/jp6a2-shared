@@ -50,7 +50,10 @@ import {
   WindowProviders,
   StaffModalComponent,
   ImageZoomDirective,
-  ImageZoomerComponent
+  ImageZoomerComponent,
+  ImageZoomLensComponent,
+  ImageZoomLensCanvasComponent,
+  ImageZoomLensContainerComponent
 } from './index';
 
 /**
@@ -103,7 +106,10 @@ import {
     SubscribeComponent,
     StaffModalComponent,
     ImageZoomDirective,
-    ImageZoomerComponent
+    ImageZoomerComponent,
+    ImageZoomLensComponent,
+    ImageZoomLensCanvasComponent,
+    ImageZoomLensContainerComponent
   ],
   exports: [
     // Angular modules
@@ -151,11 +157,16 @@ import {
     StaffModalComponent,
     InlineSVGModule,
     ImageZoomDirective,
-    ImageZoomerComponent
+    ImageZoomerComponent,
+    ImageZoomLensComponent,
+    ImageZoomLensCanvasComponent,
+    ImageZoomLensContainerComponent
   ],
   entryComponents: [
     StaffModalComponent,
-    ImageZoomerComponent
+    ImageZoomerComponent,
+    ImageZoomLensContainerComponent,
+    ImageZoomLensCanvasComponent
   ]
 })
 export class SharedModule {

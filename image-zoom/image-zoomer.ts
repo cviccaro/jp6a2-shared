@@ -4,16 +4,16 @@ import { Observer } from 'rxjs/Observer';
 
 import { Logger } from '../logger/logger.service';
 import { ImageZoomerComponent } from './image-zoomer.component';
+import { ImageZoomLensContainerComponent } from './zoom-lens-container.component';
 import { ImageZoomDirective } from './image-zoom.directive';
+import { ZoomLensPanPercentagesEvent, ZoomLensPanPixelsEvent } from './zoom-lens.interfaces';
 
 @Injectable()
 export class JpImageZoomer implements OnDestroy {
 	public defaultViewContainer: ViewContainerRef;
-	private zoomerRef: ComponentRef<any>;
+	private zoomLensContainerRef: ComponentRef<ImageZoomLensContainerComponent>;
+	private zoomerRef: ComponentRef<ImageZoomerComponent>;
 	private activeItem: ImageZoomDirective;
-	private _closeEmitter: EventEmitter<any> = new EventEmitter<any>();
-
-	@Output() get onClose(): Observable<any> { return this._closeEmitter.asObservable(); }
 
 	constructor(private cr: ComponentFactoryResolver, private logger: Logger) { }
 
@@ -21,31 +21,56 @@ export class JpImageZoomer implements OnDestroy {
 		this.activeItem = directive;
 
 		return Observable.create((observer: Observer<any>) => {
-			// Avoid z-index issues by moving menu to body.
-			// @todo: avoid messing with DOM..
-			//document.body.appendChild(component.element.nativeElement);
+			const directiveEl: HTMLElement = this.activeItem.el.nativeElement;
+			const imageUrl = directiveEl.getAttribute('src');
+			let rect = directiveEl.getBoundingClientRect();
 
-			let componentFactory = this.cr.resolveComponentFactory(ImageZoomerComponent);
-			let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
+			if (!this.zoomLensContainerRef) {
+				let componentFactory = this.cr.resolveComponentFactory(ImageZoomLensContainerComponent);
+				let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
 
-			// Store reference to component
-			this.zoomerRef = cmpRef;
+				// Store reference to component
+				this.zoomLensContainerRef = cmpRef;
 
-			let imageUrl = this.activeItem.el.nativeElement.getAttribute('src');
 
-			(<ImageZoomerComponent>this.zoomerRef.instance).imageUrl = imageUrl;
 
-			this.logger.log('Opening Image Zoomer with URL: ', imageUrl);
+				this.zoomLensContainerRef.instance.imageUrl = imageUrl;
+				this.zoomLensContainerRef.instance.positionTop = `${directiveEl.offsetTop}px`;
+				this.zoomLensContainerRef.instance.positionLeft = `${rect.left}px`;
+				this.zoomLensContainerRef.instance.containerWidth = `${rect.width}px`;
+				this.zoomLensContainerRef.instance.containerHeight = `${rect.height}px`;
 
-			// // Subscribe to focus trap's event
-			// (<ImageZoomerComponent>this.zoomerRef.instance).onClickOutside.subscribe(e => {
-			// 	this.close();
-			// });
+				// Append it to DOM
+				directive.el.nativeElement.parentElement.appendChild(cmpRef.location.nativeElement);
 
-			// Append it to DOM
-			this.defaultViewContainer.element.nativeElement.appendChild(cmpRef.location.nativeElement);
+				this.zoomLensContainerRef.instance.pan.subscribe((event: ZoomLensPanPercentagesEvent) => {
+					this.zoomerRef.instance.pan(event);
+				});
+			}
 
-			// Resolve the FocusTrap
+			if (!this.zoomerRef) {
+				let componentFactory = this.cr.resolveComponentFactory(ImageZoomerComponent);
+				let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
+
+				// Store reference to component
+				this.zoomerRef = cmpRef;
+
+				// Append it to DOM
+				this.defaultViewContainer.element.nativeElement.appendChild(cmpRef.location.nativeElement);
+			}
+
+
+			this.zoomerRef.instance.imageUrl = imageUrl;
+
+			rect = directiveEl.getBoundingClientRect();
+
+			this.logger.log('Rect of image-zoom directive prior to opening the Zoomer: ', rect);
+			this.zoomerRef.instance.positionLeft = `${rect.left + rect.width + 20}px`;
+			this.zoomerRef.instance.positionTop = `${directiveEl.offsetTop}px`;
+
+			this.zoomerRef.instance.open();
+
+			// Resolve the component
 			observer.next(this.zoomerRef);
 			observer.complete();
 		});
@@ -53,12 +78,16 @@ export class JpImageZoomer implements OnDestroy {
 
 	close(directive?: ImageZoomDirective) {
 		if (directive === this.activeItem) this.activeItem = null;
-		this.zoomerRef.destroy();
+		this.zoomerRef.instance.close();
+	}
+
+	pan(event: ZoomLensPanPercentagesEvent) {
+		this.zoomerRef.instance.pan(event);
 	}
 
 	ngOnDestroy() {
-		if (typeof this.zoomerRef.instance.canDestroy === 'function') {
-		  this.zoomerRef.instance.canDestroy().then ( () => this.zoomerRef.destroy() );
+		if (typeof (<ComponentRef<any>>this.zoomerRef).instance.canDestroy === 'function') {
+		  (<ComponentRef<any>>this.zoomerRef).instance.canDestroy().then ( () => this.zoomerRef.destroy() );
 		} else {
 		  this.zoomerRef.destroy();
 		}

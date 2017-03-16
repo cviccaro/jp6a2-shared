@@ -9,7 +9,7 @@ import { Logger } from '../logger/logger.service';
 	selector: '[jp-image-zoom]',
 })
 export class ImageZoomDirective implements OnInit {
-	private isHovering = false;
+	private zoomerOpen = false;
 	private zoomerRef: ComponentRef<ImageZoomerComponent>
 	private revealTimer: any;
 
@@ -25,13 +25,13 @@ export class ImageZoomDirective implements OnInit {
 		clearTimeout(this.revealTimer);
 		this.revealTimer = setTimeout(() => {
 			this.openZoomer();
-		}, 500);
+		});
 	}
 
 	@HostListener('mousemove', ['$event'])
 	onMouseMove(e: any) {
-		if (this.isHovering) {
-			this.logger.log('Mouse Move During Hover: ', e);
+		if (this.zoomerOpen) {
+			//this.logger.log('Mouse Move During Hover: ', e);
 		}
 	}
 
@@ -43,14 +43,14 @@ export class ImageZoomDirective implements OnInit {
 	}
 
 	openZoomer() {
-		this.isHovering = true;
+		this.zoomerOpen = true;
 		this.imageZoomer.open(this).subscribe((...args: any[]) => {
 			this.logger.log('Image Zoomer opened!', args);
 		});
 	}
 
 	closeZoomer() {
-		this.isHovering = false;
+		this.zoomerOpen = false;
 		this.imageZoomer.close(this);
 	}
 
