@@ -2,8 +2,7 @@ import { Component, AfterViewInit, ElementRef, HostBinding, HostListener } from 
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 import { Logger } from '../logger/logger.service';
-import { ImageZoomLensComponent } from './zoom-lens.component';
-import { ZoomLensPanPercentagesEvent } from './zoom-lens.interfaces';
+import { ImageZoomLensComponent, ZoomLensPanPercentagesEvent, ZoomLensPanPixelsEvent} from './index';
 
 @Component({
 	moduleId: module.id,
@@ -15,18 +14,20 @@ export class ImageZoomerComponent implements AfterViewInit {
 	private _imageUrl: string;
 	private originalImageWidth: number;
 	private originalImageHeight: number;
+	private elementWidth: number;
+	private elementHeight: number;
 
 	public set imageUrl(url: string) {
 		this._imageUrl = url;
 		this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
-		this.logger.log('Set background image to ' + url + ' .... loading!');
 
 		let loadImg = new Image();
 		loadImg.addEventListener('load', (e: Event) => {
 			this.originalImageWidth = loadImg.width;
 			this.originalImageHeight = loadImg.height;
 
-			this.logger.log('Image loaded with size', loadImg.width, loadImg.height);
+			this.elementWidth = parseInt(this.element.nativeElement.offsetWidth);
+			this.elementHeight = parseInt(this.element.nativeElement.offsetHeight);
 		});
 
 		loadImg.src = url;
@@ -78,11 +79,15 @@ export class ImageZoomerComponent implements AfterViewInit {
 		this.visible = false;
 	}
 
-	pan(e: ZoomLensPanPercentagesEvent) {
-		let left = -1 * this.originalImageWidth * e.left;
-		let top = -1 * this.originalImageHeight * e.top;
+	pan(e: ZoomLensPanPixelsEvent) {
+		const leftScaled = (e.left / e.containerWidth) * this.originalImageWidth;
+		const topScaled = (e.top / e.containerHeight) * this.originalImageHeight;
 
-		this.logger.log('Pan background to: ', `${left}px ${top}px`, 'from percentages ', e.left, e.top);
-		this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`${left}px ${top}px`);
+		const leftPos = Math.max(0, Math.min(leftScaled - (this.elementWidth / 2), this.originalImageWidth - this.elementWidth));
+		const topPos = Math.max(0, Math.min(topScaled - (this.elementHeight / 2), this.originalImageHeight - this.elementHeight));
+
+		//this.logger.log(`Pan original image to ${leftPos} x ${topPos}`);
+
+		this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`-${leftPos}px -${topPos}px`);
 	}
 }

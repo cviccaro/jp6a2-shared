@@ -1,5 +1,5 @@
-import { Directive, OnInit, HostListener, ComponentRef, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Directive, HostListener, ComponentRef, ElementRef, OnDestroy, Input } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 import { ImageZoomerComponent } from './image-zoomer.component';
 import { JpImageZoomer } from './image-zoomer';
@@ -8,9 +8,12 @@ import { Logger } from '../logger/logger.service';
 @Directive({
 	selector: '[jp-image-zoom]',
 })
-export class ImageZoomDirective implements OnInit {
+export class ImageZoomDirective implements OnDestroy {
+	@Input() imageZoomMode = 'default';
+
 	private zoomerOpen = false;
 	private zoomerRef: ComponentRef<ImageZoomerComponent>
+	private zoomerOpened: Subscription;
 	private revealTimer: any;
 
 	constructor(
@@ -21,32 +24,16 @@ export class ImageZoomDirective implements OnInit {
 
 	@HostListener('mouseenter', ['$event'])
 	onMouseEnter(e: any) {
-		this.logger.log('Mouse Enter: ', e);
 		clearTimeout(this.revealTimer);
+
 		this.revealTimer = setTimeout(() => {
 			this.openZoomer();
 		});
 	}
 
-	@HostListener('mousemove', ['$event'])
-	onMouseMove(e: any) {
-		if (this.zoomerOpen) {
-			//this.logger.log('Mouse Move During Hover: ', e);
-		}
-	}
-
-	@HostListener('mouseleave', ['$event'])
-	onMouseLeave(e: any) {
-		clearTimeout(this.revealTimer);
-		this.logger.log('Mouse Leave: ', e);
-		this.closeZoomer();
-	}
-
 	openZoomer() {
 		this.zoomerOpen = true;
-		this.imageZoomer.open(this).subscribe((...args: any[]) => {
-			this.logger.log('Image Zoomer opened!', args);
-		});
+		this.zoomerOpened = this.imageZoomer.open(this).subscribe(() => { });
 	}
 
 	closeZoomer() {
@@ -54,7 +41,9 @@ export class ImageZoomDirective implements OnInit {
 		this.imageZoomer.close(this);
 	}
 
-	ngOnInit() {
-		this.logger.log('ImageZoomDirective initialized', this);
+	ngOnDestroy() {
+		if (this.zoomerOpened) {
+			this.zoomerOpened.unsubscribe();
+		}
 	}
 }

@@ -1,14 +1,18 @@
 :host {
 	display: block;
 	background: #ddd;
-	opacity: 0.33;
 	width: 100px;
 	height: 100px;
 	border: 1px solid #000;
 
 	position: absolute;
-	top: 50px;
-	left: 100px;
 
 	z-index: 84;
+
+	opacity: 0;
+	transition: opacity 500ms ease;
+
+	&.is-visible {
+		opacity: 0.33;
+	}
 }

@@ -1,5 +1,5 @@
-import { Component, HostBinding, ElementRef } from '@angular/core';
-import { Logger } from '../logger/logger.service';
+import { Component, HostBinding, ElementRef, OnInit, AfterViewInit } from '@angular/core';
+import { Logger } from '../../logger/logger.service';
 
 @Component({
 	moduleId: module.id,
@@ -7,7 +7,7 @@ import { Logger } from '../logger/logger.service';
 	template: '',
 	styleUrls: [ './zoom-lens.component.css' ]
 })
-export class ImageZoomLensComponent {
+export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	canvasWidth: number;
 	canvasHeight: number;
 
@@ -16,12 +16,18 @@ export class ImageZoomLensComponent {
 	
 	constructor(public element: ElementRef, private logger: Logger) {}
 
+	ngOnInit() {
+		this.isVisible = true;
+	}
+
 	ngAfterViewInit() {
 		this.elementWidth = parseInt(this.element.nativeElement.offsetWidth);
 		this.elementHeight = parseInt(this.element.nativeElement.offsetHeight);
 
 		this.canvasWidth = parseInt(this.element.nativeElement.parentElement.offsetWidth);
 		this.canvasHeight = parseInt(this.element.nativeElement.parentElement.offsetHeight);
+
+		this.logger.log('ZoomLens component view initialized: ', this);
 	}
 
 	@HostBinding('style.top')
@@ -30,8 +36,11 @@ export class ImageZoomLensComponent {
 	@HostBinding('style.left')
 	positionLeft: string;
 
+	@HostBinding('class.is-visible')
+	isVisible = false;
+
 	moveTo(left: number, top: number) {
-		this.positionLeft = (left - (this.elementWidth / 2)) + 'px';
-		this.positionTop = (top - (this.elementHeight / 2)) + 'px';
+		this.positionLeft = Math.max(0, Math.min(left - (this.elementWidth / 2), this.canvasWidth - this.elementWidth)) + 'px';
+		this.positionTop = Math.max(0, Math.min(top - (this.elementHeight / 2), this.canvasHeight - this.elementHeight)) + 'px';
 	}
 }

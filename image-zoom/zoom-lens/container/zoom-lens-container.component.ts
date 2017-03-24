@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostBinding, HostListener, ViewChild, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { ImageZoomLensComponent } from './zoom-lens.component';
-import { ImageZoomLensCanvasComponent } from './zoom-lens-canvas.component';
-import { ZoomLensPanPixelsEvent } from './zoom-lens.interfaces';
-import { Logger } from '../logger/logger.service';
+import { ImageZoomLensComponent } from '../zoom-lens.component';
+import { ImageZoomLensCanvasComponent } from '../canvas/zoom-lens-canvas.component';
+import { ZoomLensPanPixelsEvent, ZoomLensPanPixelsRawEvent } from '../zoom-lens.interfaces';
+import { Logger } from '../../../logger/logger.service';
 
 @Component({
 	moduleId: module.id,
@@ -50,13 +50,23 @@ export class ImageZoomLensContainerComponent {
 
 	@Output() pan = new EventEmitter<ZoomLensPanPixelsEvent>();
 
+	@Output() mouseDidLeave = new EventEmitter<any>();
+
+	@HostListener('mouseleave', ['$event'])
+	onMouseLeave(e: any) {
+		this.mouseDidLeave.emit(e);
+	}
+
 	constructor(public element: ElementRef, private sanitizer: DomSanitizer, private logger: Logger) {}
 
-	lensFocusChanged(pan: ZoomLensPanPixelsEvent) {
+	lensFocusChanged(pan: ZoomLensPanPixelsRawEvent) {
 		this.lensCmp.moveTo(pan.left, pan.top);
+
 		this.pan.emit({
-			left: (pan.left - (this.lensCmp.elementWidth * .6)) / parseInt(this.containerWidth),
-			top: (pan.top - (this.lensCmp.elementHeight * .7)) / parseInt(this.containerHeight)
+			left: pan.left,
+			top: pan.top,
+			containerWidth: parseFloat(this.containerWidth),
+			containerHeight: parseFloat(this.containerHeight)
 		});
 	}
 }
