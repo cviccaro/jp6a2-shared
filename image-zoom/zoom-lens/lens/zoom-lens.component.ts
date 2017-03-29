@@ -1,5 +1,5 @@
 import { Component, HostBinding, ElementRef, OnInit, AfterViewInit } from '@angular/core';
-import { Logger } from '../../logger/logger.service';
+import { Logger } from '../../../logger/logger.service';
 
 @Component({
 	moduleId: module.id,

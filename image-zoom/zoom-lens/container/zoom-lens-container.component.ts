@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostBinding, HostListener, ViewChild, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { ImageZoomLensComponent } from '../zoom-lens.component';
+import { ImageZoomLensComponent } from '../lens/zoom-lens.component';
 import { ImageZoomLensCanvasComponent } from '../canvas/zoom-lens-canvas.component';
 import { ZoomLensPanPixelsEvent, ZoomLensPanPixelsRawEvent } from '../zoom-lens.interfaces';
 import { Logger } from '../../../logger/logger.service';
