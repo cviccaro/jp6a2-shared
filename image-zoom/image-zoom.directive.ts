@@ -9,7 +9,7 @@ import { Logger } from '../logger/logger.service';
 	selector: '[jp-image-zoom]',
 })
 export class ImageZoomDirective implements OnDestroy {
-	@Input() imageZoomMode = 'default';
+	@Input('jp-image-zoom-mode') jpImageZoomMode = 'default';
 
 	private zoomerOpen = false;
 	private zoomerRef: ComponentRef<ImageZoomerComponent>
@@ -21,6 +21,10 @@ export class ImageZoomDirective implements OnDestroy {
 		private imageZoomer: JpImageZoomer,
 		public el: ElementRef
 	) {}
+
+	ngOnInit() {
+		this.logger.log('ImageZoomDirective initialized', this);
+	}
 
 	@HostListener('mouseenter', ['$event'])
 	onMouseEnter(e: any) {

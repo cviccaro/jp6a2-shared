@@ -69,6 +69,7 @@ export class ImageZoomerComponent implements AfterViewInit {
 	}
 
 	open() {
+		this.logger.log('ImageZoomerComponent.open() called');
 		this.transitioning = true;
 		setTimeout(() => {
 			this.visible = true;

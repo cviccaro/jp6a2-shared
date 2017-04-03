@@ -23,6 +23,22 @@ export class JpImageZoomer implements OnDestroy {
 	open(directive: ImageZoomDirective) {
 		this.activeItem = directive;
 
+		if (directive.jpImageZoomMode === 'inline') {
+			return this.openInline(directive);
+		} else {
+			return this.openWithViewer(directive);
+		}
+	}
+
+	openInline(directive: ImageZoomDirective): Observable<ComponentRef<ImageZoomerComponent>> {
+		this.logger.log('ImageZoomer.openInline() called: ', directive);
+
+		return Observable.create((observer: Observer<any>) => {
+		});
+	}
+
+	openWithViewer(directive: ImageZoomDirective): Observable<ComponentRef<ImageZoomerComponent>> {
+		this.logger.log('ImageZoomer.openWithViewer() called: ', directive);
 		return Observable.create((observer: Observer<any>) => {
 			const directiveEl: HTMLElement = this.activeItem.el.nativeElement;
 			const imageUrl = directiveEl.getAttribute('src');
