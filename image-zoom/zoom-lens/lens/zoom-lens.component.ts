@@ -22,13 +22,13 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	@Input() shape = 'square';
 
 	@HostBinding('style.height')
-	private get cssStyleHeight() {
+	public get cssStyleHeight() {
 		if (this.lensHeight) return `${parseInt(this.lensHeight)}px`;
 		return void(0);
 	}
 
 	@HostBinding('style.width')
-	private get cssStyleWidth() {
+	public get cssStyleWidth() {
 		if (this.lensWidth) return `${parseInt(this.lensWidth)}px`;
 
 		return void(0);
@@ -57,11 +57,11 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	@HostBinding('style.background-position')
 	safeBackgroundPosition: SafeStyle;
 
-	constructor(public element: ElementRef, private sanitzer: DomSanitizer, private logger: Logger) {}
+	constructor(public element: ElementRef, private sanitizer: DomSanitizer, private logger: Logger) {}
 
 	ngOnInit() {
 		if (this.mode === 'inline' && this.imageUrl) {
-			this.safeBackgroundImage = this.sanitzer.bypassSecurityTrustStyle(`url(${this.imageUrl})`);
+			this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${this.imageUrl})`);
 		}
 
 		this.logger.log('ZoomLensComponent Initialized', this);
@@ -84,7 +84,7 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 		this.positionTop = Math.max(0, Math.min(top - (this.elementHeight / 2), this.canvasHeight - this.elementHeight)) + 'px';
 
 		if (this.mode === 'inline') {
-			this.safeBackgroundPosition = this.sanitzer.bypassSecurityTrustStyle(`${left / this.canvasWidth * 100}% ${top / this.canvasHeight * 100}%`);
+			this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`${left / this.canvasWidth * 100}% ${top / this.canvasHeight * 100}%`);
 		}
 	}
 }
