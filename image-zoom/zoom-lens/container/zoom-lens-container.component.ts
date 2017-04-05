@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ImageZoomLensComponent } from '../lens/zoom-lens.component';
 import { ImageZoomLensCanvasComponent } from '../canvas/zoom-lens-canvas.component';
@@ -8,15 +8,21 @@ import { Logger } from '../../../logger/logger.service';
 @Component({
 	moduleId: module.id,
 	selector: 'jp-image-zoom-lens-container',
-	template: '<jp-image-zoom-lens-canvas (pan)="lensFocusChanged($event)"></jp-image-zoom-lens-canvas><jp-image-zoom-lens></jp-image-zoom-lens>',
+	templateUrl: './zoom-lens-container.component.html',
 	styleUrls: [ './zoom-lens-container.component.css' ]
 })
 export class ImageZoomLensContainerComponent {
-	private _imageUrl: string;
+	@Input() mode = 'outside';
+	public lensWidth: string;
+	public lensHeight: string;
+	public lensShape: string;
 
 	@ViewChild(ImageZoomLensComponent) lensCmp: ImageZoomLensComponent;
 	@ViewChild(ImageZoomLensCanvasComponent) canvasCmp: ImageZoomLensCanvasComponent;
 
+	/**
+	 * Style bindings
+	 */
 	@HostBinding('style.background-image')
 	safeBackgroundImage: SafeStyle;
 
@@ -32,6 +38,19 @@ export class ImageZoomLensContainerComponent {
 	@HostBinding('style.height')
 	containerHeight: string;
 
+	@HostBinding('class.mode-inline') get willApplyCssClassModeInline() {
+		return this.mode === 'inline';
+	}
+
+	@HostBinding('class.mode-outside') get willApplyCssClassModeOutside() {
+		return this.mode === 'outside';
+	}
+
+	/**
+	 * Image URL
+	 */
+	private _imageUrl: string;
+
 	public set imageUrl(url: string) {
 		this._imageUrl = url;
 		this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
@@ -41,13 +60,9 @@ export class ImageZoomLensContainerComponent {
 		return this._imageUrl;
 	}
 
-	@HostBinding('style.background-size')
-	private get backgroundSIze(): SafeStyle|void {
-		if (this.containerHeight && this.containerWidth) {
-			return this.sanitizer.bypassSecurityTrustStyle(`${this.containerWidth} ${this.containerHeight}`);
-		}
-	}
-
+	/**
+	 * Event emitters
+	 */
 	@Output() pan = new EventEmitter<ZoomLensPanPixelsEvent>();
 
 	@Output() mouseDidLeave = new EventEmitter<any>();
@@ -57,8 +72,21 @@ export class ImageZoomLensContainerComponent {
 		this.mouseDidLeave.emit(e);
 	}
 
+	@HostBinding('style.background-size')
+	private get backgroundSize(): SafeStyle|void {
+		if (this.containerHeight && this.containerWidth) {
+			return this.sanitizer.bypassSecurityTrustStyle(`${this.containerWidth} ${this.containerHeight}`);
+		}
+	}
+
+	/**
+	 * Constructor
+	 */
 	constructor(public element: ElementRef, private sanitizer: DomSanitizer, private logger: Logger) {}
 
+	/**
+	 * Mouse panned in container
+	 */
 	lensFocusChanged(pan: ZoomLensPanPixelsRawEvent) {
 		this.lensCmp.moveTo(pan.left, pan.top);
 
@@ -68,5 +96,14 @@ export class ImageZoomLensContainerComponent {
 			containerWidth: parseFloat(this.containerWidth),
 			containerHeight: parseFloat(this.containerHeight)
 		});
+	}
+
+	/**
+	 * Configure the instance
+	 */
+	config(props: { [key: string] : any }) {
+		for (let prop in props) {
+			(<any>this)[prop] = props[prop];
+		}
 	}
 }

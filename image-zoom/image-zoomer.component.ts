@@ -17,6 +17,12 @@ export class ImageZoomerComponent implements AfterViewInit {
 	private elementWidth: number;
 	private elementHeight: number;
 
+	public margin = 20;
+	public canvasWidth: number;
+	public canvasHeight: number;
+	public canvasLeft: number;
+	public canvasTop: number;
+
 	public set imageUrl(url: string) {
 		this._imageUrl = url;
 		this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
@@ -28,6 +34,10 @@ export class ImageZoomerComponent implements AfterViewInit {
 
 			this.elementWidth = parseInt(this.element.nativeElement.offsetWidth);
 			this.elementHeight = parseInt(this.element.nativeElement.offsetHeight);
+
+			this.position();
+
+			this.logger.log('Set element width to ' + this.elementWidth + '.  Set element height to ' + this.elementHeight);
 		});
 
 		loadImg.src = url;
@@ -44,6 +54,9 @@ export class ImageZoomerComponent implements AfterViewInit {
 
 	@HostBinding('style.left')
 	positionLeft: string;
+
+	@HostBinding('style.right')
+	positionRight: string;
 
 	@HostBinding('class.transitioning')
 	transitioning = false;
@@ -69,7 +82,7 @@ export class ImageZoomerComponent implements AfterViewInit {
 	}
 
 	open() {
-		this.logger.log('ImageZoomerComponent.open() called');
+		this.logger.log('ImageZoomerComponent.open() called', this);
 		this.transitioning = true;
 		setTimeout(() => {
 			this.visible = true;
@@ -90,5 +103,37 @@ export class ImageZoomerComponent implements AfterViewInit {
 		//this.logger.log(`Pan original image to ${leftPos} x ${topPos}`);
 
 		this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`-${leftPos}px -${topPos}px`);
+	}
+
+	position(left?: number, top?: number) {
+		if (left === undefined) {
+			left = this.canvasLeft + this.canvasWidth + this.margin;
+		}
+		if (top === undefined) {
+			top = this.canvasTop - (this.canvasHeight / 2);
+		}
+
+		const windowWidth = window.innerWidth;
+		const windowHeight = window.innerHeight;
+		const elementHeight = this.element.nativeElement.offsetHeight;
+		const elementWidth = this.element.nativeElement.offsetWidth;
+		const scrollTop = document.body.scrollTop;
+		const scrollBottom = scrollTop + windowHeight;
+
+		if (top <= scrollTop) {
+			top = top + (scrollTop - top);
+		} else if ((top + elementHeight) >= scrollBottom) {
+			top = top - ((top + elementHeight) - scrollBottom) - this.margin - this.margin;
+		}
+
+		this.positionTop = `${top}px`;
+
+		if (left + elementWidth > windowWidth) {
+			this.positionLeft = 'auto';
+			this.positionRight = `${windowWidth - this.canvasLeft + this.margin}px`;
+		} else {
+			this.positionLeft = `${left}px`;
+			this.positionRight = 'auto';
+		}
 	}
 }

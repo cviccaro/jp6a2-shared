@@ -10,6 +10,9 @@ import { Logger } from '../logger/logger.service';
 })
 export class ImageZoomDirective implements OnDestroy {
 	@Input('jp-image-zoom-mode') jpImageZoomMode = 'default';
+	@Input('jp-image-zoom-lens-width') jpImageZoomLensWidth = '100px';
+	@Input('jp-image-zoom-lens-height') jpImageZoomLensHeight = '100px';
+	@Input('jp-image-zoom-lens-shape') jpImageZoomLensShape = 'square';
 
 	private zoomerOpen = false;
 	private zoomerRef: ComponentRef<ImageZoomerComponent>

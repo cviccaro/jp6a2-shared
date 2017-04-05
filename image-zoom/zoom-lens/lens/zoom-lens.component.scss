@@ -15,4 +15,27 @@
 	&.is-visible {
 		opacity: 0.33;
 	}
+
+	&.mode-inline {
+		border-color: #fff;
+		@include basic-boxshadow(3,false);
+		.sheen {
+			background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(246,246,246,0.12) 47%, rgba(237,237,237,0) 100%);
+			-webkit-box-shadow: inset 0px 0px 10px 3px rgba(0,0,0,0.25);
+			-moz-box-shadow: inset 0px 0px 10px 3px rgba(0,0,0,0.25);
+			box-shadow: inset 0px 0px 10px 3px rgba(0,0,0,0.25);
+			height: 100%;
+			width: 100%;
+		}
+		&.is-visible {
+			opacity: 1;
+		}
+	}
+
+	&.circular {
+		border-radius: 50%;
+		.sheen {
+			border-radius: 50%;
+		}
+	}
 }

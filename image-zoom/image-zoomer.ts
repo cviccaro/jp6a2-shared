@@ -34,6 +34,40 @@ export class JpImageZoomer implements OnDestroy {
 		this.logger.log('ImageZoomer.openInline() called: ', directive);
 
 		return Observable.create((observer: Observer<any>) => {
+			const directiveEl: HTMLElement = this.activeItem.el.nativeElement;
+			const imageUrl = directiveEl.getAttribute('src');
+			let rect = directiveEl.getBoundingClientRect();
+
+			if (!this.zoomLensContainerRef) {
+				let componentFactory = this.cr.resolveComponentFactory(ImageZoomLensContainerComponent);
+				let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
+
+				// Store reference to component
+				this.zoomLensContainerRef = cmpRef;
+
+				// Configure instance
+				this.zoomLensContainerRef.instance.config({
+					imageUrl: imageUrl,
+					positionTop: `${directiveEl.offsetTop}px`,
+					positionLeft: `${rect.left}px`,
+					containerWidth: `${rect.width}px`,
+					containerHeight: `${rect.height}px`,
+					mode: 'inline',
+					lensWidth: directive.jpImageZoomLensWidth,
+					lensHeight: directive.jpImageZoomLensHeight,
+					lensShape: directive.jpImageZoomLensShape
+				});
+
+				// Append it to DOM
+				directive.el.nativeElement.parentElement.appendChild(cmpRef.location.nativeElement);
+
+				this.mouseDidPan = this.zoomLensContainerRef.instance.pan.subscribe((e: ZoomLensPanPixelsEvent) => this.pan(e));
+				this.mouseDidLeave = this.zoomLensContainerRef.instance.mouseDidLeave.subscribe((e: any) => this.close());
+			}
+
+			// Resolve the component
+			observer.next(this.zoomLensContainerRef);
+			observer.complete();
 		});
 	}
 
@@ -51,11 +85,18 @@ export class JpImageZoomer implements OnDestroy {
 				// Store reference to component
 				this.zoomLensContainerRef = cmpRef;
 
-				this.zoomLensContainerRef.instance.imageUrl = imageUrl;
-				this.zoomLensContainerRef.instance.positionTop = `${directiveEl.offsetTop}px`;
-				this.zoomLensContainerRef.instance.positionLeft = `${rect.left}px`;
-				this.zoomLensContainerRef.instance.containerWidth = `${rect.width}px`;
-				this.zoomLensContainerRef.instance.containerHeight = `${rect.height}px`;
+				// Configure instance
+				this.zoomLensContainerRef.instance.config({
+					imageUrl: imageUrl,
+					positionTop: `${directiveEl.offsetTop}px`,
+					positionLeft: `${rect.left}px`,
+					containerWidth: `${rect.width}px`,
+					containerHeight: `${rect.height}px`,
+					mode: 'outside',
+					lensWidth: directive.jpImageZoomLensWidth,
+					lensHeight: directive.jpImageZoomLensHeight,
+					lensShape: directive.jpImageZoomLensShape
+				});
 
 				// Append it to DOM
 				directive.el.nativeElement.parentElement.appendChild(cmpRef.location.nativeElement);
@@ -70,6 +111,10 @@ export class JpImageZoomer implements OnDestroy {
 
 				// Store reference to component
 				this.zoomerRef = cmpRef;
+				this.zoomerRef.instance.canvasWidth = rect.width;
+				this.zoomerRef.instance.canvasHeight = rect.height;
+				this.zoomerRef.instance.canvasLeft = rect.left;
+				this.zoomerRef.instance.canvasTop = directiveEl.offsetTop;
 
 				// Append it to DOM
 				this.defaultViewContainer.element.nativeElement.appendChild(cmpRef.location.nativeElement);
@@ -79,8 +124,7 @@ export class JpImageZoomer implements OnDestroy {
 
 			rect = directiveEl.getBoundingClientRect();
 
-			this.zoomerRef.instance.positionLeft = `${rect.left + rect.width + 20}px`;
-			this.zoomerRef.instance.positionTop = `${directiveEl.offsetTop}px`;
+			this.zoomerRef.instance.position(rect.left + rect.width + 20, directiveEl.offsetTop);
 
 			this.zoomerRef.instance.open();
 
@@ -92,22 +136,19 @@ export class JpImageZoomer implements OnDestroy {
 
 	close(directive?: ImageZoomDirective) {
 		if (directive === this.activeItem) this.activeItem = null;
-		this.zoomerRef.destroy();
-		this.zoomLensContainerRef.destroy();
+		this.destroyCmp(this.zoomLensContainerRef);
+		this.destroyCmp(this.zoomerRef);
 
 		this.zoomerRef = this.zoomLensContainerRef = undefined;
 	}
 
 	pan(event: ZoomLensPanPixelsEvent) {
-		this.zoomerRef.instance.pan(event);
+		if (this.zoomerRef) this.zoomerRef.instance.pan(event);
 	}
 
 	ngOnDestroy() {
-		if (typeof (<ComponentRef<any>>this.zoomerRef).instance.canDestroy === 'function') {
-		  (<ComponentRef<any>>this.zoomerRef).instance.canDestroy().then ( () => this.zoomerRef.destroy() );
-		} else {
-		  this.zoomerRef.destroy();
-		}
+		this.destroyCmp(this.zoomLensContainerRef);
+		this.destroyCmp(this.zoomerRef);
 
 		if (this.mouseDidLeave) {
 			this.mouseDidLeave.unsubscribe();
@@ -115,6 +156,18 @@ export class JpImageZoomer implements OnDestroy {
 
 		if (this.mouseDidPan) {
 			this.mouseDidPan.unsubscribe();
+		}
+	}
+
+	private destroyCmp(cmpRef: ComponentRef<any>) {
+		if (cmpRef) {
+			if (typeof (<ComponentRef<any>>cmpRef).instance.canDestroy === 'function') {
+			  (<ComponentRef<any>>cmpRef).instance.canDestroy().then ( () => cmpRef.destroy() );
+			} else {
+			  cmpRef.destroy();
+			}
+
+			cmpRef = undefined;
 		}
 	}
 }
