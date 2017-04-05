@@ -73,7 +73,7 @@ export class ImageZoomLensContainerComponent {
 	}
 
 	@HostBinding('style.background-size')
-	private get backgroundSize(): SafeStyle|void {
+	public get backgroundSize(): SafeStyle|void {
 		if (this.containerHeight && this.containerWidth) {
 			return this.sanitizer.bypassSecurityTrustStyle(`${this.containerWidth} ${this.containerHeight}`);
 		}
