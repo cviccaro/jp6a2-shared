@@ -35,7 +35,9 @@ export class JpImageZoomer implements OnDestroy {
 
 		return Observable.create((observer: Observer<any>) => {
 			const directiveEl: HTMLElement = this.activeItem.el.nativeElement;
-			const imageUrl = directiveEl.getAttribute('src');
+			const imageUrl = this.getImageUrl(directive);
+
+			this.logger.log('Image Url: ', imageUrl);
 			let rect = directiveEl.getBoundingClientRect();
 
 			if (!this.zoomLensContainerRef) {
@@ -75,7 +77,9 @@ export class JpImageZoomer implements OnDestroy {
 		this.logger.log('ImageZoomer.openWithViewer() called: ', directive);
 		return Observable.create((observer: Observer<any>) => {
 			const directiveEl: HTMLElement = this.activeItem.el.nativeElement;
-			const imageUrl = directiveEl.getAttribute('src');
+			const imageUrl = this.getImageUrl(directive);
+
+			this.logger.log('Image Url: ', imageUrl);
 			let rect = directiveEl.getBoundingClientRect();
 
 			if (!this.zoomLensContainerRef) {
@@ -125,7 +129,7 @@ export class JpImageZoomer implements OnDestroy {
 
 			rect = directiveEl.getBoundingClientRect();
 
-			this.zoomerRef.instance.position(rect.left + rect.width + 20, directiveEl.offsetTop);
+			this.zoomerRef.instance.position(rect.left + rect.width + this.zoomerRef.instance.margin, directiveEl.offsetTop);
 
 			this.zoomerRef.instance.open();
 
@@ -137,7 +141,7 @@ export class JpImageZoomer implements OnDestroy {
 
 	close(directive?: ImageZoomDirective) {
 		if (directive === this.activeItem) this.activeItem = null;
-		this.destroyCmp(this.zoomLensContainerRef);
+		//this.destroyCmp(this.zoomLensContainerRef);
 		this.destroyCmp(this.zoomerRef);
 
 		this.zoomerRef = this.zoomLensContainerRef = undefined;
@@ -145,6 +149,14 @@ export class JpImageZoomer implements OnDestroy {
 
 	pan(event: ZoomLensPanPixelsEvent) {
 		if (this.zoomerRef) this.zoomerRef.instance.pan(event);
+	}
+
+	getImageUrl(directive: ImageZoomDirective): string {
+		if (directive.el.nativeElement.tagName === 'IMG') {
+			return directive.el.nativeElement.getAttribute('src');
+		} else {
+			return directive.el.nativeElement.style.backgroundImage.replace(/url\(("|')/, '').replace(/("|')\)$/, '');
+		}
 	}
 
 	ngOnDestroy() {

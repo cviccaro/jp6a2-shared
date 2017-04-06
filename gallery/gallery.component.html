@@ -8,7 +8,9 @@
 		jpGalleryItem
 		[jpBackground]="image.url"
 		[class.active]="image.active"
-		[class.hidden]="!image.active">
+		[class.hidden]="!image.active"
+		jp-image-zoom 
+		jp-image-zoom-mode="inline">
 	</div>
 </div>
 <jp-pager *ngIf="ready" pagerType="minimal" [totalPages]="images.length" [currentPage]="current" (pageChanged)="switch($event)" includeNav="true"></jp-pager>
