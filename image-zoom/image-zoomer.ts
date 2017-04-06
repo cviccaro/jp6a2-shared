@@ -115,6 +115,7 @@ export class JpImageZoomer implements OnDestroy {
 				this.zoomerRef.instance.canvasHeight = rect.height;
 				this.zoomerRef.instance.canvasLeft = rect.left;
 				this.zoomerRef.instance.canvasTop = directiveEl.offsetTop;
+				this.zoomerRef.instance.lensShape = directive.jpImageZoomLensShape;
 
 				// Append it to DOM
 				this.defaultViewContainer.element.nativeElement.appendChild(cmpRef.location.nativeElement);
@@ -162,7 +163,7 @@ export class JpImageZoomer implements OnDestroy {
 	private destroyCmp(cmpRef: ComponentRef<any>) {
 		if (cmpRef) {
 			if (typeof (<ComponentRef<any>>cmpRef).instance.canDestroy === 'function') {
-			  (<ComponentRef<any>>cmpRef).instance.canDestroy().then ( () => cmpRef.destroy() );
+			  cmpRef.instance.canDestroy().then ( () => cmpRef.destroy() );
 			} else {
 			  cmpRef.destroy();
 			}

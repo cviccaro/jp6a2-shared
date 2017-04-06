@@ -22,6 +22,7 @@ export class ImageZoomerComponent implements AfterViewInit {
 	public canvasHeight: number;
 	public canvasLeft: number;
 	public canvasTop: number;
+	public lensShape: string;
 
 	public set imageUrl(url: string) {
 		this._imageUrl = url;
@@ -69,6 +70,11 @@ export class ImageZoomerComponent implements AfterViewInit {
 
 	@HostBinding('class.open')
 	visible = false;
+
+	@HostBinding('class.circular')
+	get willApplyCssCircularClass() {
+		return this.lensShape === 'circle';
+	}
 
 	@HostListener('transitionend', ['$event']) 
 	onTransitionEnd(e: any) {

@@ -14,12 +14,16 @@
 	box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.33);
 
 	background-position: 0px 0px;
-}
 
-:host.transitioning {
-	display: block;
-}
+	&.transitioning {
+		display: block;
+	}
 
-:host.open {
-	opacity: 1;
+	&.open {
+		opacity: 1;
+	}
+
+	&.circular {
+		border-radius: 50%;
+	}
 }
