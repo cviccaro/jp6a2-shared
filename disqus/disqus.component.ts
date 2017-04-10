@@ -4,7 +4,7 @@
 
 import { Injectable, Component, Input, OnInit, Inject } from '@angular/core';
 import { Location } from '@angular/common';
-import { __platform_browser_private__ as _, DOCUMENT, Title } from '@angular/platform-browser';
+import { DOCUMENT, Title } from '@angular/platform-browser';
 import { WINDOW, MockWindow } from './window';
 
 @Component({
@@ -84,7 +84,7 @@ export class DisqusComponent implements OnInit {
     this.window.disqus_config = this.getConfig();
     let container = this.getScriptContainer();
     let script = this.buildScriptTag(`//${this.shortname}.disqus.com/embed.js`);
-    _.getDOM().insertBefore(container.lastChild, script);
+    this.document.insertBefore(container.lastChild, script);
   }
 
   /**
@@ -101,11 +101,11 @@ export class DisqusComponent implements OnInit {
    * @return {HTMLElement}
    */
   private buildScriptTag(src: string): HTMLElement {
-    let script = _.getDOM().createElement('script');
-    _.getDOM().setAttribute(script, 'src', src);
-    _.getDOM().setAttribute(script, 'async', 'true');
-    _.getDOM().setAttribute(script, 'type', 'text/javascript');
-    _.getDOM().setAttribute(script, 'data-timestamp', new Date().getTime().toString());
+    let script = this.document.createElement('script');
+    this.document.setAttribute(script, 'src', src);
+    this.document.setAttribute(script, 'async', 'true');
+    this.document.setAttribute(script, 'type', 'text/javascript');
+    this.document.setAttribute(script, 'data-timestamp', new Date().getTime().toString());
     return script;
   }
 }

@@ -2,14 +2,18 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
-import { MdButtonModule } from '@angular/material/button';
-import { MdIconModule, MdIconRegistry } from '@angular/material/icon';
-import { MdGridListModule } from '@angular/material/grid-list';
-import { MdInputModule } from '@angular/material/input';
-import { MdToolbarModule } from '@angular/material/toolbar';
-import { MdProgressBarModule } from '@angular/material/progress-bar';
-import { MdRippleModule, OVERLAY_PROVIDERS } from '@angular/material/core';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { 
+  MdButtonModule, 
+  MdIconModule,
+  MdIconRegistry,
+  MdInputModule,
+  MdGridListModule,
+  MdToolbarModule,
+  MdProgressBarModule,
+  MdRippleModule,
+  OVERLAY_PROVIDERS
+} from '@angular/material';
 
 import { MomentModule } from 'angular2-moment';
 import { AgmCoreModule } from 'angular2-google-maps/core';
@@ -67,6 +71,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule,
+    //BrowserAnimationsModule,
     MdButtonModule.forRoot(),
     MdIconModule.forRoot(),
     MdGridListModule.forRoot(),
@@ -117,6 +122,7 @@ import {
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    //BrowserAnimationsModule,
 
     // Third party modules
     AgmCoreModule,
