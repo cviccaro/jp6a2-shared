@@ -16,20 +16,36 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 	diff: number;
 	empty: boolean = false;
 
+	containerEl: HTMLElement;
+	labelEl: HTMLElement;
+
+	required = false;
+
 	constructor(private el: ElementRef) { }
 
 	ngAfterViewInit() {
+		this.required = this.el.nativeElement.hasAttribute('required');
+		this.labelEl = this.el.nativeElement.previousElementSibling.children[0];
+		this.containerEl = this.el.nativeElement.parentElement;
+
+		this.containerEl.classList.add('mat-input-container');
+		this.el.nativeElement.classList.add('mat-input-element');
 		this.el.nativeElement.style.height = '48px';
 	}
 
 	@HostListener('focus', ['$event'])
 	onFocus(e: Event) {
-		this.el.nativeElement.previousElementSibling.classList.add('md-focused');
+		this.containerEl.classList.add('mat-focused');
 	}
 
 	@HostListener('blur', ['$event'])
 	onBlur(e: Event) {
-		this.el.nativeElement.previousElementSibling.classList.remove('md-focused');
+		this.containerEl.classList.remove('mat-focused');
+		if (this.getValue()) {
+			this.containerEl.classList.add('ng-dirty');
+		} else {
+			this.containerEl.classList.remove('ng-dirty');
+		}
 		this.handleEmpty();
 	}
 
@@ -65,18 +81,34 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 		this.handleEmpty();
 	}
 
+	getValue(): string {
+		return this.el.nativeElement.value;
+	}
+
 	handleEmpty() {
-		this.empty = !this.el.nativeElement.value.length;
+		this.empty = !this.getValue().length;
 
 		if (this.empty) {
-			this.el.nativeElement.previousElementSibling.classList.add('md-empty');
+			this.labelEl.classList.add('mat-empty');
 		} else {
-			this.el.nativeElement.previousElementSibling.classList.remove('md-empty');
+			this.labelEl.classList.remove('mat-empty');
+		}
+
+		if (this.required) {
+			this.containerEl.classList.add('ng-invalid');
+		} else {
+			this.containerEl.classList.remove('ng-invalid');
 		}
 	}
 
 	setEmpty() {
 		this.empty = true;
-		this.el.nativeElement.previousElementSibling.classList.add('md-empty');
+		this.labelEl.classList.add('mat-empty');
+
+		if (this.required) {
+			this.containerEl.classList.add('ng-invalid');
+		} else {
+			this.containerEl.classList.remove('ng-invalid');
+		}
 	}
 }

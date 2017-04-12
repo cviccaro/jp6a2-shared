@@ -164,3 +164,147 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
 @mixin display-flex {
 	display: flex;
 }
+
+@mixin jp-form {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+	.mat-input-container {
+	  &.mat-focused {
+	    label.mat-float {
+	      padding-top: 0;
+	      padding-left: 0;
+	      top: -4px;
+	    }
+	  }
+	  &.ng-dirty {
+	  	label.mat-float:not(.mat-empty) {
+	  		padding-top: 0;
+	  		padding-left: 0;
+	  		top: -4px;	
+	  	}
+	  }
+	}
+
+	.form-group {
+	  width: 49%;
+	  margin: 18px 1% 18px 0;
+	  flex-shrink: 0;
+
+	  &:nth-child(2n) {
+	    margin-right: 0;
+	    margin-left: 1%;
+	  }
+
+	  &.flush {
+	    margin-left: 0;
+	    margin-right: 0;
+	  }
+
+	  &.full {
+	    width: 100%;
+	    label {
+	      display: block;
+	    }
+
+	    [mdInput] {
+	      width: 100%;
+	    }
+	  }
+
+	  .mat-input-wrapper {
+	    margin: 0;
+
+	    input {
+	      border-width: 1px;
+	      border-style: solid;
+	      border-color: #fff;
+	      padding: 10px 20px;
+	      height: 48px;
+	      transition: border-color $transition_duration $transition_ease;
+	      will-change: border-color;
+	    }
+	  }
+
+	  .mat-input-element.ng-valid.ng-dirty {
+	  	&[required] {
+	  	  border-left: 2px solid $green_500!important;
+	  	}
+	  }
+
+	  .mat-input-element.ng-invalid.ng-dirty {
+	  	&[required] {
+	  	  border-left: 2px solid $fuchsia!important;
+	  	}
+	  }
+
+	  &.textarea {
+	    position: relative;
+
+	    .mat-input-placeholder-wrapper {
+	    	height: auto;
+	    	overflow: visible;
+	    	label {
+	    		overflow: visible;
+	    	}
+	    }
+
+	    label {
+	      z-index: 4;
+	    }
+
+	    textarea {
+	      z-index: 5;
+	      width: 100%;
+	      background: transparent;
+	      color: $white_trans;
+	      border: 1px solid $white;
+	      padding: 10px 20px;
+	      line-height: 23px;
+	      position: relative;
+	    }
+	  }
+
+	  .mat-input-placeholder-wrapper {
+	    height: 100%;
+	    .mat-input-placeholder {
+	      color: $white_trans;
+	      font-weight: normal;
+	      font-size: 16px;
+	      font-family: $source-sans-pro;
+	      height: 100%;
+	      line-height: 48px;
+	      padding-left: 20px;
+	      margin: 0;
+
+	      &.mat-focused {
+	        color: $blue;
+	      }
+
+	      .mat-placeholder-required {
+	        color: $fuchsia!important;
+	      }
+	    }
+	  }
+	}
+
+	.form-actions {
+	  text-align: right;
+	  width: 100%;
+	  margin-top: 2em;
+	}
+
+	input:focus {
+	  border-color: $blue !important;
+	}
+
+	.mat-input-underline {
+	  display: none;
+	}
+
+	label {
+	  transition: all $transition_duration $transition_ease;
+	  overflow: hidden;
+	}
+}

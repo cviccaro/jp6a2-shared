@@ -1,12 +1,13 @@
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
+
 //@import "@angular/material/core/ripple/ripple";
 @import "ie.scss";
 
 .md-ripple-foreground {
-  top: 0!important;
-  left: 0!important;
-  right: 0!important;
-  bottom: 0!important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
 }
 
 jp-app {
@@ -42,18 +43,21 @@ footer {
   padding: 80px 0px;
   position: relative;
   text-align: center;
+
   h3 {
     font-size: 1.17em;
     margin-bottom: 1em;
   }
+
   p {
     font-size: $paragraph-font-size - 2px;
     letter-spacing: .020em;
     margin: 0;
     line-height: normal;
   }
+
   jp-social-icons {
-    md-icon+span {
+    md-icon + span {
       display: none;
     }
   }
@@ -67,6 +71,7 @@ button[md-button],
 button[md-raised-button] {
   font-family: $source-sans-pro;
   position: relative;
+
   .md-ripple-foreground {
     max-height: 100%;
   }
@@ -88,8 +93,9 @@ button {
   height: 40px;
   padding: 8px 18px;
   text-decoration: none;
+
   md-icon {
-      vertical-align: middle;
+    vertical-align: middle;
   }
 }
 
@@ -100,24 +106,30 @@ button {
   padding: 0 40px;
   line-height: 30px;
   height: 30px;
+
   @include border-radius(0);
+
   span {
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     color: $text-color;
   }
+
   &[disabled] {
     opacity: 0.2;
   }
+
   &:hover {
     background-color: $blackish;
     color: $white;
   }
+
   &.fat {
     border-color: #dfdfdf;
     padding: 5px 20px;
     height: auto;
+
     md-icon {
       position: relative;
       top: -2.5px;
@@ -141,15 +153,21 @@ button {
   .inverted-button,
   [md-button].inverted-button {
     @include transition(background $transition_duration linear);
+
     &:hover {
       background: $text-color;
-      span { color: $white_trans; }
+
+      span {
+        color: $white_trans;
+      }
     }
+
     &[disabled] {
       opacity: 0.2;
       color: $white_trans;
+
       &:hover {
-        background: inherit!important;
+        background: inherit !important;
       }
     }
   }
@@ -158,10 +176,6 @@ button {
 .md-ripple-foreground {
   max-height: 100%;
   max-width: 100%;
-}
-
-.md-placeholder-required {
-  color: $red_500;
 }
 
 /**
@@ -205,6 +219,7 @@ nav {
 .layout-sidebar {
   display: flex;
   flex-direction: row;
+
   .left {
     flex-basis: 75%;
     width: 75%;
@@ -212,6 +227,7 @@ nav {
     margin-left: 0;
     margin-right: 0;
   }
+
   .right {
     flex-basis: 25%;
     flex-shrink: 0;
@@ -225,9 +241,11 @@ nav {
   display: flex;
   flex-direction: column;
   padding: 10em 0 0;
+
   .top-row {
     display: flex;
     flex-direction: row;
+
     .left {
       width: 75%;
       flex-basis: 75%;
@@ -239,10 +257,12 @@ nav {
       text-align: right;
     }
   }
+
   .bottom-row {
     display: flex;
     flex-direction: column;
     margin-top: 52px;
+
     .content {
       flex-direction: row;
     }
@@ -252,8 +272,9 @@ nav {
 .mobile {
   display: none;
 }
+
 [md-button].mobile {
-  display: none!important;
+  display: none !important;
 }
 
 .icon-buttons {
@@ -265,17 +286,21 @@ nav {
   flex-direction: row;
   flex-wrap: wrap;
   display: flex;
+
   .cell {
     width: 32%;
     margin-right: 2%;
     margin-bottom: 16px;
+
     &:nth-child(3n) {
       margin-right: 0;
     }
   }
-  ul,a[md-button] {
+
+  ul, a[md-button] {
     margin-bottom: 20px;
   }
+
   p + button {
     margin-top: 20px;
   }
@@ -289,13 +314,13 @@ nav {
 
 .bg-cover,
 section.bg-cover {
-  background-size: cover!important;
+  background-size: cover !important;
 }
 
 /**
  * Styling
  */
-h1,h2,h3,h4,h5 {
+h1, h2, h3, h4, h5 {
   font-family: $proxima-nova;
 }
 
@@ -314,6 +339,7 @@ p {
 
 a {
   @include transition(color $transition_duration $transition_ease);
+
   &.clear-link {
     margin-top: 24px;
     width: 100%;
@@ -362,7 +388,7 @@ input {
   }
 }
 
-section,.section-padding {
+section, .section-padding {
   padding: 130px 0;
 }
 
@@ -388,10 +414,15 @@ section {
   ul {
     padding-left: 37px;
     text-align: left;
+
     li {
       padding-left: 8px;
     }
   }
+}
+
+p.text-right {
+  margin-left: auto;
 }
 
 .light {
@@ -401,6 +432,7 @@ section {
 .theme-dark,
 section.theme-dark {
   background: $blackish;
+
   .section-title,
   p,
   a,
@@ -414,15 +446,19 @@ section.theme-dark {
   [md-button].inverted-button {
     background: transparent;
     border-color: $white_trans;
+
     span {
       color: $white_trans;
     }
+
     &:hover {
       background: $white;
+
       span {
         color: $text-color;
       }
     }
+
     &[disabled]:hover {
       span {
         color: $white_trans;
@@ -434,26 +470,25 @@ section.theme-dark {
 .theme-grey,
 .grey-bg {
   background-color: $grey_100;
+
   .inverted-button {
     background-color: transparent;
   }
 }
 
-
-
-#projects
-{
+#projects {
   jp-pager {
     margin: 0;
+
     ul.jp-pager {
       display: none;
     }
   }
 }
 
-#contact
-{
+#contact {
   padding-bottom: 175px;
+
   .section-title {
     margin-top: 15px;
   }
@@ -470,13 +505,14 @@ section.theme-dark {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   &.expanded {
     min-height: 438px;
   }
 }
 
 .card-body {
-  img,ul,ol {
+  img, ul, ol {
     display: none;
   }
 }
@@ -484,103 +520,15 @@ section.theme-dark {
 /**
  * Forms
  */
+form.jp-form,
+.jp-form {
+ @include jp-form;
+}
 
- form.jp-form {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   .form-group {
-     width: 49%;
-     margin: 18px 1% 18px 0;
-     flex-shrink: 0;
-
-     &:nth-child(2n) {
-       margin-right: 0;
-       margin-left: 1%;
-     }
-
-     &.flush {
-       margin-left: 0;
-       margin-right: 0;
-     }
-
-     &.full {
-       width: 100%;
-     }
-
-     &.textarea {
-       position: relative;
-       textarea {
-         width: 100%;
-         padding: 10px 20px;
-         line-height: 23px;
-         position: relative;
-       }
-     }
-
-     [mdInput] {
-       width: 100%;
-       .md-input-wrapper {
-         margin: 0;
-         input {
-           height: auto;
-           transition: border-color $transition_duration $transition_ease;
-           will-change: border-color;
-         }
-       }
-       & ~ .alert-danger {
-        margin-top: 16px;
-        margin-bottom: 0;
-        font-size: $paragraph-font-size - 2px;
-        &[hidden] { display: none; }
-       }
-     }
-     input,.md-input-placeholder {
-       font-weight: normal;
-       font-family: $source-sans-pro;
-     }
-     .md-input-placeholder.md-focused {
-       color: $blue;
-     }
-     input:focus {
-       border-color: $blue!important;
-     }
-     .md-input-underline {
-      .md-input-ripple {
-        background-color: $blue;
-      }
-     }
-   }
-   .form-actions {
-     width: 100%;
-     margin-top: 2em;
-   }
-   label {
-     transition: all $transition_duration $transition_ease;
-     overflow: hidden;
-   }
- }
-
- .error-messages {
-   color: $fuchsia;
-   padding-top: 1em;
- }
-
- .form-group.full {
-   width: 100%;
-   label {
-     display: block;
-   }
-   [mdInput] {
-     width: 100%;
-   }
- }
-
- .form-actions {
-   .inverted-button[disabled] {
-     
-   }
- }
+.error-messages {
+  color: $fuchsia;
+  padding-top: 1em;
+}
 
 /**
  * Dialogs
@@ -593,10 +541,12 @@ section.theme-dark {
         color: #fff;
       }
     }
+
     .modal-content {
       background: $light-green-600;
       color: #fff;
     }
+
     .modal-footer {
       .btn.btn-primary {
         background: #fff;
@@ -625,22 +575,23 @@ section.theme-dark {
   }
 }
 
-
 /**
  * Content Overlay
  */
-jp-content-overlay
-{
-  z-index: 999!important;
-  background-color: #fff!important;
+jp-content-overlay {
+  z-index: 999 !important;
+  background-color: #fff !important;
+
   section {
     padding-top: 4.188em;
   }
-  md-content,[md-button] {
+
+  md-content, [md-button] {
     background: transparent;
   }
+
   .md-inverted-button[md-button] {
-    background: transparent!important;
+    background: transparent !important;
   }
 }
 
@@ -648,6 +599,7 @@ jp-content-overlay
   width: 100%;
   margin-top: 4em;
   text-align: center;
+
   md-icon {
     margin: 0 0 5px 0;
   }
@@ -660,14 +612,15 @@ body.scroll-disabled {
   width: 100%;
 }
 
-
 /**
  * Loading Screen
  */
 jp-app:empty + #bootstrapping {
   opacity: 1;
+
   // z-index: 100;
 }
+
 #bootstrapping {
   display: flex;
   flex-direction: column;
@@ -683,17 +636,21 @@ jp-app:empty + #bootstrapping {
   background: #fff;
   text-align: center;
   z-index: 100;
+
   @include transition(opacity $transition_duration $transition_ease);
+
   transition-delay: 1000ms;
 
   .uil-ripple-css,
   .uil-ring-css {
     margin: 0 auto;
   }
+
   &.bootstrapped {
     opacity: 0;
     z-index: -1;
   }
+
   p {
     margin: -52px auto 0;
     color: $text-color;
@@ -703,6 +660,7 @@ jp-app:empty + #bootstrapping {
 @media \0screen {
   @include ie;
 }
-@media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+
+@media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
   @include ie;
 }

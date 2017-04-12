@@ -19,7 +19,7 @@
     <input mdInput name="contact_time" [formControl]="contactForm.get('contact_time')" placeholder="Best time to contact you" />
   </mat-input-container>
   <div class="form-group full textarea required">
-     <label class="md-input-placeholder md-float md-empty">Additional Comments <span class="md-placeholder-required">*</span></label>
+     <span class="mat-input-placeholder-wrapper"><label class="mat-input-placeholder mat-float mat-empty">Additional Comments <span class="mat-placeholder-required">*</span></label></span>
      <textarea jpTextareaAutoexpand md-input name="comments" required [formControl]="contactForm.get('comments')"></textarea>
   </div>
   <div class="form-group full flush" *ngIf="siteKey">
