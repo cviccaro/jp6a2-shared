@@ -16,6 +16,7 @@ export class ImageZoomLensContainerComponent {
 	public lensWidth: string;
 	public lensHeight: string;
 	public lensShape: string;
+	public bgMode: string;
 
 	@ViewChild(ImageZoomLensComponent) lensCmp: ImageZoomLensComponent;
 	@ViewChild(ImageZoomLensCanvasComponent) canvasCmp: ImageZoomLensCanvasComponent;
@@ -74,15 +75,23 @@ export class ImageZoomLensContainerComponent {
 
 	@HostBinding('style.background-size')
 	public get backgroundSize(): SafeStyle|void {
-		if (this.containerHeight && this.containerWidth) {
-			return this.sanitizer.bypassSecurityTrustStyle(`${this.containerWidth} ${this.containerHeight}`);
+		let styleString = 'cover';
+
+		if (this.bgMode !== 'cover' && this.containerHeight && this.containerWidth) {
+			styleString = `${this.containerWidth} ${this.containerHeight}`;
 		}
+
+		return this.sanitizer.bypassSecurityTrustStyle(styleString);
 	}
 
 	/**
 	 * Constructor
 	 */
 	constructor(public element: ElementRef, private sanitizer: DomSanitizer, private logger: Logger) {}
+
+	ngAfterViewInit() {
+		this.logger.log('ZoomLensContainerComponent View Initialized.', this);
+	}
 
 	/**
 	 * Mouse panned in container

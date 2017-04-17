@@ -23,7 +23,7 @@ export class JpImageZoomer implements OnDestroy {
 	open(directive: ImageZoomDirective) {
 		this.activeItem = directive;
 
-		if (directive.jpImageZoomMode === 'inline') {
+		if (directive.mode === 'inline') {
 			return this.openInline(directive);
 		} else {
 			return this.openWithViewer(directive);
@@ -55,9 +55,10 @@ export class JpImageZoomer implements OnDestroy {
 					containerWidth: `${rect.width}px`,
 					containerHeight: `${rect.height}px`,
 					mode: 'inline',
-					lensWidth: directive.jpImageZoomLensWidth,
-					lensHeight: directive.jpImageZoomLensHeight,
-					lensShape: directive.jpImageZoomLensShape
+					lensWidth: directive.lensWidth,
+					lensHeight: directive.lensHeight,
+					lensShape: directive.lensShape,
+					bgMode: directive.bgMode
 				});
 
 				// Append it to DOM
@@ -97,9 +98,9 @@ export class JpImageZoomer implements OnDestroy {
 					containerWidth: `${rect.width}px`,
 					containerHeight: `${rect.height}px`,
 					mode: 'outside',
-					lensWidth: directive.jpImageZoomLensWidth,
-					lensHeight: directive.jpImageZoomLensHeight,
-					lensShape: directive.jpImageZoomLensShape
+					lensWidth: directive.lensWidth,
+					lensHeight: directive.lensHeight,
+					lensShape: directive.lensShape
 				});
 
 				// Append it to DOM
@@ -119,7 +120,7 @@ export class JpImageZoomer implements OnDestroy {
 				this.zoomerRef.instance.canvasHeight = rect.height;
 				this.zoomerRef.instance.canvasLeft = rect.left;
 				this.zoomerRef.instance.canvasTop = directiveEl.offsetTop;
-				this.zoomerRef.instance.lensShape = directive.jpImageZoomLensShape;
+				this.zoomerRef.instance.lensShape = directive.lensShape;
 
 				// Append it to DOM
 				this.defaultViewContainer.element.nativeElement.appendChild(cmpRef.location.nativeElement);
@@ -141,7 +142,7 @@ export class JpImageZoomer implements OnDestroy {
 
 	close(directive?: ImageZoomDirective) {
 		if (directive === this.activeItem) this.activeItem = null;
-		//this.destroyCmp(this.zoomLensContainerRef);
+		this.destroyCmp(this.zoomLensContainerRef);
 		this.destroyCmp(this.zoomerRef);
 
 		this.zoomerRef = this.zoomLensContainerRef = undefined;

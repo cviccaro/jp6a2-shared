@@ -57,11 +57,15 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	@HostBinding('style.background-position')
 	safeBackgroundPosition: SafeStyle;
 
+	// @HostBinding('style.background-size')
+	// safeBackgroundSize: SafeStyle;
+
 	constructor(public element: ElementRef, private sanitizer: DomSanitizer, private logger: Logger) {}
 
 	ngOnInit() {
 		if (this.mode === 'inline' && this.imageUrl) {
 			this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${this.imageUrl})`);
+			//this.safeBackgroundSize = this.sanitizer.bypassSecurityTrustStyle()
 		}
 
 		this.logger.log('ZoomLensComponent Initialized', this);

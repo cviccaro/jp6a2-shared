@@ -7,7 +7,7 @@ import { ImageZoomLensComponent, ZoomLensPanPercentagesEvent, ZoomLensPanPixelsE
 @Component({
 	moduleId: module.id,
 	selector: 'jp-image-zoomer',
-	templateUrl: './image-zoomer.component.html',
+	template: '',
 	styleUrls: [ './image-zoomer.component.css' ]
 })
 export class ImageZoomerComponent implements AfterViewInit {
