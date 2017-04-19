@@ -10,6 +10,9 @@ import { ImageZoomLensContainerComponent, ZoomLensPanPixelsEvent } from './zoom-
 
 @Injectable()
 export class JpImageZoomer implements OnDestroy {
+	/**
+	 * Class properties
+	 */
 	public defaultViewContainer: ViewContainerRef;
 	private zoomLensContainerRef: ComponentRef<ImageZoomLensContainerComponent>;
 	private zoomerRef: ComponentRef<ImageZoomerComponent>;
@@ -18,26 +21,26 @@ export class JpImageZoomer implements OnDestroy {
 	private mouseDidPan: Subscription;
 	private mouseDidLeave: Subscription;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param {ComponentFactoryResolver} private cr    
+	 * @param {Logger}                   private logger
+	 */
 	constructor(private cr: ComponentFactoryResolver, private logger: Logger) { }
 
-	open(directive: ImageZoomDirective) {
+	/**
+	 * Open the zoomer components and return an Observable
+	 * 
+	 * @param  {ImageZoomDirective} directive
+	 * @return {Observable}                  
+	 */
+	open(directive: ImageZoomDirective): Observable<ComponentRef<ImageZoomerComponent>> {
 		this.activeItem = directive;
 
-		if (directive.mode === 'inline') {
-			return this.openInline(directive);
-		} else {
-			return this.openWithViewer(directive);
-		}
-	}
-
-	openInline(directive: ImageZoomDirective): Observable<ComponentRef<ImageZoomerComponent>> {
-		this.logger.log('ImageZoomer.openInline() called: ', directive);
-
 		return Observable.create((observer: Observer<any>) => {
-			const directiveEl: HTMLElement = this.activeItem.el.nativeElement;
+			const directiveEl: HTMLElement = directive.el.nativeElement;
 			const imageUrl = this.getImageUrl(directive);
-
-			this.logger.log('Image Url: ', imageUrl);
 			let rect = directiveEl.getBoundingClientRect();
 
 			if (!this.zoomLensContainerRef) {
@@ -50,109 +53,98 @@ export class JpImageZoomer implements OnDestroy {
 				// Configure instance
 				this.zoomLensContainerRef.instance.config({
 					imageUrl: imageUrl,
+					directive: directive,
 					positionTop: `${directiveEl.offsetTop}px`,
 					positionLeft: `${rect.left}px`,
 					containerWidth: `${rect.width}px`,
 					containerHeight: `${rect.height}px`,
-					mode: 'inline',
+					mode: directive.mode,
 					lensWidth: directive.lensWidth,
 					lensHeight: directive.lensHeight,
 					lensShape: directive.lensShape,
-					bgMode: directive.bgMode
+					bgMode: directive.bgMode,
+					imageNaturalWidth: directive.imageNaturalWidth,
+					imageNaturalHeight: directive.imageNaturalHeight,
+					zoomAmount: +directive.zoomAmount
 				});
 
 				// Append it to DOM
 				directive.el.nativeElement.parentElement.appendChild(cmpRef.location.nativeElement);
 
+				// Subscribe to zoom-lens-container pan event
 				this.mouseDidPan = this.zoomLensContainerRef.instance.pan.subscribe((e: ZoomLensPanPixelsEvent) => this.pan(e));
-				this.mouseDidLeave = this.zoomLensContainerRef.instance.mouseDidLeave.subscribe((e: any) => this.close());
+
+				// Subscribe to zoom-lens-container close event
+				//this.mouseDidLeave = this.zoomLensContainerRef.instance.mouseDidLeave.subscribe((e: any) => this.close());
+			}
+
+			// Create the image-zoomer component if needed
+			if (directive.mode === 'outside') {
+				if (!this.zoomerRef) {
+					let componentFactory = this.cr.resolveComponentFactory(ImageZoomerComponent);
+					let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
+
+					// Store reference to component
+					this.zoomerRef = cmpRef;
+
+					// Configure component
+					this.zoomerRef.instance.config({
+						canvasWidth: rect.width,
+						canvasHeight: rect.height,
+						canvasLeft: rect.left,
+						canvasTop: directiveEl.offsetTop,
+						lensShape: directive.lensShape
+					});
+
+					// Append it to DOM
+					this.defaultViewContainer.element.nativeElement.appendChild(cmpRef.location.nativeElement);
+				}
+
+				// Position the image-zoomer component
+				rect = directiveEl.getBoundingClientRect();
+
+				this.zoomerRef.instance.imageUrl = imageUrl;
+				this.zoomerRef.instance.position(rect.left + rect.width + this.zoomerRef.instance.margin, directiveEl.offsetTop);
+				this.zoomerRef.instance.open();
 			}
 
 			// Resolve the component
 			observer.next(this.zoomLensContainerRef);
-			observer.complete();
 		});
 	}
 
-	openWithViewer(directive: ImageZoomDirective): Observable<ComponentRef<ImageZoomerComponent>> {
-		this.logger.log('ImageZoomer.openWithViewer() called: ', directive);
-		return Observable.create((observer: Observer<any>) => {
-			const directiveEl: HTMLElement = this.activeItem.el.nativeElement;
-			const imageUrl = this.getImageUrl(directive);
-
-			this.logger.log('Image Url: ', imageUrl);
-			let rect = directiveEl.getBoundingClientRect();
-
-			if (!this.zoomLensContainerRef) {
-				let componentFactory = this.cr.resolveComponentFactory(ImageZoomLensContainerComponent);
-				let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
-
-				// Store reference to component
-				this.zoomLensContainerRef = cmpRef;
-
-				// Configure instance
-				this.zoomLensContainerRef.instance.config({
-					imageUrl: imageUrl,
-					positionTop: `${directiveEl.offsetTop}px`,
-					positionLeft: `${rect.left}px`,
-					containerWidth: `${rect.width}px`,
-					containerHeight: `${rect.height}px`,
-					mode: 'outside',
-					lensWidth: directive.lensWidth,
-					lensHeight: directive.lensHeight,
-					lensShape: directive.lensShape
-				});
-
-				// Append it to DOM
-				directive.el.nativeElement.parentElement.appendChild(cmpRef.location.nativeElement);
-
-				this.mouseDidPan = this.zoomLensContainerRef.instance.pan.subscribe((e: ZoomLensPanPixelsEvent) => this.pan(e));
-				this.mouseDidLeave = this.zoomLensContainerRef.instance.mouseDidLeave.subscribe((e: any) => this.close());
-			}
-
-			if (!this.zoomerRef) {
-				let componentFactory = this.cr.resolveComponentFactory(ImageZoomerComponent);
-				let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
-
-				// Store reference to component
-				this.zoomerRef = cmpRef;
-				this.zoomerRef.instance.canvasWidth = rect.width;
-				this.zoomerRef.instance.canvasHeight = rect.height;
-				this.zoomerRef.instance.canvasLeft = rect.left;
-				this.zoomerRef.instance.canvasTop = directiveEl.offsetTop;
-				this.zoomerRef.instance.lensShape = directive.lensShape;
-
-				// Append it to DOM
-				this.defaultViewContainer.element.nativeElement.appendChild(cmpRef.location.nativeElement);
-			}
-
-			this.zoomerRef.instance.imageUrl = imageUrl;
-
-			rect = directiveEl.getBoundingClientRect();
-
-			this.zoomerRef.instance.position(rect.left + rect.width + this.zoomerRef.instance.margin, directiveEl.offsetTop);
-
-			this.zoomerRef.instance.open();
-
-			// Resolve the component
-			observer.next(this.zoomerRef);
-			observer.complete();
-		});
-	}
-
+	/**
+	 * Close all the zoomer components
+	 * 
+	 * @param {ImageZoomDirective} directive
+	 */
 	close(directive?: ImageZoomDirective) {
 		if (directive === this.activeItem) this.activeItem = null;
+
 		this.destroyCmp(this.zoomLensContainerRef);
 		this.destroyCmp(this.zoomerRef);
 
 		this.zoomerRef = this.zoomLensContainerRef = undefined;
 	}
 
+	/**
+	 * Pan the image-zoomer when the lens pans
+	 * 
+	 * @param {ZoomLensPanPixelsEvent} event
+	 */
 	pan(event: ZoomLensPanPixelsEvent) {
 		if (this.zoomerRef) this.zoomerRef.instance.pan(event);
 	}
 
-	getImageUrl(directive: ImageZoomDirective): string {
+
+	/**
+	 * Extract Image URL from directive, either because 
+	 * it's an image or has a background-image
+	 * 
+	 * @param  {ImageZoomDirective} directive
+	 * @return {string}                      
+	 */
+	private getImageUrl(directive: ImageZoomDirective): string {
 		if (directive.el.nativeElement.tagName === 'IMG') {
 			return directive.el.nativeElement.getAttribute('src');
 		} else {
@@ -160,6 +152,9 @@ export class JpImageZoomer implements OnDestroy {
 		}
 	}
 
+	/**
+	 * Garbage collection
+	 */
 	ngOnDestroy() {
 		this.destroyCmp(this.zoomLensContainerRef);
 		this.destroyCmp(this.zoomerRef);

@@ -1,4 +1,4 @@
-import { Component, HostListener, EventEmitter, Output } from '@angular/core';
+import { Component, HostListener, EventEmitter, ElementRef, Output } from '@angular/core';
 import { Logger } from '../../../logger/logger.service';
 import { ZoomLensPanPixelsRawEvent } from '../zoom-lens.interfaces';
 
@@ -15,14 +15,10 @@ export class ImageZoomLensCanvasComponent {
 	onMouseMove(e: MouseEvent) {
 		this.pan.emit({
 			left: e.offsetX,
-			top: e.offsetY
+			top: e.offsetY,
+			event: e
 		});
 	}
 
-	// @HostListener('mouseleave', ['$event'])
-	// onMouseLeave(e: any) {
-	// 	this.logger.log('Mouse left canvas!  time to kill everything!', e);
-	// }
-
-	constructor(private logger: Logger) {}
+	constructor(public el: ElementRef, private logger: Logger) {}
 }

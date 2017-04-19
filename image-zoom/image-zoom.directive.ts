@@ -1,4 +1,4 @@
-import { Directive, HostListener, ComponentRef, ElementRef, OnDestroy, Input } from '@angular/core';
+import { Directive, HostListener, ComponentRef, ElementRef, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { ImageZoomerComponent } from './image-zoomer.component';
@@ -8,28 +8,31 @@ import { Logger } from '../logger/logger.service';
 @Directive({
 	selector: '[jp-image-zoom]',
 })
-export class ImageZoomDirective implements OnDestroy {
+export class ImageZoomDirective implements OnInit, OnDestroy {
+	/**
+	 * Input properties
+	 */
 	@Input('jp-image-zoom-mode') mode = 'outside';
 	@Input('jp-image-zoom-bg-mode') bgMode = 'fit';
 	@Input('jp-image-zoom-lens-width') lensWidth = '100px';
 	@Input('jp-image-zoom-lens-height') lensHeight = '100px';
 	@Input('jp-image-zoom-lens-shape') lensShape = 'square';
+	@Input('jp-image-zoom-amount') zoomAmount = 1;
+
+	/**
+	 * Class properties
+	 */
+	public imageNaturalWidth: number;
+	public imageNaturalHeight: number;
 
 	private zoomerOpen = false;
 	private zoomerRef: ComponentRef<ImageZoomerComponent>
 	private zoomerOpened: Subscription;
 	private revealTimer: any;
 
-	constructor(
-		private logger: Logger,
-		private imageZoomer: JpImageZoomer,
-		public el: ElementRef
-	) {}
-
-	ngOnInit() {
-		this.logger.log('ImageZoomDirective initialized', this);
-	}
-
+	/**
+	 * Event Listeners
+	 */
 	@HostListener('mouseenter', ['$event'])
 	onMouseEnter(e: any) {
 		clearTimeout(this.revealTimer);
@@ -39,16 +42,64 @@ export class ImageZoomDirective implements OnDestroy {
 		});
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param {Logger}        private logger     
+	 * @param {JpImageZoomer} private imageZoomer
+	 * @param {ElementRef}    public  el         
+	 */
+	constructor(private logger: Logger, private imageZoomer: JpImageZoomer, public el: ElementRef) { }
+
+	/**
+	 * Component initialized, before View Initializes
+	 */
+	ngOnInit() {
+		if (this.el.nativeElement.tagName === 'IMG') {
+			this.el.nativeElement.addEventListener('load', () => {
+				this.imageNaturalWidth = this.el.nativeElement.naturalWidth;
+				this.imageNaturalHeight = this.el.nativeElement.naturalHeight;
+			});
+		} else if (this.el.nativeElement.style.backgroundImage) {
+			let matched = this.el.nativeElement.style.backgroundImage.match(/url\([\"|\'](.*)[\"|\']\)/);
+
+			if (matched !== null && matched.length === 2) {
+				let url = matched[1];
+
+				this.logger.log('ImageZoomer on CSS BG image: ', url);
+
+				let img = new Image();
+				img.src = url;
+
+				img.addEventListener('load', (e: any) => {
+					this.imageNaturalWidth = e.path[0].naturalWidth;
+					this.imageNaturalHeight = e.path[0].naturalHeight;
+
+					this.logger.log('Set CSS BG Image Size to: ', this.imageNaturalWidth, this.imageNaturalHeight);
+				});
+			}
+		}
+	}
+
+	/**
+	 * Open the image-zoomer
+	 */
 	openZoomer() {
 		this.zoomerOpen = true;
 		this.zoomerOpened = this.imageZoomer.open(this).subscribe(() => { });
 	}
 
+	/**
+	 * Close the image-zoomer
+	 */
 	closeZoomer() {
 		this.zoomerOpen = false;
 		this.imageZoomer.close(this);
 	}
 
+	/**
+	 * Garbage Collection
+	 */
 	ngOnDestroy() {
 		if (this.zoomerOpened) {
 			this.zoomerOpened.unsubscribe();

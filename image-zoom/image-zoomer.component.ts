@@ -142,4 +142,13 @@ export class ImageZoomerComponent implements AfterViewInit {
 			this.positionRight = 'auto';
 		}
 	}
+
+	/**
+	 * Configure the instance
+	 */
+	config(props: { [key: string] : any }) {
+		for (let prop in props) {
+			(<any>this)[prop] = props[prop];
+		}
+	}
 }

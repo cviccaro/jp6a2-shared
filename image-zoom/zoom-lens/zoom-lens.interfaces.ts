@@ -1,8 +1,9 @@
 export interface ZoomLensPanPixelsRawEvent {
 	left: number;
 	top: number;
+	event: MouseEvent;
 }
-export interface ZoomLensPanPixelsEvent extends ZoomLensPanPixelsRawEvent {
+export interface ZoomLensPanPixelsEvent {
 	left: number;
 	top: number;
 	containerWidth: number;

@@ -1,2 +1,11 @@
 <jp-image-zoom-lens-canvas (pan)="lensFocusChanged($event)"></jp-image-zoom-lens-canvas>
-<jp-image-zoom-lens [mode]="mode" [imageUrl]="imageUrl" [lensWidth]="lensWidth" [lensHeight]="lensHeight" [shape]="lensShape"></jp-image-zoom-lens>
+<jp-image-zoom-lens 
+	[mode]="mode" 
+	[imageUrl]="imageUrl" 
+	[lensWidth]="lensWidth" 
+	[lensHeight]="lensHeight" 
+	[shape]="lensShape" 
+	[backgroundWidth]="imageNaturalWidth"
+	[backgroundHeight]="imageNaturalHeight"
+	[zoomAmount]="zoomAmount">
+</jp-image-zoom-lens>

@@ -9,6 +9,9 @@ import { Logger } from '../../../logger/logger.service';
 	styleUrls: [ './zoom-lens.component.css' ]
 })
 export class ImageZoomLensComponent implements OnInit, AfterViewInit {
+	/**
+	 * Class properties
+	 */
 	canvasWidth: number;
 	canvasHeight: number;
 
@@ -20,31 +23,46 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	@Input() lensWidth: string;
 	@Input() lensHeight: string;
 	@Input() shape = 'square';
+	@Input() backgroundWidth: number;
+	@Input() backgroundHeight: number;
+	@Input() zoomAmount: number;
 
+	/**
+	 * Style bindings
+	 */
 	@HostBinding('style.height')
 	public get cssStyleHeight() {
 		if (this.lensHeight) return `${parseInt(this.lensHeight)}px`;
-		return void(0);
+		return null;
 	}
 
 	@HostBinding('style.width')
 	public get cssStyleWidth() {
 		if (this.lensWidth) return `${parseInt(this.lensWidth)}px`;
 
-		return void(0);
+		return null;
 	}
-
-	@HostBinding('style.top')
-	positionTop: string;
 
 	@HostBinding('style.left')
 	positionLeft: string;
 
-	@HostBinding('class.is-visible')
-	isVisible = false;
+	@HostBinding('style.top')
+	positionTop: string;
 
 	@HostBinding('style.background-image')
 	safeBackgroundImage: SafeStyle;
+
+	@HostBinding('style.background-position')
+	safeBackgroundPosition: SafeStyle;
+
+	@HostBinding('style.background-size')
+	safeBackgroundSize: SafeStyle;
+
+	/**
+	 * CSS Class bindings
+	 */
+	@HostBinding('class.is-visible')
+	isVisible = false;
 
 	@HostBinding('class.mode-inline') get willApplyCSSClassModeInline() {
 		return this.mode === 'inline';
@@ -54,27 +72,38 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 		return this.shape === 'circle';
 	}
 
-	@HostBinding('style.background-position')
-	safeBackgroundPosition: SafeStyle;
-
-	// @HostBinding('style.background-size')
-	// safeBackgroundSize: SafeStyle;
-
+	/**
+	 * Constructor
+	 * 
+	 * @param {ElementRef}   public  element   
+	 * @param {DomSanitizer} private sanitizer 
+	 * @param {Logger}       private logger    
+	 */
 	constructor(public element: ElementRef, private sanitizer: DomSanitizer, private logger: Logger) {}
 
+	/**
+	 * Component initializion, before View initilaizes
+	 */
 	ngOnInit() {
 		if (this.mode === 'inline' && this.imageUrl) {
 			this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${this.imageUrl})`);
-			//this.safeBackgroundSize = this.sanitizer.bypassSecurityTrustStyle()
+			if (this.backgroundWidth && this.backgroundHeight) {
+				this.safeBackgroundSize = this.sanitizer.bypassSecurityTrustStyle(`${this.backgroundWidth * this.zoomAmount}px ${this.backgroundHeight * this.zoomAmount}px`);
+			}
 		}
 
 		this.logger.log('ZoomLensComponent Initialized', this);
 	}
 
+	/**
+	 * Component View initialized
+	 */
 	ngAfterViewInit() {
+		// Store the size of the lens
 		this.elementWidth = parseInt(this.element.nativeElement.offsetWidth);
 		this.elementHeight = parseInt(this.element.nativeElement.offsetHeight);
 
+		// Store the size of the canvas
 		this.canvasWidth = parseInt(this.element.nativeElement.parentElement.offsetWidth);
 		this.canvasHeight = parseInt(this.element.nativeElement.parentElement.offsetHeight);
 
@@ -83,12 +112,31 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 		this.logger.log('ZoomLensComponent View initialized: ', this);
 	}
 
+	/**
+	 * Move the Lens
+	 *-----------------
+	 * Adjust the position for size of lens
+	 * 
+	 * @param {number} left
+	 * @param {number} top
+	 */
 	moveTo(left: number, top: number) {
 		this.positionLeft = Math.max(0, Math.min(left - (this.elementWidth / 2), this.canvasWidth - this.elementWidth)) + 'px';
 		this.positionTop = Math.max(0, Math.min(top - (this.elementHeight / 2), this.canvasHeight - this.elementHeight)) + 'px';
+	}
 
+	/**
+	 * Pan the background
+	 * -------------------
+	 * Multiply it by the zoom amount
+	 * 
+	 * @param {number} left [description]
+	 * @param {number} top  [description]
+	 */
+	panBackground(left: number, top: number) {
 		if (this.mode === 'inline') {
-			this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`${left / this.canvasWidth * 100}% ${top / this.canvasHeight * 100}%`);
+			this.logger.log(`Pan Background to ${left * this.zoomAmount}px ${top * this.zoomAmount}px`);
+			this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`${left * this.zoomAmount}px ${top * this.zoomAmount}px`);
 		}
 	}
 }

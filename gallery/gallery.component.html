@@ -1,4 +1,4 @@
-<div class="hammer-capture mobile" (swipeLeft)="swipeLeft($event)" (swipeRight)="swipeRight($event)"></div>
+<!-- <div class="hammer-capture mobile" (swipeLeft)="swipeLeft($event)" (swipeRight)="swipeRight($event)"></div> -->
 <div class="images-wrapper" *ngIf="images.length">
 	<div class="gallery-spacer">
 		<img [src]="images[0].url" />
@@ -11,7 +11,10 @@
 		[class.hidden]="!image.active">
 <!-- 		jp-image-zoom 
 		jp-image-zoom-mode="inline"
-		jp-image-zoom-bg-mode="cover"> -->
+		jp-image-zoom-bg-mode="cover"
+		jp-image-zoom-lens-shape="circle"
+		jp-image-zoom-lens-width="300px"
+		jp-image-zoom-lens-height="300px"> -->
 	</div>
 </div>
 <jp-pager *ngIf="ready" pagerType="minimal" [totalPages]="images.length" [currentPage]="current" (pageChanged)="switch($event)" includeNav="true"></jp-pager>
