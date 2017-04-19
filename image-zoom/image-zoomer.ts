@@ -75,7 +75,7 @@ export class JpImageZoomer implements OnDestroy {
 				this.mouseDidPan = this.zoomLensContainerRef.instance.pan.subscribe((e: ZoomLensPanPixelsEvent) => this.pan(e));
 
 				// Subscribe to zoom-lens-container close event
-				//this.mouseDidLeave = this.zoomLensContainerRef.instance.mouseDidLeave.subscribe((e: any) => this.close());
+				this.mouseDidLeave = this.zoomLensContainerRef.instance.mouseDidLeave.subscribe((e: any) => this.close());
 			}
 
 			// Create the image-zoomer component if needed
