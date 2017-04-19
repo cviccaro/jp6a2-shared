@@ -11,12 +11,9 @@ import { ImageZoomLensComponent, ZoomLensPanPercentagesEvent, ZoomLensPanPixelsE
 	styleUrls: [ './image-zoomer.component.css' ]
 })
 export class ImageZoomerComponent implements AfterViewInit {
-	private _imageUrl: string;
-	private originalImageWidth: number;
-	private originalImageHeight: number;
-	private elementWidth: number;
-	private elementHeight: number;
-
+	/**
+	 * Public class properties
+	 */
 	public margin = 20;
 	public canvasWidth: number;
 	public canvasHeight: number;
@@ -24,6 +21,9 @@ export class ImageZoomerComponent implements AfterViewInit {
 	public canvasTop: number;
 	public lensShape: string;
 
+	/**
+	 * Image URL
+	 */
 	public set imageUrl(url: string) {
 		this._imageUrl = url;
 		this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
@@ -48,8 +48,20 @@ export class ImageZoomerComponent implements AfterViewInit {
 		return this._imageUrl;
 	}
 
+	/**
+	 * Private class properties
+	 */
+	private _imageUrl: string;
+	private originalImageWidth: number;
+	private originalImageHeight: number;
+	private elementWidth: number;
+	private elementHeight: number;
+
 	constructor(private logger: Logger, public element: ElementRef, private sanitizer: DomSanitizer) {}
 
+	/**
+	 * Style Bindings
+	 */
 	@HostBinding('style.top')
 	positionTop: string;
 
@@ -59,14 +71,18 @@ export class ImageZoomerComponent implements AfterViewInit {
 	@HostBinding('style.right')
 	positionRight: string;
 
-	@HostBinding('class.transitioning')
-	transitioning = false;
+	@HostBinding('style.background-position')
+	safeBackgroundPosition: SafeStyle;
 
 	@HostBinding('style.background-image')
 	safeBackgroundImage: SafeStyle;
 
-	@HostBinding('style.background-position')
-	safeBackgroundPosition: SafeStyle;
+
+	/**
+	 * CSS Class Bindings
+	 */
+	@HostBinding('class.transitioning')
+	transitioning = false;
 
 	@HostBinding('class.open')
 	visible = false;
@@ -76,6 +92,9 @@ export class ImageZoomerComponent implements AfterViewInit {
 		return this.lensShape === 'circle';
 	}
 
+	/**
+	 * Event Listeners
+	 */
 	@HostListener('transitionend', ['$event']) 
 	onTransitionEnd(e: any) {
 		if (!this.visible) {
@@ -83,10 +102,16 @@ export class ImageZoomerComponent implements AfterViewInit {
 		}
 	}
 
+	/**
+	 * Lifecycle after View initializes
+	 */
 	ngAfterViewInit() {
 		this.logger.log('ImageZoomerComponent View Initialized.', this);
 	}
 
+	/**
+	 * Open the zoomer
+	 */
 	open() {
 		this.logger.log('ImageZoomerComponent.open() called', this);
 		this.transitioning = true;
@@ -95,22 +120,34 @@ export class ImageZoomerComponent implements AfterViewInit {
 		});
 	}
 
+	/**
+	 * Close the zoomer
+	 */
 	close() {
 		this.visible = false;
 	}
 
+	/**
+	 * Pan the background inside the zoomer
+	 */
 	pan(e: ZoomLensPanPixelsEvent) {
 		const leftScaled = (e.left / e.containerWidth) * this.originalImageWidth;
 		const topScaled = (e.top / e.containerHeight) * this.originalImageHeight;
 
-		const leftPos = Math.max(0, Math.min(leftScaled - (this.elementWidth / 2), this.originalImageWidth - this.elementWidth));
-		const topPos = Math.max(0, Math.min(topScaled - (this.elementHeight / 2), this.originalImageHeight - this.elementHeight));
+		const leftPos = -1 * Math.max(0, Math.min(leftScaled - (this.elementWidth / 2), this.originalImageWidth - this.elementWidth));
+		const topPos = -1 * Math.max(0, Math.min(topScaled - (this.elementHeight / 2), this.originalImageHeight - this.elementHeight));
 
 		//this.logger.log(`Pan original image to ${leftPos} x ${topPos}`);
 
-		this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`-${leftPos}px -${topPos}px`);
+		this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`${leftPos}px ${topPos}px`);
 	}
 
+	/**
+	 * Position the zoomer
+	 * 
+	 * @param {number} left 
+	 * @param {number} top
+	 */
 	position(left?: number, top?: number) {
 		if (left === undefined) {
 			left = this.canvasLeft + this.canvasWidth + this.margin;
