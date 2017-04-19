@@ -132,8 +132,8 @@ export class ImageZoomLensContainerComponent implements AfterViewInit {
 		// const windowLeftPos = ((pan.event.pageX - rect.left) * widthRatio - parseInt(this.lensCmp.lensWidth) / 2) * -1;
 		// const windowTopPos = ((pan.event.pageY - rect.top) * heightRatio - parseInt(this.lensCmp.lensHeight) / 2) * -1;
 
-		const windowLeftPos = ((pan.left * widthRatio - parseInt(this.lensCmp.lensWidth) / 2) / this.zoomAmount) * -1;
-		const windowTopPos = ((pan.top * heightRatio - parseInt(this.lensCmp.lensHeight) / 2 ) / this.zoomAmount) * -1;
+		const windowLeftPos = (pan.left * widthRatio - parseInt(this.lensCmp.lensWidth) / 2 / this.zoomAmount) * -1;
+		const windowTopPos = (pan.top * heightRatio - parseInt(this.lensCmp.lensHeight) / 2 / this.zoomAmount) * -1;
 
 		this.logger.log(`Pan event position ${pan.left}px x ${pan.top}px calculated to window position ${windowLeftPos} x ${windowTopPos}`);
 
