@@ -121,8 +121,8 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	 * @param {number} top
 	 */
 	moveTo(left: number, top: number) {
-		this.positionLeft = Math.max(0, Math.min(left - (this.elementWidth / 2), this.canvasWidth - this.elementWidth)) + 'px';
-		this.positionTop = Math.max(0, Math.min(top - (this.elementHeight / 2), this.canvasHeight - this.elementHeight)) + 'px';
+		this.positionLeft = left + 'px';
+		this.positionTop = top + 'px';
 	}
 
 	/**

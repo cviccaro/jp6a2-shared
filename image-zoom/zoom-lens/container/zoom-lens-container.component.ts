@@ -129,20 +129,36 @@ export class ImageZoomLensContainerComponent implements AfterViewInit {
 
 		const rect = this.canvasCmp.el.nativeElement.getBoundingClientRect();
 
-		// const windowLeftPos = ((pan.event.pageX - rect.left) * widthRatio - parseInt(this.lensCmp.lensWidth) / 2) * -1;
-		// const windowTopPos = ((pan.event.pageY - rect.top) * heightRatio - parseInt(this.lensCmp.lensHeight) / 2) * -1;
+		const lensWidth = this.lensCmp.element.nativeElement.offsetWidth;
+		const lensHeight = this.lensCmp.element.nativeElement.offsetHeight;
 
-		const windowLeftPos = (pan.left * widthRatio - parseInt(this.lensCmp.lensWidth) / 2 / this.zoomAmount) * -1;
-		const windowTopPos = (pan.top * heightRatio - parseInt(this.lensCmp.lensHeight) / 2 / this.zoomAmount) * -1;
+		const canvasWidth = this.element.nativeElement.offsetWidth;
+		const canvasHeight = this.element.nativeElement.offsetHeight;
 
-		this.logger.log(`Pan event position ${pan.left}px x ${pan.top}px calculated to window position ${windowLeftPos} x ${windowTopPos}`);
+		const lensLeft = Math.max(0, Math.min(pan.left - (lensWidth / 2), canvasWidth - lensWidth));
+		const lensTop = Math.max(0, Math.min(pan.top - (lensHeight / 2), canvasHeight - lensHeight));
 
-		this.lensCmp.moveTo(pan.left, pan.top);
-		this.lensCmp.panBackground(windowLeftPos, windowTopPos);
+		let bgLeft = (pan.left * widthRatio - lensWidth / 2 / this.zoomAmount) * -1;
+		const bgTop = Math.min(0, -1 * Math.min(pan.top * heightRatio - lensHeight / 2 / this.zoomAmount, this.imageNaturalHeight - lensHeight));
+
+		if (this.bgMode === 'cover') {
+			// Calculate the difference between the overflowed image and the window width
+			const overflow = (this.imageNaturalWidth - canvasWidth) / 2;
+			const containerCenter = canvasWidth / 2;
+			const distanceFromCenter = -(containerCenter - pan.left);
+
+			const distanceWeight = distanceFromCenter / containerCenter;
+			const overflowPx = overflow * distanceWeight;
+
+			bgLeft = bgLeft + overflowPx;
+		}
+
+		this.lensCmp.moveTo(lensLeft, lensTop);
+		this.lensCmp.panBackground(bgLeft, bgTop);
 
 		this.pan.emit({
-			left: pan.left,
-			top: pan.top,
+			left: lensLeft,
+			top: lensTop,
 			containerWidth: parseFloat(this.containerWidth),
 			containerHeight: parseFloat(this.containerHeight),
 		});
@@ -155,5 +171,7 @@ export class ImageZoomLensContainerComponent implements AfterViewInit {
 		for (let prop in props) {
 			(<any>this)[prop] = props[prop];
 		}
+
+		this.logger.log('ZoomLensContainerComponent configured', this);
 	}
 }
