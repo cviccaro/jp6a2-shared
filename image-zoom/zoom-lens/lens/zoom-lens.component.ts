@@ -135,7 +135,6 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	 */
 	panBackground(left: number, top: number) {
 		if (this.mode === 'inline') {
-			this.logger.log(`Pan Background to ${left * this.zoomAmount}px ${top * this.zoomAmount}px`);
 			this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`${left * this.zoomAmount}px ${top * this.zoomAmount}px`);
 		}
 	}

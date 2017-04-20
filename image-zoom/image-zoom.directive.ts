@@ -64,18 +64,13 @@ export class ImageZoomDirective implements OnInit, OnDestroy {
 			let matched = this.el.nativeElement.style.backgroundImage.match(/url\([\"|\'](.*)[\"|\']\)/);
 
 			if (matched !== null && matched.length === 2) {
-				let url = matched[1];
-
-				this.logger.log('ImageZoomer on CSS BG image: ', url);
-
+				const url = matched[1];
 				let img = new Image();
 				img.src = url;
 
 				img.addEventListener('load', (e: any) => {
 					this.imageNaturalWidth = e.path[0].naturalWidth;
 					this.imageNaturalHeight = e.path[0].naturalHeight;
-
-					this.logger.log('Set CSS BG Image Size to: ', this.imageNaturalWidth, this.imageNaturalHeight);
 				});
 			}
 		}
@@ -85,6 +80,10 @@ export class ImageZoomDirective implements OnInit, OnDestroy {
 	 * Open the image-zoomer
 	 */
 	openZoomer() {
+		if (this.zoomerOpen) {
+			this.closeZoomer();
+		}
+
 		this.zoomerOpen = true;
 		this.zoomerOpened = this.imageZoomer.open(this).subscribe(() => { });
 	}

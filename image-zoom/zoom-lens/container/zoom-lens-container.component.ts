@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, ViewChild, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ImageZoomLensComponent } from '../lens/zoom-lens.component';
 import { ImageZoomLensCanvasComponent } from '../canvas/zoom-lens-canvas.component';
@@ -12,7 +12,7 @@ import { Logger } from '../../../logger/logger.service';
 	templateUrl: './zoom-lens-container.component.html',
 	styleUrls: [ './zoom-lens-container.component.css' ]
 })
-export class ImageZoomLensContainerComponent implements AfterViewInit {
+export class ImageZoomLensContainerComponent {
 	/**
 	 * Class Properties
 	 */
@@ -114,35 +114,26 @@ export class ImageZoomLensContainerComponent implements AfterViewInit {
 	constructor(public element: ElementRef, private sanitizer: DomSanitizer, private logger: Logger) {}
 
 	/**
-	 * View initialized
-	 */
-	ngAfterViewInit() {
-		this.logger.log('ZoomLensContainerComponent View Initialized.', this);
-	}
-
-	/**
 	 * Mouse panned in container
 	 */
 	lensFocusChanged(pan: ZoomLensPanPixelsRawEvent) {
-		const widthRatio = this.imageNaturalWidth / parseInt(this.containerWidth);
-		const heightRatio = this.imageNaturalHeight / parseInt(this.containerHeight);
-
-		const rect = this.canvasCmp.el.nativeElement.getBoundingClientRect();
-
-		const lensWidth = this.lensCmp.element.nativeElement.offsetWidth;
-		const lensHeight = this.lensCmp.element.nativeElement.offsetHeight;
-
 		const canvasWidth = this.element.nativeElement.offsetWidth;
 		const canvasHeight = this.element.nativeElement.offsetHeight;
 
-		const lensLeft = Math.max(0, Math.min(pan.left - (lensWidth / 2), canvasWidth - lensWidth));
-		const lensTop = Math.max(0, Math.min(pan.top - (lensHeight / 2), canvasHeight - lensHeight));
+		// Calculate the difference between the full-size image and the contianer it's being shown in
+		const widthRatio = this.imageNaturalWidth / canvasWidth;
+		const heightRatio = this.imageNaturalHeight / canvasHeight;
 
+		// Get the size of the lens
+		const lensWidth = this.lensCmp.element.nativeElement.offsetWidth;
+		const lensHeight = this.lensCmp.element.nativeElement.offsetHeight;
+
+		// Calculate the amount to pan the background
 		let bgLeft = (pan.left * widthRatio - lensWidth / 2 / this.zoomAmount) * -1;
 		const bgTop = Math.min(0, -1 * Math.min(pan.top * heightRatio - lensHeight / 2 / this.zoomAmount, this.imageNaturalHeight - lensHeight));
 
+		// Calculate the difference between the overflowed image and the window width
 		if (this.bgMode === 'cover') {
-			// Calculate the difference between the overflowed image and the window width
 			const overflow = (this.imageNaturalWidth - canvasWidth) / 2;
 			const containerCenter = canvasWidth / 2;
 			const distanceFromCenter = -(containerCenter - pan.left);
@@ -153,14 +144,19 @@ export class ImageZoomLensContainerComponent implements AfterViewInit {
 			bgLeft = bgLeft + overflowPx;
 		}
 
-		this.lensCmp.moveTo(lensLeft, lensTop);
 		this.lensCmp.panBackground(bgLeft, bgTop);
 
+		// Move the lens itself
+		const lensLeft = Math.max(0, Math.min(pan.left - (lensWidth / 2), canvasWidth - lensWidth));
+		const lensTop = Math.max(0, Math.min(pan.top - (lensHeight / 2), canvasHeight - lensHeight));
+
+		this.lensCmp.moveTo(lensLeft, lensTop);
+
 		this.pan.emit({
-			left: lensLeft,
-			top: lensTop,
-			containerWidth: parseFloat(this.containerWidth),
-			containerHeight: parseFloat(this.containerHeight),
+			left: pan.left,
+			top: pan.top,
+			containerWidth: canvasWidth,
+			containerHeight: canvasHeight
 		});
 	}
 

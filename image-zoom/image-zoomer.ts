@@ -38,6 +38,8 @@ export class JpImageZoomer implements OnDestroy {
 	open(directive: ImageZoomDirective): Observable<ComponentRef<ImageZoomerComponent>> {
 		this.activeItem = directive;
 
+		this.logger.log('ImageZoomer open() called with mode ', directive.mode);
+
 		return Observable.create((observer: Observer<any>) => {
 			const directiveEl: HTMLElement = directive.el.nativeElement;
 			const imageUrl = this.getImageUrl(directive);
@@ -80,7 +82,9 @@ export class JpImageZoomer implements OnDestroy {
 
 			// Create the image-zoomer component if needed
 			if (directive.mode === 'outside') {
+				this.logger.log('Directive is set for outside viewer.');
 				if (!this.zoomerRef) {
+					this.logger.log('ZoomerRef didnt exist, so creating');
 					let componentFactory = this.cr.resolveComponentFactory(ImageZoomerComponent);
 					let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
 
@@ -93,7 +97,8 @@ export class JpImageZoomer implements OnDestroy {
 						canvasHeight: rect.height,
 						canvasLeft: rect.left,
 						canvasTop: directiveEl.offsetTop,
-						lensShape: directive.lensShape
+						lensShape: directive.lensShape,
+						zoomAmount: directive.zoomAmount
 					});
 
 					// Append it to DOM

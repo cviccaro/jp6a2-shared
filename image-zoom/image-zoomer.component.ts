@@ -14,12 +14,13 @@ export class ImageZoomerComponent implements AfterViewInit {
 	/**
 	 * Public class properties
 	 */
-	public margin = 20;
+	public margin = 0;
 	public canvasWidth: number;
 	public canvasHeight: number;
 	public canvasLeft: number;
 	public canvasTop: number;
 	public lensShape: string;
+	public zoomAmount: number;
 
 	/**
 	 * Image URL
@@ -37,8 +38,6 @@ export class ImageZoomerComponent implements AfterViewInit {
 			this.elementHeight = parseInt(this.element.nativeElement.offsetHeight);
 
 			this.position();
-
-			this.logger.log('Set element width to ' + this.elementWidth + '.  Set element height to ' + this.elementHeight);
 		});
 
 		loadImg.src = url;
@@ -76,7 +75,6 @@ export class ImageZoomerComponent implements AfterViewInit {
 
 	@HostBinding('style.background-image')
 	safeBackgroundImage: SafeStyle;
-
 
 	/**
 	 * CSS Class Bindings
@@ -137,9 +135,7 @@ export class ImageZoomerComponent implements AfterViewInit {
 		const leftPos = -1 * Math.max(0, Math.min(leftScaled - (this.elementWidth / 2), this.originalImageWidth - this.elementWidth));
 		const topPos = -1 * Math.max(0, Math.min(topScaled - (this.elementHeight / 2), this.originalImageHeight - this.elementHeight));
 
-		//this.logger.log(`Pan original image to ${leftPos} x ${topPos}`);
-
-		this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`${leftPos}px ${topPos}px`);
+		this.safeBackgroundPosition = this.sanitizer.bypassSecurityTrustStyle(`${leftPos * this.zoomAmount}px ${topPos * this.zoomAmount}px`);
 	}
 
 	/**
