@@ -37,11 +37,11 @@ export class ContactFormComponent implements OnDestroy {
         let group: any = {
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
-            company: ['', Validators.required],
+            company: [''],
             email: ['', [Validators.required, EmailValidator.emailFormat]],
             phone: [''],
             contact_time: [''],
-            comments: ['', Validators.required]
+            comments: ['']
         };
 
         if (Config.hasOwnProperty('GoogleRecaptchaAPIKey')) {

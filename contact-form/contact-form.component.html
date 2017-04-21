@@ -6,21 +6,21 @@
   <mat-input-container class="form-group required">
     <input mdInput name="last_name" [formControl]="contactForm.get('last_name')" placeholder="Last Name" required />
   </mat-input-container>
-  <mat-input-container class="form-group required">
-    <input mdInput name="company" required [formControl]="contactForm.get('company')" placeholder="Company Name" />
+  <mat-input-container class="form-group">
+    <input mdInput name="company" [formControl]="contactForm.get('company')" placeholder="Company Name" />
   </mat-input-container>
   <mat-input-container class="form-group required">
     <input mdInput type="email" name="email" required [formControl]="contactForm.get('email')" placeholder="Email Address" />
   </mat-input-container>
   <mat-input-container class="form-group">
-    <input mdInput type="tel" name="phone" [formControl]="contactForm.get('phone')" placeholder="Phone Number" />
+    <input mdInput type="tel" name="phone" [formControl]="contactForm.get('phone')" placeholder="Daytime Number" />
   </mat-input-container>
-  <mat-input-container class="form-group">
+<!--   <mat-input-container class="form-group">
     <input mdInput name="contact_time" [formControl]="contactForm.get('contact_time')" placeholder="Best time to contact you" />
-  </mat-input-container>
-  <div class="form-group full textarea required">
-     <span class="mat-input-placeholder-wrapper"><label class="mat-input-placeholder mat-float mat-empty">Additional Comments <span class="mat-placeholder-required">*</span></label></span>
-     <textarea jpTextareaAutoexpand md-input name="comments" required [formControl]="contactForm.get('comments')"></textarea>
+  </mat-input-container> -->
+  <div class="form-group full textarea">
+     <span class="mat-input-placeholder-wrapper"><label class="mat-input-placeholder mat-float mat-empty">Tell Us About Your Project</label></span>
+     <textarea jpTextareaAutoexpand md-input name="comments" [formControl]="contactForm.get('comments')"></textarea>
   </div>
   <div class="form-group full flush" *ngIf="siteKey">
     <recaptcha (resolved)="resolved($event)" [siteKey]="siteKey" theme="dark" name="captcha" required [formControl]="contactForm.get('captcha')"></recaptcha>

@@ -192,7 +192,7 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
 	  margin: 18px 1% 18px 0;
 	  flex-shrink: 0;
 
-	  &:nth-child(2n) {
+	  &:nth-child(2n):not(.full) {
 	    margin-right: 0;
 	    margin-left: 1%;
 	  }
