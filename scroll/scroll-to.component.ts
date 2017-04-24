@@ -1,5 +1,4 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -7,6 +6,7 @@ import { CacheService } from '../cache/index';
 import { NavbarService } from '../nav/index';
 import { Config } from '../config/index';
 import { ScrollService } from './scroll.service';
+import { TitleService } from '../title/title.service';
 
 @Component({
 	selector: 'jp-scroll-to',
@@ -20,7 +20,7 @@ export class ScrollToComponent implements AfterViewInit, OnDestroy {
 	private sub: Subscription;
 	private sub2: Subscription;
 
-	constructor(public route: ActivatedRoute, public title: Title, public cache: CacheService, public navbar: NavbarService, public scroll: ScrollService) {
+	constructor(public route: ActivatedRoute, public title: TitleService, public cache: CacheService, public navbar: NavbarService, public scroll: ScrollService) {
 		this.config = this.cache.get('config');
 	}
 
@@ -51,15 +51,8 @@ export class ScrollToComponent implements AfterViewInit, OnDestroy {
 			this.currentSelector = selector;
 
 			let title = this.capitalize(selector.replace('-', ' '));
-			let site_title = 'JP Enterprises';
 
-			if (this.config['main_site_title'] !== undefined) {
-				site_title = this.config['main_site_title'];
-			} else if (this.config['site_title'] !== undefined) {
-				site_title = this.config['site_title'];
-			}
-
-			this.title.setTitle(`${site_title} | ${title}`);
+			this.title.setTitle(title);
 
 			setTimeout(() => {
 				this.scroll.scrollToElementAnimated('#' + selector.replace('-', '_'));

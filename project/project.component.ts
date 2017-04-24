@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Project } from '../models/index';
 import { ProjectService } from './project.service';
-import { CacheService } from '../cache/index';
+import { CacheService } from '../cache/cache.service';
+import { TitleService } from '../title/title.service';
 
 @Component({
 	moduleId: module.id,
@@ -25,7 +26,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
 		public service: ProjectService,
 		public route: ActivatedRoute,
 		public sanitizer: DomSanitizer,
-		public title: Title
+		public title: TitleService
 	) {
 		this.config = this.cache.get('config');
 	}
@@ -47,16 +48,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
 	fetchComplete() {
 		this.ready = true;
-
-		let title = 'JP Enterprises';
-
-		if (this.config['main_site_title'] !== undefined) {
-			title = this.config['main_site_title'];
-		} else if (this.config['site_title'] !== undefined) {
-			title = this.config['site_title'];
-		}
-
-		this.title.setTitle(`${title} | Project | ${this.project.title}`);
+		this.title.setTitle(`Project | ${this.project.title}`);
 	}
 
 	trust(v: string): SafeHtml {

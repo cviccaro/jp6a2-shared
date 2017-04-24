@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Blog } from '../models/index';
 import { BlogService } from './blog.service';
 import { CacheService } from '../cache/cache.service';
+import { TitleService } from '../title/title.service';
 import { ScrollService } from '../scroll/scroll.service';
 import { ContentOverlayComponent } from '../content-overlay/content-overlay.component';
 
@@ -34,7 +35,7 @@ export class BlogComponent implements OnInit, OnDestroy {
 		public blogService: BlogService,
 		public route: ActivatedRoute,
 		public sanitizer: DomSanitizer,
-		public title: Title,
+		public title: TitleService,
 		public scroll: ScrollService
 	) {
 		this.subs.push(
@@ -75,15 +76,7 @@ export class BlogComponent implements OnInit, OnDestroy {
 		this.shareUrl = this.buildUrl(this.blog.uri);
 		this.ready = true;
 
-		let title = 'JP Enterprises';
-
-		if (this.config['main_site_title'] !== undefined) {
-			title = this.config['main_site_title'];
-		} else if (this.config['site_title'] !== undefined) {
-			title = this.config['site_title'];
-		}
-
-		this.title.setTitle(`${title} | Blog | ${this.blog.title}`);
+		this.title.setTitle(`${this.blog.title} | Blogs`);
 
 		if (fetchRelated) {
 			this.subs.push(

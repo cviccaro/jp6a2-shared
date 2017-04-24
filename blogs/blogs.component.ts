@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 
 import { BlogService } from '../blog/blog.service';
 import { CacheService } from '../cache/cache.service';
+import { TitleService } from '../title/title.service';
 import { Config } from '../config/index';
 
 
@@ -22,26 +22,16 @@ export class BlogsComponent implements OnInit, OnDestroy {
 	finished = false;
 	filter: string = null;
 
-	constructor(public blogService: BlogService, public cache: CacheService, public title: Title) { }
+	constructor(public blogService: BlogService, public cache: CacheService, public title: TitleService) { }
 
 	ngOnInit() {
 		this.config = this.cache.get('config');
-
 		this.blogs = this.cache.get('blogs_page');
+		this.title.setTitle('Blogs');
 
 		if (Config['division'] !== undefined) {
 			this.filter = Config.division;
 		}
-
-		let title = 'JP Enterprises';
-
-		if (this.config['main_site_title'] !== undefined) {
-			title = this.config['main_site_title'];
-		} else if (this.config['site_title'] !== undefined) {
-			title = this.config['site_title'];
-		}
-
-		this.title.setTitle(`${title} | Blogs`);
 	}
 
 	getBlogs() {

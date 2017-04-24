@@ -38,9 +38,7 @@ export class DisqusComponent implements OnInit {
     @Inject(WINDOW) private window: MockWindow,
     private location: Location,
     public title: Title
-  ) {
-    console.log('DisqusComponent Constructed', this);
-  }
+  ) { }
 
   /**
    * Component on init

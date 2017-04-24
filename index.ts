@@ -31,6 +31,7 @@ export * from './social/index';
 export * from './splash/index';
 export * from './staff/index';
 export * from './subscribe/index';
+export * from './title/index';
 export * from './validators/index';
 export * from './xhr/index';
 
@@ -48,6 +49,7 @@ import { MobileMenuService } from './nav/mobile-menu/mobile-menu.service';
 import { NavbarService } from './nav/navbar.service';
 import { ScrollService } from './scroll/scroll.service';
 import { StaffService } from './staff/staff.service';
+import { TitleService } from './title/title.service';
 import { FormSubmissionService } from './contact-form/form-submission.service';
 import { ProjectService, ProjectGuard } from './project/index';
 import { ApiHttp } from './xhr/xhr.http';
@@ -70,7 +72,8 @@ export const APP_SERVICES = [
   ScrollService,
   XhrService,
   Logger,
-  JpImageZoomer
+  JpImageZoomer,
+  TitleService
 ];
 
 export const APP_MIDDLEWARE = [
