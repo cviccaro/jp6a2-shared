@@ -38,7 +38,9 @@ export class DisqusComponent implements OnInit {
     @Inject(WINDOW) private window: MockWindow,
     private location: Location,
     public title: Title
-  ) {}
+  ) {
+    console.log('DisqusComponent Constructed', this);
+  }
 
   /**
    * Component on init
@@ -84,7 +86,7 @@ export class DisqusComponent implements OnInit {
     this.window.disqus_config = this.getConfig();
     let container = this.getScriptContainer();
     let script = this.buildScriptTag(`//${this.shortname}.disqus.com/embed.js`);
-    this.document.insertBefore(container.lastChild, script);
+    container.appendChild(script);
   }
 
   /**
@@ -102,10 +104,10 @@ export class DisqusComponent implements OnInit {
    */
   private buildScriptTag(src: string): HTMLElement {
     let script = this.document.createElement('script');
-    this.document.setAttribute(script, 'src', src);
-    this.document.setAttribute(script, 'async', 'true');
-    this.document.setAttribute(script, 'type', 'text/javascript');
-    this.document.setAttribute(script, 'data-timestamp', new Date().getTime().toString());
+    script.setAttribute('src', src);
+    script.setAttribute('async', 'true');
+    script.setAttribute('type', 'text/javascript');
+    script.setAttribute('data-timestamp', new Date().getTime().toString());
     return script;
   }
 }
