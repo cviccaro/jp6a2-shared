@@ -1,10 +1,8 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { 
-  MdButtonModule, 
+import {
+  MdButtonModule,
   MdIconModule,
   MdIconRegistry,
   MdInputModule,
@@ -15,50 +13,14 @@ import {
   OVERLAY_PROVIDERS
 } from '@angular/material';
 
+import { AgmCoreModule } from '@agm/core';
+import { GoogleMapsAPIWrapper } from '@agm/core/services';
 import { MomentModule } from 'angular2-moment';
-import { AgmCoreModule } from 'angular2-google-maps/core';
-import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core/services';
-
-import { RecaptchaModule } from 'ng2-recaptcha/recaptcha/recaptcha.module';
-import { ModalModule } from 'angular2-modal';
-import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
-import { InlineSVGModule } from 'ng-inline-svg';
-
+import { ReCaptchaModule } from 'angular2-recaptcha';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
-
-import {
-  APP_MIDDLEWARE,
-  APP_PIPES,
-  APP_SERVICES,
-  BackgroundDirective,
-  BALLOON_COMPONENTS,
-  BlogComponent,
-  BlogsComponent,
-  CardComponent,
-  ContentOverlayComponent,
-  DisqusComponent,
-  FooterComponent,
-  FORM_COMPONENTS,
-  GALLERY_COMPONENTS,
-  HoverDynamicsDirective,
-  ICON_BUTTON_COMPONENTS,
-  LogoComponent,
-  MAP_COMPONENTS,
-  NAV_COMPONENTS,
-  PrivacyComponent,
-  ProjectComponent,
-  SplashComponent,
-  SOCIAL_COMPONENTS,
-  ScrollToComponent,
-  SubscribeComponent,
-  WindowProviders,
-  StaffModalComponent,
-  ImageZoomDirective,
-  ImageZoomerComponent,
-  ImageZoomLensComponent,
-  ImageZoomLensCanvasComponent,
-  ImageZoomLensContainerComponent
-} from './index';
+// import { ModalModule } from 'angular2-modal';
+// import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+// import { InlineSVGModule } from 'ng-inline-svg';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -67,46 +29,35 @@ import {
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule,
-    //BrowserAnimationsModule,
-    MdButtonModule.forRoot(),
-    MdIconModule.forRoot(),
-    MdGridListModule.forRoot(),
-    MdToolbarModule.forRoot(),
-    MdRippleModule.forRoot(),
-    MdInputModule.forRoot(),
-    MdProgressBarModule.forRoot(),
+    MdButtonModule,
+    MdIconModule,
+    MdGridListModule,
+    MdToolbarModule,
+    MdRippleModule,
+    MdInputModule,
+    MdProgressBarModule,
     MomentModule,
-    RecaptchaModule.forRoot(),
-    ModalModule.forRoot(),
-    BootstrapModalModule,
-    InlineSVGModule,
-    Ng2PageScrollModule.forRoot()
+    Ng2PageScrollModule,
+    ReCaptchaModule,
+    //ModalModule.forRoot(),
+    //BootstrapModalModule,
+    //InlineSVGModule
   ],
   declarations: [
-    APP_PIPES,
     BackgroundDirective,
-    BALLOON_COMPONENTS,
     BlogComponent,
     BlogsComponent,
     CardComponent,
     ContentOverlayComponent,
     DisqusComponent,
     FooterComponent,
-    FORM_COMPONENTS,
-    GALLERY_COMPONENTS,
-    HoverDynamicsDirective,
-    ICON_BUTTON_COMPONENTS,
     LogoComponent,
-    MAP_COMPONENTS,
-    NAV_COMPONENTS,
     PrivacyComponent,
     ProjectComponent,
     ScrollToComponent,
-    SOCIAL_COMPONENTS,
     SplashComponent,
     SubscribeComponent,
     StaffModalComponent,
@@ -117,16 +68,36 @@ import {
     ImageZoomLensContainerComponent
   ],
   exports: [
-    // Angular modules
+    BackgroundDirective,
+    BlogComponent,
+    BlogsComponent,
+    CardComponent,
+    ContentOverlayComponent,
+    DisqusComponent,
+    FooterComponent,
+    LogoComponent,
+    PrivacyComponent,
+    ProjectComponent,
+    ScrollToComponent,
+    SplashComponent,
+    SubscribeComponent,
+    StaffModalComponent,
+    ImageZoomDirective,
+    ImageZoomerComponent,
+    ImageZoomLensComponent,
+    ImageZoomLensCanvasComponent,
+    ImageZoomLensContainerComponent
+
+    ImageZoomDirective,
+    ImageZoomerComponent,
+    ImageZoomLensComponent,
+    ImageZoomLensCanvasComponent,
+    ImageZoomLensContainerComponent,
+
     CommonModule,
-    RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    //BrowserAnimationsModule,
-
-    // Third party modules
     AgmCoreModule,
-    MomentModule,
     MdButtonModule,
     MdIconModule,
     MdGridListModule,
@@ -134,46 +105,11 @@ import {
     MdRippleModule,
     MdInputModule,
     MdProgressBarModule,
-    RecaptchaModule,
+    MomentModule,
     Ng2PageScrollModule,
-
-    // App modules/components
-    APP_PIPES,
-    BackgroundDirective,
-    BALLOON_COMPONENTS,
-    BlogComponent,
-    BlogsComponent,
-    CardComponent,
-    ContentOverlayComponent,
-    DisqusComponent,
-    FooterComponent,
-    FORM_COMPONENTS,
-    GALLERY_COMPONENTS,
-    HoverDynamicsDirective,
-    ICON_BUTTON_COMPONENTS,
-    LogoComponent,
-    MAP_COMPONENTS,
-    NAV_COMPONENTS,
-    PrivacyComponent,
-    ProjectComponent,
-    ScrollToComponent,
-    SplashComponent,
-    SOCIAL_COMPONENTS,
-    SubscribeComponent,
-    StaffModalComponent,
-    InlineSVGModule,
-    ImageZoomDirective,
-    ImageZoomerComponent,
-    ImageZoomLensComponent,
-    ImageZoomLensCanvasComponent,
-    ImageZoomLensContainerComponent
+    ReCaptchaModule
   ],
-  entryComponents: [
-    StaffModalComponent,
-    ImageZoomerComponent,
-    ImageZoomLensContainerComponent,
-    ImageZoomLensCanvasComponent
-  ]
+  entryComponents: [StaffModalComponent, ImageZoomerComponent, ImageZoomLensContainerComponent, ImageZoomLensCanvasComponent]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
