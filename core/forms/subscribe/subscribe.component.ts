@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Validators, NgModel } from '@angular/forms';
 import { Modal } from 'angular2-modal';
 
-import { ContentOverlayComponent } from '../content-overlay/index';
-import { SubscribeFormSubmission } from '../models/form-submissions';
-import { EmailValidator } from '../validators/index';
+import { ContentOverlayComponent } from '../../components/content-overlay/content-overlay.component';
+import { SubscribeFormSubmission } from '../form-submissions';
+import { EmailValidator } from '../../validators/email.validator';
 
 //declare var jQuery: any;
 

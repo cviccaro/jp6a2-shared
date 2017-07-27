@@ -1,6 +1,6 @@
-import { JpClient } from './client';
-import { JpFile } from './file';
-import { Division } from './division';
+import { JpClient } from '../client/client';
+import { JpFile } from '../core/models/file';
+import { Division } from '../division/division';
 
 export class Project {
 	id: any = undefined;

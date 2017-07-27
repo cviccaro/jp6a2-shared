@@ -1,6 +1,6 @@
-import { JpFile } from './file';
+import { JpFile } from '../core/models/file';
 import { Tag } from './tag';
-import { Division } from './division';
+import { Division } from '../division/division';
 
 export class Blog {
 	id: any;

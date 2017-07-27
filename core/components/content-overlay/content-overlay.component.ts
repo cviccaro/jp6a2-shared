@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, ElementRef, AfterViewInit, HostBinding, OnDestroy, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+
 import { NavbarService } from '../nav/navbar.service';
 import { ScrollService } from '../scroll/scroll.service';
-import { Config } from '../config/env.config';
-import { Subscription } from 'rxjs/Subscription';
-import { DOCUMENT } from '@angular/platform-browser';
+import { Config } from '../../config/env.config';
 
 @Component({
 	moduleId: module.id,

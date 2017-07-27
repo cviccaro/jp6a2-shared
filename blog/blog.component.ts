@@ -3,12 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Blog } from '../models/index';
+import { Blog } from './blog';
 import { BlogService } from './blog.service';
-import { CacheService } from '../cache/cache.service';
-import { TitleService } from '../title/title.service';
-import { ScrollService } from '../scroll/scroll.service';
-import { ContentOverlayComponent } from '../content-overlay/content-overlay.component';
+import { CacheService } from '../core/services/cache.service';
+import { TitleService } from '../core/services/title.service';
+import { ScrollService } from '../core/components/scroll/scroll.service';
+import { ContentOverlayComponent } from '../core/components/content-overlay/content-overlay.component';
 
 @Component({
 	moduleId: module.id,

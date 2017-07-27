@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-
-import { Config } from './env.config';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+
+import { Config } from './env.config';
 import { SiteSettings } from './site-settings';
 
 @Injectable()

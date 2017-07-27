@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { BlogService } from './blog.service';
-import { CacheService } from '../cache/cache.service';
+import { CacheService } from '../core/services/cache.service';
 
 @Injectable()
 export class BlogGuard implements CanActivate, OnDestroy {

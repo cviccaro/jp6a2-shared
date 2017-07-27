@@ -2,11 +2,11 @@ import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { CacheService } from '../cache/index';
-import { NavbarService } from '../nav/index';
-import { Config } from '../config/index';
+import { CacheService } from '../../services/cache.service';
+import { NavbarService } from '../nav/navbar.service';
+import { Config } from '../../config/env.config';
 import { ScrollService } from './scroll.service';
-import { TitleService } from '../title/title.service';
+import { TitleService } from '../../services/title.service';
 
 @Component({
 	selector: 'jp-scroll-to',

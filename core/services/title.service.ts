@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Config } from '../config/index';
+import { Config } from '../config/env.config';
 
 @Injectable()
 export class TitleService {

@@ -1,11 +1,11 @@
 import { CanActivate } from '@angular/router';
 import { Injectable, OnDestroy } from '@angular/core';
+import { Http, Response, ResponseContentType } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { CacheService } from '../cache/cache.service';
+import { CacheService } from '../services/cache.service';
 import { ConfigService } from './config.service';
-import { Http, Response, ResponseContentType } from '@angular/http';
 import { SiteSettings } from './site-settings';
 
 @Injectable()

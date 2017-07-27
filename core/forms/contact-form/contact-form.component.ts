@@ -4,12 +4,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { RecaptchaComponent } from 'ng2-recaptcha/recaptcha/recaptcha.component';
+import { ReCaptchaComponent } from 'angular2-recaptcha';
 
 import { FormSubmissionService } from './form-submission.service';
-import { ContactFormSubmission, EmailValidator, Config } from '../index';
-import { TextareaAutoexpandDirective } from './textarea-autoexpand.directive';
-import { CaptchaService } from './captcha.service';
+import { ContactFormSubmission } from '../form-submissions';
+import { EmailValidator } from '../../validators/email.validator';
+import { Config } from '../../config/env.config';
+import { TextareaAutoexpandDirective } from '../textarea-autoexpand.directive';
+import { CaptchaService } from '../captcha.service';
 
 @Component({
     selector: 'jp-contact-form',
@@ -26,7 +28,7 @@ export class ContactFormComponent implements OnDestroy {
     sub: Subscription;
     sub2: Subscription;
 
-    @ViewChild(RecaptchaComponent) public recaptchaCmp: RecaptchaComponent;
+    @ViewChild(ReCaptchaComponent) public recaptchaCmp: ReCaptchaComponent;
     @ViewChild(TextareaAutoexpandDirective) public textareaDir: TextareaAutoexpandDirective;
 
     constructor(

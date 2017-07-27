@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Project } from '../models/index';
+import { Project } from './project';
 import { ProjectService } from './project.service';
-import { CacheService } from '../cache/cache.service';
-import { TitleService } from '../title/title.service';
+import { CacheService } from '../core/services/cache.service';
+import { TitleService } from '../core/services/title.service';
 
 @Component({
 	moduleId: module.id,

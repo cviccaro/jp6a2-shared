@@ -1,10 +1,9 @@
 import { URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
 
-import { Config } from '../index';
-import { ApiHttp } from '../xhr/xhr.http';
-import { XhrService } from '../xhr/xhr.service';
+import { Config } from '../core/config/env.config';
+import { ApiHttp } from '../core/services/xhr.http';
+import { XhrService } from '../core/services/xhr.service';
 
 @Injectable()
 export class ProjectService {

@@ -3,7 +3,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { DialogRef, ModalComponent } from 'angular2-modal';
 import { BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
-import { Staff } from '../models/staff';
+import { Staff } from './staff';
 
 export class StaffModalComponentData extends BSModalContext {
   constructor(public person: Staff) {

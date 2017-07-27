@@ -1,13 +1,13 @@
 import { CanActivate } from '@angular/router';
 import { Injectable, OnDestroy } from '@angular/core';
+import { Http, Response, ResponseContentType } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { CacheService } from '../cache/cache.service';
+import { CacheService } from '../core/services/cache.service';
+import { Config } from '../core/config/env.config';
 import { DivisionService } from './division.service';
-import { Http, Response, ResponseContentType } from '@angular/http';
-import { Config } from '../config/env.config';
-import { Division } from '../models/division';
+import { Division } from './division';
 
 @Injectable()
 export class DivisionGuard implements CanActivate, OnDestroy {

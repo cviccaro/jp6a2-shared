@@ -1,8 +1,8 @@
 import { Component, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { LatLngLiteral } from 'angular2-google-maps/core';
-import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core/services';
-import { SebmGoogleMap } from 'angular2-google-maps/core/directives';
+import { LatLngLiteral } from '@agm/core';
+import { GoogleMapsAPIWrapper } from '@agm/core/services';
+import { AgmMap } from '@agm/core/directives';
 import { GeolocateService } from './geolocate.service';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -40,7 +40,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 	lastDirectionsHeight: number;
 
 	@ViewChild('directions') public directionsEl: ElementRef;
-	@ViewChild(SebmGoogleMap) public gmap: SebmGoogleMap;
+	@ViewChild(AgmMap) public gmap: AgmMap;
 
 	private sub: Subscription;
 

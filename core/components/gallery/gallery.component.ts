@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
-import { ManagedImageSlide } from '../index';
+import { ManagedImageSlide } from '../../models/file';
 import { GalleryItemDirective } from '../gallery/gallery-item.directive';
 
 declare var dynamics: any;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ApiHttp } from '../xhr/xhr.http';
-import { ContactFormSubmission } from '../models/form-submissions';
-import { Config } from '../index';
+import { ApiHttp } from '../../services/xhr.http';
+import { ContactFormSubmission } from '../form-submissions';
+import { Config } from '../../config/env.config';
 
 @Injectable()
 export class FormSubmissionService {

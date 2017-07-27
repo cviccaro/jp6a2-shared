@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
 
-import { Config } from '../index';
-import { ApiHttp } from '../xhr/xhr.http';
+import { Config } from '../core/config/env.config';
+import { ApiHttp } from '../core/services/xhr.http';
 
 @Injectable()
 export class StaffService {

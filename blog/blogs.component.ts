@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { BlogService } from '../blog/blog.service';
-import { CacheService } from '../cache/cache.service';
-import { TitleService } from '../title/title.service';
-import { Config } from '../config/index';
+import { BlogService } from './blog.service';
+import { CacheService } from '../core/services/cache.service';
+import { TitleService } from '../core/services/title.service';
+import { Config } from '../core/config/env.config';
 
 
 @Component({

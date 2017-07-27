@@ -1,5 +1,5 @@
 import { Directive, Input, HostListener, ElementRef, AfterViewInit } from '@angular/core';
-import { Config } from '../index';
+import { Config } from '../../config/env.config';
 
 declare var dynamics: any;
 

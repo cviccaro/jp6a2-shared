@@ -1,7 +1,8 @@
 import { Component, OnInit, AfterViewInit, ElementRef, HostListener, OnDestroy, ViewChildren, QueryList } from '@angular/core';
 import { NavbarService } from './navbar.service';
-import { XhrService } from './../xhr/xhr.service';
-import { Config, IconButtonComponent } from '../index';
+import { XhrService } from '../../services/xhr.service';
+import { Config } from '../../config/env.config';
+import { IconButtonComponent } from '../icon-button/icon-button.component';
 import { Subscription } from 'rxjs/Subscription';
 
 /**

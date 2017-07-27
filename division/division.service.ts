@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
-import { Config } from '../config/env.config';
-import { ApiHttp } from '../xhr/xhr.http';
-import { Division } from '../models/division';
+import { Config } from '../core/config/env.config';
+import { ApiHttp } from '../core/services/xhr.http';
+import { Division } from './division';
 
 @Injectable()
 export class DivisionService {

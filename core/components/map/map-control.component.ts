@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core/services';
+import { GoogleMapsAPIWrapper } from '@agm/core/services';
 
 @Component({
 	selector: 'jp-map-control',

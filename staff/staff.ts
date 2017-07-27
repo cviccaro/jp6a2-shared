@@ -1,4 +1,4 @@
-import { ManagedFile } from './file';
+import { ManagedFile } from '../core/models/file';
 
 export interface Staff {
 	id: number;
