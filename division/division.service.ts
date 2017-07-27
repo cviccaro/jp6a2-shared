@@ -7,14 +7,14 @@ import { Division } from './division';
 
 @Injectable()
 export class DivisionService {
-	constructor(public http: ApiHttp) { }
+  constructor(public http: ApiHttp) { }
 
-	get(id: any) {
-		let params = new URLSearchParams();
+  get(id: any) {
+    let params = new URLSearchParams();
 
-		params.set('thin', '1');
+    params.set('thin', '1');
 
-		return this.http.get(`${Config.API}/divisions/${id}`, params)
-			.map(res => new Division(res.json()));
-	}
+    return this.http.get(`${Config.API}/divisions/${id}`, { params: params })
+      .map(res => new Division(res.json()));
+  }
 }

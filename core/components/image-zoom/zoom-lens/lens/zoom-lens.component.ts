@@ -1,6 +1,6 @@
 import { Component, HostBinding, ElementRef, OnInit, AfterViewInit, Input } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { Logger } from '../../../logger/logger.service';
+import { Logger } from '../../../../services/logger.service';
 
 @Component({
 	moduleId: module.id,
@@ -74,10 +74,10 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 
 	/**
 	 * Constructor
-	 * 
-	 * @param {ElementRef}   public  element   
-	 * @param {DomSanitizer} private sanitizer 
-	 * @param {Logger}       private logger    
+	 *
+	 * @param {ElementRef}   public  element
+	 * @param {DomSanitizer} private sanitizer
+	 * @param {Logger}       private logger
 	 */
 	constructor(public element: ElementRef, private sanitizer: DomSanitizer, private logger: Logger) {}
 
@@ -116,7 +116,7 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	 * Move the Lens
 	 *-----------------
 	 * Adjust the position for size of lens
-	 * 
+	 *
 	 * @param {number} left
 	 * @param {number} top
 	 */
@@ -129,7 +129,7 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	 * Pan the background
 	 * -------------------
 	 * Multiply it by the zoom amount
-	 * 
+	 *
 	 * @param {number} left [description]
 	 * @param {number} top  [description]
 	 */

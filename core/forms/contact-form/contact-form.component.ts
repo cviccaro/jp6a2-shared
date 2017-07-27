@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { ReCaptchaComponent } from 'angular2-recaptcha';
+import { ReCaptchaComponent } from 'angular2-recaptcha/lib/captcha.component';
 
 import { FormSubmissionService } from './form-submission.service';
 import { ContactFormSubmission } from '../form-submissions';

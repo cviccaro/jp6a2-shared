@@ -4,11 +4,11 @@ import { Config } from '../../config/env.config';
 declare var dynamics: any;
 
 @Directive({
-	selector: '[jpHoverDynamics]'
+	selector: '[jpDynamics]'
 })
-export class HoverDynamicsDirective implements AfterViewInit {
-	@Input() jpHoverDynamicsAnimation = 'bounce';
-	@Input() jpHoverDynamicsMobile = false;
+export class DynamicsDirective implements AfterViewInit {
+	@Input() jpDynamicsAnimation = 'bounce';
+	@Input() jpDynamicsMobile = false;
 
 	private _elem: HTMLElement;
 	private listening = true;
@@ -19,7 +19,7 @@ export class HoverDynamicsDirective implements AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		if (this.jpHoverDynamicsMobile !== false) this.listening = true;
+		if (this.jpDynamicsMobile !== false) this.listening = true;
 	}
 
 	@HostListener('mouseenter')
@@ -30,7 +30,7 @@ export class HoverDynamicsDirective implements AfterViewInit {
 			});
 			dynamics.animate(this._elem, {
 				scale: 0.9
-			}, { type: dynamics[this.jpHoverDynamicsAnimation] });
+			}, { type: dynamics[this.jpDynamicsAnimation] });
 		}
 	}
 }

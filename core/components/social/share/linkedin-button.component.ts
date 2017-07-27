@@ -9,6 +9,7 @@ import {
 	ChangeDetectionStrategy,
 	SimpleChanges
 } from '@angular/core';
+
 import { Observable } from 'rxjs/Observable';
 
 var first = true;
@@ -17,11 +18,10 @@ var first = true;
 	moduleId: module.id,
 	selector: 'jp-linkedin-button',
 	template: '',
-	styles: [ ':host { display: inline-block; height: 25px; width: 60px; overflow: hidden; }' ],
+	styles: [':host { display: inline-block; height: 25px; width: 60px; overflow: hidden; }'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LinkedInButtonComponent implements OnInit,
-OnChanges {
+export class LinkedInButtonComponent implements OnInit, OnChanges {
 	button: any;
 	rendering = false;
 
@@ -29,7 +29,7 @@ OnChanges {
 
 	@ViewChild('btn') public btnEl: ElementRef;
 
-	constructor(public el: ElementRef, public renderer: Renderer) {	}
+	constructor(public el: ElementRef, public renderer: Renderer) { }
 
 	ngOnInit() {
 		this.loadWidget();
@@ -42,10 +42,10 @@ OnChanges {
 	loadWidget() {
 		if (first) {
 			let script = this.renderer.createElement(this.el.nativeElement, 'script');
-	    script.src = '//platform.linkedin.com/in.js';
-	    first = false;
+			script.src = '//platform.linkedin.com/in.js';
+			first = false;
 
-	    this.renderer.listen(script, 'load', () => this.renderWidget());
+			this.renderer.listen(script, 'load', () => this.renderWidget());
 		} else {
 			this.renderWidget();
 		}

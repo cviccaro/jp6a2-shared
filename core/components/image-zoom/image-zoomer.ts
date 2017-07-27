@@ -3,10 +3,11 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Logger } from '../logger/logger.service';
+import { Logger } from '../../services/logger.service';
 import { ImageZoomerComponent } from './image-zoomer.component';
 import { ImageZoomDirective } from './image-zoom.directive';
-import { ImageZoomLensContainerComponent, ZoomLensPanPixelsEvent } from './zoom-lens/index';
+import { ImageZoomLensContainerComponent } from './zoom-lens/container/zoom-lens-container.component';
+import { ZoomLensPanPixelsEvent } from './zoom-lens/zoom-lens.interfaces';
 
 @Injectable()
 export class JpImageZoomer implements OnDestroy {
@@ -23,17 +24,17 @@ export class JpImageZoomer implements OnDestroy {
 
 	/**
 	 * Constructor
-	 * 
-	 * @param {ComponentFactoryResolver} private cr    
+	 *
+	 * @param {ComponentFactoryResolver} private cr
 	 * @param {Logger}                   private logger
 	 */
 	constructor(private cr: ComponentFactoryResolver, private logger: Logger) { }
 
 	/**
 	 * Open the zoomer components and return an Observable
-	 * 
+	 *
 	 * @param  {ImageZoomDirective} directive
-	 * @return {Observable}                  
+	 * @return {Observable}
 	 */
 	open(directive: ImageZoomDirective): Observable<ComponentRef<ImageZoomerComponent>> {
 		this.activeItem = directive;
@@ -120,7 +121,7 @@ export class JpImageZoomer implements OnDestroy {
 
 	/**
 	 * Close all the zoomer components
-	 * 
+	 *
 	 * @param {ImageZoomDirective} directive
 	 */
 	close(directive?: ImageZoomDirective) {
@@ -134,7 +135,7 @@ export class JpImageZoomer implements OnDestroy {
 
 	/**
 	 * Pan the image-zoomer when the lens pans
-	 * 
+	 *
 	 * @param {ZoomLensPanPixelsEvent} event
 	 */
 	pan(event: ZoomLensPanPixelsEvent) {
@@ -143,11 +144,11 @@ export class JpImageZoomer implements OnDestroy {
 
 
 	/**
-	 * Extract Image URL from directive, either because 
+	 * Extract Image URL from directive, either because
 	 * it's an image or has a background-image
-	 * 
+	 *
 	 * @param  {ImageZoomDirective} directive
-	 * @return {string}                      
+	 * @return {string}
 	 */
 	private getImageUrl(directive: ImageZoomDirective): string {
 		if (directive.el.nativeElement.tagName === 'IMG') {

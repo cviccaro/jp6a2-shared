@@ -13,7 +13,7 @@ export class CardComponent implements OnInit {
 	@Input() date: any;
 	@Input() href = '#';
 	@Input() image: any;
-	@Input() jpHoverDynamicsMobile = false;
+	@Input() jpDynamicsMobile = false;
 	@Input() overlay: any;
 	@Input() route: any;
 	@Input() subTitle: string;

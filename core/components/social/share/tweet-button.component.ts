@@ -5,14 +5,14 @@ import { Observable } from 'rxjs/Observable';
 	moduleId: module.id,
 	selector: 'jp-tweet-button',
 	template: '',
-	styles: [ ':host { display: inline-block; height: 25px; width: 60px; overflow: hidden; }' ],
+	styles: [':host { display: inline-block; height: 25px; width: 60px; overflow: hidden; }'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TweetButtonComponent implements OnInit, OnChanges {
 	@Input() url: string;
 	@Input() text: string = 'Tweet';
 
-	constructor(public el: ElementRef, public renderer: Renderer) {	}
+	constructor(public el: ElementRef, public renderer: Renderer) { }
 
 	ngOnInit() {
 		this.loadWidget();
@@ -24,17 +24,17 @@ export class TweetButtonComponent implements OnInit, OnChanges {
 
 	loadWidget() {
 		if (this.el.nativeElement.children.length > 0) {
-     	return this.renderShareButton();
+			return this.renderShareButton();
 		}
 
 		let script = this.renderer.createElement(this.el.nativeElement, 'script');
-    script.src = '//platform.twitter.com/widgets.js';
+		script.src = '//platform.twitter.com/widgets.js';
 
-    this.renderer.listen(script, 'load', () => {
-      this.renderShareButton().subscribe((res: any) => {
-      	//
-      });
-  	});
+		this.renderer.listen(script, 'load', () => {
+			this.renderShareButton().subscribe((res: any) => {
+				//
+			});
+		});
 	}
 
 	renderShareButton() {
@@ -49,6 +49,6 @@ export class TweetButtonComponent implements OnInit, OnChanges {
 					observer.next(el);
 					observer.complete();
 				});
-			});
+		});
 	}
 }

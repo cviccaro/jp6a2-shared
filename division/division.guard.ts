@@ -18,7 +18,7 @@ export class DivisionGuard implements CanActivate, OnDestroy {
 
   canActivate(): Observable<boolean> {
     return Observable.create((observer: Observer<boolean>) => {
-      this.sub = this.service.get(Config.division).subscribe((division: Division)=> {
+      this.sub = this.service.get(Config.division).subscribe((division: Division) => {
         if (division.image) {
           this.imagePreloader = this.http.get(division.image.url, { responseType: ResponseContentType.Blob })
             .subscribe((res: Response) => {

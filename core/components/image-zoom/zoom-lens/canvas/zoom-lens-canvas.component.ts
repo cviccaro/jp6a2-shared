@@ -1,5 +1,5 @@
 import { Component, HostListener, EventEmitter, ElementRef, Output } from '@angular/core';
-import { Logger } from '../../../logger/logger.service';
+import { Logger } from '../../../../services/logger.service';
 import { ZoomLensPanPixelsRawEvent } from '../zoom-lens.interfaces';
 
 @Component({

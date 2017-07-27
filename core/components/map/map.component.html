@@ -11,7 +11,7 @@
       <md-icon>directions</md-icon>&nbsp;&nbsp;Get Directions on Google Maps
     </button>
   </md-toolbar>
-  <sebm-google-map id="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [hidden]="!mapShowing" class="fadeIn animated">
+  <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [hidden]="!mapShowing" class="fadeIn animated">
     <jp-map-control (mapLoaded)="mapLoaded($event)"></jp-map-control>
     <div id="directionsPanel" [hidden]="!directionsShowing" #directions>
       <div class="directions-toolbar">
@@ -23,12 +23,12 @@
     <button md-button md-fab class="md-icon-button md-mini close" id="mapClose" title="Close" (click)="closeMap()" (touchend)="closeMap()">
       <md-icon>close</md-icon>
     </button>
-    <sebm-google-map-marker [label]="'J'" [title]="title" [latitude]="latitude" [longitude]="longitude" events="vm.map.pin.events">
-      <sebm-google-map-info-window [isOpen]="infoWindowOpen">
+    <agm-marker [label]="'J'" [title]="title" [latitude]="latitude" [longitude]="longitude" events="vm.map.pin.events">
+      <agm-info-window [isOpen]="infoWindowOpen">
         JP Enterprises<br />108 Commerce Blvd<br />Lawrence, PA 15055
-      </sebm-google-map-info-window>
-    </sebm-google-map-marker>
-  </sebm-google-map>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
   <button md-button class="inverted-button get-directions" (click)="openMap()" [hidden]="mapShowing">
     <div md-ripple md-ripple-centered="true"></div>
     Get Directions

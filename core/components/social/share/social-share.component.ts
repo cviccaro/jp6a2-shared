@@ -5,14 +5,14 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 	moduleId: module.id,
 	selector: 'jp-social-share',
 	templateUrl: './social-share.component.html',
-	styleUrls: [ './social-share.component.css' ]
+	styleUrls: ['./social-share.component.css']
 })
 export class SocialShareComponent implements OnInit {
 	fbUrl: SafeResourceUrl;
 
 	@Input() url: string;
 
-	constructor(public sanitizer: DomSanitizer) {	}
+	constructor(public sanitizer: DomSanitizer) { }
 
 	ngOnInit() {
 		this.fbUrl = this.sanitizer.bypassSecurityTrustResourceUrl(

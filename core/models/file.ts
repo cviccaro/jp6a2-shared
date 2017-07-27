@@ -20,6 +20,7 @@ export interface JpFile {
     size?: number;
     updated_at?: any;
     url?: string;
+    urlBlob?: string;
     webkitRelativePath?: string;
 
     _file?: File;
@@ -45,6 +46,7 @@ export class ManagedFile implements JpFile {
     size: number;
     updated_at: any;
     url: string;
+    urlBlob?: string;
     webkitRelativePath: string;
 
     _file: File;

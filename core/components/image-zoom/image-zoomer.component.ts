@@ -1,8 +1,10 @@
 import { Component, AfterViewInit, ElementRef, HostBinding, HostListener } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
-import { Logger } from '../logger/logger.service';
-import { ImageZoomLensComponent, ZoomLensPanPercentagesEvent, ZoomLensPanPixelsEvent} from './index';
+import { Logger } from '../../services/logger.service';
+import { ImageZoomDirective } from './image-zoom.directive';
+import { ImageZoomLensContainerComponent } from './zoom-lens/container/zoom-lens-container.component';
+import { ZoomLensPanPixelsEvent, ZoomLensPanPercentagesEvent } from './zoom-lens/zoom-lens.interfaces';
 
 @Component({
 	moduleId: module.id,
@@ -93,7 +95,7 @@ export class ImageZoomerComponent implements AfterViewInit {
 	/**
 	 * Event Listeners
 	 */
-	@HostListener('transitionend', ['$event']) 
+	@HostListener('transitionend', ['$event'])
 	onTransitionEnd(e: any) {
 		if (!this.visible) {
 			this.transitioning = false;
@@ -140,8 +142,8 @@ export class ImageZoomerComponent implements AfterViewInit {
 
 	/**
 	 * Position the zoomer
-	 * 
-	 * @param {number} left 
+	 *
+	 * @param {number} left
 	 * @param {number} top
 	 */
 	position(left?: number, top?: number) {

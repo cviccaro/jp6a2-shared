@@ -1,5 +1,5 @@
 <ul class="jp-pager pagination" [class.minimal]="pagerType == 'minimal'" [class.nav]="pagerType == 'nav'" [ngSwitch]="pagerType">
-    <template [ngSwitchCase]="'minimal'">
+    <ng-template [ngSwitchCase]="'minimal'">
         <li *ngFor="let i of getRange(totalPages); let index = index"
         class="pager-index"
         [class.active]="currentPage-1 == index"
@@ -7,8 +7,8 @@
         [class.pager-last]="index === getRange(totalPages).length">
             <a (click)="getResults(index+1)" (touchend)="getResults(index+1)">{{index + 1}}</a>
         </li>
-    </template>
-    <template [ngSwitchCase]="'nav'">
+    </ng-template>
+    <ng-template [ngSwitchCase]="'nav'">
         <li [hidden]="currentPage === 1" class="pager-prev">
             <a (click)="getResults(currentPage-1)" (touchend)="getResults(currentPage-1)" md-ink-ripple title="Previous">
                 <span>&lsaquo; Prev</span>
@@ -30,12 +30,12 @@
                 </div>
             </a>
         </li>
-    </template>
-    <template ngSwitchDefault>
+    </ng-template>
+    <ng-template ngSwitchDefault>
         <li *ngFor="let i of getRange(totalPages); let index = index" class="pager-index" [class.active]="currentPage-1 == index" [class.pager-first]="index === 0" [class.pager-last]="index === getRange(totalPages).length">
             <a (click)="getResults(index+1)" (touchend)="getResults(index+1)">{{index + 1}}</a>
         </li>
-    </template>
+    </ng-template>
 </ul>
 <div *ngIf="includeNav || pagerType === 'nav'" class="jp-pager-nav-container">
 	<div class="jp-pager-nav grid-wide">

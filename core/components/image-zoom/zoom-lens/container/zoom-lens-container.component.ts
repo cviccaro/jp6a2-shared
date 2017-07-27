@@ -4,7 +4,7 @@ import { ImageZoomLensComponent } from '../lens/zoom-lens.component';
 import { ImageZoomLensCanvasComponent } from '../canvas/zoom-lens-canvas.component';
 import { ImageZoomDirective } from '../../image-zoom.directive';
 import { ZoomLensPanPixelsEvent, ZoomLensPanPixelsRawEvent } from '../zoom-lens.interfaces';
-import { Logger } from '../../../logger/logger.service';
+import { Logger } from '../../../../services/logger.service';
 
 @Component({
 	moduleId: module.id,
@@ -106,10 +106,10 @@ export class ImageZoomLensContainerComponent {
 
 	/**
 	 * Constructor
-	 * 
-	 * @param {ElementRef}   public  element  
+	 *
+	 * @param {ElementRef}   public  element
 	 * @param {DomSanitizer} private sanitizer
-	 * @param {Logger}       private logger   
+	 * @param {Logger}       private logger
 	 */
 	constructor(public element: ElementRef, private sanitizer: DomSanitizer, private logger: Logger) {}
 

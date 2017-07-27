@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { ImageZoomerComponent } from './image-zoomer.component';
 import { JpImageZoomer } from './image-zoomer';
-import { Logger } from '../logger/logger.service';
+import { Logger } from '../../services/logger.service';
 
 @Directive({
 	selector: '[jp-image-zoom]',
@@ -44,10 +44,10 @@ export class ImageZoomDirective implements OnInit, OnDestroy {
 
 	/**
 	 * Constructor
-	 * 
-	 * @param {Logger}        private logger     
+	 *
+	 * @param {Logger}        private logger
 	 * @param {JpImageZoomer} private imageZoomer
-	 * @param {ElementRef}    public  el         
+	 * @param {ElementRef}    public  el
 	 */
 	constructor(private logger: Logger, private imageZoomer: JpImageZoomer, public el: ElementRef) { }
 
