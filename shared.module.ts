@@ -110,12 +110,16 @@ export const APP_SERVICES = [
 
 import { BlogGuard } from './blog/blog.guard';
 import { BlogsGuard } from './blog/blogs.guard';
+import { ConfigGuard } from './core/config/config.guard';
+import { DivisionGuard } from './division/division.guard';
 import { ProjectGuard } from './project/project.guard';
 
 export const APP_MIDDLEWARE = [
   BlogGuard,
   BlogsGuard,
-  ProjectGuard
+  ProjectGuard,
+  ConfigGuard,
+  DivisionGuard
 ];
 
 const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
