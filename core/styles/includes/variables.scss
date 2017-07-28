@@ -1,4 +1,4 @@
-@import 'sass-material-colors/sass/sass-material-colors';
+@import "sass-material-colors/sass/sass-material-colors";
 
 $nav_height: 75px;
 $desktop-min-width: 992px;
@@ -12,9 +12,9 @@ $white: #fff;
 $black: #000;
 $blackish: #111;
 $dark_blue: #0262C2;
-$white_trans: rgba(255,255,255,0.98);
+$white_trans: rgba(255, 255, 255, 0.98);
 $almost_black: #212121;
-$black_translucent: rgba(0,0,0,0.87);
+$black_translucent: rgba(0, 0, 0, 0.87);
 $blue: rgb(51, 122, 183);
 $blue2: #0072bc;
 $blue_translucent: rgba(51, 122, 183, 0.65);
@@ -24,75 +24,75 @@ $yellow_translucent: rgba(254, 221, 0, 0.65);
 $fuchsia: rgb(235, 0, 140);
 $fuchsia_translucent: rgba(235, 0, 140, 0.65);
 
-$black_14: rgba(0,0,0,0.14);
-$black_20: rgba(0,0,0,0.20);
-$black_26: rgba(0,0,0,0.26);
-$black_54: rgba(0,0,0,0.54);
-$black_88: rgba(0,0,0,0.8705);
+$black_14: rgba(0, 0, 0, 0.14);
+$black_20: rgba(0, 0, 0, 0.2);
+$black_26: rgba(0, 0, 0, 0.26);
+$black_54: rgba(0, 0, 0, 0.54);
+$black_88: rgba(0, 0, 0, 0.8705);
 
-$grey_50: material-color('grey', '50');
-$grey_100: material-color('grey', '100');
-$grey_200: material-color('grey', '200');
-$grey_300: material-color('grey', '300');
-$grey_400: material-color('grey', '400');
-$grey_500: material-color('grey', '500');
-$grey_600: material-color('grey', '600');
-$grey_700: material-color('grey', '700');
-$grey_800: material-color('grey', '800');
-$grey_900: material-color('grey', '900');
-$grey_translucent: rgba(200,200,200,0.12);
+$grey_50: material-color("grey", "50");
+$grey_100: material-color("grey", "100");
+$grey_200: material-color("grey", "200");
+$grey_300: material-color("grey", "300");
+$grey_400: material-color("grey", "400");
+$grey_500: material-color("grey", "500");
+$grey_600: material-color("grey", "600");
+$grey_700: material-color("grey", "700");
+$grey_800: material-color("grey", "800");
+$grey_900: material-color("grey", "900");
+$grey_translucent: rgba(200, 200, 200, 0.12);
 
-$brown_50: material-color('brown', '50');
-$brown_100: material-color('brown', '100');
-$brown_200: material-color('brown', '200');
-$brown_300: material-color('brown', '300');
-$brown_400: material-color('brown', '400');
-$brown_500: material-color('brown', '500');
-$brown_600: material-color('brown', '600');
-$brown_700: material-color('brown', '700');
-$brown_800: material-color('brown', '800');
-$brown_900: material-color('brown', '900');
+$brown_50: material-color("brown", "50");
+$brown_100: material-color("brown", "100");
+$brown_200: material-color("brown", "200");
+$brown_300: material-color("brown", "300");
+$brown_400: material-color("brown", "400");
+$brown_500: material-color("brown", "500");
+$brown_600: material-color("brown", "600");
+$brown_700: material-color("brown", "700");
+$brown_800: material-color("brown", "800");
+$brown_900: material-color("brown", "900");
 
-$blue_50: material-color('blue', '50');
-$blue_100: material-color('blue', '100');
-$blue_200: material-color('blue', '200');
-$blue_300: material-color('blue', '300');
-$blue_400: material-color('blue', '400');
-$blue_500: material-color('blue', '500');
-$blue_600: material-color('blue', '600');
-$blue_700: material-color('blue', '700');
-$blue_800: material-color('blue', '800');
-$blue_900: material-color('blue', '900');
+$blue_50: material-color("blue", "50");
+$blue_100: material-color("blue", "100");
+$blue_200: material-color("blue", "200");
+$blue_300: material-color("blue", "300");
+$blue_400: material-color("blue", "400");
+$blue_500: material-color("blue", "500");
+$blue_600: material-color("blue", "600");
+$blue_700: material-color("blue", "700");
+$blue_800: material-color("blue", "800");
+$blue_900: material-color("blue", "900");
 
-$green_50: material-color('green', '50');
-$green_100: material-color('green', '100');
-$green_200: material-color('green', '200');
-$green_300: material-color('green', '300');
-$green_400: material-color('green', '400');
-$green_500: material-color('green', '500');
-$green_600: material-color('green', '600');
-$green_700: material-color('green', '700');
-$green_800: material-color('green', '800');
-$green_900: material-color('green', '900');
+$green_50: material-color("green", "50");
+$green_100: material-color("green", "100");
+$green_200: material-color("green", "200");
+$green_300: material-color("green", "300");
+$green_400: material-color("green", "400");
+$green_500: material-color("green", "500");
+$green_600: material-color("green", "600");
+$green_700: material-color("green", "700");
+$green_800: material-color("green", "800");
+$green_900: material-color("green", "900");
 
-$light-green-50: material-color('light-green', '50');
-$light-green-100: material-color('light-green', '100');
-$light-green-200: material-color('light-green', '200');
-$light-green-300: material-color('light-green', '300');
-$light-green-400: material-color('light-green', '400');
-$light-green-500: material-color('light-green', '500');
-$light-green-600: material-color('light-green', '600');
-$light-green-700: material-color('light-green', '700');
-$light-green-800: material-color('light-green', '800');
-$light-green-900: material-color('light-green', '900');
+$light-green-50: material-color("light-green", "50");
+$light-green-100: material-color("light-green", "100");
+$light-green-200: material-color("light-green", "200");
+$light-green-300: material-color("light-green", "300");
+$light-green-400: material-color("light-green", "400");
+$light-green-500: material-color("light-green", "500");
+$light-green-600: material-color("light-green", "600");
+$light-green-700: material-color("light-green", "700");
+$light-green-800: material-color("light-green", "800");
+$light-green-900: material-color("light-green", "900");
 
-$red_500: material-color('red', '500');
-$red_900: material-color('red', '900');
-$yellow_500: material-color('yellow', '500');
-$bluegrey_100: material-color('blue-grey', '100');
-$bluegrey_600: material-color('blue-grey', '600');
+$red_500: material-color("red", "500");
+$red_900: material-color("red", "900");
+$yellow_500: material-color("yellow", "500");
+$bluegrey_100: material-color("blue-grey", "100");
+$bluegrey_600: material-color("blue-grey", "600");
 
-$orange: material-color('orange', '500');
+$orange: material-color("orange", "500");
 
 /**
  * Colors
@@ -109,8 +109,8 @@ $light-grey: $grey_200;
 /**
  * Fonts
  */
-$font-family-lato: Lato,Helvetica,Arial,sans-serif;
-$font-family-roboto: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+$font-family-lato: Lato, Helvetica, Arial, sans-serif;
+$font-family-roboto: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 $proxima-nova: Proxima-Nova, serif;
 $source-sans-pro: source-sans-pro, "Helvetica Neue", sans-serif;
 $font-family-sans-serif: $source-sans-pro;
@@ -134,177 +134,197 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
 @mixin basic-boxshadow($depth: 3, $include_transition: true) {
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
-    @if ($depth == 3) {
+    @if $depth == 3 {
         box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
     }
 
-    @if ($include_transition) {
-    	-webkit-transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-    	transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-    	will-change: box-shadow;
+    @if $include_transition {
+        -webkit-transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: box-shadow;
     }
 }
 
 @mixin border-radius($radius: 4px) {
-	border-radius: $radius;
-	-webkit-border-radius: $radius;
-	-moz-border-radius: $radius;
-	-o-border-radius: $radius;
-	-ms-border-radius: $radius;
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -o-border-radius: $radius;
+    -ms-border-radius: $radius;
 }
 
-@mixin transition($def: all .25s ease) {
-	transition: $def;
-	-webkit-transition: $def;
-	-moz-transition: $def;
-	-o-transition: $def;
-	-ms-transition: $def;
+@mixin transition($def: all 0.25s ease) {
+    transition: $def;
+    -webkit-transition: $def;
+    -moz-transition: $def;
+    -o-transition: $def;
+    -ms-transition: $def;
 }
 
 @mixin display-flex {
-	display: flex;
+    display: flex;
 }
 
 @mixin jp-form {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-	.mat-input-container {
-	  &.mat-focused {
-	    label.mat-float {
-	      padding-top: 0;
-	      padding-left: 0;
-	      top: -4px;
-	    }
-	  }
-	  &.ng-dirty {
-	  	label.mat-float:not(.mat-empty) {
-	  		padding-top: 0;
-	  		padding-left: 0;
-	  		top: -4px;	
-	  	}
-	  }
-	}
+    .mat-input-container {
+        &.mat-focused {
+            label.mat-float {
+                padding-top: 0;
+                padding-left: 0;
+                top: 3px;
+            }
+        }
 
-	.form-group {
-	  width: 49%;
-	  margin: 18px 1% 18px 0;
-	  flex-shrink: 0;
+        &.ng-dirty {
+            label.mat-float:not(.mat-empty) {
+                padding-top: 0;
+                padding-left: 0;
+                top: 3px;
+            }
+        }
+    }
 
-	  &:nth-child(2n):not(.full) {
-	    margin-right: 0;
-	    margin-left: 1%;
-	  }
+    .form-group {
+        width: 49%;
+        margin: 18px 1% 18px 0;
+        flex-shrink: 0;
 
-	  &.flush {
-	    margin-left: 0;
-	    margin-right: 0;
-	  }
+        &:nth-child(2n):not(.full) {
+            margin-right: 0;
+            margin-left: 1%;
+        }
 
-	  &.full {
-	    width: 100%;
-	    label {
-	      display: block;
-	    }
+        &.flush {
+            margin-left: 0;
+            margin-right: 0;
+        }
 
-	    [mdInput] {
-	      width: 100%;
-	    }
-	  }
+        &.full {
+            width: 100%;
 
-	  .mat-input-wrapper {
-	    margin: 0;
+            label {
+                display: block;
+            }
 
-	    input {
-	      border-width: 1px;
-	      border-style: solid;
-	      border-color: #fff;
-	      padding: 10px 20px;
-	      height: 48px;
-	      transition: border-color $transition_duration $transition_ease;
-	      will-change: border-color;
-	    }
-	  }
+            [mdInput] {
+                width: 100%;
+            }
+        }
 
-	  .mat-input-element.ng-valid.ng-dirty {
-	  	&[required] {
-	  	  border-left: 2px solid $green_500!important;
-	  	}
-	  }
+        .mat-input-placeholder-wrapper {
+            height: 100%;
+            padding-top: 0;
+            overflow: visible;
 
-	  .mat-input-element.ng-invalid.ng-dirty {
-	  	&[required] {
-	  	  border-left: 2px solid $fuchsia!important;
-	  	}
-	  }
+            .mat-input-placeholder {
+                color: $white_trans;
+                font-weight: normal;
+                font-size: 16px;
+                font-family: $source-sans-pro;
+                height: 100%;
+                line-height: 48px;
+                padding-left: 20px;
+                margin: 0;
+                top: 13px;
 
-	  &.textarea {
-	    position: relative;
+                &.mat-focused {
+                    color: $blue;
+                }
 
-	    .mat-input-placeholder-wrapper {
-	    	height: auto;
-	    	overflow: visible;
-	    	label {
-	    		overflow: visible;
-	    	}
-	    }
+                .mat-placeholder-required {
+                    color: $fuchsia !important;
+                }
+            }
+        }
 
-	    label {
-	      z-index: 4;
-	    }
+        .mat-input-wrapper {
+            margin: 0;
+            padding-bottom: 0;
 
-	    textarea {
-	      z-index: 5;
-	      width: 100%;
-	      background: transparent;
-	      color: $white_trans;
-	      border: 1px solid $white;
-	      padding: 10px 20px;
-	      line-height: 23px;
-	      position: relative;
-	    }
-	  }
+            .mat-input-infix {
+                border-top: none;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
 
-	  .mat-input-placeholder-wrapper {
-	    height: 100%;
-	    .mat-input-placeholder {
-	      color: $white_trans;
-	      font-weight: normal;
-	      font-size: 16px;
-	      font-family: $source-sans-pro;
-	      height: 100%;
-	      line-height: 48px;
-	      padding-left: 20px;
-	      margin: 0;
+            input {
+                border-width: 1px;
+                border-style: solid;
+                border-color: #fff;
+                padding: 10px 20px;
+                height: 48px;
+                transition: border-color $transition_duration $transition_ease;
+                will-change: border-color;
+            }
+        }
 
-	      &.mat-focused {
-	        color: $blue;
-	      }
+        .mat-input-element.ng-valid.ng-dirty {
+            &[required] {
+                border-left: 2px solid $green_500 !important;
+            }
+        }
 
-	      .mat-placeholder-required {
-	        color: $fuchsia!important;
-	      }
-	    }
-	  }
-	}
+        .mat-input-element.ng-invalid.ng-dirty {
+            &[required] {
+                border-left: 2px solid $fuchsia !important;
+            }
+        }
 
-	.form-actions {
-	  text-align: right;
-	  width: 100%;
-	  margin-top: 2em;
-	}
+        &.textarea {
+            position: relative;
 
-	input:focus {
-	  border-color: $blue !important;
-	}
+            &.mat-focused {
+                textarea {
+                    border-color: $blue !important;
+                }
+            }
 
-	.mat-input-underline {
-	  display: none;
-	}
+            .mat-input-placeholder-wrapper {
+                height: auto;
+                overflow: visible;
 
-	label {
-	  transition: all $transition_duration $transition_ease;
-	  overflow: hidden;
-	}
+                label {
+                    overflow: visible;
+                }
+            }
+
+            label {
+                z-index: 4;
+            }
+
+            textarea {
+                z-index: 5;
+                width: 100%;
+                background: transparent;
+                color: $white_trans;
+                border: 1px solid $white;
+                padding: 10px 20px;
+                line-height: 23px;
+                position: relative;
+            }
+        }
+    }
+
+    .form-actions {
+        text-align: right;
+        width: 100%;
+        margin-top: 2em;
+    }
+
+    input:focus {
+        border-color: $blue !important;
+    }
+
+    .mat-input-underline {
+        display: none;
+    }
+
+    label {
+        transition: all $transition_duration $transition_ease;
+        overflow: hidden;
+    }
 }

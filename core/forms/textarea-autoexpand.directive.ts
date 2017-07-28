@@ -31,6 +31,7 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 		this.containerEl.classList.add('mat-input-container');
 		this.el.nativeElement.classList.add('mat-input-element');
 		this.el.nativeElement.style.height = '48px';
+		this.el.nativeElement.style.overflow = 'visible';
 	}
 
 	@HostListener('focus', ['$event'])
@@ -72,7 +73,7 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 			let newLines = this.el.nativeElement.value.split(/[\r\n]+/g).length || 1;
 			if (e.keyCode === 13) {	newLines++;	}
 
-			let newHeight = (this.lineHeight + (this.diff / 2)) * newLines;
+			let newHeight = ((this.lineHeight + (this.diff / 2)) * newLines) + 20;
 			if (newHeight < 48) newHeight = 48;
 			if (newHeight !== this.el.nativeElement.offsetHeight) {
 				this.el.nativeElement.style.height = newHeight + 'px';

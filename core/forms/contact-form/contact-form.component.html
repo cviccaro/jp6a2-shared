@@ -23,7 +23,7 @@
      <textarea jpTextareaAutoexpand md-input name="comments" [formControl]="contactForm.get('comments')"></textarea>
   </div>
   <div class="form-group full flush" *ngIf="siteKey">
-    <re-captcha (resolved)="resolved($event)" [site_key]="siteKey" theme="dark" name="captcha" required [formControl]="contactForm.get('captcha')"></re-captcha>
+    <re-captcha (captchaResponse)="handleCaptchaResponse($event)" [site_key]="siteKey" theme="dark" name="captcha" required [formControl]="contactForm.get('captcha')"></re-captcha>
   </div>
   <div class="form-actions">
     <button md-button type="submit" class="form-submit inverted-button" [disabled]="!contactForm.valid">Submit Form</button>

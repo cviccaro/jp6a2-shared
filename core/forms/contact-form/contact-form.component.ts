@@ -25,8 +25,8 @@ export class ContactFormComponent implements OnDestroy {
     contactForm: FormGroup;
     model = new ContactFormSubmission();
     siteKey: any = false;
-    sub: Subscription;
-    sub2: Subscription;
+    postingToServer: Subscription;
+    validatingCaptcha: Subscription;
 
     @ViewChild(ReCaptchaComponent) public recaptchaCmp: ReCaptchaComponent;
     @ViewChild(TextareaAutoexpandDirective) public textareaDir: TextareaAutoexpandDirective;
@@ -56,7 +56,7 @@ export class ContactFormComponent implements OnDestroy {
 
     postToServer() {
         return Observable.create((observer: Observer<Response>) => {
-            this.sub = this.service.submit(this.model)
+            this.postingToServer = this.service.submit(this.model)
                 .subscribe(
                 res => {
                     this.reset();
@@ -82,17 +82,17 @@ export class ContactFormComponent implements OnDestroy {
         this.formSubmitSuccess.emit(this.model);
     }
 
-    resolved(captchaResponse: string) {
+    handleCaptchaResponse(captchaResponse: string) {
         if (captchaResponse !== null) {
-            this.sub2 = this.captcha.validate(captchaResponse)
+            this.validatingCaptcha = this.captcha.validate(captchaResponse)
                 .subscribe(
-                    (resp: any) => { if (!resp.success) this.recaptchaCmp.reset(); }
+                (resp: any) => { if (!resp.success) this.recaptchaCmp.reset(); }
                 );
         }
-	}
+    }
 
     ngOnDestroy() {
-        if (this.sub) this.sub.unsubscribe();
-        if (this.sub2) this.sub2.unsubscribe();
+        if (this.postingToServer) this.postingToServer.unsubscribe();
+        if (this.validatingCaptcha) this.validatingCaptcha.unsubscribe();
     }
 }
