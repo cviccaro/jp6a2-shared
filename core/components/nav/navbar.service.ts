@@ -94,7 +94,7 @@ export class NavbarService {
 
 		this.el.nativeElement.classList.remove('snap-out', 'snap-out-active');
 		this.el.nativeElement.classList.add('snap-in', 'snapped');
-		
+
 		this.showTimer = setTimeout(() => {
 				this.bindTransitionEvents(function(e: Event) {
 					if (e.target === this) {

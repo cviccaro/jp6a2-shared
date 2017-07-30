@@ -28,4 +28,23 @@ export class ScrollService {
 		const instance = PageScrollInstance.simpleInlineInstance(this.document, targetEl, inlineEl);
 		this.scroller.start(instance);
 	}
+
+	navHelper(e: Event) {
+		  e.stopPropagation();
+		  e.preventDefault();
+		  const target = <HTMLElement>e.target;
+		  let href:string;
+
+		  if (target.tagName === 'SPAN') {
+		    href = (<HTMLAnchorElement>target.parentElement).href;
+		  } else {
+		    href = (<HTMLAnchorElement>target).href;
+		  }
+
+		  if (href) {
+		    let selector = href.replace(window.location.origin, '').replace('/','');
+		    this.scrollService.scrollToElementAnimated('#' + selector);
+		  }
+		}
+	}
 }
