@@ -53,6 +53,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { ProjectComponent } from './project/project.component';
 import { ScrollToComponent } from './core/components/scroll/scroll-to.component';
 import { SplashComponent } from './core/components/splash/splash.component';
+import { SplashContentComponent } from './core/components/splash/splash-content.component';
 import { SocialModule } from './core/components/social/social.module';
 import { StaffModalComponent } from './staff/staff-modal.component';
 import { SubscribeComponent } from './core/forms/subscribe/subscribe.component';
@@ -186,6 +187,7 @@ const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
     ProjectComponent,
     ScrollToComponent,
     SplashComponent,
+    SplashContentComponent,
     SubscribeComponent,
     StaffModalComponent,
     TextareaAutoexpandDirective,
@@ -229,6 +231,7 @@ const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
     ProjectComponent,
     ScrollToComponent,
     SplashComponent,
+    SplashContentComponent,
     SubscribeComponent,
     StaffModalComponent,
     TextareaAutoexpandDirective,

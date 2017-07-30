@@ -161,10 +161,24 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
     -ms-transition: $def;
 }
 
+@mixin cssAnimation($props) {
+  -webkit-animation: $props;
+  -moz-animation: $props;
+  -o-animation: $props;
+  animation: $props;
+}
+
+/*********
+ * Flex
+ **********/
 @mixin display-flex {
     display: flex;
 }
 
+
+/**************
+ * JP Form
+ ********** **/
 @mixin jp-form {
     display: flex;
     flex-direction: row;

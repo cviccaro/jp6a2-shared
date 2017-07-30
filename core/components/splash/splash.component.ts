@@ -1,5 +1,7 @@
-import { Component, Input, OnInit, HostListener, HostBinding } from '@angular/core';
+import { Component, Input, OnInit, HostListener, HostBinding, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+
+import { SplashContentComponent } from './splash-content.component';
 
 @Component({
   moduleId: module.id,
@@ -10,6 +12,8 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 export class SplashComponent implements OnInit {
   public bgStyle: SafeStyle;
   public elHeight: string = '';
+
+  @ViewChild(SplashContentComponent) public splashContentCmp: SplashContentComponent;
 
   @Input() splashUrl: string;
   @Input() fullscreen: boolean = false;
@@ -41,7 +45,7 @@ export class SplashComponent implements OnInit {
   setHeight() {
     if (this.fullscreen) {
       let h = window.innerHeight > 558 ? window.innerHeight : 558;
-      this.elHeight = h+'px';
+      this.elHeight = `${h - 75}px`;
     } else if (this.height !== undefined) {
       this.elHeight = this.height + 'px';
     }

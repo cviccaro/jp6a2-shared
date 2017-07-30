@@ -1,5 +1,6 @@
 <div class="splash" [style.background-image]="bgStyle" [style.height]="elHeight">
     <div class="splash-inner container">
-        <ng-content></ng-content>
+        <ng-content select="jp-splash-content"></ng-content>
     </div>
+    <ng-content></ng-content>
 </div>
