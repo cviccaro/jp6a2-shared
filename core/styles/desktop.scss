@@ -394,7 +394,7 @@ input {
 }
 
 section, .section-padding {
-  padding: 130px 0;
+  padding: 120px 0;
 }
 
 section {
@@ -669,3 +669,11 @@ jp-app:empty + #bootstrapping {
 @media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
   @include ie;
 }
+
+/** Pete July 2017 Styles */
+.mini_marg {margin-top:24px!important;}
+.sm_marg {margin-top: 30px!important;}
+.btn_marg {margin-top:45px!important;}
+.med_marg {margin-top:60px!important;}
+.lg_marg {margin-top: 90px!important; }
+.top_pos {position:absolute; bottom:10%;}
