@@ -43,7 +43,7 @@ export class ScrollService {
 
 		  if (href) {
 		    let selector = href.replace(window.location.origin, '').replace('/','');
-		    this.scrollService.scrollToElementAnimated('#' + selector);
+		    this.scrollToElementAnimated('#' + selector);
 		  }
 		}
 	}
