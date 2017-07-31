@@ -44,8 +44,13 @@ export class SplashComponent implements OnInit {
 
   setHeight() {
     if (this.fullscreen) {
+      let $nav: any = document.querySelector('jp-navbar');
+      let navHeight = 0;
+      if ($nav) {
+        navHeight = $nav.offsetHeight;
+      }
       let h = window.innerHeight > 558 ? window.innerHeight : 558;
-      this.elHeight = `${h - 75}px`;
+      this.elHeight = `${h - navHeight}px`;
     } else if (this.height !== undefined) {
       this.elHeight = this.height + 'px';
     }
