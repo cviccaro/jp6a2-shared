@@ -184,12 +184,13 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
     flex-direction: row;
     flex-wrap: wrap;
 
+    .md-input-container,
     .mat-input-container {
         &.mat-focused {
             label.mat-float {
                 padding-top: 0;
                 padding-left: 0;
-                top: 3px;
+                top: 0;
             }
         }
 
@@ -197,7 +198,7 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
             label.mat-float:not(.mat-empty) {
                 padding-top: 0;
                 padding-left: 0;
-                top: 3px;
+                top: 0;
             }
         }
     }
