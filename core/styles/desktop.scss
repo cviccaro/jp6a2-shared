@@ -677,3 +677,30 @@ jp-app:empty + #bootstrapping {
 .med_marg {margin-top:32px!important;}
 .lg_marg {margin-top: 60px!important; }
 .top_pos {position:absolute; bottom:10%;}
+
+.jp-tooltip {
+  font-size: 16px;
+  font-weight: 100;
+  font-family: $proxima-nova;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.6)!important;
+  margin-top: 1px!important;
+  padding-top: 10px!important;
+  padding-bottom: 10px!important;
+}
+
+.jp-tooltip-interactive {
+  margin-left: -35px!important;
+}
+
+.jp-tooltip-mdm {
+  margin-left: 22px!important;
+}
+
+.jp-tooltip-creative {
+  margin-left: -8px!important;
+}
+
+.jp-tooltip-publishing {
+  margin-left: -27px!important;
+}

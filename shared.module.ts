@@ -9,6 +9,7 @@ import {
   MdInputModule,
   MdGridListModule,
   MdToolbarModule,
+  MdTooltipModule,
   MdProgressBarModule,
   MdRippleModule,
   //OVERLAY_PROVIDERS
@@ -143,6 +144,7 @@ const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
     MdIconModule,
     MdInputModule,
     MdToolbarModule,
+    MdTooltipModule,
     MdRippleModule,
     MdProgressBarModule,
     MomentModule,
@@ -252,6 +254,7 @@ const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
     MdIconModule,
     MdInputModule,
     MdToolbarModule,
+    MdTooltipModule,
     MdRippleModule,
     MdProgressBarModule,
     MomentModule,
