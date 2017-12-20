@@ -287,6 +287,15 @@ nav {
   flex-wrap: wrap;
   display: flex;
 
+  & > .section-title {
+    max-width: 100%;
+  }
+
+  .section-title + p,
+  & > p:first-child {
+    margin-top: 0;
+  }
+
   .cell {
     width: 32%;
     margin-right: 2%;
@@ -312,6 +321,12 @@ nav {
   }
 }
 
+.section-title + .content {
+  p:first-child {
+    margin-top: 0;
+  }
+}
+
 .bg-cover,
 section.bg-cover {
   background-size: cover !important;
@@ -326,6 +341,11 @@ h1, h2, h3, h4, h5 {
 
 h3 {
   font-size: 18px;
+  &.xl {
+    font-size: 38px;
+    line-height: normal;
+    font-weight: 300;
+  }
 }
 
 p {
@@ -394,7 +414,7 @@ input {
 }
 
 section, .section-padding {
-  padding: 120px 0;
+  padding: $section-padding 0;
 }
 
 section {
