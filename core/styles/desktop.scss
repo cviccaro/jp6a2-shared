@@ -501,6 +501,14 @@ section.theme-dark {
   }
 }
 
+.salmon-bg {
+  background-color: $salmon;
+
+  .inverted-button {
+    background-color: transparent;
+  }
+}
+
 #projects {
   jp-pager {
     margin: 0;
