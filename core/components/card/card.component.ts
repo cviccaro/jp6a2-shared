@@ -18,7 +18,7 @@ export class CardComponent implements OnInit {
 	@Input() route: any;
 	@Input() subTitle: string;
 	@Input() summary: string;
-	@Input() theme: string = 'card';
+	@Input() theme = 'card';
 	@Input() tag: string;
 
 	hasRoute = false;

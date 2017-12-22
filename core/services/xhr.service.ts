@@ -2,7 +2,7 @@ import { Injectable, EventEmitter, Output } from '@angular/core';
 
 @Injectable()
 export class XhrService {
-	tasks: { [key: string] : boolean } = {};
+	tasks: { [key: string]: boolean } = {};
 
 	@Output() done = new EventEmitter();
 	@Output() started = new EventEmitter();
@@ -21,8 +21,8 @@ export class XhrService {
 	}
 
 	isWorking() {
-		for (let key in this.tasks) {
-			let task = this.tasks[key];
+		for (const key in this.tasks) {
+			const task = this.tasks[key];
 
 			if (task === true) {
 				return true;

@@ -27,11 +27,14 @@ export class ImageZoomerComponent implements AfterViewInit {
 	/**
 	 * Image URL
 	 */
+	public get imageUrl() {
+		return this._imageUrl;
+	}
 	public set imageUrl(url: string) {
 		this._imageUrl = url;
 		this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
 
-		let loadImg = new Image();
+		const loadImg = new Image();
 		loadImg.addEventListener('load', (e: Event) => {
 			this.originalImageWidth = loadImg.width;
 			this.originalImageHeight = loadImg.height;
@@ -45,9 +48,7 @@ export class ImageZoomerComponent implements AfterViewInit {
 		loadImg.src = url;
 	}
 
-	public get imageUrl() {
-		return this._imageUrl;
-	}
+
 
 	/**
 	 * Private class properties
@@ -181,8 +182,8 @@ export class ImageZoomerComponent implements AfterViewInit {
 	/**
 	 * Configure the instance
 	 */
-	config(props: { [key: string] : any }) {
-		for (let prop in props) {
+	config(props: { [key: string]: any }) {
+		for (const prop in props) {
 			(<any>this)[prop] = props[prop];
 		}
 	}

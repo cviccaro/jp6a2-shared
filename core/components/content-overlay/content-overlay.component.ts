@@ -15,7 +15,7 @@ import { Config } from '../../config/env.config';
 })
 
 export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy {
-	navbarWasListening: boolean = false;
+	navbarWasListening = false;
 	returnTo: string;
 	sub: Subscription;
 
@@ -68,7 +68,7 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 			if (this.returnTo !== undefined && this.returnTo !== null) {
 				this.router.navigate([this.returnTo]);
 			}
-		},500);
+		}, 500);
 	}
 
 	open() {

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class GooglePlusButtonComponent implements OnInit, OnChanges {
   @Input() url: string;
-  @Input() text: string = 'Tweet';
+  @Input() text = 'Tweet';
 
   constructor(public el: ElementRef, public renderer: Renderer) { }
 
@@ -26,10 +26,10 @@ export class GooglePlusButtonComponent implements OnInit, OnChanges {
     if (this.el.nativeElement.children.length > 0) {
       return this.renderShareButton();
     }
-    let cfg = this.renderer.createElement(this.el.nativeElement, 'script');
+    const cfg = this.renderer.createElement(this.el.nativeElement, 'script');
     cfg.innerHTML = '(function() { window.___gcfg = { lang: "en-US", parsetags: "explicit" } })()';
 
-    let script = this.renderer.createElement(this.el.nativeElement, 'script');
+    const script = this.renderer.createElement(this.el.nativeElement, 'script');
     script.src = '//apis.google.com/js/platform.js';
     script.async = true;
     script.defer = true;
@@ -43,12 +43,12 @@ export class GooglePlusButtonComponent implements OnInit, OnChanges {
 
   renderShareButton() {
     return Observable.create((observer: any) => {
-      let button = this.renderer.createElement(this.el.nativeElement, 'div');
+      const button = this.renderer.createElement(this.el.nativeElement, 'div');
       button.className = 'g-plusone';
       button.dataset.action = 'share';
       //button.dataset.href = 'http://www.google.com';
 
-      let gapi = (window as any).gapi;
+      const gapi = (window as any).gapi;
       gapi.plusone.go(this.el.nativeElement);
 
       observer.next('');

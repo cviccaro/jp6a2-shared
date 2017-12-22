@@ -8,7 +8,7 @@ import { CacheService } from '../core/services/cache.service';
 
 @Injectable()
 export class BlogGuard implements CanActivate, OnDestroy {
-  data: { [key: string] : any } = {
+  data: { [key: string]: any } = {
     blog: null,
     blog_related: null
   };
@@ -21,8 +21,8 @@ export class BlogGuard implements CanActivate, OnDestroy {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot) {
-    let segment: any = route.url[1];
-    let slug: string = segment['path'];
+    const segment: any = route.url[1];
+    const slug: string = segment['path'];
 
     return Observable.create((observer: Observer<boolean>) => {
       this.subs = [

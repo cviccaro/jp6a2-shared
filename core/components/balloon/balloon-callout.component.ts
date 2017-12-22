@@ -1,5 +1,5 @@
 import { Component, ContentChildren, QueryList } from '@angular/core';
-import{ BalloonCalloutIconComponent } from './balloon-callout-icon.component';
+import { BalloonCalloutIconComponent } from './balloon-callout-icon.component';
 
 @Component({
 	moduleId: module.id,

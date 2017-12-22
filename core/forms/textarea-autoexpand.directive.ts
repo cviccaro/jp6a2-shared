@@ -14,7 +14,7 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 	lineHeight: number;
 	height: number;
 	diff: number;
-	empty: boolean = false;
+	empty = false;
 
 	containerEl: HTMLElement;
 	labelEl: HTMLElement;

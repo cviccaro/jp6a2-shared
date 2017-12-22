@@ -42,7 +42,7 @@ export class ScrollService {
 		}
 
 		if (href) {
-			let selector = href.replace(window.location.origin, '').replace('/', '');
+			const selector = href.replace(window.location.origin, '').replace('/', '');
 			this.scrollToElementAnimated('#' + selector);
 		}
 	}

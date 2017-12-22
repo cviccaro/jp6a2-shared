@@ -7,8 +7,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 	styleUrls: [ './icon-button.component.css' ],
 })
 export class IconButtonComponent implements OnInit {
-	@Input() href: string = '#';
-    @Input() svg: string = '';
+	@Input() href = '#';
+  @Input() svg = '';
 
 	constructor(public el: ElementRef, public sanitizer: DomSanitizer) { }
 

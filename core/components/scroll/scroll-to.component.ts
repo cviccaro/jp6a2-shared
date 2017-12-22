@@ -20,7 +20,13 @@ export class ScrollToComponent implements AfterViewInit, OnDestroy {
 	private sub: Subscription;
 	private sub2: Subscription;
 
-	constructor(public route: ActivatedRoute, public title: TitleService, public cache: CacheService, public navbar: NavbarService, public scroll: ScrollService) {
+	constructor(
+		public route: ActivatedRoute,
+		public title: TitleService,
+		public cache: CacheService,
+		public navbar: NavbarService,
+		public scroll: ScrollService
+	) {
 		this.config = this.cache.get('config');
 	}
 
@@ -41,16 +47,16 @@ export class ScrollToComponent implements AfterViewInit, OnDestroy {
 	}
 
 	capitalize(text: string) {
-		return text.substr(0,1).toUpperCase() + text.substr(1,text.length-1);
+		return text.substr(0, 1).toUpperCase() + text.substr(1, text.length - 1);
 	}
 
 	scrollToSelector(selector: string) {
-		let el = document.getElementById(selector.replace('-', '_'));
+		const el = document.getElementById(selector.replace('-', '_'));
 
 		if (el) {
 			this.currentSelector = selector;
 
-			let title = this.capitalize(selector.replace('-', ' '));
+			const title = this.capitalize(selector.replace('-', ' '));
 
 			this.title.setTitle(title);
 

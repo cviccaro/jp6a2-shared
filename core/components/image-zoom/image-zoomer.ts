@@ -47,8 +47,8 @@ export class JpImageZoomer implements OnDestroy {
 			let rect = directiveEl.getBoundingClientRect();
 
 			if (!this.zoomLensContainerRef) {
-				let componentFactory = this.cr.resolveComponentFactory(ImageZoomLensContainerComponent);
-				let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
+				const componentFactory = this.cr.resolveComponentFactory(ImageZoomLensContainerComponent);
+				const cmpRef = this.defaultViewContainer.createComponent(componentFactory);
 
 				// Store reference to component
 				this.zoomLensContainerRef = cmpRef;
@@ -86,8 +86,8 @@ export class JpImageZoomer implements OnDestroy {
 				this.logger.log('Directive is set for outside viewer.');
 				if (!this.zoomerRef) {
 					this.logger.log('ZoomerRef didnt exist, so creating');
-					let componentFactory = this.cr.resolveComponentFactory(ImageZoomerComponent);
-					let cmpRef = this.defaultViewContainer.createComponent(componentFactory);
+					const componentFactory = this.cr.resolveComponentFactory(ImageZoomerComponent);
+					const cmpRef = this.defaultViewContainer.createComponent(componentFactory);
 
 					// Store reference to component
 					this.zoomerRef = cmpRef;

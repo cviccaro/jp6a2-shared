@@ -26,8 +26,8 @@ export class NavbarService {
 		if (!this.listening) return;
 
 		if (this.el && this.listening && window.pageYOffset > 0) {
-			let scrollY = window.pageYOffset;
-			let direction = (scrollY < this.lastScrollPos) ? 'up' : 'down';
+			const scrollY = window.pageYOffset;
+			const direction = (scrollY < this.lastScrollPos) ? 'up' : 'down';
 
 			this.lastScrollPos = window.pageYOffset;
 
@@ -63,7 +63,7 @@ export class NavbarService {
 	}
 
 	wrapNav() {
-		let navWrapper = this.document.createElement('NAV');
+		const navWrapper = this.document.createElement('NAV');
 		this.el.nativeElement.parentElement.insertBefore(navWrapper, this.el.nativeElement);
 		navWrapper.appendChild(this.el.nativeElement);
 	}
@@ -78,8 +78,8 @@ export class NavbarService {
 		this.navWrapperEl = this.el.nativeElement.parentElement;
 
 		setTimeout(() => {
-			let rect = this.navWrapperEl.getBoundingClientRect();
-			let clientTop = rect.top + this.document.body.scrollTop;;
+			const rect = this.navWrapperEl.getBoundingClientRect();
+			const clientTop = rect.top + this.document.body.scrollTop;
 
 			this.elemTop = clientTop;
 			this.elemBottom = clientTop + this.navWrapperEl.offsetHeight;
@@ -87,7 +87,7 @@ export class NavbarService {
 	}
 
 	snapIn() {
-		let that = this;
+		const that = this;
 
 		this.animatingShow = true;
 		this.killTimers();
@@ -120,8 +120,8 @@ export class NavbarService {
 	}
 
 	snapOut() {
-		let that = this;
-		let transitionEvents = this.transitionEvents;
+		const that = this;
+		const transitionEvents = this.transitionEvents;
 
 		this.animatingHide = true;
 		this.killTimers();

@@ -12,7 +12,7 @@ import {
 
 import { Observable } from 'rxjs/Observable';
 
-var first = true;
+let first = true;
 
 @Component({
 	moduleId: module.id,
@@ -41,7 +41,7 @@ export class LinkedInButtonComponent implements OnInit, OnChanges {
 
 	loadWidget() {
 		if (first) {
-			let script = this.renderer.createElement(this.el.nativeElement, 'script');
+			const script = this.renderer.createElement(this.el.nativeElement, 'script');
 			script.src = '//platform.linkedin.com/in.js';
 			first = false;
 

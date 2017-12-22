@@ -1,6 +1,6 @@
 import { CanActivate } from '@angular/router';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Http, Response, ResponseContentType } from '@angular/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
@@ -13,15 +13,15 @@ export class ConfigGuard implements CanActivate, OnDestroy {
   imagePreloader: Subscription;
   sub: Subscription;
 
-  constructor(public cache: CacheService, public service: ConfigService, public http: Http) { }
+  constructor(public cache: CacheService, public service: ConfigService, public http: HttpClient) { }
 
   canActivate(): boolean|Observable<boolean> {
     return Observable.create((observer: Observer<boolean>) => {
-      this.sub = this.service.get().subscribe((settings: SiteSettings)=> {
+      this.sub = this.service.get().subscribe((settings: SiteSettings) => {
         if (settings.main_site_background) {
-          this.imagePreloader = this.http.get(settings.main_site_background.url, { responseType: ResponseContentType.Blob })
-            .subscribe((res: Response) => {
-              settings.main_site_background.urlBlob = window.URL.createObjectURL(res.blob());
+          this.imagePreloader = this.http.get(settings.main_site_background.url)
+            .subscribe((value: string) => {
+              settings.main_site_background.urlBlob = value;
               this.cache.store('config', settings);
               observer.next(true);
               observer.complete();

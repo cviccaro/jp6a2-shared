@@ -61,7 +61,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   closeMap() {
     this.mapShowing = false;
     this.el.nativeElement.parentElement.style.height = '';
-    this.el.nativeElement.parentElement.classList.remove('expanded')
+    this.el.nativeElement.parentElement.classList.remove('expanded');
     this.mapEl.classList.remove('fadeIn');
     this.mapEl.classList.add('fadeOut');
   }
@@ -90,7 +90,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   locateMe() {
     this.sub = this._geolocate.locate()
       .subscribe((position) => {
-        let latlng = <LatLngLiteral>{ lat: position.coords.latitude, lng: position.coords.longitude };
+        const latlng = <LatLngLiteral>{ lat: position.coords.latitude, lng: position.coords.longitude };
         this.getDirections(latlng);
       });
   }
@@ -122,7 +122,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   setupMap() {
     this.fireResize();
-    let latlng = <LatLngLiteral>{ lat: this.latitude, lng: this.longitude };
+    const latlng = <LatLngLiteral>{ lat: this.latitude, lng: this.longitude };
     this.map.setCenter(latlng);
     this.map.setZoom(this.zoom);
     setTimeout(() => this.infoWindowOpen = true, 100);
@@ -130,30 +130,30 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   fireResize() {
     if (document.createEvent) { // W3C
-      let ev = document.createEvent('Event');
+      const ev = document.createEvent('Event');
       ev.initEvent('resize', true, true);
       window.dispatchEvent(ev);
     } else { // IE
-      let element: any = document.documentElement;
-      let doc: any = document;
-      let event = doc.createEventObject();
+      const element: any = document.documentElement;
+      const doc: any = document;
+      const event = doc.createEventObject();
       element.fireEvent('onresize', event);
     }
   }
 
   showDirectionsSteps(result: any) {
     this.clearMarkers();
-    let stepDisplay = new google.maps.InfoWindow();
-    let myRoute = result.routes[0].legs[0];
-    for (var i = 0; i < myRoute.steps.length; i++) {
-      let marker = this.markerArray[i] = this.markerArray[i] || new google.maps.Marker();
+    const stepDisplay = new google.maps.InfoWindow();
+    const myRoute = result.routes[0].legs[0];
+    for (let i = 0; i < myRoute.steps.length; i++) {
+      const marker = this.markerArray[i] = this.markerArray[i] || new google.maps.Marker();
       marker.setMap(this.map);
       marker.setLabel((i + 1).toString());
       marker.setPosition(myRoute.steps[i].start_location);
       if (i === 0) {
         marker.setZIndex(1);
       }
-      let text = myRoute.steps[i].instructions;
+      const text = myRoute.steps[i].instructions;
       google.maps.event.addListener(marker, 'click', () => {
         stepDisplay.setContent(text);
         stepDisplay.open(this.map, marker);

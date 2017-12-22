@@ -48,12 +48,12 @@ export class GalleryComponent implements OnInit, AfterViewInit {
 		const offsetX = window.innerWidth;
 
 		// Get DOM elements using elem property set by link()
-		let currentImage = this.items.toArray()[this.current - 1].el.nativeElement;
-		let nextImage = this.items.toArray()[num - 1].el.nativeElement;
+		const currentImage = this.items.toArray()[this.current - 1].el.nativeElement;
+		const nextImage = this.items.toArray()[num - 1].el.nativeElement;
 
 		// Set active property on item animating-out to false by extending
 		// animation options
-		let exitOptions = Object.assign({}, this.animationOptions);
+		const exitOptions = Object.assign({}, this.animationOptions);
 
 		exitOptions.complete = () => {
 			setTimeout(() => this.images[prevNum].active = false);
@@ -68,11 +68,11 @@ export class GalleryComponent implements OnInit, AfterViewInit {
 		// Animate new image in after small delay
 		setTimeout(() => {
 			dynamics.animate(nextImage, { translateX: 0 }, this.animationOptions);
-		},50);
+		}, 50);
 
 		// Set currentItem and active property on image animating in
 		this.current = num;
-		this.images[num-1].active = true;
+		this.images[num - 1].active = true;
 	}
 
 	swipeLeft(e: any) {

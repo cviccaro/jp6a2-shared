@@ -8,7 +8,7 @@ export class FormSubmissionService {
 	constructor(public http: ApiHttp) { }
 
 	submit(submission: ContactFormSubmission) {
-		let form = submission.createFormData();
+		const form = submission.createFormData();
 
 		if (Config.division !== undefined) {
 			form.append('division', Config.division);

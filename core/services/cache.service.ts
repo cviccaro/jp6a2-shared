@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CacheService {
-    private _cache: { [key: string] : any } = {};
+    private _cache: { [key: string]: any } = {};
 
     constructor() { }
 

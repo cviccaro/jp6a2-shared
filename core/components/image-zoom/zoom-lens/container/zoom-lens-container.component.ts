@@ -163,8 +163,8 @@ export class ImageZoomLensContainerComponent {
 	/**
 	 * Configure the instance
 	 */
-	config(props: { [key: string] : any }) {
-		for (let prop in props) {
+	config(props: { [key: string]: any }) {
+		for (const prop in props) {
 			(<any>this)[prop] = props[prop];
 		}
 

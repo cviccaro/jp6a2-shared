@@ -41,7 +41,12 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { GalleryComponent } from './core/components/gallery/gallery.component';
 import { GalleryItemDirective } from './core/components/gallery/gallery-item.directive';
 import { IconButtonComponent } from './core/components/icon-button/icon-button.component';
-import { IconButtonTextComponent, JpIconComponent, JpIconHoverComponent, JpUnderlineComponent } from './core/components/icon-button/icon.component';
+import {
+  IconButtonTextComponent,
+  JpIconComponent,
+  JpIconHoverComponent,
+  JpUnderlineComponent
+} from './core/components/icon-button/icon.component';
 import { LogoComponent } from './core/components/logo/logo.component';
 import { MapComponent } from './core/components/map/map.component';
 import { MapControlComponent } from './core/components/map/map-control.component';

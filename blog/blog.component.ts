@@ -56,7 +56,7 @@ export class BlogComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		if (this.cache.has('blog') && this.cache.has('blog_related')) {
-			this.handleResponse(this.cache.get('blog'), false);
+			this.handleHttpResponse(this.cache.get('blog'), false);
 			this.related = this.cache.get('blog_related');
 		} else {
 			this.fetchBlog(this.route.snapshot.params['slug']);
@@ -66,11 +66,11 @@ export class BlogComponent implements OnInit, OnDestroy {
 	fetchBlog(slug: string) {
 		this.subs.push(
 			this.blogService.find(slug)
-				.subscribe(res => this.handleResponse(res))
+				.subscribe(res => this.handleHttpResponse(res))
 		);
 	}
 
-	handleResponse(res: any, fetchRelated: any = true) {
+	handleHttpResponse(res: any, fetchRelated: any = true) {
 		this.blog = res;
 		this.blogBodySafe = this.trust(this.blog.body);
 		this.shareUrl = this.buildUrl(this.blog.uri);

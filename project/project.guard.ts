@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
-import { Response } from '@angular/http';
+import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
@@ -9,7 +9,7 @@ import { CacheService } from '../core/services/cache.service';
 
 @Injectable()
 export class ProjectGuard implements CanActivate, OnDestroy {
-  data: { [key: string] : any } = {
+  data: { [key: string]: any } = {
     blogs: null,
     clients: null,
     staff: null,
@@ -24,13 +24,13 @@ export class ProjectGuard implements CanActivate, OnDestroy {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot) {
-    let segment: any = route.url[1];
-    let slug: string = segment['path'];
+    const segment: any = route.url[1];
+    const slug: string = segment['path'];
 
     return Observable.create((observer: Observer<boolean>) => {
       this.sub = this.projectService.find(slug)
           .subscribe(
-            (res: Response) => {
+            (res: HttpResponse) => {
               this.cacheService.store('project', res);
               observer.next(true);
               observer.complete();

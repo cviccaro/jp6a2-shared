@@ -1,24 +1,24 @@
 export class ContactFormSubmission {
-	first_name: string = '';
-	last_name: string = '';
-	company: string = '';
-	email: string = '';
-	phone: string = '';
+	first_name = '';
+	last_name = '';
+	company = '';
+	email = '';
+	phone = '';
 	contact_time: any = '';
-	comments: string = '';
+	comments = '';
 	division: string;
 
 	constructor(values?: { [key: string]: any }) {
-		for (let key in values) {
+		for (const key in values) {
 			(<any>this)[key] = values[key];
 		}
 	}
 
 	createFormData() {
-		let form = new FormData();
+		const form = new FormData();
 
-		for (let key in this) {
-			let val = (<any>this)[key];
+		for (const key in this) {
+			const val = (<any>this)[key];
 			if (typeof val !== 'function') form.append(key, val);
 		}
 
@@ -30,16 +30,16 @@ export class SubscribeFormSubmission {
     email: string;
 
     constructor(values?: { [key: string]: any }) {
-        for (let key in values) {
+        for (const key in values) {
             (<any>this)[key] = values[key];
         }
     }
 
     createFormData() {
-        let form = new FormData();
+        const form = new FormData();
 
-        for (let key in this) {
-            let val = (<any>this)[key];
+        for (const key in this) {
+            const val = (<any>this)[key];
             if (typeof val !== 'function') form.append(key, val);
         }
 

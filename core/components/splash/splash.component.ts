@@ -11,13 +11,13 @@ import { SplashContentComponent } from './splash-content.component';
 })
 export class SplashComponent implements OnInit {
   public bgStyle: SafeStyle;
-  public elHeight: string = '';
+  public elHeight = '';
 
   @ViewChild(SplashContentComponent) public splashContentCmp: SplashContentComponent;
 
   @Input() splashUrl: string;
-  @Input() fullscreen: boolean = false;
-  @Input() align: string = 'center';
+  @Input() fullscreen = false;
+  @Input() align = 'center';
   @Input() height: number;
 
   @HostBinding('class.align-left') get leftClass() {
@@ -44,12 +44,12 @@ export class SplashComponent implements OnInit {
 
   setHeight() {
     if (this.fullscreen) {
-      let $nav: any = document.querySelector('jp-navbar');
+      const $nav: any = document.querySelector('jp-navbar');
       let navHeight = 0;
       if ($nav) {
         navHeight = $nav.offsetHeight;
       }
-      let h = window.innerHeight > 558 ? window.innerHeight : 558;
+      const h = window.innerHeight > 558 ? window.innerHeight : 558;
       this.elHeight = `${h - navHeight}px`;
     } else if (this.height !== undefined) {
       this.elHeight = this.height + 'px';

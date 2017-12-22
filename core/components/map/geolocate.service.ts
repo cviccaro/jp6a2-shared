@@ -10,7 +10,7 @@ const GeolocationErrors = [
 
 @Injectable()
 export class GeolocateService {
-	locate(opts:Object = {}): Observable<any> {
+	locate(opts: Object = {}): Observable<any> {
 		return Observable.create((observer: any) => {
 			if (window.navigator && window.navigator.geolocation) {
 				window.navigator.geolocation.getCurrentPosition(

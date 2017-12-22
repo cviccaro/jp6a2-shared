@@ -11,7 +11,7 @@ export class TrimmedPipe implements PipeTransform {
 
         value = value.substr(0, max);
         if (wordwise) {
-            let lastspace = value.lastIndexOf(' ');
+            const lastspace = value.lastIndexOf(' ');
             if (lastspace !== -1) {
                 value = value.substr(0, lastspace);
             }

@@ -12,9 +12,9 @@
 		</div>
 		<div class="card-img dummy" *ngIf="!image"></div>
 		<div class="card-attributes" *ngIf="this.author || this.date || this.tag">
-			<span *ngIf="date">{{date | amDateFormat: 'LL'}}</span>
-			<span *ngIf="tag">In {{tag | capitalize}}</span>
-			<span *ngIf="author">by {{author | capitalize}}</span>
+			<span *ngIf="date">{{ date | amDateFormat: 'LL' }}</span>
+			<span *ngIf="tag">In {{ tag | capitalize }}</span>
+			<span *ngIf="author">by {{ author | capitalize }}</span>
 		</div>
 		<h3 class="card-title">
 			<a [routerLink]="route" [title]="cardTitle">{{ cardTitle }}</a>
@@ -41,9 +41,9 @@
 		</div>
 		<div class="card-img dummy" *ngIf="!image"></div>
 		<div class="card-attributes" *ngIf="this.author || this.date || this.tag">
-			<span *ngIf="date">{{date | amDateFormat: 'LL'}}</span>
-			<span *ngIf="tag">In {{tag | capitalize}}</span>
-			<span *ngIf="author">by {{author | capitalize}}</span>
+			<span *ngIf="date">{{ date | amDateFormat: 'LL' }}</span>
+			<span *ngIf="tag">In {{ tag | capitalize }}</span>
+			<span *ngIf="author">by {{ author | capitalize }}</span>
 		</div>
 		<h3 class="card-title">
 			<a *ngIf="hasHref" [href]="href" [title]="cardTitle">{{ cardTitle }}</a>

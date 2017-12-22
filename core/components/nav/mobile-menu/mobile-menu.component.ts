@@ -13,15 +13,15 @@ import { NavbarService } from '../navbar.service';
 export class MobileMenuComponent implements AfterContentInit {
 	@ContentChildren(MobileMenuItemDirective) public contentLinks: QueryList<MobileMenuItemDirective>;
 
-	divisions:any = ['creative', 'interactive', 'mdm', 'publishing'];
-	links:any = {};
+	divisions: any = ['creative', 'interactive', 'mdm', 'publishing'];
+	links: any = {};
 
 	constructor(private _service: MobileMenuService, private _navbarService: NavbarService) {
 		const onProdServer = window.location.hostname.match(/\.jpenterprises\.com$/) !== null;
 		const host =  onProdServer ? 'jpenterprises.com' : 'jpedev.com';
 		const mainSubdomain = onProdServer ? 'www' : 'six';
 
-		this.divisions.forEach((division:string) => {
+		this.divisions.forEach((division: string) => {
 			this.links[division] = `${window.location.protocol}//${division}.${host}`;
 		});
 

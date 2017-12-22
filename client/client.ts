@@ -4,7 +4,7 @@ export class JpClient {
     alias: string;
     image: any;
     image_id: any = null;
-    featured: boolean = false;
+    featured = false;
     created_at: any;
     updated_at: any;
 }

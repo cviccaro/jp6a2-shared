@@ -4,13 +4,13 @@ import { Division } from '../division/division';
 
 export class Blog {
 	id: any;
-	title: string = '';
+	title = '';
 
 	divisions: Division[] = [];
 
-	author: string = '';
-	body: string = '';
-	summary: string = '';
+	author = '';
+	body = '';
+	summary = '';
 
 	image: JpFile;
 	image_id: number;

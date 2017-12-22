@@ -11,7 +11,7 @@ export class BalloonCalloutIconComponent {
 	@Output() leave = new EventEmitter();
 
 	@Input() text: string;
-	@Input() url: string = '#';
+	@Input() url = '#';
 
 	@HostListener('mouseenter', ['$event'])
 	onHover(e: any) {

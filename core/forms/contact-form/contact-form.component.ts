@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, OnDestroy, ViewChild } from '@angular/core';
-import { Response } from '@angular/http';
+import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
@@ -36,7 +36,7 @@ export class ContactFormComponent implements OnDestroy {
         public service: FormSubmissionService,
         public captcha: CaptchaService
     ) {
-        let group: any = {
+        const group: any = {
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
             company: [''],
@@ -55,7 +55,7 @@ export class ContactFormComponent implements OnDestroy {
     }
 
     postToServer() {
-        return Observable.create((observer: Observer<Response>) => {
+        return Observable.create((observer: Observer<HttpResponse>) => {
             this.postingToServer = this.service.submit(this.model)
                 .subscribe(
                 res => {
@@ -82,9 +82,9 @@ export class ContactFormComponent implements OnDestroy {
         this.formSubmitSuccess.emit(this.model);
     }
 
-    handleCaptchaResponse(captchaResponse: string) {
-        if (captchaResponse !== null) {
-            this.validatingCaptcha = this.captcha.validate(captchaResponse)
+    handleCaptchaHttpResponse(captchaHttpResponse: string) {
+        if (captchaHttpResponse !== null) {
+            this.validatingCaptcha = this.captcha.validate(captchaHttpResponse)
                 .subscribe(
                 (resp: any) => { if (!resp.success) this.recaptchaCmp.reset(); }
                 );

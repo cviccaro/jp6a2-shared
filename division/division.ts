@@ -19,7 +19,7 @@ export class Division {
   updated_at: any;
 
   constructor(config: { [key: string]: any }) {
-    for (let key in config) {
+    for (const key in config) {
       (<any>this)[key] = config[key];
     }
   }

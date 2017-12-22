@@ -5,7 +5,7 @@
         [class.active]="currentPage-1 == index"
         [class.pager-first]="index === 0"
         [class.pager-last]="index === getRange(totalPages).length">
-            <a (click)="getResults(index+1)" (touchend)="getResults(index+1)">{{index + 1}}</a>
+            <a (click)="getResults(index+1)" (touchend)="getResults(index+1)">{{ index + 1 }}</a>
         </li>
     </ng-template>
     <ng-template [ngSwitchCase]="'nav'">
@@ -19,7 +19,7 @@
             </a>
         </li>
         <li class="pager-current">
-            Page {{currentPage}} of {{totalPages}}
+            Page {{ currentPage }} of {{ totalPages }}
         </li>
         <li [hidden]="currentPage === totalPages" class="pager-next">
             <a (click)="getResults(currentPage+1)" (touchend)="getResults(currentPage+1)" md-ink-ripple title="Next">
@@ -33,7 +33,7 @@
     </ng-template>
     <ng-template ngSwitchDefault>
         <li *ngFor="let i of getRange(totalPages); let index = index" class="pager-index" [class.active]="currentPage-1 == index" [class.pager-first]="index === 0" [class.pager-last]="index === getRange(totalPages).length">
-            <a (click)="getResults(index+1)" (touchend)="getResults(index+1)">{{index + 1}}</a>
+            <a (click)="getResults(index+1)" (touchend)="getResults(index+1)">{{ index + 1 }}</a>
         </li>
     </ng-template>
 </ul>

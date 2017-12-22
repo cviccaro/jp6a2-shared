@@ -13,7 +13,7 @@ export class BalloonComponent implements AfterViewInit {
 	calloutIsHovering = false;
 	calloutHoverText: string;
 
-	@Input() url: string = '#';
+	@Input() url = '#';
 
 	@ContentChild(BalloonCalloutComponent) public calloutCmp: BalloonCalloutComponent;
 

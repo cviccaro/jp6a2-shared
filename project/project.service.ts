@@ -1,4 +1,4 @@
-import { URLSearchParams } from '@angular/http';
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Config } from '../core/config/env.config';
@@ -10,20 +10,20 @@ export class ProjectService {
 
 	constructor(public http: ApiHttp, public xhr: XhrService) { }
 
-	public recent(skip:number = 0, take:number = 3, division?: string) {
-		let params = new URLSearchParams();
+	public recent(skip = 0, take = 3, division?: string) {
+		const params = new HttpParams();
 
 		params.set('skip', skip.toString());
 		params.set('take', take.toString());
 
 		if (division) params.set('division', division.toString());
 
-    return this.http.get(Config.API + '/projects/recent', {search: params})
-        .map(res => res.json());
+    return this.http.get(Config.API + '/projects/recent', params)
+    	.map((res: HttpResponse<any>) => res.json());
 	}
 
 	public find(uri: string) {
 		return this.http.get(Config.API + '/projects/uri/' + uri)
-			.map(res => res.json());
+			.map((res: HttpResponse<any>) => res.json());
 	}
 }

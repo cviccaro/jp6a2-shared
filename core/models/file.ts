@@ -25,7 +25,7 @@ export interface JpFile {
 
     _file?: File;
 
-    load?(imageEl?: HTMLImageElement) : Observable<any>;
+    load?(imageEl?: HTMLImageElement): Observable<any>;
     map?(mapFn: (key: string, val: any) => any): any;
 }
 
@@ -58,7 +58,7 @@ export class ManagedFile implements JpFile {
 
         if (attributes._file) {
             // Fill in managed file from File object
-            let file: any = attributes._file;
+            const file: any = attributes._file;
             this.filename = file.name;
             this.size = file.size;
             this.mimetype = file.type;
@@ -86,7 +86,7 @@ export class ManagedFile implements JpFile {
     filesize(units: string = 'kb'): number {
         let divisor = 10;
 
-        switch(units) {
+        switch (units) {
             case 'mb':
                 divisor = 100;
                 break;
@@ -100,7 +100,7 @@ export class ManagedFile implements JpFile {
      * @param {any) => any} mapFn [description]
      */
     map(mapFn: (key: string, val: any) => any): void {
-        let keys = Object.keys(this);
+        const keys = Object.keys(this);
 
         keys.forEach(key => mapFn.apply(this, [key, (<any>this)[key]]));
     }
@@ -109,8 +109,8 @@ export class ManagedFile implements JpFile {
      * Inject into FormData
      */
     injectIntoForm(form_key: string, form: FormData): void {
-        let managedFile: any = Object.assign({}, this);
-        let upload: File;
+        const managedFile: any = Object.assign({}, this);
+        const upload: File;
 
         // File upload?
         if (this._file) {
@@ -123,8 +123,8 @@ export class ManagedFile implements JpFile {
         }
 
         // Attribute update
-        for (let k in managedFile) {
-            let idx: any = k;
+        for (const k in managedFile) {
+            const idx: any = k;
             form.append(`${form_key}[${idx}]`, managedFile[idx]);
         }
     }
@@ -149,11 +149,11 @@ export class ManagedImage extends ManagedFile implements OnDestroy {
      * Read a File
      * @return {Observable<any>} [description]
      */
-    read() : Observable<any> {
-        let file = this._file;
+    read(): Observable<any> {
+        const file = this._file;
 
         return Observable.create((observer: Observer<any>) => {
-            let reader = new FileReader();
+            const reader = new FileReader();
 
             reader.onload = readerEvt => observer.next(reader.result);
 
@@ -166,7 +166,7 @@ export class ManagedImage extends ManagedFile implements OnDestroy {
      * @param  {HTMLImageElement} imageEl
      * @return {Observable<any>}
      */
-    load(imageEl: HTMLImageElement) : Observable<any> {
+    load(imageEl: HTMLImageElement): Observable<any> {
         return Observable.create((observer: Observer<any>) => {
             imageEl.onload = (e) => observer.next({
                 width: imageEl.naturalWidth,

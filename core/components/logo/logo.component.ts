@@ -10,7 +10,7 @@ export class LogoComponent {
   logo: { url: string, description: string };
 
   constructor(public cache: CacheService) {
-    let config = this.cache.get('config');
+    const config = this.cache.get('config');
 
     if (config['logo']) {
     	this.logo = this.cache.get('config').logo;

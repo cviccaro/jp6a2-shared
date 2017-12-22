@@ -88,7 +88,9 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 		if (this.mode === 'inline' && this.imageUrl) {
 			this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${this.imageUrl})`);
 			if (this.backgroundWidth && this.backgroundHeight) {
-				this.safeBackgroundSize = this.sanitizer.bypassSecurityTrustStyle(`${this.backgroundWidth * this.zoomAmount}px ${this.backgroundHeight * this.zoomAmount}px`);
+				this.safeBackgroundSize = this.sanitizer.bypassSecurityTrustStyle(
+					`${this.backgroundWidth * this.zoomAmount}px ${this.backgroundHeight * this.zoomAmount}px`
+				);
 			}
 		}
 

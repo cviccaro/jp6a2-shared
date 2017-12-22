@@ -26,7 +26,7 @@ export class ImageZoomDirective implements OnInit, OnDestroy {
 	public imageNaturalHeight: number;
 
 	private zoomerOpen = false;
-	private zoomerRef: ComponentRef<ImageZoomerComponent>
+	private zoomerRef: ComponentRef<ImageZoomerComponent>;
 	private zoomerOpened: Subscription;
 	private revealTimer: any;
 
@@ -61,11 +61,11 @@ export class ImageZoomDirective implements OnInit, OnDestroy {
 				this.imageNaturalHeight = this.el.nativeElement.naturalHeight;
 			});
 		} else if (this.el.nativeElement.style.backgroundImage) {
-			let matched = this.el.nativeElement.style.backgroundImage.match(/url\([\"|\'](.*)[\"|\']\)/);
+			const matched = this.el.nativeElement.style.backgroundImage.match(/url\([\"|\'](.*)[\"|\']\)/);
 
 			if (matched !== null && matched.length === 2) {
 				const url = matched[1];
-				let img = new Image();
+				const img = new Image();
 				img.src = url;
 
 				img.addEventListener('load', (e: any) => {
@@ -85,7 +85,9 @@ export class ImageZoomDirective implements OnInit, OnDestroy {
 		}
 
 		this.zoomerOpen = true;
-		this.zoomerOpened = this.imageZoomer.open(this).subscribe(() => { });
+		this.zoomerOpened = this.imageZoomer.open(this).subscribe(() => {
+			//
+		});
 	}
 
 	/**

@@ -67,7 +67,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
 	}
 
 	/**
-	 * Angular lifecycle 
+	 * Angular lifecycle
 	 */
 	ngOnDestroy() {
 		if (this.fetchedBlogs) this.fetchedBlogs.unsubscribe();

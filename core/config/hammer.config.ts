@@ -3,7 +3,7 @@ import 'hammerjs';
 export class HammerConfig {
 
     buildHammer(element: HTMLElement): any {
-        var mc = new Hammer.Manager(element);
+        const mc = new Hammer.Manager(element);
 
         // mc.get('pinch').set({ enable: true });
         // mc.get('rotate').set({ enable: true });

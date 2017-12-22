@@ -56,7 +56,7 @@ export class DisqusComponent implements OnInit {
    * @return {Function}
    */
   public getConfig(): () => void {
-    let _self = this;
+    const _self = this;
 
     return function () {
       this.page.url = window.location.protocol + '//' + window.location.host + _self.location.path();
@@ -82,8 +82,8 @@ export class DisqusComponent implements OnInit {
    */
   private addScriptTag() {
     this.window.disqus_config = this.getConfig();
-    let container = this.getScriptContainer();
-    let script = this.buildScriptTag(`//${this.shortname}.disqus.com/embed.js`);
+    const container = this.getScriptContainer();
+    const script = this.buildScriptTag(`//${this.shortname}.disqus.com/embed.js`);
     container.appendChild(script);
   }
 
@@ -101,7 +101,7 @@ export class DisqusComponent implements OnInit {
    * @return {HTMLElement}
    */
   private buildScriptTag(src: string): HTMLElement {
-    let script = this.document.createElement('script');
+    const script = this.document.createElement('script');
     script.setAttribute('src', src);
     script.setAttribute('async', 'true');
     script.setAttribute('type', 'text/javascript');

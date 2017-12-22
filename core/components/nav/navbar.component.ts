@@ -15,8 +15,8 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
-	divisions:any = ['creative', 'interactive', 'mdm', 'publishing'];
-	links:any = {};
+	divisions: any = ['creative', 'interactive', 'mdm', 'publishing'];
+	links: any = {};
 	subs: Subscription[];
 	working = false;
 
@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 		const host =  onProdServer ? 'jpenterprises.com' : 'jpedev.com';
 		const mainSubdomain = onProdServer ? 'www' : 'six';
 
-		this.divisions.forEach((division:string) => {
+		this.divisions.forEach((division: string) => {
 			this.links[division] = `${window.location.protocol}//${division}.${host}`;
 		});
 

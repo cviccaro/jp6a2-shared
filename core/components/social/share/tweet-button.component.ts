@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TweetButtonComponent implements OnInit, OnChanges {
 	@Input() url: string;
-	@Input() text: string = 'Tweet';
+	@Input() text = 'Tweet';
 
 	constructor(public el: ElementRef, public renderer: Renderer) { }
 
@@ -27,7 +27,7 @@ export class TweetButtonComponent implements OnInit, OnChanges {
 			return this.renderShareButton();
 		}
 
-		let script = this.renderer.createElement(this.el.nativeElement, 'script');
+		const script = this.renderer.createElement(this.el.nativeElement, 'script');
 		script.src = '//platform.twitter.com/widgets.js';
 
 		this.renderer.listen(script, 'load', () => {
@@ -39,7 +39,7 @@ export class TweetButtonComponent implements OnInit, OnChanges {
 
 	renderShareButton() {
 		return Observable.create((observer: any) => {
-			let twttr = (window as any).twttr;
+			const twttr = (window as any).twttr;
 
 			twttr.widgets.createShareButton(this.url, this.el.nativeElement)
 				.then((el: HTMLIFrameElement) => {
