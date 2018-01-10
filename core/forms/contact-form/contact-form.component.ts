@@ -55,7 +55,7 @@ export class ContactFormComponent implements OnDestroy {
     }
 
     postToServer() {
-        return Observable.create((observer: Observer<HttpResponse>) => {
+        return Observable.create((observer: Observer<any>) => {
             this.postingToServer = this.service.submit(this.model)
                 .subscribe(
                 res => {

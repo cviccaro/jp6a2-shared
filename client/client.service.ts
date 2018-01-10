@@ -8,7 +8,6 @@ export class ClientService {
 	constructor(public http: ApiHttp) {}
 
 	featured() {
-		return this.http.get(Config.API + '/clients/featured')
-			.map(res => res.json());
+		return this.http.get(Config.API + '/clients/featured');
 	}
 }

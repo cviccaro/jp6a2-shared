@@ -16,7 +16,6 @@ export class FormSubmissionService {
 			form.append('division', 'main');
 		}
 
-		return this.http.post(Config.API + '/contact-form-submit', form)
-			.map(res => res.json());
+		return this.http.post(Config.API + '/contact-form-submit', form);
 	}
 }

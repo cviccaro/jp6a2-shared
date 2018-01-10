@@ -110,7 +110,7 @@ export class ManagedFile implements JpFile {
      */
     injectIntoForm(form_key: string, form: FormData): void {
         const managedFile: any = Object.assign({}, this);
-        const upload: File;
+        let upload: File;
 
         // File upload?
         if (this._file) {

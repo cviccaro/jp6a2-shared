@@ -1,9 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpRequest, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpRequest, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
 import { XhrService } from './xhr.service';
+
+export interface ApiHttpRequestOptions {
+    body?: any;
+    headers?: HttpHeaders | {
+        [header: string]: string | string[];
+    };
+    observe?: any;
+    params?: HttpParams | {
+        [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'arraybuffer' | 'blob' | 'json' | 'text';
+    withCredentials?: boolean;
+}
+
+export interface ApiHttpOptions {
+    headers?: HttpHeaders | {
+        [header: string]: string | string[];
+    };
+    observe?: any;
+    params?: HttpParams | {
+        [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+};
 
 @Injectable()
 export class ApiHttp {
@@ -12,70 +39,72 @@ export class ApiHttp {
 
     constructor(public http: HttpClient, public xhr: XhrService) { }
 
-    request(url: string, options?: HttpParams): Observable<HttpResponse<any>> {
+    request<T>(url: string, options: ApiHttpRequestOptions = {}): Observable<T> {
         const key = this.getNewIdentifier();
 
         this.xhr.startTracking(key);
 
-        return Observable.create((observer: Observer<any>) => {
-            this.http.request(url, options)
-                .subscribe((res: HttpResponse<any>) => {
+        const method = 'GET';
+
+        return Observable.create((observer: Observer<T>) => {
+            this.http.request(method, url, options)
+                .subscribe((res: T) => {
                     this.xhr.stopTracking(key);
                     observer.next(res);
                 });
         });
     }
 
-    get(url: string, options?: HttpParams): Observable<HttpResponse<any>> {
+    get<T>(url: string, options: ApiHttpOptions = {}): Observable<T> {
         const key = this.getNewIdentifier();
 
         this.xhr.startTracking(key);
 
-        return Observable.create((observer: Observer<any>) => {
+        return Observable.create((observer: Observer<T>) => {
             this.http.get(url, options)
-                .subscribe((res: HttpResponse<any>) => {
+                .subscribe((res: T) => {
                     this.xhr.stopTracking(key);
                     observer.next(res);
                 });
         });
     }
 
-    post(url: string, body: any, options?: HttpParams): Observable<HttpResponse<any>> {
+    post<T>(url: string, body: any, options: ApiHttpOptions = {}): Observable<T> {
         const key = this.getNewIdentifier();
 
         this.xhr.startTracking(key);
 
-        return Observable.create((observer: Observer<any>) => {
+        return Observable.create((observer: Observer<T>) => {
             this.http.post(url, body, options)
-                .subscribe((res: HttpResponse<any>) => {
+                .subscribe((res: T) => {
                     this.xhr.stopTracking(key);
                     observer.next(res);
                 });
         });
     }
 
-    put(url: string, body: any, options?: HttpParams): Observable<HttpResponse<any>> {
+    put<T>(url: string, body: any, options: ApiHttpOptions = {}): Observable<T> {
         const key = this.getNewIdentifier();
 
         this.xhr.startTracking(key);
 
-        return Observable.create((observer: Observer<any>) => {
+        return Observable.create((observer: Observer<T>) => {
             this.http.put(url, body, options)
-                .subscribe((res: HttpResponse<any>) => {
+                .subscribe((res: T) => {
                     this.xhr.stopTracking(key);
                     observer.next(res);
                 });
         });
     }
 
-    delete(url: string, options?: HttpParams): Observable<HttpResponse<any>> {
+    delete<T>(url: string, options: ApiHttpOptions = {}): Observable<T> {
         const key = this.getNewIdentifier();
 
         this.xhr.startTracking(key);
 
-        return Observable.create((observer: Observer<any>) => {
+        return Observable.create((observer: Observer<T>) => {
             this.http.delete(url, options)
-               .subscribe((res: HttpResponse<any>) => {
+               .subscribe((res: T) => {
                    this.xhr.stopTracking(key);
                    observer.next(res);
                });

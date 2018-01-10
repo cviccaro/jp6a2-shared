@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Config } from '../core/config/env.config';
 import { ApiHttp } from '../core/services/xhr.http';
 import { XhrService } from '../core/services/xhr.service';
+import { Blog, BlogsHttpResponse } from './blog';
 
 @Injectable()
 export class BlogService {
@@ -12,24 +13,26 @@ export class BlogService {
     const params = new HttpParams();
     params.set('skip', skip.toString());
 
-    return this.http.get(Config.API + '/blogs', params)
-      .map((res: HttpResponse<any>) => res.json());
+    const url = `${Config.API}/blogs`;
+
+    return this.http.get<BlogsHttpResponse>(url, {params: params});
   }
 
   find(uri: string) {
-    return this.http.get(Config.API + '/blogs/uri/' + uri)
-      .map((res: HttpResponse<any>) => res.json());
+    return this.http.get<Blog>(`${Config.API}/blogs/uri/${uri}`);
   }
 
   related(id: number, max: number = 3) {
+    const url = `${Config.API}/blogs/related/${id}`;
     const params = new HttpParams();
     params.set('max', max.toString());
 
-    return this.http.get(Config.API + '/blogs/related/' + id, params)
-      .map((res: HttpResponse<any>) => res.json());
+    return this.http.get<Blog[]>(url, {params: params});
   }
 
   recent(skip: number = 0, take: number = 3, filter?: string) {
+    const url = `${Config.API}/blogs/recent`;
+
     const params = new HttpParams();
 
     params.set('skip', skip.toString());
@@ -39,7 +42,6 @@ export class BlogService {
       params.set('filter', filter);
     }
 
-    return this.http.get(Config.API + '/blogs/recent', params)
-      .map((res: HttpResponse<any>) => res.json());
+    return this.http.get<BlogsHttpResponse>(url, {params: params});
   }
 }

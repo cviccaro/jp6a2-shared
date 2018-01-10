@@ -25,3 +25,8 @@ export class Blog {
 
 	uri: string;
 }
+
+export interface BlogsHttpResponse {
+	blogs: Blog[];
+	remaining: number;
+}

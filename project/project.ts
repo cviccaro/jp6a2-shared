@@ -15,3 +15,9 @@ export class Project {
 	created_at: any = undefined;
 	updated_at: any = undefined;
 }
+
+export interface ProjectsHttpResponse {
+	projects: Project[];
+	remaining: number;
+	total: number;
+}
