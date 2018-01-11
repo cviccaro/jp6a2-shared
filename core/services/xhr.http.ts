@@ -30,7 +30,7 @@ export interface ApiHttpOptions {
     reportProgress?: boolean;
     responseType?: 'json';
     withCredentials?: boolean;
-};
+}
 
 @Injectable()
 export class ApiHttp {

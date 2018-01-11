@@ -25,7 +25,11 @@ export class ScrollService {
 	}
 
 	scrollElementInline(inlineEl: HTMLElement, targetEl: HTMLElement | string) {
-		const instance = PageScrollInstance.simpleInlineInstance(this.document, targetEl, inlineEl);
+		const instance = PageScrollInstance.newInstance({
+			document: document,
+			scrollTarget: targetEl,
+			scrollingViews: [inlineEl]
+		});
 		this.scroller.start(instance);
 	}
 

@@ -1,4 +1,4 @@
-import { OpaqueToken, Injectable } from '@angular/core';
+import { InjectionToken, Injectable } from '@angular/core';
 
 @Injectable()
 export class MockWindow {
@@ -8,7 +8,7 @@ export class MockWindow {
   public disqus_config: () => void;
 }
 
-export const WINDOW = new OpaqueToken('window');
+export const WINDOW = new InjectionToken('window');
 //export const windowFactory = () => (window) ? window : MockWindow;
 export const WindowProviders = [
     { provide: WINDOW, useValue: MockWindow }

@@ -14,7 +14,6 @@ export class DivisionService {
 
     params.set('thin', '1');
 
-    return this.http.get(`${Config.API}/divisions/${id}`, params)
-      .map(res => new Division(res.json()));
+    return this.http.get<Division>(`${Config.API}/divisions/${id}`, { params: params });
   }
 }

@@ -4,6 +4,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { Project } from './project';
 import { ProjectService } from './project.service';
 import { CacheService } from '../core/services/cache.service';
 
@@ -30,7 +31,7 @@ export class ProjectGuard implements CanActivate, OnDestroy {
     return Observable.create((observer: Observer<boolean>) => {
       this.sub = this.projectService.find(slug)
           .subscribe(
-            (res: HttpResponse) => {
+            (res: Project) => {
               this.cacheService.store('project', res);
               observer.next(true);
               observer.complete();

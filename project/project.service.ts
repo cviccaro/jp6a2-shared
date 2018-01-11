@@ -22,10 +22,10 @@ export class ProjectService {
 
 		if (division) params.set('division', division.toString());
 
-    return this.http.get<ProjectsHttpResponse>(Config.API + '/projects/recent', params);
+    return this.http.get<ProjectsHttpResponse>(Config.API + '/projects/recent', { params: params });
 	}
 
 	public find(uri: string) {
-		return this.http.get<Project>(Config.API + '/projects/uri/' + uri)
+		return this.http.get<Project>(Config.API + '/projects/uri/' + uri);
 	}
 }
