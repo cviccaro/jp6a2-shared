@@ -48,6 +48,23 @@ export class ImageZoomLensContainerComponent {
 	@HostBinding('style.height')
 	containerHeight: string;
 
+	/**
+	 * Image URL
+	 */
+	private _imageUrl: string;
+
+	public set imageUrl(url: string) {
+		this._imageUrl = url;
+		this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
+	}
+
+	public get imageUrl() {
+		return this._imageUrl;
+	}
+
+	/**
+	 * More Host Bindings
+	 */
 	@HostBinding('style.background-size')
 	public get backgroundSize(): SafeStyle|void {
 		let styleString = 'cover';
@@ -68,20 +85,6 @@ export class ImageZoomLensContainerComponent {
 
 	@HostBinding('class.mode-outside') get willApplyCssClassModeOutside() {
 		return this.mode === 'outside';
-	}
-
-	/**
-	 * Image URL
-	 */
-	private _imageUrl: string;
-
-	public set imageUrl(url: string) {
-		this._imageUrl = url;
-		this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
-	}
-
-	public get imageUrl() {
-		return this._imageUrl;
 	}
 
 	/**

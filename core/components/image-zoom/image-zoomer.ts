@@ -142,7 +142,21 @@ export class JpImageZoomer implements OnDestroy {
 		if (this.zoomerRef) this.zoomerRef.instance.pan(event);
 	}
 
+	/**
+	 * Garbage collection
+	 */
+	ngOnDestroy() {
+		this.destroyCmp(this.zoomLensContainerRef);
+		this.destroyCmp(this.zoomerRef);
 
+		if (this.mouseDidLeave) {
+			this.mouseDidLeave.unsubscribe();
+		}
+
+		if (this.mouseDidPan) {
+			this.mouseDidPan.unsubscribe();
+		}
+	}
 	/**
 	 * Extract Image URL from directive, either because
 	 * it's an image or has a background-image
@@ -159,21 +173,9 @@ export class JpImageZoomer implements OnDestroy {
 	}
 
 	/**
-	 * Garbage collection
+	 * [destroyCmp description]
+	 * @param {ComponentRef<any>} cmpRef [description]
 	 */
-	ngOnDestroy() {
-		this.destroyCmp(this.zoomLensContainerRef);
-		this.destroyCmp(this.zoomerRef);
-
-		if (this.mouseDidLeave) {
-			this.mouseDidLeave.unsubscribe();
-		}
-
-		if (this.mouseDidPan) {
-			this.mouseDidPan.unsubscribe();
-		}
-	}
-
 	private destroyCmp(cmpRef: ComponentRef<any>) {
 		if (cmpRef) {
 			if (typeof (<ComponentRef<any>>cmpRef).instance.canDestroy === 'function') {

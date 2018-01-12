@@ -58,7 +58,7 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 				if (this.el.nativeElement.currentStyle) {
 					this.lineHeight = this.el.nativeElement.currentStyle['line-height'];
 				} else if (window.getComputedStyle) {
-					this.lineHeight = parseInt(document.defaultView.getComputedStyle(this.el.nativeElement).getPropertyValue('line-height'));
+					this.lineHeight = parseInt(document.defaultView.getComputedStyle(this.el.nativeElement).getPropertyValue('line-height'), 10);
 				}
 			}
 			// Get the height

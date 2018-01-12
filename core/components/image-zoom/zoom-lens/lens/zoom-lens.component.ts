@@ -32,13 +32,13 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	 */
 	@HostBinding('style.height')
 	public get cssStyleHeight() {
-		if (this.lensHeight) return `${parseInt(this.lensHeight)}px`;
+		if (this.lensHeight) return `${parseInt(this.lensHeight, 10)}px`;
 		return null;
 	}
 
 	@HostBinding('style.width')
 	public get cssStyleWidth() {
-		if (this.lensWidth) return `${parseInt(this.lensWidth)}px`;
+		if (this.lensWidth) return `${parseInt(this.lensWidth, 10)}px`;
 
 		return null;
 	}
@@ -102,12 +102,12 @@ export class ImageZoomLensComponent implements OnInit, AfterViewInit {
 	 */
 	ngAfterViewInit() {
 		// Store the size of the lens
-		this.elementWidth = parseInt(this.element.nativeElement.offsetWidth);
-		this.elementHeight = parseInt(this.element.nativeElement.offsetHeight);
+		this.elementWidth = parseInt(this.element.nativeElement.offsetWidth, 10);
+		this.elementHeight = parseInt(this.element.nativeElement.offsetHeight, 10);
 
 		// Store the size of the canvas
-		this.canvasWidth = parseInt(this.element.nativeElement.parentElement.offsetWidth);
-		this.canvasHeight = parseInt(this.element.nativeElement.parentElement.offsetHeight);
+		this.canvasWidth = parseInt(this.element.nativeElement.parentElement.offsetWidth, 10);
+		this.canvasHeight = parseInt(this.element.nativeElement.parentElement.offsetHeight, 10);
 
 		setTimeout(() => this.isVisible = true);
 

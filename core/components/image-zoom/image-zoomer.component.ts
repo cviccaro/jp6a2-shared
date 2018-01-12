@@ -25,32 +25,6 @@ export class ImageZoomerComponent implements AfterViewInit {
 	public zoomAmount: number;
 
 	/**
-	 * Image URL
-	 */
-	public get imageUrl() {
-		return this._imageUrl;
-	}
-	public set imageUrl(url: string) {
-		this._imageUrl = url;
-		this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
-
-		const loadImg = new Image();
-		loadImg.addEventListener('load', (e: Event) => {
-			this.originalImageWidth = loadImg.width;
-			this.originalImageHeight = loadImg.height;
-
-			this.elementWidth = parseInt(this.element.nativeElement.offsetWidth);
-			this.elementHeight = parseInt(this.element.nativeElement.offsetHeight);
-
-			this.position();
-		});
-
-		loadImg.src = url;
-	}
-
-
-
-	/**
 	 * Private class properties
 	 */
 	private _imageUrl: string;
@@ -58,8 +32,6 @@ export class ImageZoomerComponent implements AfterViewInit {
 	private originalImageHeight: number;
 	private elementWidth: number;
 	private elementHeight: number;
-
-	constructor(private logger: Logger, public element: ElementRef, private sanitizer: DomSanitizer) {}
 
 	/**
 	 * Style Bindings
@@ -92,6 +64,32 @@ export class ImageZoomerComponent implements AfterViewInit {
 	get willApplyCssCircularClass() {
 		return this.lensShape === 'circle';
 	}
+
+	/**
+	 * Image URL
+	 */
+	public get imageUrl() {
+		return this._imageUrl;
+	}
+	public set imageUrl(url: string) {
+		this._imageUrl = url;
+		this.safeBackgroundImage = this.sanitizer.bypassSecurityTrustStyle(`url(${url})`);
+
+		const loadImg = new Image();
+		loadImg.addEventListener('load', (e: Event) => {
+			this.originalImageWidth = loadImg.width;
+			this.originalImageHeight = loadImg.height;
+
+			this.elementWidth = parseInt(this.element.nativeElement.offsetWidth, 10);
+			this.elementHeight = parseInt(this.element.nativeElement.offsetHeight, 10);
+
+			this.position();
+		});
+
+		loadImg.src = url;
+	}
+
+	constructor(private logger: Logger, public element: ElementRef, private sanitizer: DomSanitizer) {}
 
 	/**
 	 * Event Listeners
