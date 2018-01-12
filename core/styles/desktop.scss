@@ -67,7 +67,7 @@ footer {
  * Button
  */
 button,
-button[md-button],
+button[mat-button],
 button[md-raised-button] {
   font-family: $source-sans-pro;
   position: relative;
@@ -78,7 +78,7 @@ button[md-raised-button] {
 }
 
 a[md-icon-button] {
-  span.md-button-wrapper {
+  span.mat-button-wrapper {
     line-height: 37px;
   }
 }
@@ -100,7 +100,7 @@ button {
 }
 
 .inverted-button,
-[md-button].inverted-button {
+[mat-button].inverted-button {
   border: 1px solid $blackish;
   background: #fff;
   padding: 0 40px;
@@ -140,7 +140,7 @@ button {
 
 .button-thick,
 .button-thick.inverted-button,
-[md-button].button-thick {
+[mat-button].button-thick {
   max-width: 340px;
   height: auto;
   white-space: normal;
@@ -151,7 +151,7 @@ button {
 
 @media screen and (min-width: $desktop-min-width) {
   .inverted-button,
-  [md-button].inverted-button {
+  [mat-button].inverted-button {
     @include transition(background $transition_duration linear);
 
     &:hover {
@@ -197,7 +197,7 @@ nav {
 }
 
 .centered,
-[md-button].centered {
+[mat-button].centered {
   margin-left: auto;
   margin-right: auto;
 }
@@ -273,7 +273,7 @@ nav {
   display: none;
 }
 
-[md-button].mobile {
+[mat-button].mobile {
   display: none !important;
 }
 
@@ -306,7 +306,7 @@ nav {
     }
   }
 
-  ul, a[md-button] {
+  ul, a[mat-button] {
     margin-bottom: 20px;
   }
 
@@ -468,7 +468,7 @@ section.theme-dark {
   }
 
   .inverted-button,
-  [md-button].inverted-button {
+  [mat-button].inverted-button {
     background: transparent;
     border-color: $white_trans;
 
@@ -619,11 +619,11 @@ jp-content-overlay {
     padding-top: 4.188em;
   }
 
-  md-content, [md-button] {
+  md-content, [mat-button] {
     background: transparent;
   }
 
-  .md-inverted-button[md-button] {
+  .md-inverted-button[mat-button] {
     background: transparent !important;
   }
 }

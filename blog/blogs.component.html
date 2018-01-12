@@ -1,5 +1,5 @@
 <jp-content-overlay id="blogs" layout="column" [title]="'Our Blog'" jp-infinite-scroll-container #container>
-	<md-toolbar id="filters" class="overlay-toolbar transparent">
+	<mat-toolbar id="filters" class="overlay-toolbar transparent">
 		<h4 class="light text-uppercase">Filter By:</h4>
 		<div class="filters-buttonset" jp-icon-buttonset>
 			<jp-icon-button class="horizontal mdm black" (click)="filterData('mdm', $event)" [class.active]="filter === 'mdm'">
@@ -24,7 +24,7 @@
 				<jp-icon-hover></jp-icon-hover>
 			</jp-icon-button>
 		</div>
-	</md-toolbar>
+	</mat-toolbar>
 	<div class="content" *ngIf="blogs">
     <jp-card *ngFor="let blog of blogs.blogs"
     	class="cell"
@@ -40,9 +40,9 @@
 		</jp-card>
   </div>
   <div class="button-container" [hidden]="finished">
-  	<button md-button class="load-more inverted-button" (click)="more()">Load More</button>
+  	<button mat-button class="load-more inverted-button" (click)="more()">Load More</button>
   </div>
 	<div class="infinite-scroll-finished full-width" [hidden]="!finished">
-		<md-icon>receipt</md-icon><div>End of Content</div>
+		<mat-icon>receipt</mat-icon><div>End of Content</div>
 	</div>
 </jp-content-overlay>

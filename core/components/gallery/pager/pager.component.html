@@ -39,11 +39,11 @@
 </ul>
 <div *ngIf="includeNav || pagerType === 'nav'" class="jp-pager-nav-container">
 	<div class="jp-pager-nav grid-wide">
-		<button md-button [hidden]="currentPage <= 1" class="jp-pager-nav-btn jp-pager-nav-btn-prev" title="Previous Page" (click)="getResults(currentPage-1)" (touchend)="getResults(currentPage-1)">
-			<md-icon>chevron_left</md-icon>
+		<button mat-button [hidden]="currentPage <= 1" class="jp-pager-nav-btn jp-pager-nav-btn-prev" title="Previous Page" (click)="getResults(currentPage-1)" (touchend)="getResults(currentPage-1)">
+			<mat-icon>chevron_left</mat-icon>
 		</button>
-		<button md-button [hidden]="currentPage === totalPages" class="jp-pager-nav-btn jp-pager-nav-btn-next" title="Next Page" (click)="getResults(currentPage+1)" (touchend)="getResults(currentPage+1)">
-			<md-icon>chevron_right</md-icon>
+		<button mat-button [hidden]="currentPage === totalPages" class="jp-pager-nav-btn jp-pager-nav-btn-next" title="Next Page" (click)="getResults(currentPage+1)" (touchend)="getResults(currentPage+1)">
+			<mat-icon>chevron_right</mat-icon>
 		</button>
 	</div>
 </div>

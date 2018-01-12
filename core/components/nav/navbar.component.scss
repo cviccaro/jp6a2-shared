@@ -61,7 +61,7 @@
           background-color: transparent;
         }
       }
-      .md-button-ripple {
+      .mat-button-ripple {
         display: none!important;
       }
 
@@ -82,7 +82,7 @@
     height: 100%;
   }
 
-  md-progress-bar {
+  mat-progress-bar {
     height: 2px;
     &[hidden] {
       display: none;

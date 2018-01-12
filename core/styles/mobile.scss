@@ -8,13 +8,13 @@ $h4-font-size: 18px;
      * Mobile double-touch fix
      */
     html.touchevents {
-        [md-button].inverted-button,
+        [mat-button].inverted-button,
         jp-mobile-menu a {
             &:hover::after {
                 content: none;
             }
         }
-        // [md-button],
+        // [mat-button],
         // [md-icon-button] {
         //     color: red;
         //     &:hover {
@@ -34,8 +34,8 @@ $h4-font-size: 18px;
         //     touch-action: none!important;
         // }
         // [md-icon-button]:hover,
-        // [md-button]:hover {
-        //     .md-button-ripple::after {
+        // [mat-button]:hover {
+        //     .mat-button-ripple::after {
         //         display: none!important;
         //         content: none!important;
         //     }
@@ -133,7 +133,7 @@ $h4-font-size: 18px;
     .hide-mobile {
         display: none;
     }
-    [md-button].hide-mobile,
+    [mat-button].hide-mobile,
     .map-toolbar-input-container.hide-mobile {
         display: none!important;
     }
@@ -141,7 +141,7 @@ $h4-font-size: 18px;
     .mobile {
         display: block;
     }
-    [md-button].mobile,
+    [mat-button].mobile,
     jp-social-share.mobile {
         display: block!important;
     }
@@ -245,7 +245,7 @@ $h4-font-size: 18px;
 
         .icon-menu {
             jp-icon-button {
-                .md-button {
+                .mat-button {
                     .icon-container {
                         img {
                             position: absolute;
@@ -542,7 +542,7 @@ $h4-font-size: 18px;
      * Gallery
      */
     .jp-pager-nav-btn {
-        .md-button-ripple {
+        .mat-button-ripple {
             display: none!important;
         }
     }

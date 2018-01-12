@@ -1,31 +1,31 @@
 <p class="text-right">JP Enterprises | 108 Commerce Blvd. - Suite D | Lawrence, PA 15055-0513 | toll-free: 800-372-1263 | office: 724-746-6363</p>
 <form class="jp-form" name="contactForm" layout="row" layout-wrap novalidate (ngSubmit)="_submit()" [formGroup]="contactForm">
-  <md-input-container class="form-group required">
-    <input mdInput name="first_name" [formControl]="contactForm.get('first_name')" required placeholder="First Name" />
-  </md-input-container>
-  <md-input-container class="form-group required">
-    <input mdInput name="last_name" [formControl]="contactForm.get('last_name')" placeholder="Last Name" required />
-  </md-input-container>
-  <md-input-container class="form-group">
-    <input mdInput name="company" [formControl]="contactForm.get('company')" placeholder="Company Name" />
-  </md-input-container>
-  <md-input-container class="form-group required">
-    <input mdInput type="email" name="email" required [formControl]="contactForm.get('email')" placeholder="Email Address" />
-  </md-input-container>
-  <md-input-container class="form-group">
-    <input mdInput type="tel" name="phone" [formControl]="contactForm.get('phone')" placeholder="Daytime Number" />
-  </md-input-container>
-<!--   <md-input-container class="form-group">
-    <input mdInput name="contact_time" [formControl]="contactForm.get('contact_time')" placeholder="Best time to contact you" />
-  </md-input-container> -->
+  <mat-form-field class="form-group required">
+    <input matInput name="first_name" [formControl]="contactForm.get('first_name')" required placeholder="First Name" />
+  </mat-form-field>
+  <mat-form-field class="form-group required">
+    <input matInput name="last_name" [formControl]="contactForm.get('last_name')" placeholder="Last Name" required />
+  </mat-form-field>
+  <mat-form-field class="form-group">
+    <input matInput name="company" [formControl]="contactForm.get('company')" placeholder="Company Name" />
+  </mat-form-field>
+  <mat-form-field class="form-group required">
+    <input matInput type="email" name="email" required [formControl]="contactForm.get('email')" placeholder="Email Address" />
+  </mat-form-field>
+  <mat-form-field class="form-group">
+    <input matInput type="tel" name="phone" [formControl]="contactForm.get('phone')" placeholder="Daytime Number" />
+  </mat-form-field>
+<!--   <mat-form-field class="form-group">
+    <input matInput name="contact_time" [formControl]="contactForm.get('contact_time')" placeholder="Best time to contact you" />
+  </mat-form-field> -->
   <div class="form-group full textarea">
-     <span class="mat-input-placeholder-wrapper"><label class="mat-input-placeholder mat-float mat-empty">Tell Us About Your Project</label></span>
-     <textarea jpTextareaAutoexpand md-input name="comments" [formControl]="contactForm.get('comments')"></textarea>
+     <span class="mat-form-field-label-wrapper mat-input-placeholder-wrapper mat-form-field-placeholder-wrapper"><label class="mat-form-field-label mat-input-placeholder mat-form-field-placeholder mat-empty mat-form-field-empty ng-star-inserted">Tell Us About Your Project</label></span>
+     <textarea jpTextareaAutoexpand mat-input name="comments" [formControl]="contactForm.get('comments')"></textarea>
   </div>
   <div class="form-group full flush" *ngIf="siteKey">
     <re-captcha (captchaResponse)="handleCaptchaResponse($event)" [site_key]="siteKey" theme="dark" name="captcha" required [formControl]="contactForm.get('captcha')"></re-captcha>
   </div>
   <div class="form-actions">
-    <button md-button type="submit" class="form-submit inverted-button" [disabled]="!contactForm.valid">Submit Form</button>
+    <button mat-button type="submit" class="form-submit inverted-button" [disabled]="!contactForm.valid">Submit Form</button>
   </div>
 </form>

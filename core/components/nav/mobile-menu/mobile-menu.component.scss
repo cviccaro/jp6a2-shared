@@ -33,7 +33,7 @@
 		@include transition(all 0.33s $transition_ease);
 
 		a,
-		span.md-button-wrapper,
+		span.mat-button-wrapper,
 		jp-icon-button-text {
 			text-transform: uppercase;
 			color: $almost_black!important;
@@ -64,7 +64,7 @@
 		    	width: 100%;
 		    	display: flex;
 		    	flex-direction: column;
-		    	[md-button] {
+		    	[mat-button] {
 		    		background-color: $white_trans;
 		    		text-align: left;
 		    		border-bottom: 1px solid $light-grey;
@@ -164,10 +164,10 @@
 		    	}
 		    }
 		    .social-links {
-		    	[md-button] {
+		    	[mat-button] {
 		    		margin-left: 1.6em;
 		    		padding-left: 0;
-		    		.md-button-wrapper {
+		    		.mat-button-wrapper {
 		    			display: block;
 		    			text-indent: 0;
 		    			span {
@@ -201,14 +201,14 @@
 				color: $grey_400!important;
 			}
 		}
-		[md-button]:hover::after {
+		[mat-button]:hover::after {
 			left: -16px;
 			max-width: 98%;
 		}
-		[md-button]:hover.md-primary::after,
+		[mat-button]:hover.md-primary::after,
 		[md-icon-button]:hover.md-primary::after,
 		jp-icon-button:hover,
-		jp-social-icons [md-button]:hover::after {
+		jp-social-icons [mat-button]:hover::after {
 			transition: all $transition_duration $transition_ease;
 			background-color: $grey_translucent;
 		}

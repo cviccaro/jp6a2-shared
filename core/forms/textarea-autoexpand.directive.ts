@@ -28,7 +28,7 @@ export class TextareaAutoexpandDirective implements AfterViewInit {
 		this.labelEl = this.el.nativeElement.previousElementSibling.children[0];
 		this.containerEl = this.el.nativeElement.parentElement;
 
-		this.containerEl.classList.add('mat-input-container');
+		this.containerEl.classList.add('mat-form-field');
 		this.el.nativeElement.classList.add('mat-input-element');
 		this.el.nativeElement.style.height = '48px';
 		this.el.nativeElement.style.overflow = 'visible';

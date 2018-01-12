@@ -12,7 +12,7 @@
 	  left: 0;
 	  right: 0;
 	  bottom: 0;
-	  [md-button].close {
+	  [mat-button].close {
 	  	position: absolute;
 	  	top: 10px;
 	  	right: 10px;
@@ -54,7 +54,7 @@
 	          label {
 	            font-size: 13px;
 	          }
-	          [mdInput] {
+	          [matInput] {
 	            font-size: 13px;
 	            border-bottom: none;
 	          }
@@ -66,7 +66,7 @@
 	      .angular-google-map-marker  {
 	        display: none;
 	      }
-	      md-button.close {
+	      mat-button.close {
 	        position: absolute;
 	        top: 10px;
 	        right: 15px;
@@ -105,7 +105,7 @@
 			flex: 1;
 			display: flex;
 		}
-		[md-button] {
+		[mat-button] {
 			background-color: $blue;
 		}
 		.address-label {
@@ -129,7 +129,7 @@
 				color: #fff;
 				font-weight: normal;
 				font-size: 16px;
-				&.md-focused {
+				&.mat-focused {
 					color: $blue;
 					transform: translateY(-82%) scale(0.75);
 				}

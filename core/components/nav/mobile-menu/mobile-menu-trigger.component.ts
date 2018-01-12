@@ -7,7 +7,7 @@ import { MobileMenuService } from './mobile-menu.service';
 	styleUrls: ['./mobile-menu-trigger.component.css'],
 	template: `
 		<button md-icon-button class="mobile-menu-trigger" (click)="openMenu()" (touchend)="openMenu()">
-			<md-icon>menu</md-icon>
+			<mat-icon>menu</mat-icon>
 		</button>
 	`
 })

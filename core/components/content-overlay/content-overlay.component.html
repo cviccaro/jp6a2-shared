@@ -1,26 +1,26 @@
 <div class="container" id="content_overlay_top">
-	<md-toolbar class="overlay-toolbar first container" layout="row" *ngIf="title">
+	<mat-toolbar class="overlay-toolbar first container" layout="row" *ngIf="title">
 		<h2 class="section-title text-uppercase" [innerHTML]="title"></h2>
 		<span class="filler"></span>
-		<button md-button class="md-icon-button overlay-close-mobile" (click)="close()" (touchend)="close()">
-			<md-icon>close</md-icon>
+		<button mat-button class="mat-icon-button overlay-close-mobile" (click)="close()" (touchend)="close()">
+			<mat-icon>close</mat-icon>
 		</button>
-		<button md-button class="inverted-button overlay-close" (click)="close()">
-			Close Window&nbsp;&nbsp;<md-icon class="small">close</md-icon>
+		<button mat-button class="inverted-button overlay-close" (click)="close()">
+			Close Window&nbsp;&nbsp;<mat-icon class="small">close</mat-icon>
 		</button>
-	</md-toolbar>
+	</mat-toolbar>
 	<div class="overlay-close-notitle container" *ngIf="!title">
-		<button md-button class="md-icon-button overlay-close-mobile" (click)="close()" (touchend)="close()">
-			<md-icon>close</md-icon>
+		<button mat-button class="mat-icon-button overlay-close-mobile" (click)="close()" (touchend)="close()">
+			<mat-icon>close</mat-icon>
 		</button>
-		<button md-button class="inverted-button overlay-close" (click)="close()">
-			Close Window&nbsp;&nbsp;<md-icon class="small">close</md-icon>
+		<button mat-button class="inverted-button overlay-close" (click)="close()">
+			Close Window&nbsp;&nbsp;<mat-icon class="small">close</mat-icon>
 		</button>
 	</div>
 	<ng-content></ng-content>
 	<div class="btt-wrapper">
-		<button class="btt" md-button md-fab title="Back To Top" (click)="scrollUp()" (touchend)="scrollUp()">
-			<md-icon>keyboard_capslock</md-icon>
+		<button class="btt" mat-button md-fab title="Back To Top" (click)="scrollUp()" (touchend)="scrollUp()">
+			<mat-icon>keyboard_capslock</mat-icon>
 		</button>
 	</div>
 </div>

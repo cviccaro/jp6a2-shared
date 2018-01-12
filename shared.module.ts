@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-
+  MatCommonModule,
   MatButtonModule,
   MatIconModule,
   //MdIconRegistry,
@@ -145,6 +145,7 @@ const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
     AgmCoreModule.forRoot({
       apiKey: GOOGLE_API_KEY
     }),
+    MatCommonModule,
     MatButtonModule,
     MatGridListModule,
     MatIconModule,
@@ -255,14 +256,15 @@ const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
     ReactiveFormsModule,
     RouterModule,
     AgmCoreModule,
+    MatCommonModule,
     MatButtonModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
+    MatProgressBarModule,
     MatToolbarModule,
     MatTooltipModule,
     MatRippleModule,
-    MatProgressBarModule,
     MomentModule,
     Ng2PageScrollModule,
     ReCaptchaModule,

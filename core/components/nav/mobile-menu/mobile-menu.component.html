@@ -1,15 +1,15 @@
 <div class="mobile-menu-container" [hidden]="!isActive()">
 	<div class="mobile-menu-inner">
 		<a [href]="links.main" title="Go to the main JP Enterprises site"><div class="logo navbar-logo"></div></a>
-		<button md-icon-button class="mobile-menu-close" (click)="closeMenu()" (touchend)="closeMenu()">
-			<md-icon>close</md-icon>
+		<button mat-icon-button class="mobile-menu-close" (click)="closeMenu()" (touchend)="closeMenu()">
+			<mat-icon>close</mat-icon>
 		</button>
 		<div class="menu-links">
 			<h2 class="mobile-menu-title">Navigation</h2>
 			<ng-content select="[jpMobileMenuItem]"></ng-content>
-			<a md-button [routerLink]="['/work']" title="Work" (click)="closeMenu()">Work</a>
-			<a md-button [routerLink]="['/blog']" title="Blog" (click)="closeMenu()">Blog</a>
-			<a md-button [routerLink]="['/contact']" title="Contact" (click)="closeMenu()">Contact</a>
+			<a mat-button [routerLink]="['/work']" title="Work" (click)="closeMenu()">Work</a>
+			<a mat-button [routerLink]="['/blog']" title="Blog" (click)="closeMenu()">Blog</a>
+			<a mat-button [routerLink]="['/contact']" title="Contact" (click)="closeMenu()">Contact</a>
 		</div>
 		<div class="menu-links expertise">
 			<h2 class="mobile-menu-title">Expertise</h2>

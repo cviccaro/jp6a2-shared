@@ -1,27 +1,27 @@
-  <md-toolbar [hidden]="!mapShowing" class="map-toolbar">
-    <button md-button md-fab class="md-icon-button md-mini locate-me hide-mobile" title="Locate me" (click)="locateMe()">
-      <md-icon>location_on</md-icon>
+  <mat-toolbar [hidden]="!mapShowing" class="map-toolbar">
+    <button mat-button md-fab class="mat-icon-button md-mini locate-me hide-mobile" title="Locate me" (click)="locateMe()">
+      <mat-icon>location_on</mat-icon>
     </button>
     <label class="locate-me-label hide-mobile">Locate Me</label>
     <div class="small map-toolbar-input-container hide-mobile">
       <label class="address-label">Need Directions?</label>
-      <input mdInput class="map-toolbar-input" type="text" [formControl]="directionsOrigin" placeholder="Enter your address..." size="60" />
+      <input matInput class="map-toolbar-input" type="text" [formControl]="directionsOrigin" placeholder="Enter your address..." size="60" />
     </div>
-    <button class="mobile centered" md-button md-raised-button color="accent" (click)="openDirectionsExternally()" (touchend)="openDirectionsExternally()" title="Get Directions">
-      <md-icon>directions</md-icon>&nbsp;&nbsp;Get Directions on Google Maps
+    <button class="mobile centered" mat-button md-raised-button color="accent" (click)="openDirectionsExternally()" (touchend)="openDirectionsExternally()" title="Get Directions">
+      <mat-icon>directions</mat-icon>&nbsp;&nbsp;Get Directions on Google Maps
     </button>
-  </md-toolbar>
+  </mat-toolbar>
   <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [hidden]="!mapShowing" class="fadeIn animated">
     <jp-map-control (mapLoaded)="mapLoaded($event)"></jp-map-control>
     <div id="directionsPanel" [hidden]="!directionsShowing" #directions>
       <div class="directions-toolbar">
-        <button md-button (click)="openDirectionsExternally()" title="View on Google" class="open-in-google">
-          <md-icon>directions</md-icon>&nbsp;&nbsp;Print and Share on Google Maps
+        <button mat-button (click)="openDirectionsExternally()" title="View on Google" class="open-in-google">
+          <mat-icon>directions</mat-icon>&nbsp;&nbsp;Print and Share on Google Maps
         </button>
       </div>
     </div>
-    <button md-button md-fab class="md-icon-button md-mini close" id="mapClose" title="Close" (click)="closeMap()" (touchend)="closeMap()">
-      <md-icon>close</md-icon>
+    <button mat-button md-fab class="mat-icon-button md-mini close" id="mapClose" title="Close" (click)="closeMap()" (touchend)="closeMap()">
+      <mat-icon>close</mat-icon>
     </button>
     <agm-marker [label]="'J'" [title]="title" [latitude]="latitude" [longitude]="longitude" events="vm.map.pin.events">
       <agm-info-window [isOpen]="infoWindowOpen">
@@ -29,7 +29,7 @@
       </agm-info-window>
     </agm-marker>
   </agm-map>
-  <button md-button class="inverted-button get-directions" (click)="openMap()" [hidden]="mapShowing">
+  <button mat-button class="inverted-button get-directions" (click)="openMap()" [hidden]="mapShowing">
     <div md-ripple md-ripple-centered="true"></div>
     Get Directions
   </button>

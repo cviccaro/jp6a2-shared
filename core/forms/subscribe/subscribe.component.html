@@ -2,11 +2,11 @@
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras congue sit amet sapien eu egestas. Etiam finibus ligula nec quam commodo, non elementum ex fringilla. Vivamus aliquet scelerisque pharetra. Aenean enim ex, fermentum nec dui et, tincidunt pulvinar tortor. Suspendisse eu luctus mauris. Nulla facilisi. Nulla nec ligula mauris. Proin nec odio sit amet nunc interdum euismod. Nullam dignissim euismod libero id gravida. Etiam vehicula lectus eget sem malesuada malesuada.</p>
 	<form class="jp-form" (ngSubmit)="submit()" #subscribeForm="ngForm" *ngIf="active">
 		<div class="form-group required full flush">
-			<input mdInput name="email" required placeholder="Email Address" type="email" [(ngModel)]="model.email" #email="ngModel" />
+			<input matInput name="email" required placeholder="Email Address" type="email" [(ngModel)]="model.email" #email="ngModel" />
             <div class="alert alert-danger" [hidden]="!(email.touched && email.control.hasError('email'))">Please enter a valid email address.</div>
 		</div>
 		<div class="form-actions">
-		  <button md-button type="submit" class="form-submit inverted-button" [disabled]="!subscribeForm.form.valid">Subscribe</button>
+		  <button mat-button type="submit" class="form-submit inverted-button" [disabled]="!subscribeForm.form.valid">Subscribe</button>
 		</div>
 	</form>
 </jp-content-overlay>

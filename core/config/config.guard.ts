@@ -19,9 +19,9 @@ export class ConfigGuard implements CanActivate, OnDestroy {
     return Observable.create((observer: Observer<boolean>) => {
       this.sub = this.service.get().subscribe((settings: SiteSettings) => {
         if (settings.main_site_background) {
-          this.imagePreloader = this.http.get(settings.main_site_background.url)
-            .subscribe((value: string) => {
-              settings.main_site_background.urlBlob = value;
+          this.imagePreloader = this.http.get(settings.main_site_background.url, { responseType: 'blob'} )
+            .subscribe((value: Blob) => {
+              settings.main_site_background.urlBlob = URL.createObjectURL(value);
               this.cache.store('config', settings);
               observer.next(true);
               observer.complete();

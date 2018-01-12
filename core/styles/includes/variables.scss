@@ -189,7 +189,7 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
     flex-wrap: wrap;
 
     .md-input-container,
-    .mat-input-container {
+    .mat-form-field {
         &.mat-focused {
             label.mat-float {
                 padding-top: 0;
@@ -229,7 +229,7 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
                 display: block;
             }
 
-            [mdInput] {
+            [matInput] {
                 width: 100%;
             }
         }
