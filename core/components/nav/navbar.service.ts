@@ -17,6 +17,7 @@ export class NavbarService {
 	hideTimer: any;
 	unsnapTimer: any;
 	transitionEvents = 'transitionend webkitTransitionEnd MSTransitionEnd oTransitionEnd mozTransitionEnd';
+	transitionListeners: any = [];
 
 	@Output() buttonClicked = new EventEmitter();
 
@@ -109,13 +110,14 @@ export class NavbarService {
 
 	bindTransitionEvents(fn: Function) {
 		this.transitionEvents.split(' ').forEach(e => {
+			this.transitionListeners[e] = fn;
 			this.el.nativeElement.addEventListener(e, fn);
 		});
 	}
 
 	unbindTransitionEvents() {
 		this.transitionEvents.split(' ').forEach(e => {
-			this.el.nativeElement.removeEventListener(e);
+			this.el.nativeElement.removeEventListener(e, this.transitionListeners[e]);
 		});
 	}
 

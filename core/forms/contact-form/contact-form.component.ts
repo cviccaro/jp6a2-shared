@@ -48,6 +48,7 @@ export class ContactFormComponent implements OnDestroy {
 
         if (Config.hasOwnProperty('GoogleRecaptchaAPIKey')) {
             this.siteKey = Config.GoogleRecaptchaAPIKey;
+            console.log('Setting ReCaptcha Key to ', this.siteKey);
             group.captcha = ['', Validators.required];
         }
 
@@ -82,11 +83,12 @@ export class ContactFormComponent implements OnDestroy {
         this.formSubmitSuccess.emit(this.model);
     }
 
-    handleCaptchaHttpResponse(captchaHttpResponse: string) {
+    captchaResponse(captchaHttpResponse: any) {
+        console.log('captchaREsponse:', captchaHttpResponse);
         if (captchaHttpResponse !== null) {
             this.validatingCaptcha = this.captcha.validate(captchaHttpResponse)
                 .subscribe(
-                (resp: any) => { if (!resp.success) this.recaptchaCmp.reset(); }
+                (resp: any) => { console.log('Response to captcha validation', resp); if (!resp.success) this.recaptchaCmp.reset(); }
                 );
         }
     }

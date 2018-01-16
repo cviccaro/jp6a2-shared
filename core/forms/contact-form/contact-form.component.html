@@ -18,12 +18,15 @@
 <!--   <mat-form-field class="form-group">
     <input matInput name="contact_time" [formControl]="contactForm.get('contact_time')" placeholder="Best time to contact you" />
   </mat-form-field> -->
-  <div class="form-group full textarea">
+  <mat-form-field class="form-group full textarea">
+     <textarea matInput name="comments" [formControl]="contactForm.get('comments')" placeholder="Tell Us About Your Project"></textarea>
+  </mat-form-field>
+<!--   <div class="form-group full textarea">
      <span class="mat-form-field-label-wrapper mat-input-placeholder-wrapper mat-form-field-placeholder-wrapper"><label class="mat-form-field-label mat-input-placeholder mat-form-field-placeholder mat-empty mat-form-field-empty ng-star-inserted">Tell Us About Your Project</label></span>
      <textarea jpTextareaAutoexpand mat-input name="comments" [formControl]="contactForm.get('comments')"></textarea>
-  </div>
+  </div> -->
   <div class="form-group full flush" *ngIf="siteKey">
-    <re-captcha (captchaResponse)="handleCaptchaResponse($event)" [site_key]="siteKey" theme="dark" name="captcha" required [formControl]="contactForm.get('captcha')"></re-captcha>
+    <re-captcha (captchaResponse)="captchaResponse($event)" [site_key]="siteKey" theme="dark" name="captcha" required [formControl]="contactForm.get('captcha')"></re-captcha>
   </div>
   <div class="form-actions">
     <button mat-button type="submit" class="form-submit inverted-button" [disabled]="!contactForm.valid">Submit Form</button>

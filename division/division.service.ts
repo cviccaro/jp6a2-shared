@@ -10,9 +10,9 @@ export class DivisionService {
   constructor(public http: ApiHttp) { }
 
   get(id: any) {
-    const params = new HttpParams();
-
-    params.set('thin', '1');
+    const params = {
+    	'thin' : '1'
+    };
 
     return this.http.get<Division>(`${Config.API}/divisions/${id}`, { params: params });
   }

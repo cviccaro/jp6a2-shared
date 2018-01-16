@@ -2,7 +2,7 @@
 	<ng-template [ngSwitchCase]="true">
 		<div class="card-img" *ngIf="!!image">
 			<a *ngSwitchCase="true" [routerLink]="route" [title]="cardTitle" jpDynamics [jpDynamicsMobile]="jpDynamicsMobile">
-				<div md-ripple md-ripple-centered="true"></div>
+				<div matRipple matRipple-centered="true"></div>
 				<div *ngIf="overlay && !hasContentOverlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
 				<div class="overlay content-overlay" *ngIf="hasContentOverlay">
 					<ng-content></ng-content>
@@ -23,7 +23,7 @@
 	<ng-template ngSwitchDefault>
 		<div class="card-img" *ngIf="!!image">
 			<a *ngIf="!hasHref" [title]="cardTitle" jpDynamics [jpDynamicsMobile]="jpDynamicsMobile" (click)="onClick()">
-				<div md-ripple md-ripple-centered="true"></div>
+				<div matRipple matRipple-centered="true"></div>
 				<div *ngIf="overlay && !hasContentOverlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
 				<div class="overlay content-overlay" *ngIf="hasContentOverlay">
 					<ng-content></ng-content>
@@ -31,7 +31,7 @@
 				<img [src]="image" [title]="cardTitle" />
 			</a>
 			<a *ngIf="hasHref" [href]="href" [title]="cardTitle" jpDynamics [jpDynamicsMobile]="jpDynamicsMobile">
-				<div md-ripple md-ripple-centered="true"></div>
+				<div matRipple matRipple-centered="true"></div>
 				<div *ngIf="overlay && !hasContentOverlay" class="overlay" [style.background-image]="'url('+overlay+')'"></div>
 				<div class="overlay content-overlay" *ngIf="hasContentOverlay">
 					<ng-content></ng-content>

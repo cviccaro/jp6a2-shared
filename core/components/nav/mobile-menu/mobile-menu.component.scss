@@ -176,7 +176,7 @@
 		    				color: $almost_black;
 		    			}
 		    		}
-		    		md-icon {
+		    		mat-icon {
 		    			margin-right: 1em;
 		    		}
 		    	}
@@ -197,7 +197,7 @@
 			top: 18px;
 			right: 18px;
 			background: transparent;
-			md-icon {
+			mat-icon {
 				color: $grey_400!important;
 			}
 		}
@@ -206,7 +206,7 @@
 			max-width: 98%;
 		}
 		[mat-button]:hover.md-primary::after,
-		[md-icon-button]:hover.md-primary::after,
+		[mat-icon-button]:hover.md-primary::after,
 		jp-icon-button:hover,
 		jp-social-icons [mat-button]:hover::after {
 			transition: all $transition_duration $transition_ease;

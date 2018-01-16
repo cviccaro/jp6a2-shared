@@ -14,14 +14,14 @@
 			line-height: normal!important;
 			padding: 3px!important;
 			background: transparent;
-			md-icon,[md-icon],svg > g > path {
+			mat-icon,[mat-icon],svg > g > path {
 				fill: $white_trans;
 				color: $white_trans;
 			}
 		}
 	}
 	.social-icons.vertical {
-		md-icon,[md-icon],svg > g > path {
+		mat-icon,[mat-icon],svg > g > path {
 			text-indent: 0;
 			color: $almost_black;
 			fill: $almost_black;

@@ -1,12 +1,12 @@
   <mat-toolbar [hidden]="!mapShowing" class="map-toolbar">
-    <button mat-button md-fab class="mat-icon-button md-mini locate-me hide-mobile" title="Locate me" (click)="locateMe()">
+    <button mat-button mat-fab class="mat-icon-button md-mini locate-me hide-mobile" title="Locate me" (click)="locateMe()">
       <mat-icon>location_on</mat-icon>
     </button>
     <label class="locate-me-label hide-mobile">Locate Me</label>
-    <div class="small map-toolbar-input-container hide-mobile">
-      <label class="address-label">Need Directions?</label>
+    <label class="address-label">Need Directions?</label>
+    <mat-form-field class="small map-toolbar-input-container hide-mobile">
       <input matInput class="map-toolbar-input" type="text" [formControl]="directionsOrigin" placeholder="Enter your address..." size="60" />
-    </div>
+    </mat-form-field>
     <button class="mobile centered" mat-button md-raised-button color="accent" (click)="openDirectionsExternally()" (touchend)="openDirectionsExternally()" title="Get Directions">
       <mat-icon>directions</mat-icon>&nbsp;&nbsp;Get Directions on Google Maps
     </button>
@@ -20,7 +20,7 @@
         </button>
       </div>
     </div>
-    <button mat-button md-fab class="mat-icon-button md-mini close" id="mapClose" title="Close" (click)="closeMap()" (touchend)="closeMap()">
+    <button mat-button mat-fab class="mat-icon-button md-mini close" id="mapClose" title="Close" (click)="closeMap()" (touchend)="closeMap()">
       <mat-icon>close</mat-icon>
     </button>
     <agm-marker [label]="'J'" [title]="title" [latitude]="latitude" [longitude]="longitude" events="vm.map.pin.events">
@@ -30,6 +30,6 @@
     </agm-marker>
   </agm-map>
   <button mat-button class="inverted-button get-directions" (click)="openMap()" [hidden]="mapShowing">
-    <div md-ripple md-ripple-centered="true"></div>
+    <div matRipple matRipple-centered="true"></div>
     Get Directions
   </button>

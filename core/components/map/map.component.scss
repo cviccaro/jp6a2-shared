@@ -4,6 +4,10 @@
 	[hidden] {
 		display: none;
 	}
+	.mat-fab .mat-button-wrapper {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
 	.sebm-google-map-container {
 	  width: 100%;
 	  height: 100%;
@@ -41,14 +45,14 @@
 	      top: 0px;
 	      left: 115px;
 	      right: 0px;
-	      md-toolbar {
+	      mat-toolbar {
 	        box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.398039);
 	        width: auto;
 	        margin-top: 10px;
 	        margin-left: 0px;
 	        padding: 0px;
 	        min-height: 0px;
-	        md-input-container {
+	        mat-input-container {
 	          margin: 0;
 	          width: 100%;
 	          label {
@@ -58,7 +62,7 @@
 	            font-size: 13px;
 	            border-bottom: none;
 	          }
-	          .md-errors-spacer {
+	          .mat-errors-spacer {
 	            display: none;
 	          }
 	        }
@@ -66,7 +70,7 @@
 	      .angular-google-map-marker  {
 	        display: none;
 	      }
-	      mat-button.close {
+	      .mat-button.close {
 	        position: absolute;
 	        top: 10px;
 	        right: 15px;
@@ -107,11 +111,20 @@
 		}
 		[mat-button] {
 			background-color: $blue;
+			&.mat-fab {
+				.mat-button-wrapper {
+					padding-top: 0;
+					padding-bottom: 0;
+				}
+			}
 		}
 		.address-label {
 			line-height: 41px;
 			margin-right: 0.66em;
+			margin-bottom: 0;
 			vertical-align: top;
+			color: white;
+			padding-left: 1em;
 		}
 		.map-toolbar-input {
 			border: none;
@@ -121,10 +134,10 @@
 			color: #fff;
 			height: 41px;
 			flex: 1;
-			.md-input-wrapper {
+			.mat-input-wrapper {
 				margin: 0;
 			}
-			.md-input-placeholder {
+			.mat-input-placeholder {
 				line-height: 41px;
 				color: #fff;
 				font-weight: normal;
@@ -133,18 +146,18 @@
 					color: $blue;
 					transform: translateY(-82%) scale(0.75);
 				}
-				&.md-float:not(.md-empty) {
+				&.mat-float:not(.mat-empty) {
 					color: $blue;
 					transform: translateY(-82%) scale(0.75);
 				}
 			}
-			.md-input-table {
+			.mat-input-table {
 				float: left;
 			}
-			.md-input-underline {
+			.mat-input-underline {
 				bottom: 3px;
 				border: none;
-				.md-input-ripple {
+				.mat-input-ripple {
 					background-color: $white;
 				}
 			}
@@ -152,7 +165,7 @@
 		.locate-me {
 			width: 40px;
 			height: 40px;
-			md-icon {
+			mat-icon {
 				vertical-align: middle;
 				padding: 0;
 			}
@@ -163,6 +176,7 @@
 				border-right: 1px solid $blue_800;
 				line-height: 41px;
 				height: 100%;
+				color: white;
 			}
 		}
 	}
@@ -176,7 +190,7 @@
 		opacity: 1;
 		height: 40px;
 		width: 40px;
-		md-icon {
+		mat-icon {
 			vertical-align: middle;
 			padding: 0;
 			font-size: 18px;
@@ -184,7 +198,7 @@
 		}
 		&:hover {
 			background-color: $grey_600;
-			md-icon {
+			mat-icon {
 				color: #fff;
 			}
 		}
@@ -192,10 +206,10 @@
 	button.open-in-google {
 		width: 100%;
 		background-color: $blue_500;
-		md-icon {
+		mat-icon {
 			vertical-align: middle;
 		}
-		.md-ripple-foreground {
+		.mat-ripple-foreground {
 			max-height: 100%!important;
 		}
 	}

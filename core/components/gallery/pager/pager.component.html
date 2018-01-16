@@ -10,7 +10,7 @@
     </ng-template>
     <ng-template [ngSwitchCase]="'nav'">
         <li [hidden]="currentPage === 1" class="pager-prev">
-            <a (click)="getResults(currentPage-1)" (touchend)="getResults(currentPage-1)" md-ink-ripple title="Previous">
+            <a (click)="getResults(currentPage-1)" (touchend)="getResults(currentPage-1)" matRipple title="Previous">
                 <span>&lsaquo; Prev</span>
                 <div class="icon-container">
                     <img src="assets/images/chevron_left.png" class="icon" />
@@ -22,7 +22,7 @@
             Page {{ currentPage }} of {{ totalPages }}
         </li>
         <li [hidden]="currentPage === totalPages" class="pager-next">
-            <a (click)="getResults(currentPage+1)" (touchend)="getResults(currentPage+1)" md-ink-ripple title="Next">
+            <a (click)="getResults(currentPage+1)" (touchend)="getResults(currentPage+1)" matRipple title="Next">
                 <span>Next &rsaquo;</span>
                 <div class="icon-container" ng-if="pagerType == 'nav'">
                     <img src="assets/images/chevron_right.png" class="icon" />

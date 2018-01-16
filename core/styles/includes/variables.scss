@@ -188,21 +188,30 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
     flex-direction: row;
     flex-wrap: wrap;
 
-    .md-input-container,
     .mat-form-field {
         &.mat-focused {
-            label.mat-float {
-                padding-top: 0;
-                padding-left: 0;
-                top: 0;
+            .mat-input-placeholder-wrapper {
+                .mat-input-placeholder {
+                    padding-top: 0;
+                    padding-left: 0;
+                    top: 0!important;
+                    color: $blue;
+                }
+            }
+            .mat-input-wrapper {
+                .mat-input-element {
+                    border-color: $blue !important;
+                }
             }
         }
 
         &.ng-dirty {
-            label.mat-float:not(.mat-empty) {
-                padding-top: 0;
-                padding-left: 0;
-                top: 0;
+            .mat-input-placeholder-wrapper {
+                .mat-input-placeholder:not(.mat-empty) {
+                    padding-top: 0;
+                    padding-left: 0;
+                    top: 0;
+                }
             }
         }
     }
@@ -211,28 +220,6 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
         width: 49%;
         margin: 18px 1% 18px 0;
         flex-shrink: 0;
-
-        &:nth-child(2n):not(.full) {
-            margin-right: 0;
-            margin-left: 1%;
-        }
-
-        &.flush {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        &.full {
-            width: 100%;
-
-            label {
-                display: block;
-            }
-
-            [matInput] {
-                width: 100%;
-            }
-        }
 
         .mat-input-placeholder-wrapper {
             height: 100%;
@@ -249,10 +236,8 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
                 padding-left: 20px;
                 margin: 0;
                 top: 13px;
-
-                &.mat-focused {
-                    color: $blue;
-                }
+                transition: all $transition_duration $transition_ease;
+                overflow: hidden;
 
                 .mat-placeholder-required {
                     color: $fuchsia !important;
@@ -271,11 +256,12 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
             }
 
             input {
-                border-width: 1px;
-                border-style: solid;
-                border-color: #fff;
-                padding: 10px 20px;
                 height: 48px;
+            }
+
+            .mat-input-element {
+                border: 1px solid #fff;
+                padding: 10px 20px;
                 transition: border-color $transition_duration $transition_ease;
                 will-change: border-color;
             }
@@ -293,37 +279,40 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
             }
         }
 
-        &.textarea {
-            position: relative;
+        &:nth-child(2n):not(.full) {
+            margin-right: 0;
+            margin-left: 1%;
+        }
 
-            &.mat-focused {
-                textarea {
-                    border-color: $blue !important;
-                }
+        &.flush {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        &.full {
+            width: 100%;
+
+            .mat-input-placeholder {
+                display: block;
             }
 
-            .mat-input-placeholder-wrapper {
-                height: auto;
-                overflow: visible;
-
-                label {
-                    overflow: visible;
-                }
-            }
-
-            label {
-                z-index: 4;
-            }
-
-            textarea {
-                z-index: 5;
+            [matInput] {
                 width: 100%;
-                background: transparent;
-                color: $white_trans;
-                border: 1px solid $white;
-                padding: 10px 20px;
-                line-height: 23px;
-                position: relative;
+            }
+        }
+
+        &.textarea {
+            .mat-input-placeholder-wrapper {
+                padding-top: 0.84375em;
+                .mat-input-placeholder {
+                    top: 15px;
+                }
+            }
+
+            .mat-input-wrapper {
+                .mat-input-element {
+                    padding: 14px 20px 0px;
+                }
             }
         }
     }
@@ -334,16 +323,7 @@ $transition_ease: cubic-bezier(0.25, 0.8, 0.25, 1);
         margin-top: 2em;
     }
 
-    input:focus {
-        border-color: $blue !important;
-    }
-
     .mat-input-underline {
         display: none;
-    }
-
-    label {
-        transition: all $transition_duration $transition_ease;
-        overflow: hidden;
     }
 }

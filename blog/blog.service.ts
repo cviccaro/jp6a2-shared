@@ -24,8 +24,9 @@ export class BlogService {
 
   related(id: number, max: number = 3) {
     const url = `${Config.API}/blogs/related/${id}`;
-    const params = new HttpParams();
-    params.set('max', max.toString());
+    const params = {
+      'max' : max.toString()
+    };
 
     return this.http.get<Blog[]>(url, {params: params});
   }
@@ -33,14 +34,14 @@ export class BlogService {
   recent(skip: number = 0, take: number = 3, filter?: string) {
     const url = `${Config.API}/blogs/recent`;
 
-    const params = new HttpParams();
+    const params: {
+        [param: string]: string | string[];
+    } = {
+      'skip': skip.toString(),
+      'take': take.toString()
+    };
 
-    params.set('skip', skip.toString());
-    params.set('take', take.toString());
-
-    if (filter) {
-      params.set('filter', filter);
-    }
+    if (filter) params['filter'] = filter;
 
     return this.http.get<BlogsHttpResponse>(url, {params: params});
   }

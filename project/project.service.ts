@@ -15,12 +15,14 @@ export class ProjectService {
 	constructor(public http: ApiHttp, public xhr: XhrService) { }
 
 	public recent(skip = 0, take = 3, division?: string): Observable<ProjectsHttpResponse> {
-		const params = new HttpParams();
+		const params: {
+        [param: string]: string | string[];
+    } = {
+			'skip': skip.toString(),
+			'take': take.toString()
+		};
 
-		params.set('skip', skip.toString());
-		params.set('take', take.toString());
-
-		if (division) params.set('division', division.toString());
+		if (division) params['division'] = division.toString();
 
     return this.http.get<ProjectsHttpResponse>(Config.API + '/projects/recent', { params: params });
 	}

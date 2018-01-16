@@ -298,7 +298,7 @@
     min-width: 0px;
     text-align: center;
     background-color: #fff;
-    md-icon {
+    mat-icon {
       font-size: 3.4em;
       position: relative;
       left: -12px;
@@ -324,7 +324,7 @@
     }
     &:hover {
       background-color: $almost_black!important;
-      md-icon {
+      mat-icon {
         color: $white_trans;
       }
       .icon-container {
@@ -363,7 +363,7 @@
             height: 100%;
             background-color: #fff;
             top: 0;
-            md-icon {
+            mat-icon {
                 font-size: 2.4em;
                 left: -6px;
                 vertical-align: top;
