@@ -4,6 +4,7 @@ import { Config } from '../core/config/env.config';
 import { ApiHttp } from '../core/services/xhr.http';
 import { XhrService } from '../core/services/xhr.service';
 import { Blog, BlogsHttpResponse } from './blog';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class BlogService {

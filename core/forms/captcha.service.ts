@@ -11,7 +11,7 @@ export class CaptchaService {
     validate(captchaHttpResponse: string): Observable<any> {
         const url = `${Config.API}/recaptcha/validate`;
         const params = {
-        	"response": captchaHttpResponse
+        	'response': captchaHttpResponse
         };
 
         return this.http.post(url, { response: captchaHttpResponse });

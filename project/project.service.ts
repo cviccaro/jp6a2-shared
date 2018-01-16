@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { Config } from '../core/config/env.config';
 import { ApiHttp } from '../core/services/xhr.http';
@@ -7,7 +8,6 @@ import { XhrService } from '../core/services/xhr.service';
 
 import { Project, ProjectsHttpResponse } from './project';
 
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProjectService {

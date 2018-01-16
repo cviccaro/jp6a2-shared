@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
 import { ApiHttp } from '../../services/xhr.http';
 import { ContactFormSubmission } from '../form-submissions';
 import { Config } from '../../config/env.config';
