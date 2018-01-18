@@ -48,7 +48,7 @@ export class ContactFormComponent implements OnDestroy {
 
         if (Config.hasOwnProperty('GoogleRecaptchaAPIKey')) {
             this.siteKey = Config.GoogleRecaptchaAPIKey;
-            console.log('Setting ReCaptcha Key to ', this.siteKey);
+            //console.log('Setting ReCaptcha Key to ', this.siteKey);
             group.captcha = ['', Validators.required];
         }
 

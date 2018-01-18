@@ -16,8 +16,7 @@ import {
   //OVERLAY_PROVIDERS
 } from '@angular/material';
 
-import { AgmCoreModule } from '@agm/core';
-import { GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { MomentModule } from 'angular2-moment';
 import { ReCaptchaModule } from 'angular2-recaptcha';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
@@ -283,7 +282,7 @@ export class SharedModule {
         APP_MIDDLEWARE,
         APP_SERVICES,
         WindowProviders,
-        GoogleMapsAPIWrapper,
+        GoogleMapsAPIWrapper
         //MdIconRegistry,
         //OVERLAY_PROVIDERS,
         //PageScrollService,
