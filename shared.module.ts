@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HammerGestureConfig } from '@angular/platform-browser';
 import {
   MatCommonModule,
   MatButtonModule,
@@ -130,6 +131,7 @@ export const APP_MIDDLEWARE = [
 ];
 
 const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
+const APP_BASE_URL = '<%= APP_BASE %>';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -149,17 +151,17 @@ const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
     MatGridListModule,
     MatIconModule,
     MatInputModule,
-    MatToolbarModule,
-    MatTooltipModule,
     MatRippleModule,
     MatProgressBarModule,
+    MatToolbarModule,
+    MatTooltipModule,
     MomentModule,
     Ng2PageScrollModule.forRoot(),
     ReCaptchaModule,
     ModalModule.forRoot(),
     BootstrapModalModule,
     SocialModule,
-    InlineSVGModule
+    InlineSVGModule.forRoot({baseUrl: '/'})
   ],
   declarations: [
     APP_PIPES,
@@ -260,10 +262,9 @@ const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
     MatGridListModule,
     MatIconModule,
     MatInputModule,
+    MatRippleModule,
     MatProgressBarModule,
     MatToolbarModule,
-    MatTooltipModule,
-    MatRippleModule,
     MomentModule,
     Ng2PageScrollModule,
     ReCaptchaModule,
@@ -282,7 +283,8 @@ export class SharedModule {
         APP_MIDDLEWARE,
         APP_SERVICES,
         WindowProviders,
-        GoogleMapsAPIWrapper
+        GoogleMapsAPIWrapper,
+        HammerGestureConfig
         //MdIconRegistry,
         //OVERLAY_PROVIDERS,
         //PageScrollService,
