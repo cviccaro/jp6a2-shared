@@ -37,9 +37,11 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 	}
 
 	ngOnInit() {
-		this.sub = this.route.data.subscribe(params => {
-			if (params.hasOwnProperty('returnTo')) {
-				this.returnTo = params['returnTo'];
+		this.sub = this.route.data.subscribe(data => {
+			if (data.hasOwnProperty('returnTo')) {
+				this.returnTo = data['returnTo'];
+			} else {
+				this.returnTo = '/home';
 			}
 		});
 	}
@@ -63,6 +65,8 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 
 		this.isActive = false;
 		this.isHidden = true;
+
+		console.log(this.returnTo);
 
 		setTimeout(() => {
 			if (this.returnTo !== undefined && this.returnTo !== null) {
