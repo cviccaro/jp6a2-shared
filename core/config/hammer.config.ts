@@ -1,19 +1,19 @@
-import 'hammerjs';
+// import 'hammerjs';
 
-export class HammerConfig {
+// export class HammerConfig {
 
-    buildHammer(element: HTMLElement): any {
-        const mc = new Hammer.Manager(element);
+//     buildHammer(element: HTMLElement): any {
+//         const mc = new Hammer.Manager(element);
 
-        // mc.get('pinch').set({ enable: true });
-        // mc.get('rotate').set({ enable: true });
+//         // mc.get('pinch').set({ enable: true });
+//         // mc.get('rotate').set({ enable: true });
 
-        mc.add( new Hammer.Swipe({ direction: Hammer.DIRECTION_ALL, threshold: 0}) );
+//         mc.add( new Hammer.Swipe({ direction: Hammer.DIRECTION_ALL, threshold: 0}) );
 
-        // for (let eventName in this.overrides) {
-        //     mc.get(eventName).set(this.overrides[eventName]);
-        // }
+//         // for (let eventName in this.overrides) {
+//         //     mc.get(eventName).set(this.overrides[eventName]);
+//         // }
 
-        return mc;
-    }
-}
+//         return mc;
+//     }
+// }

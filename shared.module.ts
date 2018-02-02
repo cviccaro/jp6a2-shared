@@ -21,8 +21,8 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { MomentModule } from 'angular2-moment';
 import { ReCaptchaModule } from 'angular2-recaptcha';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
-import { ModalModule, OverlayRenderer, DOMOverlayRenderer } from 'angular2-modal';
-import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { ModalModule, OverlayRenderer, DOMOverlayRenderer } from 'ngx-modialog';
+import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 import { InlineSVGModule } from 'ng-inline-svg';
 
 import { BackgroundDirective } from './core/components/background/background.directive';
@@ -132,6 +132,8 @@ export const APP_MIDDLEWARE = [
 
 const GOOGLE_API_KEY = '<%= CFG.GoogleMapsAPIKey %>';
 const APP_BASE_URL = '<%= APP_BASE %>';
+
+import { Observable } from 'rxjs/Rx';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.

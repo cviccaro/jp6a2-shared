@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Validators, NgModel } from '@angular/forms';
-import { Modal } from 'angular2-modal';
+import { Modal } from 'ngx-modialog';
 
 import { ContentOverlayComponent } from '../../components/content-overlay/content-overlay.component';
 import { SubscribeFormSubmission } from '../form-submissions';
