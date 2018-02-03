@@ -88,8 +88,11 @@ export class ContactFormComponent implements OnDestroy {
         if (captchaHttpResponse !== null) {
             this.validatingCaptcha = this.captcha.validate(captchaHttpResponse)
                 .subscribe(
-                (resp: any) => { console.log('Response to captcha validation', resp); if (!resp.success) this.recaptchaCmp.reset(); }
-                );
+                (resp: any) => {
+                    //console.log('Response to captcha validation', resp);
+
+                    if (!resp.success) this.recaptchaCmp.reset();
+                });
         }
     }
 

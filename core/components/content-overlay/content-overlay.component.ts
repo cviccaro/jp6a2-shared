@@ -66,8 +66,6 @@ export class ContentOverlayComponent implements OnInit, AfterViewInit, OnDestroy
 		this.isActive = false;
 		this.isHidden = true;
 
-		console.log(this.returnTo);
-
 		setTimeout(() => {
 			if (this.returnTo !== undefined && this.returnTo !== null) {
 				this.router.navigate([this.returnTo]);
